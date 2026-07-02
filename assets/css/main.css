@@ -1,0 +1,54 @@
+/* base/system.css, animations/core.css, components/header-nav.css,
+   and components/buttons.css are loaded as <link> tags in head.html
+   to avoid CSS @import waterfall delays */
+
+html,
+body {
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.surface-paper {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"),
+    linear-gradient(var(--surface-cream), var(--surface-cream));
+}
+
+.embossed {
+  text-shadow:
+    0 1px 0 rgb(255 255 255 / 40%),
+    0 -1px 0 rgb(0 0 0 / 20%);
+}
+
+.ts-header,
+.desktop-nav__dropdown,
+.mobile-nav,
+.btn {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media print {
+  .ts-header,
+  .mobile-nav,
+  .sticky-cta-bar {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}

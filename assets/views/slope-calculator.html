@@ -1,0 +1,91 @@
+<!-- Shower Slope Calculator View (pre-rendered for Tools Hub router) -->
+<section class="tools-section" id="slope-calculator" aria-labelledby="slope-calculator-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="slope-calculator-title" class="tools-section__title">Shower Slope Calculator</h2>
+      <p class="tools-section__desc">
+        Calculate required pre-slope for shower pans per IPC code (&frac14;&quot; per foot to drain).
+      </p>
+    </header>
+
+    <div class="tools-card">
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="slope-length" class="form-label form-label--required">Distance to Drain</label>
+          <div class="form-inline">
+            <input
+              type="number"
+              id="slope-length"
+              class="form-input"
+              placeholder="3"
+              min="1"
+              max="10"
+              step="0.5"
+              value="3"
+            />
+            <span class="form-inline__suffix">ft</span>
+          </div>
+          <span class="form-hint">Farthest point from drain center</span>
+        </div>
+        <div class="form-field">
+          <label for="slope-drain-type" class="form-label">Drain Type</label>
+          <select id="slope-drain-type" class="form-select">
+            <option value="center">Center Drain</option>
+            <option value="linear">Linear Drain</option>
+            <option value="offset">Offset Drain</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="slope-method" class="form-label">Construction Method</label>
+          <select id="slope-method" class="form-select">
+            <option value="mud-bed">Traditional Mud Bed</option>
+            <option value="foam-pan">Pre-Sloped Foam Pan</option>
+            <option value="bonded">Bonded System (Kerdi, etc.)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="nudge nudge--info" id="slope-code-note">
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+        <span
+          ><strong>Code Requirement:</strong> IPC Section 417.5.2 requires minimum &frac14;&quot; per foot slope toward
+          drain. NJ adopts IPC with local amendments.</span
+        >
+      </div>
+
+      <button type="button" class="btn btn--primary" id="calc-slope-btn">Calculate Slope</button>
+
+      <!-- Results -->
+      <div class="calc-results" id="slope-calc-results" hidden>
+        <h4 class="calc-results__title">Pre-Slope Requirements</h4>
+        <div class="calc-results__grid">
+          <div class="calc-result">
+            <span class="calc-result__label">Minimum slope</span>
+            <span class="calc-result__value" id="result-slope-min">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Recommended slope</span>
+            <span class="calc-result__value calc-result__value--highlight" id="result-slope-rec">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Height at perimeter</span>
+            <span class="calc-result__value" id="result-slope-height">—</span>
+          </div>
+        </div>
+        <p class="calc-results__note" id="slope-method-note"></p>
+      </div>
+    </div>
+  </div>
+</section>

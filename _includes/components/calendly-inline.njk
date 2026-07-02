@@ -1,0 +1,53 @@
+<!-- 
+  Calendly Inline Widget Component
+  Embeds full Calendly scheduling interface
+  Usage: {% include "components/calendly-inline.njk" %}
+-->
+
+<div
+  class="calendly-inline-widget"
+  id="calendly-widget"
+  data-url="https://calendly.com/tillerstead/30min"
+  aria-label="Schedule a consultation with Tillerstead"
+></div>
+
+<style>
+  .calendly-inline-widget {
+    min-width: 320px;
+    height: 700px;
+  }
+</style>
+
+<noscript>
+  <div class="calendly-fallback">
+    <h3>Schedule a Consultation</h3>
+    <p>JavaScript is required to use our online booking system.</p>
+    <p>
+      Please call us directly at <a href="tel:+16092226969">(609) 222-6969</a> or email
+      <a href="mailto:support@tillerstead.com">support@tillerstead.com</a>
+    </p>
+  </div>
+</noscript>
+
+<style>
+  .calendly-fallback {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .calendly-fallback h3 {
+    margin-bottom: 1rem;
+    color: var(--color-text-primary, #0f172a);
+  }
+
+  .calendly-fallback p {
+    margin-bottom: 0.5rem;
+  }
+
+  .calendly-fallback a {
+    color: var(--color-primary-600, #1e40af);
+    font-weight: 600;
+  }
+</style>

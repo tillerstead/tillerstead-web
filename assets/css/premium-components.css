@@ -1,0 +1,605 @@
+/**
+ * PREMIUM MODERN UI COMPONENTS
+ * Inspired by Linear, Stripe, Vercel
+ */
+
+/* ==============================================
+   BENTO GRID LAYOUT
+   Like Apple's product showcases
+   ============================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.bento-item {
+  position: relative;
+  background: linear-gradient(135deg, rgb(255 255 255 / 5%), rgb(255 255 255 / 2%));
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 24px;
+  padding: 2rem;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  border-color: rgb(255 255 255 / 20%);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+}
+
+.bento-item--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-item--wide {
+  grid-column: span 2;
+}
+
+.bento-item--tall {
+  grid-row: span 2;
+}
+
+/* Bento item decorative elements */
+.bento-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--color-primary-500) 0%, transparent 70%);
+  opacity: 10%;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* ==============================================
+   GLASSMORPHISM CARDS
+   Modern frosted glass effect
+   ============================================== */
+
+.glass-card {
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
+  padding: 2rem;
+  transition:
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgb(255 255 255 / 8%);
+  border-color: rgb(255 255 255 / 20%);
+  transform: translateY(-2px);
+}
+
+.glass-card--light {
+  background: rgb(255 255 255 / 70%);
+  backdrop-filter: blur(12px);
+}
+
+.glass-card--dark {
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(12px);
+}
+
+/* ==============================================
+   PREMIUM BUTTONS
+   Multiple styles for different contexts
+   ============================================== */
+
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+/* Primary gradient button */
+.btn-premium--gradient {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  color: white;
+  box-shadow: 0 4px 15px rgb(14 165 233 / 30%);
+}
+
+.btn-premium--gradient:hover {
+  box-shadow: 0 6px 25px rgb(14 165 233 / 50%);
+  transform: translateY(-2px);
+}
+
+.btn-premium--gradient:active {
+  transform: translateY(0);
+}
+
+/* Outlined button */
+.btn-premium--outline {
+  background: transparent;
+  border: 2px solid var(--color-primary-500);
+  color: var(--color-primary-500);
+}
+
+.btn-premium--outline:hover {
+  background: var(--color-primary-500);
+  color: white;
+}
+
+/* Ghost button */
+.btn-premium--ghost {
+  background: rgb(255 255 255 / 5%);
+  color: white;
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.btn-premium--ghost:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 20%);
+}
+
+/* Shimmer effect on load */
+.btn-premium--shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 30%), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
+  }
+}
+
+/* ==============================================
+   GRADIENT MESH BACKGROUNDS
+   Like Stripe's homepage
+   ============================================== */
+
+.gradient-mesh {
+  position: relative;
+  background-color: var(--tiller-bg-dark, #1a1c1a);
+}
+
+.gradient-mesh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(at 27% 37%, hsl(215deg 98% 61% / 15%) 0, transparent 50%),
+    radial-gradient(at 97% 21%, hsl(125deg 98% 72% / 15%) 0, transparent 50%),
+    radial-gradient(at 52% 99%, hsl(354deg 98% 61% / 15%) 0, transparent 50%),
+    radial-gradient(at 10% 29%, hsl(256deg 96% 67% / 15%) 0, transparent 50%),
+    radial-gradient(at 97% 96%, hsl(38deg 60% 74% / 15%) 0, transparent 50%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==============================================
+   FLOATING LABELS
+   Premium form styling
+   ============================================== */
+
+.form-floating {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-floating input,
+.form-floating textarea {
+  width: 100%;
+  padding: 1.25rem 1rem 0.5rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 5%);
+  color: white;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-floating label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgb(255 255 255 / 80%);
+  font-size: 1rem;
+  transition:
+    top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.form-floating input:focus,
+.form-floating textarea:focus {
+  border-color: var(--color-primary-500);
+  background: rgb(255 255 255 / 8%);
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(14 165 233 / 10%);
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label,
+.form-floating textarea:focus + label,
+.form-floating textarea:not(:placeholder-shown) + label {
+  top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-primary-400);
+}
+
+/* ==============================================
+   STAT COUNTERS
+   Animated statistics display
+   ============================================== */
+
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+  background: rgb(255 255 255 / 3%);
+  border-radius: 16px;
+  border: 1px solid rgb(255 255 255 / 5%);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgb(255 255 255 / 5%);
+  border-color: rgb(255 255 255 / 10%);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 85%);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ==============================================
+   TESTIMONIAL CARDS
+   Premium social proof design
+   ============================================== */
+
+.testimonial-card {
+  position: relative;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgb(255 255 255 / 5%), rgb(255 255 255 / 2%));
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--color-primary-500);
+  opacity: 10%;
+  font-family: Georgia, serif;
+}
+
+.testimonial-quote {
+  position: relative;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: rgb(255 255 255 / 90%);
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(255 255 255 / 20%);
+}
+
+.testimonial-name {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-role {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 80%);
+}
+
+/* ==============================================
+   FEATURE SHOWCASE GRID
+   Apple-style feature presentation
+   ============================================== */
+
+.feature-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.feature-item {
+  position: relative;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgb(255 255 255 / 3%), rgb(255 255 255 / 1%));
+  border-radius: 24px;
+  border: 1px solid rgb(255 255 255 / 5%);
+  transition:
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.feature-item:hover {
+  border-color: rgb(255 255 255 / 15%);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 40%);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  box-shadow: 0 8px 24px rgb(14 165 233 / 30%);
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.feature-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 90%);
+}
+
+/* ==============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================== */
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-item--large,
+  .bento-item--wide,
+  .bento-item--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .feature-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================================================
+   MERGED FROM: urgency-indicators.css
+   Urgency badges, trust indicators, booking status
+   ============================================================ */
+
+/* Urgency Badge Animation */
+@keyframes pulse-urgency {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgb(220 38 38 / 40%);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgb(220 38 38 / 60%);
+  }
+}
+
+.hero-urgency {
+  animation: pulse-urgency 2s ease-in-out infinite;
+}
+
+/* Responsive Hero Badges */
+@media (max-width: 768px) {
+  .ts-hero__badges {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .ts-hero__eyebrow,
+  .hero-social-proof,
+  .hero-urgency {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .hero-social-proof span:first-child,
+  .hero-urgency span:first-child {
+    font-size: 1rem !important;
+  }
+}
+
+/* CTA Urgency Badge */
+.cta-urgency-badge {
+  animation: badge-bounce 3s ease-in-out infinite;
+}
+
+@keyframes badge-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Trust Indicators */
+.trust-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgb(255 255 255 / 95%);
+  border-radius: 50px;
+  border: 2px solid var(--tiller-color-emerald, #00a35c);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.trust-indicator__icon {
+  font-size: 1.25rem;
+}
+
+/* Booking Status Indicator */
+.booking-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 50px;
+  border: 3px solid #ffffff;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #000000;
+  box-shadow: 0 4px 12px rgb(251 191 36 / 50%);
+  animation: status-glow 3s ease-in-out infinite;
+}
+
+@keyframes status-glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgb(251 191 36 / 50%);
+  }
+
+  50% {
+    box-shadow: 0 6px 20px rgb(251 191 36 / 80%);
+  }
+}
+
+/* Limited Availability Badge */
+.limited-availability {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgb(220 38 38 / 95%);
+  border-radius: 8px;
+  border: 2px solid #fca5a5;
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgb(220 38 38 / 40%);
+}
+
+.limited-availability::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background: #dc2626;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 70%;
+  }
+}
+
+/* Response Time Badge */
+.response-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgb(16 185 129 / 95%);
+  border-radius: 50px;
+  border: 2px solid #6ee7b7;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgb(16 185 129 / 30%);
+}
+
+.response-time__icon {
+  font-size: 1.125rem;
+}

@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": "off",
+    "disown-opener": "warning",
+    "no-html-only-window": "warning",
+    "axe/wcag2aa": "warning",
+    "axe/wcag21aa": "warning",
+    "highest-available-document-mode": "warning",
+    "no-inline-styles": "warning",
+    "performance-budget": "warning",
+    "referrer-policy": "warning",
+    "permissions-policy": "warning",
+    "validate-set-cookie-header-value": "warning",
+    "no-vulnerable-javascript-libraries": "warning",
+    "ssllabs": "off"
+  },
+  "formatters": ["stylish"],
+  "ignoredUrls": [
+    "https://github.com/*",
+    "https://fonts.googleapis.com/*"
+  ]
+}

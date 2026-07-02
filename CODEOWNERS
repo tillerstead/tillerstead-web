@@ -1,0 +1,35 @@
+# CODEOWNERS for Tillerstead.com
+# This file defines who owns and approves changes to different parts of the codebase
+
+# Default owner for everything
+* @xTx396
+
+# Proprietary TillerPro Suite
+/tillerpro.html @xTx396
+/assets/js/tillerpro-config.js @xTx396
+/assets/css/pages/tillerpro.css @xTx396
+/_includes/sections/tillerpro-banner.html @xTx396
+
+# Calculator System
+/tillerstead-toolkit/backend/app/calculators/ @xTx396
+/assets/js/build-calculators.js @xTx396
+/assets/js/financing-calculator.js @xTx396
+/assets/js/adapters/*-calculator-adapter.js @xTx396
+/_includes/tools/*-calculator.html @xTx396
+/tools/pricing-calculator.html @xTx396
+
+# Documentation with proprietary information
+/tillerstead-toolkit/CALCULATOR_SYSTEM.md @xTx396
+/tillerstead-toolkit/CALCULATOR_ROADMAP.md @xTx396
+
+# Admin and security systems
+/admin/ @xTx396
+/.git-encrypt/ @xTx396
+
+# CI/CD and deployment
+/.github/ @xTx396
+
+# Configuration files
+/package.json @xTx396
+/_config.yml @xTx396
+/.gitattributes @xTx396

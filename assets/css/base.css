@@ -1,0 +1,414 @@
+/* ─────────────────────────────────────────────────────────────────── */
+
+/* Tillerstead — Professional Contractor Site                           */
+
+/* Base CSS Layer — Semantic HTML Defaults + Foundational Styles        */
+
+/* ─────────────────────────────────────────────────────────────────── */
+
+/* ─── CSS Reset ─────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    Geist,
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-secondary);
+}
+
+/* ─── Typography ────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Lists ────────────────────────────────────────────────────── */
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ─── Forms ────────────────────────────────────────────────────── */
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+textarea,
+select {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* ─── Media ────────────────────────────────────────────────────── */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Layout Utilities ─────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* ─── Accessibility ────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ─── Focus State ────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Motion Safety ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Print Styles ─────────────────────────────────────────────── */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75rem;
+  }
+}
+
+/* ─── Component Classes ─────────────────────────────────────────── */
+
+/* Footer links — token-driven, dark-mode ready */
+.footer-link {
+  color: var(--color-text-inverse-tertiary);
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--color-text-inverse-primary);
+}
+
+/* Hero secondary CTA — hover via CSS, no inline JS */
+.hero-secondary-cta:hover,
+.hero-secondary-cta:focus-visible {
+  border-color: var(--color-brand-primary) !important;
+  color: var(--color-text-inverse-primary) !important;
+}
+
+/* Tool cards — hover elevation + brand border */
+.tool-card:hover,
+.tool-card:focus-visible {
+  border-color: var(--color-brand-primary) !important;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Service page links — hover underline */
+.service-link:hover,
+.service-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Guide cards — hover elevation + brand border */
+.guide-card:hover,
+.guide-card:focus-visible {
+  border-color: var(--color-brand-primary) !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* Form inputs — token-driven borders and focus ring */
+.form-input {
+  border-color: var(--color-border-primary);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-brand-primary-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-card:hover,
+  .tool-card:focus-visible {
+    transform: none;
+  }
+}
+
+/* ─── Footer Links (dark background) ────────────────────────────── */
+
+.footer-link {
+  color: var(--color-text-inverse-tertiary);
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--color-text-inverse-primary);
+}
+
+/* ─── Documentation Layout with Sidebar ─────────────────────────── */
+
+.docs-layout {
+  min-height: 100vh;
+}
+
+.docs-container {
+  display: flex;
+  min-height: calc(100vh - 64px); /* Account for header height */
+}
+
+/* Sidebar: Full-height, anchored, stable */
+.docs-sidebar {
+  position: sticky;
+  top: 64px; /* Below header */
+  left: 0;
+  width: 300px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  flex-shrink: 0;
+  border-right: 1px solid var(--color-border-primary);
+  background-color: var(--color-surface-primary);
+  z-index: 10;
+}
+
+.docs-sidebar__inner {
+  padding: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+}
+
+/* Navigation sections */
+.docs-nav-section {
+  margin-bottom: var(--space-xl);
+}
+
+.docs-nav-section__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-tertiary);
+}
+
+.docs-nav-section__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Navigation list */
+.docs-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.docs-nav-item {
+  margin: 0;
+}
+
+/* Navigation links */
+.docs-nav-link {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.docs-nav-link:hover,
+.docs-nav-link:focus-visible {
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-secondary);
+  border-color: var(--color-border-primary);
+  outline: none;
+}
+
+.docs-nav-link--active {
+  color: var(--color-brand-primary);
+  background-color: var(--color-brand-primary-tint);
+  border-color: var(--color-brand-primary-border);
+  font-weight: 600;
+}
+
+/* Main content area */
+.docs-content {
+  flex: 1;
+  min-width: 0; /* Allow content to shrink properly */
+  padding: var(--space-xl) var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.docs-content__inner {
+  max-width: 960px;
+}
+
+/* Mobile: Hide sidebar, show content full-width */
+@media (max-width: 768px) {
+  .docs-container {
+    flex-direction: column;
+  }
+
+  .docs-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-primary);
+  }
+
+  .docs-content {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .docs-nav-link:hover,
+  .docs-nav-link:focus-visible {
+    transition: none;
+  }
+}

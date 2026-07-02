@@ -1,0 +1,78 @@
+{#
+  ─────────────────────────────────────────────────────────────
+  COMPONENT: Footer
+  ─────────────────────────────────────────────────────────────
+  DISPLAYS: Company info, navigation links, legal links
+  TOKENS USED: --color-text-inverse, --color-brand-primary
+  RESPONSIVE: Single column mobile, 4 columns on md+
+─────────────────────────────────────────────────────────────
+#}
+<footer aria-label="Site footer" style="background-color: var(--color-surface-dark); color: var(--color-text-inverse);">
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      
+      {# Company info #}
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg" style="background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-primary-dark) 100%);">
+            T
+          </div>
+          <div>
+            <div class="font-semibold">Tillerstead</div>
+            <div class="text-xs" style="color: var(--color-text-inverse-muted);">LLC</div>
+          </div>
+        </div>
+        <p class="text-sm" style="color: var(--color-text-inverse-tertiary);">
+          Contract remodeling services for New Jersey homeowners: bathrooms, flooring, backsplash, and interior demo-to-install scopes.
+        </p>
+      </div>
+
+      {# Services #}
+      <div>
+        <h4 class="font-semibold mb-4 text-sm uppercase tracking-wide">Services</h4>
+        <ul class="space-y-2 text-sm" role="list">
+          <li><a href="/services/" class="footer-link hover:text-white transition-colors">All Services</a></li>
+          <li><a href="/services/#bathroom" class="footer-link hover:text-white transition-colors">Bathroom Remodeling</a></li>
+          <li><a href="/services/#flooring" class="footer-link hover:text-white transition-colors">Flooring Installation</a></li>
+          <li><a href="/services/#backsplash" class="footer-link hover:text-white transition-colors">Backsplash Installation</a></li>
+          <li><a href="/services/#demo" class="footer-link hover:text-white transition-colors">Demo and Prep</a></li>
+        </ul>
+      </div>
+      {# Guides #}
+      <div>
+        <h4 class="font-semibold mb-4 text-sm uppercase tracking-wide">Guides</h4>
+        <ul class="space-y-2 text-sm" role="list">
+          <li><a href="/guides/" class="footer-link hover:text-white transition-colors">All Guides</a></li>
+          <li><a href="/guides/renovation/" class="footer-link hover:text-white transition-colors">Renovation Guides</a></li>
+          <li><a href="/guides/repairs/" class="footer-link hover:text-white transition-colors">Repair Guides</a></li>
+          <li><a href="/build/" class="footer-link hover:text-white transition-colors">Build Phases</a></li>
+        </ul>
+      </div>
+
+      {# Legal #}
+      <div>
+        <h4 class="font-semibold mb-4 text-sm uppercase tracking-wide">Legal</h4>
+        <ul class="space-y-2 text-sm" role="list">
+          <li><a href="/privacy/" class="footer-link hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/terms/" class="footer-link hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="/contact/" class="footer-link hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/early-access/" class="footer-link hover:text-white transition-colors">Early Access</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    {# Divider #}
+    <div style="border-top: 1px solid var(--color-border-inverse); padding-top: 2rem;">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm" style="color: var(--color-text-inverse-muted);">
+        <p>&copy; 2026 Tillerstead LLC. All rights reserved.</p>
+        <p>Licensed NJ Home Improvement Contractor. HIC# 13VH10808800</p>
+      </div>
+      <p class="text-xs text-center mt-4" style="color: var(--color-text-inverse-tertiary);">
+        Tillerstead LLC is a separate trade business. Evident Technologies provides technology support for this web asset.
+      </p>
+    </div>
+
+  </div>
+</footer>

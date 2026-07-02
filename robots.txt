@@ -1,0 +1,61 @@
+# Tillerstead.com robots.txt
+# TCNA-compliant, New Jersey HIC-licensed contractor
+# Copyright © 2024–2026 Evident Technologies LLC. All rights reserved.
+# AI training crawlers are prohibited per LICENSE Section 3.
+
+User-agent: *
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /drafts/
+Disallow: /_audit/
+Disallow: /_backup/
+Disallow: /_site/
+Disallow: /baseline/
+Disallow: /root-archive/
+Disallow: /reports/
+Allow: /
+
+# Block AI/ML training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+Sitemap: https://tillerstead.com/sitemap.xml

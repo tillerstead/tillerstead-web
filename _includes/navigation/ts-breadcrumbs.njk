@@ -1,0 +1,82 @@
+{# Tillerstead.com Breadcrumbs Component Semantic, accessible navigation with SEO optimization
+TCNA-compliant, New Jersey HIC compliant, WCAG 2.1 AA+ - Responsive mobile truncation with ellipsis - Optimized touch
+targets for all devices - Clear navigation hierarchy - Structured data for search engines #} {%- set is_home = page.url == '/' or page.url == '/index.html' or is_home == true -%} {%- set render_breadcrumbs = true -%} {# Never show breadcrumbs on homepage #} {%- if is_home or show_breadcrumbs ==
+false -%} {%- set render_breadcrumbs = false -%} {%- endif -%} {%- if render_breadcrumbs -%} {%- set raw_url = page.url | default("") -%} {%- set clean_url = '' | append(raw_url) | replace("index.html", "") | replace(".html", "") -%} {%- set segments = clean_url | split("/") -%} {%- set clean_segments = '' .split("") -%} {%- for seg in
+segments -%} {%- if not (seg == '') -%} {%- set clean_segments = clean_segments | push(seg) -%} {%- endif -%} {%-
+endfor -%} {%- set is_post = false -%} {%- if collections == 'posts' or layout == 'post' -%} {%- set is_post = true -%} {%- endif -%} {%- set parent_url = parent | default(page.breadcrumb_parent) -%} {%- set parent_label = parent_label | default(page.breadcrumb_parent_label) -%} {%- set parent_page = none -%} {%- set parent_path = '' -%} {%- set parent_slug = none -%} {%- if parent_url and parent_url != '' -%} {%- set parent_clean = parent_url | replace("index.html", "") | replace(".html", "") -%} {%- set parent_segments = parent_clean | split("/") -%} {%- for part in parent_segments -%} {%- if not (part == '') -%} {%- set parent_path = parent_path + "/"
+~ part -%} {%- set parent_slug = part -%} {%- endif -%} {%- endfor -%} {%- set parent_slug = parent_slug | default("") -%} {%- set lookup_url = parent_url -%} {%- set parent_page = collections.all | where_exp('p', 'p.url == lookup_url') | first -%} {%- if parent_page == none and parent_path != '' -%} {%- set lookup_url = parent_path + "/" -%} {%- set parent_page = collections.all | where_exp('p', 'p.url ==
+lookup_url') | first -%} {%- endif -%} {%- if parent_page and parent_label == none -%} {%- set parent_label = parent_breadcrumb_title | default(parent_page.title) -%} {%- endif -%} {%- if parent_label == none and parent_slug
+-%} {%- set parent_label = parent_slug | replace("-", " ") | capitalize -%} {%- endif -%} {%- endif -%} {%- set parent_slug = parent_slug | default("") -%} {%- if parent_label -%} {%- if '|' in parent_label -%} {%- set parent_label = parent_label | split("|") | first -%} {%- endif -%} {%- set parent_label = parent_label | trim -%}
+{%- endif -%} {%- set last_index = clean_segments.length | minus(1) -%} {%- set crumb_position = 1 -%} {%- set current_path = '' -%} {%- set json_items = '' -%}
+
+<nav
+  class="breadcrumbs ts-breadcrumbs"
+  aria-label="Breadcrumb navigation"
+  role="navigation"
+  itemscope
+  itemtype="https://schema.org/BreadcrumbList"
+>
+  <ol class="breadcrumbs-list ts-breadcrumbs__list">
+    <!-- Home crumb: always present, explicit, conversion-focused, and New Jersey HIC compliant -->
+    <li
+      class="breadcrumbs-item ts-breadcrumbs__item"
+      itemprop="itemListElement"
+      itemscope
+      itemtype="https://schema.org/ListItem"
+    >
+      <a class="breadcrumbs-link ts-breadcrumbs__link ts-crumb-link" href="{{ '/' | relative_url }}" itemprop="item">
+        <span itemprop="name">Home – Tillerstead: New Jersey licensed Tile & Remodeling Contractor</span>
+      </a>
+      <meta itemprop="position" content="{{ crumb_position }}" />
+    </li>
+    {%- set json_items = json_items + "{"@type":"ListItem","position":1,"name":"Home – Tillerstead: New
+    Jersey licensed Tile & Remodeling Contractor","item":"' ~ site.url + "/"}' -%} {%- set crumb_position = crumb_position | plus(1) -%} {%- if parent_label and parent_path != '' -%}
+    <li
+      class="breadcrumbs-item ts-breadcrumbs__item"
+      itemprop="itemListElement"
+      itemscope
+      itemtype="https://schema.org/ListItem"
+    >
+      <a
+        class="breadcrumbs-link ts-breadcrumbs__link ts-crumb-link"
+        href="{{ parent_path + "/" | relative_url }}"
+        itemprop="item"
+      >
+        <span itemprop="name">{{ parent_label | e }}</span>
+      </a>
+      <meta itemprop="position" content="{{ crumb_position }}" />
+    </li>
+    {%- set json_items = json_items + ",{"@type":"ListItem","position":' ~ crumb_position + ","name":' | append(parent_label) | trim | dump + ","item":"' | append(site.url) ~ parent_path + "/"}' -%} {%- set crumb_position = crumb_position | plus(1) -%} {%- set current_path = parent_path -%}
+    {%- endif -%} {%- set parent_slug = parent_slug | default("") -%} {%- for segment in clean_segments -%} {%- if
+    parent_slug != '' and segment == parent_slug -%} {%- continue -%} {%- endif -%} {%- set current_path = current_path + "/" ~ segment -%} {%- set is_last = loop.last -%} {%- set base_label = segment | replace("-", " ") | trim | capitalize -%} {%- set label = base_label -%} {%- if is_last -%} {%- set label = breadcrumb_title | default(page.hero_title) | default(page.title) | default(base_label) -%} {%- endif
+    -%} {%- set crumb_href = current_path + "/" -%}
+    <li
+      class="breadcrumbs-item ts-breadcrumbs__item"
+      itemprop="itemListElement"
+      itemscope
+      itemtype="https://schema.org/ListItem"
+    >
+      {%- if is_last -%}
+      <span class="breadcrumbs-current ts-breadcrumbs__current ts-crumb-current" aria-current="page" itemprop="name"
+        >{{ label | e }}</span
+      >
+      <meta itemprop="item" content="{{ site.url }}{{ crumb_href }}" />
+      {%- else -%}
+      <a
+        class="breadcrumbs-link ts-breadcrumbs__link ts-crumb-link"
+        href="{{ crumb_href | relative_url }}"
+        itemprop="item"
+      >
+        <span itemprop="name">{{ label | e }}</span>
+      </a>
+      {%- endif -%}
+      <meta itemprop="position" content="{{ crumb_position }}" />
+    </li>
+    {%- set json_items = json_items + ",{"@type":"ListItem","position":' ~ crumb_position + ","name":' | append(label) | trim | dump + ","item":"' | append(site.url) ~ crumb_href + ""}' -%} {%- set crumb_position = crumb_position | plus(1) -%} {%- endfor -%}
+  </ol>
+</nav>
+
+<script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{ json_items }}]}
+</script>
+{%- endif -%}

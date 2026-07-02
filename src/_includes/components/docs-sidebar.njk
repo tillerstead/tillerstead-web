@@ -1,0 +1,96 @@
+{# ───────────────────────────────────────────────────────────────────── #}
+{# TILLERSTEAD — DOCUMENTATION SIDEBAR                                  #}
+{# Full-height, anchored navigation for build guides and articles        #}
+{# ───────────────────────────────────────────────────────────────────── #}
+
+<aside class="docs-sidebar" aria-label="Documentation navigation">
+  <div class="docs-sidebar__inner">
+    
+    {# Section: Build Phases #}
+    <nav class="docs-nav-section" aria-labelledby="build-phases-label">
+      <h3 id="build-phases-label" class="docs-nav-section__title">
+        <svg class="docs-nav-section__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+        </svg>
+        Build Phases
+      </h3>
+      <ul class="docs-nav-list" role="list">
+        <li class="docs-nav-item">
+          <a href="/build/" class="docs-nav-link {% if page.url == '/build/' %}docs-nav-link--active{% endif %}">
+            Overview
+          </a>
+        </li>
+        {# NOTE: Build sub-pages are not yet created. Uncomment when pages exist.
+        <li class="docs-nav-item">
+          <a href="/build/phase-01/" class="docs-nav-link {% if page.url == '/build/phase-01/' %}docs-nav-link--active{% endif %}">
+            Phase 1: Codes & Permits
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/shower-pans-slopes-drains/" class="docs-nav-link {% if '/build/shower-pans' in page.url %}docs-nav-link--active{% endif %}">
+            Shower Pans, Slopes & Drains
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/waterproofing-systems/" class="docs-nav-link {% if '/build/waterproofing' in page.url %}docs-nav-link--active{% endif %}">
+            Waterproofing Systems
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/framing-benches-niches/" class="docs-nav-link {% if '/build/framing' in page.url %}docs-nav-link--active{% endif %}">
+            Framing, Benches & Niches
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/tile-installation-standards/" class="docs-nav-link {% if '/build/tile' in page.url %}docs-nav-link--active{% endif %}">
+            Tile Installation Standards
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/curbs-curbless/" class="docs-nav-link {% if '/build/curbs' in page.url %}docs-nav-link--active{% endif %}">
+            Curbs & Curbless Systems
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/flood-testing/" class="docs-nav-link {% if '/build/flood' in page.url %}docs-nav-link--active{% endif %}">
+            Flood Testing
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/build/nj-codes-permits/" class="docs-nav-link {% if '/build/nj-codes' in page.url %}docs-nav-link--active{% endif %}">
+            NJ Codes Reference
+          </a>
+        </li>
+        #}
+      </ul>
+    </nav>
+
+    {# Section: Homeowner Guides #}
+    <nav class="docs-nav-section" aria-labelledby="homeowner-guides-label">
+      <h3 id="homeowner-guides-label" class="docs-nav-section__title">
+        <svg class="docs-nav-section__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+        Homeowner Guides
+      </h3>
+      <ul class="docs-nav-list" role="list">
+        <li class="docs-nav-item">
+          <a href="/guides/" class="docs-nav-link {% if page.url == '/guides/' %}docs-nav-link--active{% endif %}">
+            Guides Overview
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/guides/repairs/" class="docs-nav-link {% if page.url == '/guides/repairs/' %}docs-nav-link--active{% endif %}">
+            Demo & Prep Scope Guide
+          </a>
+        </li>
+        <li class="docs-nav-item">
+          <a href="/guides/renovation/" class="docs-nav-link {% if page.url == '/guides/renovation/' %}docs-nav-link--active{% endif %}">
+            Complete Renovation Guide
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</aside>

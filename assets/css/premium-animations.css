@@ -1,0 +1,479 @@
+/**
+ * PREMIUM ANIMATIONS CSS
+ * World-class animation styles inspired by Apple, Stripe, Linear
+ */
+
+/* ==============================================
+   SCROLL PROGRESS INDICATOR
+   ============================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-primary-300));
+  width: 0;
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--color-primary-400);
+}
+
+/* ==============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================== */
+
+[data-animate] {
+  opacity: 0%;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-animate].animated {
+  opacity: 100%;
+}
+
+/* Fade In */
+[data-animate='fade'].animated {
+  opacity: 100%;
+}
+
+/* Fade Up */
+[data-animate='fade-up'] {
+  transform: translateY(40px);
+}
+
+[data-animate='fade-up'].animated {
+  transform: translateY(0);
+}
+
+/* Fade Down */
+[data-animate='fade-down'] {
+  transform: translateY(-40px);
+}
+
+[data-animate='fade-down'].animated {
+  transform: translateY(0);
+}
+
+/* Fade Left */
+[data-animate='fade-left'] {
+  transform: translateX(40px);
+}
+
+[data-animate='fade-left'].animated {
+  transform: translateX(0);
+}
+
+/* Fade Right */
+[data-animate='fade-right'] {
+  transform: translateX(-40px);
+}
+
+[data-animate='fade-right'].animated {
+  transform: translateX(0);
+}
+
+/* Scale */
+[data-animate='scale'] {
+  transform: scale(0.9);
+}
+
+[data-animate='scale'].animated {
+  transform: scale(1);
+}
+
+/* Rotate */
+[data-animate='rotate'] {
+  transform: rotate(-5deg) scale(0.9);
+}
+
+[data-animate='rotate'].animated {
+  transform: rotate(0) scale(1);
+}
+
+/* ==============================================
+   STAGGER ANIMATIONS
+   ============================================== */
+
+[data-stagger] > * {
+  opacity: 0%;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-stagger] > *.stagger-animate {
+  opacity: 100%;
+  transform: translateY(0);
+}
+
+/* ==============================================
+   MAGNETIC BUTTONS
+   ============================================== */
+
+[data-magnetic] {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+[data-magnetic]::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgb(255 255 255 / 10%) 0%,
+    transparent 70%
+  );
+  opacity: 0%;
+  transition: opacity 0.3s;
+}
+
+[data-magnetic]:hover::before {
+  opacity: 100%;
+}
+
+/* ==============================================
+   RIPPLE EFFECT
+   ============================================== */
+
+[data-ripple] {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 60%);
+  transform: scale(0);
+  animation: ripple-animation 0.6s cubic-bezier(0, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0%;
+  }
+}
+
+/* ==============================================
+   SHINE EFFECT ON CARDS
+   ============================================== */
+
+[data-shine] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-shine]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgb(255 255 255 / 15%) 0%,
+    transparent 100%
+  );
+  opacity: 0%;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+[data-shine]:hover::before {
+  opacity: 100%;
+}
+
+/* ==============================================
+   PARALLAX ELEMENTS
+   ============================================== */
+
+[data-parallax] {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+/* ==============================================
+   FLOATING ANIMATION
+   ============================================== */
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ==============================================
+   PULSE ANIMATION
+   ============================================== */
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+}
+
+/* ==============================================
+   GRADIENT ANIMATION
+   ============================================== */
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ==============================================
+   HOVER LIFT EFFECT
+   ============================================== */
+
+.hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+}
+
+/* ==============================================
+   SMOOTH UNDERLINE ANIMATION
+   ============================================== */
+
+.underline-animate {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+/* ==============================================
+   SKELETON LOADING
+   ============================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 5%) 0%,
+    rgb(255 255 255 / 10%) 50%,
+    rgb(255 255 255 / 5%) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ==============================================
+   MORPHING BLOBS
+   ============================================== */
+
+.blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+@keyframes blob-morph {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  25% {
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+
+  50% {
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+  }
+
+  75% {
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+  }
+}
+
+/* ==============================================
+   TEXT GRADIENT ANIMATION
+   ============================================== */
+
+.text-gradient-animate {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-400),
+    var(--color-primary-600),
+    var(--color-primary-400)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient-flow 3s linear infinite;
+}
+
+@keyframes text-gradient-flow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ==============================================
+   COUNTER ANIMATION
+   ============================================== */
+
+.counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================================
+   REDUCED MOTION SUPPORT
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  .scroll-progress {
+    transition: none;
+  }
+}
+
+/* ==============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================== */
+
+[data-animate],
+[data-parallax],
+[data-magnetic],
+.hover-lift {
+  will-change: transform;
+}
+
+/* Remove will-change after animation - combined with earlier rule */
+
+/* ==============================================
+   MOBILE FIX - Disable animations on mobile
+   ============================================== */
+
+@media (max-width: 768px) {
+  /* DISABLE ALL PREMIUM ANIMATIONS ON MOBILE */
+
+  /* Force all animated elements to be visible immediately */
+  *,
+  [data-animate],
+  [data-animate='fade'],
+  [data-animate='fade-up'],
+  [data-animate='fade-down'],
+  [data-animate='fade-left'],
+  [data-animate='fade-right'],
+  [data-animate='scale'],
+  [data-animate='rotate'],
+  [data-parallax],
+  [data-magnetic],
+  [data-shine],
+  [data-ripple],
+  .float,
+  .pulse,
+  .gradient-animate,
+  .hover-lift,
+  .skeleton {
+    opacity: 100% !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* Disable parallax on mobile */
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  /* Disable magnetic effects on mobile */
+  [data-magnetic]::before {
+    display: none !important;
+  }
+
+  /* Disable stagger delays on mobile */
+  [data-stagger] > * {
+    animation-delay: 0s !important;
+    opacity: 100% !important;
+  }
+
+  /* Hide scroll progress bar on mobile */
+  .scroll-progress {
+    display: none !important;
+  }
+}

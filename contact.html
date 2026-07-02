@@ -1,0 +1,55 @@
+---
+layout: default
+title: 'Contact | Tillerstead | NJ Tile & Bathroom Remodeling'
+description: 'Get in touch with Tillerstead LLC for TCNA-compliant tile and bathroom remodeling services in South Jersey. Licensed, insured, and owner-supervised.'
+permalink: /contact/
+body_class: page-contact
+meta_title: 'Contact Tillerstead | NJ Tile & Bathroom Remodeling Experts'
+meta_description: 'Contact Tillerstead LLC for TCNA-compliant tile and bathroom remodeling services in South Jersey. Licensed, insured, and owner-supervised.'
+stylesheets:
+  - /assets/css/pages/contact.css
+---
+
+<!-- Hero Section -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-hero__content">
+      <span class="contact-hero__eyebrow">Get in Touch</span>
+      <h1 class="contact-hero__title">Contact Tillerstead LLC</h1>
+      <p class="contact-hero__summary">
+        Ready for a tile or bathroom remodel done right? Licensed, insured, and owner-supervised — serving Atlantic,
+        Ocean, and Cape May Counties.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Info & Form -->
+<section class="ts-section contact" aria-labelledby="contact-info-heading" data-animate="fade">
+  <div class="container contact-container">
+    <div class="contact-intro">
+      <h2 id="contact-info-heading" class="sr-only">Contact Information</h2>
+      <ul class="ts-list">
+        <li>
+          <strong>Phone:</strong> <a href="tel:{{ site.company.phone_link }}">{{ site.company.phone_display }}</a>
+        </li>
+        <li>
+          <strong>Email:</strong>
+          <a href="mailto:{{ site.company.email_support | default(site.company.email) }}"
+            >{{ site.company.email_support | default(site.company.email) }}</a
+          >
+        </li>
+        <li><strong>HIC License:</strong> #{{ site.company.hic }} (New Jersey Home Improvement Contractor)</li>
+      </ul>
+    </div>
+
+    <div class="contact-form-wrapper" data-animate="fade-up" data-delay="200">
+      <h2 id="form-heading">Request an Estimate or Consultation</h2>
+      <p>
+        Contact us today to schedule a consultation or request a free estimate for your tile or bathroom remodeling
+        project. We look forward to working with you to create a space that is both beautiful and functional.
+      </p>
+      {% include "forms/contact.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+{#- Search Overlay — Full-screen search with instant client-side results -#}
+<div
+  id="search-overlay"
+  class="ts-search"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search site"
+  aria-hidden="true"
+  inert
+>
+  <div class="ts-search__backdrop"></div>
+  <div class="ts-search__panel">
+    <div class="ts-search__header">
+      <div class="ts-search__input-wrap">
+        <svg class="ts-search__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input
+          type="search"
+          id="search-input"
+          class="ts-search__input"
+          placeholder="Search guides, services, pages..."
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-label="Search"
+          aria-autocomplete="list"
+          aria-controls="search-results"
+        />
+        <kbd class="ts-search__kbd" aria-hidden="true">ESC</kbd>
+        <button type="button" class="ts-search__close" aria-label="Close search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- html-validate-disable-next-line prefer-native-element -->
+    <div class="ts-search__body" id="search-results" role="listbox" aria-label="Search results">
+      {#- Populated by JS -#}
+      <div class="ts-search__empty" aria-live="polite">
+        <div class="ts-search__empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <p class="ts-search__empty-title">Search Tillerstead</p>
+        <p class="ts-search__empty-hint">Find build guides, services, contractor resources &amp; more</p>
+      </div>
+    </div>
+    <div class="ts-search__footer">
+      <div class="ts-search__shortcuts">
+        <span class="ts-search__shortcut"><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+        <span class="ts-search__shortcut"><kbd>↵</kbd> Open</span>
+        <span class="ts-search__shortcut"><kbd>Esc</kbd> Close</span>
+      </div>
+      <span class="ts-search__powered">Tillerstead LLC</span>
+    </div>
+  </div>
+</div>

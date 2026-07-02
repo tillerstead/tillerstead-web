@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+title: TillerPro Calculators
+description: Full TillerPro calculator hub for tile quantity, mortar, grout, waterproofing, slope, leveling, and labor planning.
+permalink: /tools-hub/index.html
+pageJS: /assets/js/tools.js
+---
+
+<section class="py-16 md:py-20 bg-white border-b border-slate-200">
+  <div class="mx-auto max-w-6xl px-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">TillerPro Calculator Hub</h1>
+    <p class="text-lg text-slate-600 max-w-3xl">
+      Legacy pro calculators are fully carried over and running locally in Tillerstead. Use the tool navigation below
+      for estimate builder, tile, mortar, grout, leveling, slope, waterproofing, and labor planning.
+    </p>
+  </div>
+</section>
+
+{% include "tools/tools-nav.njk" %} {% include "tools/estimate-builder.njk" %} {% include "tools/tile-calculator.njk" %}
+{% include "tools/mortar-calculator.njk" %} {% include "tools/grout-calculator.njk" %} {% include
+"tools/leveling-calculator.njk" %} {% include "tools/slope-calculator.njk" %} {% include
+"tools/waterproof-calculator.njk" %} {% include "tools/labor-calculator.njk" %} {% include "tools/project-output.njk" %}
+{% include "tools/guides-tips.njk" %} {% include "tools/assumptions-panel.njk" %} {% include "tools/room-template.njk"
+%}
+
+<script>
+  (function () {
+    const routeMap = {
+      estimate: 'estimate-builder',
+      tile: 'tile-calculator',
+      mortar: 'mortar-calculator',
+      grout: 'grout-calculator',
+      leveling: 'leveling-calculator',
+      slope: 'slope-calculator',
+      waterproof: 'waterproof-calculator',
+      labor: 'labor-calculator',
+      guides: 'guides-tips',
+    };
+
+    function routeHash() {
+      const hash = window.location.hash || '';
+      if (!hash.startsWith('#/')) return;
+
+      const route = hash.slice(2).toLowerCase();
+      const id = routeMap[route];
+      if (!id) return;
+
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.addEventListener('hashchange', routeHash);
+    window.addEventListener('DOMContentLoaded', routeHash);
+  })();
+</script>

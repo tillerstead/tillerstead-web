@@ -1,0 +1,3262 @@
+/* stylelint-disable selector-class-pattern -- Legacy Tillerstead CSS class names are referenced by templates/JS; do not rename during boundary repair. */
+
+/*! ═══════════════════════════════════════════════════════════════════════════
+   GEMSTONE GRADIENT LIBRARY — Evident Technologies LLC
+   Copyright © 2024–2026 Evident Technologies LLC. All rights reserved.
+   PROPRIETARY AND CONFIDENTIAL — Source-Available Proprietary License.
+   Unauthorized copying, redistribution, or derivative use is prohibited.
+   See LICENSE in the repository root for full terms.
+   ═══════════════════════════════════════════════════════════════════════════
+   83 natural gemstones & crystals as CSS gradients, surfaces, and glows.
+   Each stone is encoded as:
+     --gem-{name}          linear gradient (primary)
+     --gem-{name}-radial   radial gradient (glow / spotlight)
+     --gem-{name}-flat     single base color (for borders, badges, chips)
+     --gem-{name}-text     readable text color on that surface
+   ─────────────────────────────────────────────────────────────────────────
+   Design-context guide lives in GEMSTONE-DESIGN-GUIDE.md
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* stylelint-disable value-keyword-case */
+
+:root {
+  /* ─── FAVORITES ──────────────────────────────────────────────────────── */
+
+  /* AMETHYST — violet-purple with silver flash */
+  --gem-amethyst: linear-gradient(135deg, #6b2fa0 0%, #9b59b6 35%, #c39bd3 60%, #7d3c98 100%);
+  --gem-amethyst-radial: radial-gradient(ellipse at 35% 30%, #c39bd3 0%, #9b59b6 40%, #4a235a 100%);
+  --gem-amethyst-flat: #7d3c98;
+  --gem-amethyst-text: #f3e9ff;
+
+  /* MALACHITE — concentric deep-emerald + lime green bands */
+  --gem-malachite: linear-gradient(
+    135deg,
+    #004d2f 0%,
+    #1b7a4a 25%,
+    #3aaf6f 50%,
+    #1b7a4a 75%,
+    #004d2f 100%
+  );
+  --gem-malachite-radial: radial-gradient(
+    ellipse at 40% 40%,
+    #3aaf6f 0%,
+    #1b7a4a 45%,
+    #003320 100%
+  );
+  --gem-malachite-flat: #1b7a4a;
+  --gem-malachite-text: #d4f7e7;
+
+  /* LABRADORITE — midnight blue with electric teal/gold schiller */
+  --gem-labradorite: linear-gradient(
+    135deg,
+    #1a1f2e 0%,
+    #2d3f6e 30%,
+    #4a90c4 50%,
+    #2eb5b0 65%,
+    #1a1f2e 100%
+  );
+  --gem-labradorite-radial: radial-gradient(
+    ellipse at 45% 35%,
+    #4a90c4 0%,
+    #2d3f6e 40%,
+    #0d1118 100%
+  );
+  --gem-labradorite-flat: #2d3f6e;
+  --gem-labradorite-text: #c8e6f9;
+
+  /* ─── BLUES & TEALS ──────────────────────────────────────────────────── */
+
+  /* AQUAMARINE — pale sea blue */
+  --gem-aquamarine: linear-gradient(135deg, #9dd8e0 0%, #5bbac5 40%, #2e8fa3 70%, #1a6978 100%);
+  --gem-aquamarine-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #c8edf1 0%,
+    #5bbac5 50%,
+    #1a5f70 100%
+  );
+  --gem-aquamarine-flat: #3d9fb5;
+  --gem-aquamarine-text: #012d38;
+
+  /* SAPPHIRE — deep royal blue */
+  --gem-sapphire: linear-gradient(135deg, #0a1a6e 0%, #1f3a99 35%, #3d64cc 60%, #112288 100%);
+  --gem-sapphire-radial: radial-gradient(ellipse at 40% 30%, #4d78e0 0%, #1f3a99 50%, #080f4a 100%);
+  --gem-sapphire-flat: #1f3a99;
+  --gem-sapphire-text: #d0dcff;
+
+  /* BLUE TOPAZ — ice-bright electric blue */
+  --gem-blue-topaz: linear-gradient(135deg, #b3e5fc 0%, #29b6f6 35%, #0277bd 65%, #01579b 100%);
+  --gem-blue-topaz-radial: radial-gradient(
+    ellipse at 30% 25%,
+    #e1f5fe 0%,
+    #29b6f6 40%,
+    #01579b 100%
+  );
+  --gem-blue-topaz-flat: #0288d1;
+  --gem-blue-topaz-text: #002540;
+
+  /* TANZANITE — blue-violet with depth */
+  --gem-tanzanite: linear-gradient(
+    135deg,
+    #1a1040 0%,
+    #3d1f8a 35%,
+    #6a4bcf 55%,
+    #9b7de8 75%,
+    #3d1f8a 100%
+  );
+  --gem-tanzanite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #8568d8 0%,
+    #3d1f8a 50%,
+    #0d0820 100%
+  );
+  --gem-tanzanite-flat: #4a2db5;
+  --gem-tanzanite-text: #e8e0ff;
+
+  /* BLUE KYANITE — striated cornflower to ice */
+  --gem-blue-kyanite: linear-gradient(
+    115deg,
+    #89afd4 0%,
+    #4878b0 30%,
+    #6fa3d3 55%,
+    #b8d4ed 80%,
+    #4878b0 100%
+  );
+  --gem-blue-kyanite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #c2ddf0 0%,
+    #4878b0 55%,
+    #1b3f66 100%
+  );
+  --gem-blue-kyanite-flat: #4d82bc;
+  --gem-blue-kyanite-text: #0d1f33;
+
+  /* LARIMAR — caribbean sky-sea blue */
+  --gem-larimar: linear-gradient(
+    135deg,
+    #e0f4f8 0%,
+    #7ec8d8 30%,
+    #3aaec4 55%,
+    #2180a0 80%,
+    #1a6070 100%
+  );
+  --gem-larimar-radial: radial-gradient(ellipse at 30% 25%, #f0fafc 0%, #7ec8d8 45%, #1a6070 100%);
+  --gem-larimar-flat: #3aaec4;
+  --gem-larimar-text: #08303c;
+
+  /* APATITE — electric ocean teal-green */
+  --gem-apatite: linear-gradient(135deg, #006270 0%, #00a896 35%, #02c39a 60%, #00858a 100%);
+  --gem-apatite-radial: radial-gradient(ellipse at 40% 30%, #02d4bc 0%, #00a896 45%, #004048 100%);
+  --gem-apatite-flat: #00a896;
+  --gem-apatite-text: #d0fff8;
+
+  /* ─── PURPLES & VIOLETS ──────────────────────────────────────────────── */
+
+  /* SUGILITE — deep magenta-purple */
+  --gem-sugilite: linear-gradient(135deg, #3d0040 0%, #7b1fa2 35%, #ab47bc 60%, #6a0080 100%);
+  --gem-sugilite-radial: radial-gradient(ellipse at 40% 30%, #ce93d8 0%, #9c27b0 45%, #1a0020 100%);
+  --gem-sugilite-flat: #7b1fa2;
+  --gem-sugilite-text: #fce4ff;
+
+  /* CHAROITE — swirling violet with black and white */
+  --gem-charoite: linear-gradient(
+    115deg,
+    #2e0050 0%,
+    #7b2d9e 20%,
+    #c084e0 40%,
+    #1a0030 60%,
+    #a855c8 80%,
+    #3a0060 100%
+  );
+  --gem-charoite-radial: radial-gradient(ellipse at 50% 40%, #c084e0 0%, #7b2d9e 50%, #0f0020 100%);
+  --gem-charoite-flat: #8b2fc0;
+  --gem-charoite-text: #f5e0ff;
+
+  /* IOLITE — deep blue-violet, pleochroic */
+  --gem-iolite: linear-gradient(
+    135deg,
+    #1a1050 0%,
+    #3f2b8f 35%,
+    #6a4fcf 55%,
+    #8f75e0 75%,
+    #3f2b8f 100%
+  );
+  --gem-iolite-radial: radial-gradient(ellipse at 35% 30%, #9080e0 0%, #4030a0 50%, #0a0830 100%);
+  --gem-iolite-flat: #503fa0;
+  --gem-iolite-text: #e8e0ff;
+
+  /* FLUORITE — rainbow banding, using purple-green axis */
+  --gem-fluorite: linear-gradient(
+    135deg,
+    #8b4fc8 0%,
+    #c084e0 25%,
+    #80d8c0 50%,
+    #4ac8a0 75%,
+    #8b4fc8 100%
+  );
+  --gem-fluorite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #d8b4f0 0%,
+    #9060c8 35%,
+    #40b8a0 65%,
+    #1a4030 100%
+  );
+  --gem-fluorite-flat: #7a50c0;
+  --gem-fluorite-text: #f0e8ff;
+
+  /* LEPIDOLITE — lavender-lilac mica shimmer */
+  --gem-lepidolite: linear-gradient(135deg, #c8a8d8 0%, #a87ec0 35%, #c8a8d8 60%, #8f60a8 100%);
+  --gem-lepidolite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #e8d8f0 0%,
+    #b090c8 50%,
+    #5a3878 100%
+  );
+  --gem-lepidolite-flat: #a87ec0;
+  --gem-lepidolite-text: #2a0840;
+
+  /* ─── GREENS ─────────────────────────────────────────────────────────── */
+
+  /* EMERALD — vivid deep-green */
+  --gem-emerald: linear-gradient(
+    135deg,
+    #013220 0%,
+    #0a5c36 30%,
+    #1a8a50 55%,
+    #0d6b40 80%,
+    #013220 100%
+  );
+  --gem-emerald-radial: radial-gradient(ellipse at 35% 30%, #24b870 0%, #0a6840 50%, #002010 100%);
+  --gem-emerald-flat: #0a6840;
+  --gem-emerald-text: #c8ffe0;
+
+  /* JADE — cool milky green */
+  --gem-jade: linear-gradient(135deg, #4d7c5f 0%, #7fb38a 35%, #a8d5b0 60%, #5e9870 100%);
+  --gem-jade-radial: radial-gradient(ellipse at 40% 30%, #c8ecd0 0%, #7fb38a 50%, #2d5038 100%);
+  --gem-jade-flat: #6a9e78;
+  --gem-jade-text: #0f2018;
+
+  /* PERIDOT — electric lime green */
+  --gem-peridot: linear-gradient(
+    135deg,
+    #4a6a00 0%,
+    #8ab800 35%,
+    #c8e800 55%,
+    #7aaa00 80%,
+    #4a6a00 100%
+  );
+  --gem-peridot-radial: radial-gradient(ellipse at 38% 30%, #d4f000 0%, #8ab800 45%, #2a3c00 100%);
+  --gem-peridot-flat: #7aaa00;
+  --gem-peridot-text: #1a2400;
+
+  /* MOLDAVITE — bottle-green tektite */
+  --gem-moldavite: linear-gradient(
+    135deg,
+    #0a2010 0%,
+    #1a5030 30%,
+    #2a7840 55%,
+    #3a9850 75%,
+    #1a5030 100%
+  );
+  --gem-moldavite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #3ab860 0%,
+    #1a5830 50%,
+    #051208 100%
+  );
+  --gem-moldavite-flat: #1e6035;
+  --gem-moldavite-text: #c4f0d0;
+
+  /* PREHNITE — pale sage-green translucent */
+  --gem-prehnite: linear-gradient(135deg, #c8dcb0 0%, #a0c888 35%, #78b060 60%, #a0c888 100%);
+  --gem-prehnite-radial: radial-gradient(ellipse at 35% 30%, #e4f0d0 0%, #a0c888 50%, #3c5830 100%);
+  --gem-prehnite-flat: #8cbf70;
+  --gem-prehnite-text: #1a280e;
+
+  /* SERPENTINE — olive-green with golden veins */
+  --gem-serpentine: linear-gradient(
+    115deg,
+    #3d5000 0%,
+    #687800 25%,
+    #c8a030 45%,
+    #687800 65%,
+    #3d5000 100%
+  );
+  --gem-serpentine-radial: radial-gradient(
+    ellipse at 40% 30%,
+    #d4b040 0%,
+    #687800 50%,
+    #1e2800 100%
+  );
+  --gem-serpentine-flat: #5a6800;
+  --gem-serpentine-text: #f0eab0;
+
+  /* GREEN TOURMALINE — vivid forest to chrome green */
+  --gem-green-tourmaline: linear-gradient(
+    135deg,
+    #003818 0%,
+    #007840 30%,
+    #00b860 55%,
+    #005030 80%,
+    #003818 100%
+  );
+  --gem-green-tourmaline-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #00d870 0%,
+    #007840 50%,
+    #001808 100%
+  );
+  --gem-green-tourmaline-flat: #008048;
+  --gem-green-tourmaline-text: #c0ffe0;
+
+  /* ─── REDS & PINKS ───────────────────────────────────────────────────── */
+
+  /* RUBY — deep pigeon-blood red */
+  --gem-ruby: linear-gradient(
+    135deg,
+    #4a0010 0%,
+    #9b0020 30%,
+    #cc1033 55%,
+    #8b0018 80%,
+    #4a0010 100%
+  );
+  --gem-ruby-radial: radial-gradient(ellipse at 38% 30%, #e8203c 0%, #a00020 50%, #200008 100%);
+  --gem-ruby-flat: #9b0020;
+  --gem-ruby-text: #ffe0e8;
+
+  /* GARNET — dark oxblood red */
+  --gem-garnet: linear-gradient(
+    135deg,
+    #3a0808 0%,
+    #6b1010 30%,
+    #a02828 55%,
+    #6b1010 80%,
+    #3a0808 100%
+  );
+  --gem-garnet-radial: radial-gradient(ellipse at 38% 30%, #c84040 0%, #7a1818 50%, #180404 100%);
+  --gem-garnet-flat: #7a1818;
+  --gem-garnet-text: #ffe8e8;
+
+  /* RHODONITE — dusty rose with black matrix */
+  --gem-rhodonite: linear-gradient(
+    115deg,
+    #1a0808 0%,
+    #8b3048 30%,
+    #d86888 55%,
+    #8b3048 80%,
+    #1a0808 100%
+  );
+  --gem-rhodonite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #e8809a 0%,
+    #9b3858 50%,
+    #0f0408 100%
+  );
+  --gem-rhodonite-flat: #9b3858;
+  --gem-rhodonite-text: #ffe0e8;
+
+  /* RHODOCHROSITE — bright banded rose-pink */
+  --gem-rhodochrosite: linear-gradient(135deg, #c84070 0%, #e8789c 35%, #f8a8c0 60%, #d05880 100%);
+  --gem-rhodochrosite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #ffc8d8 0%,
+    #e0607f 50%,
+    #801030 100%
+  );
+  --gem-rhodochrosite-flat: #d85880;
+  --gem-rhodochrosite-text: #2c0010;
+
+  /* SPINEL — red to hot-pink spectrum */
+  --gem-spinel: linear-gradient(135deg, #7a0038 0%, #c00060 35%, #e83888 60%, #a00050 100%);
+  --gem-spinel-radial: radial-gradient(ellipse at 38% 30%, #f060a0 0%, #c00060 50%, #300018 100%);
+  --gem-spinel-flat: #c00060;
+  --gem-spinel-text: #ffe0f0;
+
+  /* KUNZITE — pale lilac-pink */
+  --gem-kunzite: linear-gradient(135deg, #e8c0d8 0%, #d090b8 35%, #e8c0d8 65%, #b870a0 100%);
+  --gem-kunzite-radial: radial-gradient(ellipse at 35% 30%, #f8e0f0 0%, #d090b8 55%, #784068 100%);
+  --gem-kunzite-flat: #c878a8;
+  --gem-kunzite-text: #280818;
+
+  /* MORGANITE — peach-rose beryl */
+  --gem-morganite: linear-gradient(135deg, #f8d8c8 0%, #e8a898 35%, #f8d8c8 65%, #d88878 100%);
+  --gem-morganite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #fff0e8 0%,
+    #e8a898 55%,
+    #985858 100%
+  );
+  --gem-morganite-flat: #e09888;
+  --gem-morganite-text: #2c1010;
+
+  /* ROSE QUARTZ — milky baby-pink */
+  --gem-rose-quartz: linear-gradient(135deg, #f9d0d8 0%, #f0a8b8 35%, #f9d0d8 65%, #e890a8 100%);
+  --gem-rose-quartz-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #fff0f4 0%,
+    #f0a8b8 55%,
+    #b06070 100%
+  );
+  --gem-rose-quartz-flat: #e898a8;
+  --gem-rose-quartz-text: #28080c;
+
+  /* PINK TOURMALINE — vivid fuchsia-rose */
+  --gem-pink-tourmaline: linear-gradient(
+    135deg,
+    #7a0040 0%,
+    #d02880 35%,
+    #f060a8 60%,
+    #b02068 100%
+  );
+  --gem-pink-tourmaline-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #f880b8 0%,
+    #d02880 50%,
+    #280010 100%
+  );
+  --gem-pink-tourmaline-flat: #c82878;
+  --gem-pink-tourmaline-text: #ffe0f0;
+
+  /* ─── ORANGES & YELLOWS ──────────────────────────────────────────────── */
+
+  /* CITRINE — golden yellow quartz */
+  --gem-citrine: linear-gradient(135deg, #b07800 0%, #e0a800 35%, #f8cc40 60%, #c88800 100%);
+  --gem-citrine-radial: radial-gradient(ellipse at 38% 30%, #f8e080 0%, #e0a800 50%, #482c00 100%);
+  --gem-citrine-flat: #d89c00;
+  --gem-citrine-text: #1c0e00;
+
+  /* CARNELIAN — warm red-orange */
+  --gem-carnelian: linear-gradient(135deg, #7a1800 0%, #c83000 35%, #e85010 60%, #a82800 100%);
+  --gem-carnelian-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #f07030 0%,
+    #c83000 50%,
+    #280800 100%
+  );
+  --gem-carnelian-flat: #c83000;
+  --gem-carnelian-text: #fff0e8;
+
+  /* FIRE OPAL — translucent orange flame */
+  --gem-fire-opal: linear-gradient(
+    135deg,
+    #b04000 0%,
+    #e87000 30%,
+    #f8a820 55%,
+    #e86000 80%,
+    #b04000 100%
+  );
+  --gem-fire-opal-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #f8c050 0%,
+    #f07000 40%,
+    #481800 100%
+  );
+  --gem-fire-opal-flat: #e06800;
+  --gem-fire-opal-text: #ffecd0;
+
+  /* AMBER — fossilized resin golden */
+  --gem-amber: linear-gradient(
+    135deg,
+    #7a4800 0%,
+    #c07800 30%,
+    #e8a820 55%,
+    #f0c840 75%,
+    #c07800 100%
+  );
+  --gem-amber-radial: radial-gradient(ellipse at 38% 30%, #f8d860 0%, #d09000 50%, #301800 100%);
+  --gem-amber-flat: #c88000;
+  --gem-amber-text: #1a0c00;
+
+  /* SUNSTONE — warm orange with glitter */
+  --gem-sunstone: linear-gradient(
+    135deg,
+    #c84800 0%,
+    #e87000 30%,
+    #f8a030 55%,
+    #ffd060 75%,
+    #e87000 100%
+  );
+  --gem-sunstone-radial: radial-gradient(ellipse at 35% 25%, #ffe080 0%, #f09020 45%, #502000 100%);
+  --gem-sunstone-flat: #e07800;
+  --gem-sunstone-text: #1c0800;
+
+  /* IMPERIAL TOPAZ — rich golden-orange */
+  --gem-imperial-topaz: linear-gradient(
+    135deg,
+    #8b4800 0%,
+    #d07800 30%,
+    #f0a828 55%,
+    #ffd060 75%,
+    #d07800 100%
+  );
+  --gem-imperial-topaz-radial: radial-gradient(
+    ellipse at 35% 25%,
+    #ffe898 0%,
+    #e09020 50%,
+    #381800 100%
+  );
+  --gem-imperial-topaz-flat: #d08020;
+  --gem-imperial-topaz-text: #1c0800;
+
+  /* ARAGONITE — pale peach to caramel */
+  --gem-aragonite: linear-gradient(135deg, #d4a070 0%, #e8c098 35%, #f0d4b0 60%, #c88858 100%);
+  --gem-aragonite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #f8e8d0 0%,
+    #e0b880 50%,
+    #704828 100%
+  );
+  --gem-aragonite-flat: #d4a070;
+  --gem-aragonite-text: #1c0c00;
+
+  /* ─── WHITES, CREAMS & IRIDESCENTS ──────────────────────────────────── */
+
+  /* MOONSTONE — white/cream with blue adularescence */
+  --gem-moonstone: linear-gradient(
+    135deg,
+    #e8eaf0 0%,
+    #c0c8e0 30%,
+    #d8dff0 55%,
+    #a8b8d8 75%,
+    #e8eaf0 100%
+  );
+  --gem-moonstone-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #f8f9ff 0%,
+    #bcc8e8 40%,
+    #7090c0 80%,
+    #b0bcd8 100%
+  );
+  --gem-moonstone-flat: #c0c8e0;
+  --gem-moonstone-text: #1a1e30;
+
+  /* PEARL — lustrous white with orient */
+  --gem-pearl: linear-gradient(135deg, #f8f4e8 0%, #ece8f0 30%, #f0ece8 60%, #e8e0d8 100%);
+  --gem-pearl-radial: radial-gradient(
+    ellipse at 30% 30%,
+    #ffffff 0%,
+    #f0eae0 40%,
+    #d8ccc0 80%,
+    #c0b4a8 100%
+  );
+  --gem-pearl-flat: #ece8e0;
+  --gem-pearl-text: #302820;
+
+  /* WHITE OPAL — milky fire with rainbow flash */
+  --gem-white-opal: linear-gradient(
+    135deg,
+    #f0f0f8 0%,
+    #e0d8f0 20%,
+    #d8eef0 40%,
+    #f0e8d8 60%,
+    #e8d8f0 80%,
+    #f0f0f8 100%
+  );
+  --gem-white-opal-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #ffffff 0%,
+    #e0d8ff 25%,
+    #b8f0e8 50%,
+    #ffd8f0 75%,
+    #f8f8ff 100%
+  );
+  --gem-white-opal-flat: #ece8f8;
+  --gem-white-opal-text: #1a1428;
+
+  /* SELENITE — translucent silky white */
+  --gem-selenite: linear-gradient(135deg, #f8f8f0 0%, #eeeee8 30%, #f8f8f4 60%, #e8e8e0 100%);
+  --gem-selenite-radial: radial-gradient(ellipse at 35% 30%, #ffffff 0%, #f0f0e8 50%, #c8c8c0 100%);
+  --gem-selenite-flat: #eeeee8;
+  --gem-selenite-text: #282820;
+
+  /* HOWLITE — white with grey veins */
+  --gem-howlite: linear-gradient(
+    115deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #c8c8c8 40%,
+    #e8e8e8 60%,
+    #d8d8d8 80%,
+    #f0f0f0 100%
+  );
+  --gem-howlite-radial: radial-gradient(ellipse at 40% 35%, #ffffff 0%, #e0e0e0 50%, #909090 100%);
+  --gem-howlite-flat: #e0e0e0;
+  --gem-howlite-text: #202020;
+
+  /* ─── BLACKS & DARK MYSTERIES ────────────────────────────────────────── */
+
+  /* OBSIDIAN — volcanic glass deep black */
+  --gem-obsidian: linear-gradient(135deg, #080808 0%, #181818 35%, #282828 60%, #101010 100%);
+  --gem-obsidian-radial: radial-gradient(ellipse at 40% 35%, #383838 0%, #181818 50%, #000000 100%);
+  --gem-obsidian-flat: #181818;
+  --gem-obsidian-text: #d0d0d0;
+
+  /* BLACK TOURMALINE — striated jet black */
+  --gem-black-tourmaline: linear-gradient(
+    115deg,
+    #050505 0%,
+    #0f0f14 30%,
+    #1a1a22 55%,
+    #0f0f14 80%,
+    #050505 100%
+  );
+  --gem-black-tourmaline-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #2a2a38 0%,
+    #111118 50%,
+    #000000 100%
+  );
+  --gem-black-tourmaline-flat: #111118;
+  --gem-black-tourmaline-text: #c0c0d0;
+
+  /* ONYX — cool black with slight sheen */
+  --gem-onyx: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #0f0f0f 60%, #242424 100%);
+  --gem-onyx-radial: radial-gradient(ellipse at 35% 30%, #303030 0%, #181818 50%, #000000 100%);
+  --gem-onyx-flat: #181818;
+  --gem-onyx-text: #d8d8d8;
+
+  /* SHUNGITE — matte black with silver shimmer */
+  --gem-shungite: linear-gradient(135deg, #0c0c0c 0%, #1e1e1e 35%, #303030 55%, #1a1a1a 100%);
+  --gem-shungite-radial: radial-gradient(ellipse at 40% 35%, #404040 0%, #1e1e1e 50%, #050505 100%);
+  --gem-shungite-flat: #1e1e1e;
+  --gem-shungite-text: #c8c8c8;
+
+  /* BLACK OPAL — dark base with vivid fire */
+  --gem-black-opal: linear-gradient(
+    135deg,
+    #0a0a14 0%,
+    #1a1030 25%,
+    #3040a0 45%,
+    #a02060 65%,
+    #00b890 80%,
+    #0a0a14 100%
+  );
+  --gem-black-opal-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #6040ff 0%,
+    #200840 35%,
+    #00c890 55%,
+    #1a0020 80%,
+    #000000 100%
+  );
+  --gem-black-opal-flat: #100820;
+  --gem-black-opal-text: #e0d8ff;
+
+  /* NUUMMITE — ancient dark with gold-green schiller */
+  --gem-nuummite: linear-gradient(
+    115deg,
+    #0a0a0c 0%,
+    #1a1a20 25%,
+    #3a3830 45%,
+    #c0a040 55%,
+    #1a1a20 75%,
+    #0a0a0c 100%
+  );
+  --gem-nuummite-radial: radial-gradient(ellipse at 40% 35%, #c8a830 0%, #2a2820 40%, #050506 100%);
+  --gem-nuummite-flat: #18180e;
+  --gem-nuummite-text: #d8c870;
+
+  /* TEKTITE — rough black meteorite */
+  --gem-tektite: linear-gradient(135deg, #060606 0%, #101010 30%, #1c1c18 55%, #0a0a08 100%);
+  --gem-tektite-radial: radial-gradient(ellipse at 40% 35%, #282820 0%, #121210 50%, #000000 100%);
+  --gem-tektite-flat: #101010;
+  --gem-tektite-text: #b8b8b0;
+
+  /* ─── IRIDESCENT & METALLIC ──────────────────────────────────────────── */
+
+  /* OPAL (BOULDER) — brown ironstone with vivid patches */
+  --gem-boulder-opal: linear-gradient(
+    115deg,
+    #5c3a10 0%,
+    #8a5820 25%,
+    #d89060 40%,
+    #60c8b0 55%,
+    #4080e0 70%,
+    #8a5820 100%
+  );
+  --gem-boulder-opal-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #70d8c0 0%,
+    #c08040 40%,
+    #3c2008 100%
+  );
+  --gem-boulder-opal-flat: #7a5020;
+  --gem-boulder-opal-text: #f0e0d0;
+
+  /* SPECTROLITE — ultra-vivid labradorite spectrum */
+  --gem-spectrolite: linear-gradient(
+    115deg,
+    #0c0c14 0%,
+    #0040a0 20%,
+    #00c8d0 35%,
+    #00e870 50%,
+    #f0d000 65%,
+    #e04080 80%,
+    #0c0c14 100%
+  );
+  --gem-spectrolite-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #00f0e0 0%,
+    #0050c0 35%,
+    #a00060 65%,
+    #050510 100%
+  );
+  --gem-spectrolite-flat: #003870;
+  --gem-spectrolite-text: #d0f8ff;
+
+  /* ALEXANDRITE — color-change green to red */
+  --gem-alexandrite: linear-gradient(135deg, #1a5c28 0%, #2a8a40 35%, #a82828 65%, #c84040 100%);
+  --gem-alexandrite-radial: radial-gradient(
+    ellipse at 35% 35%,
+    #40c060 0%,
+    #1a6030 45%,
+    #a03030 80%,
+    #200808 100%
+  );
+  --gem-alexandrite-flat: #286830;
+  --gem-alexandrite-text: #d0ffe0;
+
+  /* TITANITE (SPHENE) — fire dispersion yellow-green */
+  --gem-titanite: linear-gradient(
+    135deg,
+    #4a6800 0%,
+    #88a800 30%,
+    #d8e020 55%,
+    #80c840 75%,
+    #4a6800 100%
+  );
+  --gem-titanite-radial: radial-gradient(ellipse at 38% 30%, #f0f840 0%, #a0c800 50%, #1c2800 100%);
+  --gem-titanite-flat: #7a9c00;
+  --gem-titanite-text: #1a2000;
+
+  /* ─── GOLD & SILVER MINERALS ─────────────────────────────────────────── */
+
+  /* PYRITE — fool's gold cubic shimmer */
+  --gem-pyrite: linear-gradient(
+    135deg,
+    #5c4800 0%,
+    #a08020 30%,
+    #d4b840 50%,
+    #e8d060 65%,
+    #a08020 100%
+  );
+  --gem-pyrite-radial: radial-gradient(ellipse at 35% 30%, #f0d860 0%, #b89030 50%, #2c2000 100%);
+  --gem-pyrite-flat: #b89030;
+  --gem-pyrite-text: #1c1400;
+
+  /* GOLD (NATIVE) — rich pure gold */
+  --gem-gold: linear-gradient(
+    135deg,
+    #7a5800 0%,
+    #c89010 30%,
+    #f0c030 55%,
+    #ffd840 70%,
+    #c89010 100%
+  );
+  --gem-gold-radial: radial-gradient(ellipse at 35% 28%, #ffe870 0%, #d4a020 50%, #302000 100%);
+  --gem-gold-flat: #d4a020;
+  --gem-gold-text: #1c1000;
+
+  /* HEMATITE — silver-metallic iron */
+  --gem-hematite: linear-gradient(
+    135deg,
+    #1c1c1c 0%,
+    #404040 30%,
+    #686868 50%,
+    #484848 70%,
+    #1c1c1c 100%
+  );
+  --gem-hematite-radial: radial-gradient(ellipse at 35% 30%, #808080 0%, #484848 50%, #080808 100%);
+  --gem-hematite-flat: #484848;
+  --gem-hematite-text: #e8e8e8;
+
+  /* GALENA — blue-grey metallic lead lustre */
+  --gem-galena: linear-gradient(
+    135deg,
+    #202030 0%,
+    #3c3c50 30%,
+    #585870 50%,
+    #3c3c50 80%,
+    #202030 100%
+  );
+  --gem-galena-radial: radial-gradient(ellipse at 38% 30%, #707090 0%, #3c3c58 50%, #0c0c18 100%);
+  --gem-galena-flat: #404060;
+  --gem-galena-text: #e0e0f0;
+
+  /* ─── BROWN & EARTH TONES ────────────────────────────────────────────── */
+
+  /* TIGER'S EYE — banded gold-brown chatoyancy */
+  --gem-tigers-eye: linear-gradient(
+    115deg,
+    #3c2000 0%,
+    #7a4800 25%,
+    #c88020 45%,
+    #7a4800 65%,
+    #3c2000 100%
+  );
+  --gem-tigers-eye-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #d89030 0%,
+    #7a4800 50%,
+    #180e00 100%
+  );
+  --gem-tigers-eye-flat: #8a5010;
+  --gem-tigers-eye-text: #ffe8b0;
+
+  /* BRONZITE — brown-bronze metallic sheen */
+  --gem-bronzite: linear-gradient(
+    115deg,
+    #3a2808 0%,
+    #6a4818 25%,
+    #a07838 45%,
+    #6a4818 70%,
+    #3a2808 100%
+  );
+  --gem-bronzite-radial: radial-gradient(ellipse at 38% 30%, #c09840 0%, #6a4818 50%, #180c00 100%);
+  --gem-bronzite-flat: #6a4818;
+  --gem-bronzite-text: #f0e0c0;
+
+  /* JASPER — earthy rust-ochre */
+  --gem-jasper: linear-gradient(
+    115deg,
+    #5c1c08 0%,
+    #9a3810 30%,
+    #c05c20 50%,
+    #9a3810 75%,
+    #5c1c08 100%
+  );
+  --gem-jasper-radial: radial-gradient(ellipse at 38% 30%, #d07030 0%, #9a3810 50%, #200808 100%);
+  --gem-jasper-flat: #9a3810;
+  --gem-jasper-text: #fff0e8;
+
+  /* SMOKY QUARTZ — grey-brown transparent */
+  --gem-smoky-quartz: linear-gradient(135deg, #2a2010 0%, #504030 35%, #7a6048 60%, #504030 100%);
+  --gem-smoky-quartz-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #9a8060 0%,
+    #504030 50%,
+    #100c08 100%
+  );
+  --gem-smoky-quartz-flat: #504030;
+  --gem-smoky-quartz-text: #f0e8d8;
+
+  /* PICTURE JASPER — sandy tan landscape */
+  --gem-picture-jasper: linear-gradient(
+    115deg,
+    #7a5830 0%,
+    #c09060 25%,
+    #d4a870 45%,
+    #a07040 70%,
+    #7a5830 100%
+  );
+  --gem-picture-jasper-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #e8c890 0%,
+    #b08050 50%,
+    #3c2010 100%
+  );
+  --gem-picture-jasper-flat: #b08050;
+  --gem-picture-jasper-text: #1c1008;
+
+  /* ─── UNIQUE & RARE ──────────────────────────────────────────────────── */
+
+  /* AZURITE — electric cobalt-blue with malachite mix */
+  --gem-azurite: linear-gradient(
+    135deg,
+    #001060 0%,
+    #0840c0 30%,
+    #1870f0 55%,
+    #003090 80%,
+    #001060 100%
+  );
+  --gem-azurite-radial: radial-gradient(ellipse at 38% 30%, #2090ff 0%, #0840c0 50%, #000820 100%);
+  --gem-azurite-flat: #0840c0;
+  --gem-azurite-text: #d0e8ff;
+
+  /* AZURITE-MALACHITE — cobalt-blue + emerald-green swirl */
+  --gem-azurite-malachite: linear-gradient(
+    115deg,
+    #001040 0%,
+    #0840c0 25%,
+    #007850 50%,
+    #1870f0 75%,
+    #001040 100%
+  );
+  --gem-azurite-malachite-radial: radial-gradient(
+    ellipse at 45% 35%,
+    #40a0f0 0%,
+    #007850 40%,
+    #001040 100%
+  );
+  --gem-azurite-malachite-flat: #0c5890;
+  --gem-azurite-malachite-text: #d0f0ff;
+
+  /* TURQUOISE — sky-robin blue-green */
+  --gem-turquoise: linear-gradient(
+    135deg,
+    #007080 0%,
+    #00a8b8 30%,
+    #20c8d0 55%,
+    #009aaa 80%,
+    #007080 100%
+  );
+  --gem-turquoise-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #40d8e0 0%,
+    #00a8b8 50%,
+    #003840 100%
+  );
+  --gem-turquoise-flat: #00a8b8;
+  --gem-turquoise-text: #d0feff;
+
+  /* CHRYSOCOLLA — teal-blue kaleidoscope */
+  --gem-chrysocolla: linear-gradient(
+    115deg,
+    #004858 0%,
+    #0088a0 25%,
+    #00b8c8 45%,
+    #20d0c0 65%,
+    #0088a0 100%
+  );
+  --gem-chrysocolla-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #50e0d0 0%,
+    #00a0b0 50%,
+    #002030 100%
+  );
+  --gem-chrysocolla-flat: #0098b0;
+  --gem-chrysocolla-text: #d0f8ff;
+
+  /* LAPIS LAZULI — royal blue with gold pyrite */
+  --gem-lapis-lazuli: linear-gradient(
+    135deg,
+    #001a6e 0%,
+    #0028a8 30%,
+    #0040c8 50%,
+    #d4a820 60%,
+    #0028a8 80%,
+    #001a6e 100%
+  );
+  --gem-lapis-lazuli-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #3060e0 0%,
+    #001a8a 45%,
+    #d4a820 65%,
+    #000830 100%
+  );
+  --gem-lapis-lazuli-flat: #0030b0;
+  --gem-lapis-lazuli-text: #d0e0ff;
+
+  /* SODALITE — navy with white calcite */
+  --gem-sodalite: linear-gradient(
+    115deg,
+    #001040 0%,
+    #002898 25%,
+    #0038c0 45%,
+    #e8e8e8 55%,
+    #002898 75%,
+    #001040 100%
+  );
+  --gem-sodalite-radial: radial-gradient(ellipse at 38% 35%, #4878e8 0%, #002898 50%, #00081c 100%);
+  --gem-sodalite-flat: #0030a8;
+  --gem-sodalite-text: #c8dcff;
+
+  /* AMAZONITE — cool seafoam mint-green */
+  --gem-amazonite: linear-gradient(
+    135deg,
+    #3a7a70 0%,
+    #5aaa98 30%,
+    #80c8b8 55%,
+    #5aaa98 80%,
+    #3a7a70 100%
+  );
+  --gem-amazonite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #a0d8c8 0%,
+    #5aaa98 50%,
+    #1c3c38 100%
+  );
+  --gem-amazonite-flat: #5aaa98;
+  --gem-amazonite-text: #0c2420;
+
+  /* UNAKITE — pink-green epidote granite */
+  --gem-unakite: linear-gradient(
+    115deg,
+    #7a5828 0%,
+    #c08050 30%,
+    #708858 50%,
+    #88a860 70%,
+    #7a5828 100%
+  );
+  --gem-unakite-radial: radial-gradient(ellipse at 40% 35%, #c09870 0%, #789060 40%, #2c1c0c 100%);
+  --gem-unakite-flat: #9a7050;
+  --gem-unakite-text: #f8f0e0;
+
+  /* BLOODSTONE — dark green with red spots */
+  --gem-bloodstone: linear-gradient(
+    115deg,
+    #0a2010 0%,
+    #1a4828 25%,
+    #2a6838 45%,
+    #8b1010 55%,
+    #1a4828 80%,
+    #0a2010 100%
+  );
+  --gem-bloodstone-radial: radial-gradient(
+    ellipse at 45% 40%,
+    #2a7040 0%,
+    #8b1010 50%,
+    #041008 100%
+  );
+  --gem-bloodstone-flat: #1a5030;
+  --gem-bloodstone-text: #d0ffe0;
+
+  /* VANADINITE — vivid red-orange hex crystals */
+  --gem-vanadinite: linear-gradient(
+    135deg,
+    #8b1800 0%,
+    #d03000 30%,
+    #f05800 55%,
+    #c03800 80%,
+    #8b1800 100%
+  );
+  --gem-vanadinite-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #ff6820 0%,
+    #d03000 50%,
+    #280800 100%
+  );
+  --gem-vanadinite-flat: #c03800;
+  --gem-vanadinite-text: #fff0e8;
+
+  /* STIBNITE — silver-grey metallic needles */
+  --gem-stibnite: linear-gradient(
+    115deg,
+    #101018 0%,
+    #282838 25%,
+    #484860 45%,
+    #282838 70%,
+    #101018 100%
+  );
+  --gem-stibnite-radial: radial-gradient(ellipse at 38% 30%, #686890 0%, #282840 50%, #060608 100%);
+  --gem-stibnite-flat: #303050;
+  --gem-stibnite-text: #e0e0f0;
+
+  /* ULEXITE — TV stone silky white fibers */
+  --gem-ulexite: linear-gradient(
+    115deg,
+    #f0f0f8 0%,
+    #d8d8e8 25%,
+    #f8f8ff 50%,
+    #d0d0e0 75%,
+    #f0f0f8 100%
+  );
+  --gem-ulexite-radial: radial-gradient(ellipse at 40% 30%, #ffffff 0%, #e0e0f0 50%, #a0a0c0 100%);
+  --gem-ulexite-flat: #e0e0f0;
+  --gem-ulexite-text: #181830;
+
+  /* CELESTITE — pale blue celestial */
+  --gem-celestite: linear-gradient(135deg, #c8ddf0 0%, #90b8e0 35%, #d8eaf8 65%, #78a8d8 100%);
+  --gem-celestite-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #f0f8ff 0%,
+    #90b8e0 55%,
+    #3060a0 100%
+  );
+  --gem-celestite-flat: #90b8e0;
+  --gem-celestite-text: #102040;
+
+  /* PHANTOM QUARTZ — clear with interior ghost */
+  --gem-phantom-quartz: linear-gradient(
+    135deg,
+    #e8e8f0 0%,
+    #c8c8d8 20%,
+    #9090a8 40%,
+    #c8c8d8 60%,
+    #e8e8f0 100%
+  );
+  --gem-phantom-quartz-radial: radial-gradient(
+    ellipse at 45% 35%,
+    #f8f8ff 0%,
+    #c0c0d8 40%,
+    #606080 70%,
+    #e8e8f8 100%
+  );
+  --gem-phantom-quartz-flat: #c0c0d8;
+  --gem-phantom-quartz-text: #1a1830;
+
+  /* RUTILATED QUARTZ — clear with gold needle inclusions */
+  --gem-rutilated-quartz: linear-gradient(
+    135deg,
+    #e8e0c8 0%,
+    #d0c8a8 25%,
+    #c8a840 40%,
+    #d0c8a8 60%,
+    #e8e0c8 100%
+  );
+  --gem-rutilated-quartz-radial: radial-gradient(
+    ellipse at 40% 35%,
+    #f8f0d8 0%,
+    #d0c8a8 40%,
+    #a08020 65%,
+    #f0e8d0 100%
+  );
+  --gem-rutilated-quartz-flat: #d0c8a8;
+  --gem-rutilated-quartz-text: #201c08;
+
+  /* ─── QUARTZ FAMILY VARIANTS ─────────────────────────────────────────── */
+
+  /* CLEAR QUARTZ — pure transparent crystal */
+  --gem-clear-quartz: linear-gradient(135deg, #f4f4f8 0%, #e8e8f0 30%, #f8f8ff 60%, #dcdce8 100%);
+  --gem-clear-quartz-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #ffffff 0%,
+    #e8e8f0 45%,
+    #b0b0c0 100%
+  );
+  --gem-clear-quartz-flat: #e8e8f0;
+  --gem-clear-quartz-text: #181820;
+
+  /* BLUE LACE AGATE — pale banded sky-blue */
+  --gem-blue-lace-agate: linear-gradient(
+    135deg,
+    #d8ecf8 0%,
+    #a8d0ec 30%,
+    #d8ecf8 60%,
+    #88bce0 100%
+  );
+  --gem-blue-lace-agate-radial: radial-gradient(
+    ellipse at 35% 30%,
+    #f0f8ff 0%,
+    #a8d0ec 50%,
+    #3868a0 100%
+  );
+  --gem-blue-lace-agate-flat: #a8d0ec;
+  --gem-blue-lace-agate-text: #0c2038;
+
+  /* MOSS AGATE — clear with green dendrites */
+  --gem-moss-agate: linear-gradient(135deg, #e0ecdc 0%, #a8c8a0 30%, #d8ead4 60%, #88b080 100%);
+  --gem-moss-agate-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #f0f8ec 0%,
+    #a8c8a0 50%,
+    #305828 100%
+  );
+  --gem-moss-agate-flat: #a8c8a0;
+  --gem-moss-agate-text: #0c2008;
+
+  /* FIRE AGATE — iridescent brown-rainbow */
+  --gem-fire-agate: linear-gradient(
+    115deg,
+    #4a1800 0%,
+    #8a3000 20%,
+    #c05800 35%,
+    #a84018 50%,
+    #d87030 65%,
+    #f0a840 80%,
+    #8a3000 100%
+  );
+  --gem-fire-agate-radial: radial-gradient(
+    ellipse at 38% 30%,
+    #f0a840 0%,
+    #c05800 40%,
+    #200800 100%
+  );
+  --gem-fire-agate-flat: #a84018;
+  --gem-fire-agate-text: #fff0e0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES — apply any gemstone as a background
+   Usage: <div class="gem-bg-amethyst"> or <button class="gem-btn-sapphire">
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- Background gradient classes ---------------------------------------- */
+.gem-bg-amethyst {
+  background: var(--gem-amethyst);
+  color: var(--gem-amethyst-text);
+}
+
+.gem-bg-malachite {
+  background: var(--gem-malachite);
+  color: var(--gem-malachite-text);
+}
+
+.gem-bg-labradorite {
+  background: var(--gem-labradorite);
+  color: var(--gem-labradorite-text);
+}
+
+.gem-bg-aquamarine {
+  background: var(--gem-aquamarine);
+  color: var(--gem-aquamarine-text);
+}
+
+.gem-bg-sapphire {
+  background: var(--gem-sapphire);
+  color: var(--gem-sapphire-text);
+}
+
+.gem-bg-blue-topaz {
+  background: var(--gem-blue-topaz);
+  color: var(--gem-blue-topaz-text);
+}
+
+.gem-bg-tanzanite {
+  background: var(--gem-tanzanite);
+  color: var(--gem-tanzanite-text);
+}
+
+.gem-bg-blue-kyanite {
+  background: var(--gem-blue-kyanite);
+  color: var(--gem-blue-kyanite-text);
+}
+
+.gem-bg-larimar {
+  background: var(--gem-larimar);
+  color: var(--gem-larimar-text);
+}
+
+.gem-bg-apatite {
+  background: var(--gem-apatite);
+  color: var(--gem-apatite-text);
+}
+
+.gem-bg-sugilite {
+  background: var(--gem-sugilite);
+  color: var(--gem-sugilite-text);
+}
+
+.gem-bg-charoite {
+  background: var(--gem-charoite);
+  color: var(--gem-charoite-text);
+}
+
+.gem-bg-iolite {
+  background: var(--gem-iolite);
+  color: var(--gem-iolite-text);
+}
+
+.gem-bg-fluorite {
+  background: var(--gem-fluorite);
+  color: var(--gem-fluorite-text);
+}
+
+.gem-bg-lepidolite {
+  background: var(--gem-lepidolite);
+  color: var(--gem-lepidolite-text);
+}
+
+.gem-bg-emerald {
+  background: var(--gem-emerald);
+  color: var(--gem-emerald-text);
+}
+
+.gem-bg-jade {
+  background: var(--gem-jade);
+  color: var(--gem-jade-text);
+}
+
+.gem-bg-peridot {
+  background: var(--gem-peridot);
+  color: var(--gem-peridot-text);
+}
+
+.gem-bg-moldavite {
+  background: var(--gem-moldavite);
+  color: var(--gem-moldavite-text);
+}
+
+.gem-bg-prehnite {
+  background: var(--gem-prehnite);
+  color: var(--gem-prehnite-text);
+}
+
+.gem-bg-serpentine {
+  background: var(--gem-serpentine);
+  color: var(--gem-serpentine-text);
+}
+
+.gem-bg-green-tourmaline {
+  background: var(--gem-green-tourmaline);
+  color: var(--gem-green-tourmaline-text);
+}
+
+.gem-bg-ruby {
+  background: var(--gem-ruby);
+  color: var(--gem-ruby-text);
+}
+
+.gem-bg-garnet {
+  background: var(--gem-garnet);
+  color: var(--gem-garnet-text);
+}
+
+.gem-bg-rhodonite {
+  background: var(--gem-rhodonite);
+  color: var(--gem-rhodonite-text);
+}
+
+.gem-bg-rhodochrosite {
+  background: var(--gem-rhodochrosite);
+  color: var(--gem-rhodochrosite-text);
+}
+
+.gem-bg-spinel {
+  background: var(--gem-spinel);
+  color: var(--gem-spinel-text);
+}
+
+.gem-bg-kunzite {
+  background: var(--gem-kunzite);
+  color: var(--gem-kunzite-text);
+}
+
+.gem-bg-morganite {
+  background: var(--gem-morganite);
+  color: var(--gem-morganite-text);
+}
+
+.gem-bg-rose-quartz {
+  background: var(--gem-rose-quartz);
+  color: var(--gem-rose-quartz-text);
+}
+
+.gem-bg-pink-tourmaline {
+  background: var(--gem-pink-tourmaline);
+  color: var(--gem-pink-tourmaline-text);
+}
+
+.gem-bg-citrine {
+  background: var(--gem-citrine);
+  color: var(--gem-citrine-text);
+}
+
+.gem-bg-carnelian {
+  background: var(--gem-carnelian);
+  color: var(--gem-carnelian-text);
+}
+
+.gem-bg-fire-opal {
+  background: var(--gem-fire-opal);
+  color: var(--gem-fire-opal-text);
+}
+
+.gem-bg-amber {
+  background: var(--gem-amber);
+  color: var(--gem-amber-text);
+}
+
+.gem-bg-sunstone {
+  background: var(--gem-sunstone);
+  color: var(--gem-sunstone-text);
+}
+
+.gem-bg-imperial-topaz {
+  background: var(--gem-imperial-topaz);
+  color: var(--gem-imperial-topaz-text);
+}
+
+.gem-bg-aragonite {
+  background: var(--gem-aragonite);
+  color: var(--gem-aragonite-text);
+}
+
+.gem-bg-moonstone {
+  background: var(--gem-moonstone);
+  color: var(--gem-moonstone-text);
+}
+
+.gem-bg-pearl {
+  background: var(--gem-pearl);
+  color: var(--gem-pearl-text);
+}
+
+.gem-bg-white-opal {
+  background: var(--gem-white-opal);
+  color: var(--gem-white-opal-text);
+}
+
+.gem-bg-selenite {
+  background: var(--gem-selenite);
+  color: var(--gem-selenite-text);
+}
+
+.gem-bg-howlite {
+  background: var(--gem-howlite);
+  color: var(--gem-howlite-text);
+}
+
+.gem-bg-obsidian {
+  background: var(--gem-obsidian);
+  color: var(--gem-obsidian-text);
+}
+
+.gem-bg-black-tourmaline {
+  background: var(--gem-black-tourmaline);
+  color: var(--gem-black-tourmaline-text);
+}
+
+.gem-bg-onyx {
+  background: var(--gem-onyx);
+  color: var(--gem-onyx-text);
+}
+
+.gem-bg-shungite {
+  background: var(--gem-shungite);
+  color: var(--gem-shungite-text);
+}
+
+.gem-bg-black-opal {
+  background: var(--gem-black-opal);
+  color: var(--gem-black-opal-text);
+}
+
+.gem-bg-nuummite {
+  background: var(--gem-nuummite);
+  color: var(--gem-nuummite-text);
+}
+
+.gem-bg-tektite {
+  background: var(--gem-tektite);
+  color: var(--gem-tektite-text);
+}
+
+.gem-bg-boulder-opal {
+  background: var(--gem-boulder-opal);
+  color: var(--gem-boulder-opal-text);
+}
+
+.gem-bg-spectrolite {
+  background: var(--gem-spectrolite);
+  color: var(--gem-spectrolite-text);
+}
+
+.gem-bg-alexandrite {
+  background: var(--gem-alexandrite);
+  color: var(--gem-alexandrite-text);
+}
+
+.gem-bg-titanite {
+  background: var(--gem-titanite);
+  color: var(--gem-titanite-text);
+}
+
+.gem-bg-pyrite {
+  background: var(--gem-pyrite);
+  color: var(--gem-pyrite-text);
+}
+
+.gem-bg-gold {
+  background: var(--gem-gold);
+  color: var(--gem-gold-text);
+}
+
+.gem-bg-hematite {
+  background: var(--gem-hematite);
+  color: var(--gem-hematite-text);
+}
+
+.gem-bg-galena {
+  background: var(--gem-galena);
+  color: var(--gem-galena-text);
+}
+
+.gem-bg-tigers-eye {
+  background: var(--gem-tigers-eye);
+  color: var(--gem-tigers-eye-text);
+}
+
+.gem-bg-bronzite {
+  background: var(--gem-bronzite);
+  color: var(--gem-bronzite-text);
+}
+
+.gem-bg-jasper {
+  background: var(--gem-jasper);
+  color: var(--gem-jasper-text);
+}
+
+.gem-bg-smoky-quartz {
+  background: var(--gem-smoky-quartz);
+  color: var(--gem-smoky-quartz-text);
+}
+
+.gem-bg-picture-jasper {
+  background: var(--gem-picture-jasper);
+  color: var(--gem-picture-jasper-text);
+}
+
+.gem-bg-azurite {
+  background: var(--gem-azurite);
+  color: var(--gem-azurite-text);
+}
+
+.gem-bg-azurite-malachite {
+  background: var(--gem-azurite-malachite);
+  color: var(--gem-azurite-malachite-text);
+}
+
+.gem-bg-turquoise {
+  background: var(--gem-turquoise);
+  color: var(--gem-turquoise-text);
+}
+
+.gem-bg-chrysocolla {
+  background: var(--gem-chrysocolla);
+  color: var(--gem-chrysocolla-text);
+}
+
+.gem-bg-lapis-lazuli {
+  background: var(--gem-lapis-lazuli);
+  color: var(--gem-lapis-lazuli-text);
+}
+
+.gem-bg-sodalite {
+  background: var(--gem-sodalite);
+  color: var(--gem-sodalite-text);
+}
+
+.gem-bg-amazonite {
+  background: var(--gem-amazonite);
+  color: var(--gem-amazonite-text);
+}
+
+.gem-bg-unakite {
+  background: var(--gem-unakite);
+  color: var(--gem-unakite-text);
+}
+
+.gem-bg-bloodstone {
+  background: var(--gem-bloodstone);
+  color: var(--gem-bloodstone-text);
+}
+
+.gem-bg-vanadinite {
+  background: var(--gem-vanadinite);
+  color: var(--gem-vanadinite-text);
+}
+
+.gem-bg-stibnite {
+  background: var(--gem-stibnite);
+  color: var(--gem-stibnite-text);
+}
+
+.gem-bg-ulexite {
+  background: var(--gem-ulexite);
+  color: var(--gem-ulexite-text);
+}
+
+.gem-bg-celestite {
+  background: var(--gem-celestite);
+  color: var(--gem-celestite-text);
+}
+
+.gem-bg-phantom-quartz {
+  background: var(--gem-phantom-quartz);
+  color: var(--gem-phantom-quartz-text);
+}
+
+.gem-bg-rutilated-quartz {
+  background: var(--gem-rutilated-quartz);
+  color: var(--gem-rutilated-quartz-text);
+}
+
+.gem-bg-clear-quartz {
+  background: var(--gem-clear-quartz);
+  color: var(--gem-clear-quartz-text);
+}
+
+.gem-bg-blue-lace-agate {
+  background: var(--gem-blue-lace-agate);
+  color: var(--gem-blue-lace-agate-text);
+}
+
+.gem-bg-moss-agate {
+  background: var(--gem-moss-agate);
+  color: var(--gem-moss-agate-text);
+}
+
+.gem-bg-fire-agate {
+  background: var(--gem-fire-agate);
+  color: var(--gem-fire-agate-text);
+}
+
+/* --- Radial glow backgrounds (all 86 stones) ---------------------------- */
+.gem-glow-amethyst {
+  background: var(--gem-amethyst-radial);
+  color: var(--gem-amethyst-text);
+}
+
+.gem-glow-malachite {
+  background: var(--gem-malachite-radial);
+  color: var(--gem-malachite-text);
+}
+
+.gem-glow-labradorite {
+  background: var(--gem-labradorite-radial);
+  color: var(--gem-labradorite-text);
+}
+
+.gem-glow-aquamarine {
+  background: var(--gem-aquamarine-radial);
+  color: var(--gem-aquamarine-text);
+}
+
+.gem-glow-sapphire {
+  background: var(--gem-sapphire-radial);
+  color: var(--gem-sapphire-text);
+}
+
+.gem-glow-blue-topaz {
+  background: var(--gem-blue-topaz-radial);
+  color: var(--gem-blue-topaz-text);
+}
+
+.gem-glow-tanzanite {
+  background: var(--gem-tanzanite-radial);
+  color: var(--gem-tanzanite-text);
+}
+
+.gem-glow-blue-kyanite {
+  background: var(--gem-blue-kyanite-radial);
+  color: var(--gem-blue-kyanite-text);
+}
+
+.gem-glow-larimar {
+  background: var(--gem-larimar-radial);
+  color: var(--gem-larimar-text);
+}
+
+.gem-glow-apatite {
+  background: var(--gem-apatite-radial);
+  color: var(--gem-apatite-text);
+}
+
+.gem-glow-sugilite {
+  background: var(--gem-sugilite-radial);
+  color: var(--gem-sugilite-text);
+}
+
+.gem-glow-charoite {
+  background: var(--gem-charoite-radial);
+  color: var(--gem-charoite-text);
+}
+
+.gem-glow-iolite {
+  background: var(--gem-iolite-radial);
+  color: var(--gem-iolite-text);
+}
+
+.gem-glow-fluorite {
+  background: var(--gem-fluorite-radial);
+  color: var(--gem-fluorite-text);
+}
+
+.gem-glow-lepidolite {
+  background: var(--gem-lepidolite-radial);
+  color: var(--gem-lepidolite-text);
+}
+
+.gem-glow-emerald {
+  background: var(--gem-emerald-radial);
+  color: var(--gem-emerald-text);
+}
+
+.gem-glow-jade {
+  background: var(--gem-jade-radial);
+  color: var(--gem-jade-text);
+}
+
+.gem-glow-peridot {
+  background: var(--gem-peridot-radial);
+  color: var(--gem-peridot-text);
+}
+
+.gem-glow-moldavite {
+  background: var(--gem-moldavite-radial);
+  color: var(--gem-moldavite-text);
+}
+
+.gem-glow-prehnite {
+  background: var(--gem-prehnite-radial);
+  color: var(--gem-prehnite-text);
+}
+
+.gem-glow-serpentine {
+  background: var(--gem-serpentine-radial);
+  color: var(--gem-serpentine-text);
+}
+
+.gem-glow-green-tourmaline {
+  background: var(--gem-green-tourmaline-radial);
+  color: var(--gem-green-tourmaline-text);
+}
+
+.gem-glow-ruby {
+  background: var(--gem-ruby-radial);
+  color: var(--gem-ruby-text);
+}
+
+.gem-glow-garnet {
+  background: var(--gem-garnet-radial);
+  color: var(--gem-garnet-text);
+}
+
+.gem-glow-rhodonite {
+  background: var(--gem-rhodonite-radial);
+  color: var(--gem-rhodonite-text);
+}
+
+.gem-glow-rhodochrosite {
+  background: var(--gem-rhodochrosite-radial);
+  color: var(--gem-rhodochrosite-text);
+}
+
+.gem-glow-spinel {
+  background: var(--gem-spinel-radial);
+  color: var(--gem-spinel-text);
+}
+
+.gem-glow-kunzite {
+  background: var(--gem-kunzite-radial);
+  color: var(--gem-kunzite-text);
+}
+
+.gem-glow-morganite {
+  background: var(--gem-morganite-radial);
+  color: var(--gem-morganite-text);
+}
+
+.gem-glow-rose-quartz {
+  background: var(--gem-rose-quartz-radial);
+  color: var(--gem-rose-quartz-text);
+}
+
+.gem-glow-pink-tourmaline {
+  background: var(--gem-pink-tourmaline-radial);
+  color: var(--gem-pink-tourmaline-text);
+}
+
+.gem-glow-citrine {
+  background: var(--gem-citrine-radial);
+  color: var(--gem-citrine-text);
+}
+
+.gem-glow-carnelian {
+  background: var(--gem-carnelian-radial);
+  color: var(--gem-carnelian-text);
+}
+
+.gem-glow-fire-opal {
+  background: var(--gem-fire-opal-radial);
+  color: var(--gem-fire-opal-text);
+}
+
+.gem-glow-amber {
+  background: var(--gem-amber-radial);
+  color: var(--gem-amber-text);
+}
+
+.gem-glow-sunstone {
+  background: var(--gem-sunstone-radial);
+  color: var(--gem-sunstone-text);
+}
+
+.gem-glow-imperial-topaz {
+  background: var(--gem-imperial-topaz-radial);
+  color: var(--gem-imperial-topaz-text);
+}
+
+.gem-glow-aragonite {
+  background: var(--gem-aragonite-radial);
+  color: var(--gem-aragonite-text);
+}
+
+.gem-glow-moonstone {
+  background: var(--gem-moonstone-radial);
+  color: var(--gem-moonstone-text);
+}
+
+.gem-glow-pearl {
+  background: var(--gem-pearl-radial);
+  color: var(--gem-pearl-text);
+}
+
+.gem-glow-white-opal {
+  background: var(--gem-white-opal-radial);
+  color: var(--gem-white-opal-text);
+}
+
+.gem-glow-selenite {
+  background: var(--gem-selenite-radial);
+  color: var(--gem-selenite-text);
+}
+
+.gem-glow-howlite {
+  background: var(--gem-howlite-radial);
+  color: var(--gem-howlite-text);
+}
+
+.gem-glow-obsidian {
+  background: var(--gem-obsidian-radial);
+  color: var(--gem-obsidian-text);
+}
+
+.gem-glow-black-tourmaline {
+  background: var(--gem-black-tourmaline-radial);
+  color: var(--gem-black-tourmaline-text);
+}
+
+.gem-glow-onyx {
+  background: var(--gem-onyx-radial);
+  color: var(--gem-onyx-text);
+}
+
+.gem-glow-shungite {
+  background: var(--gem-shungite-radial);
+  color: var(--gem-shungite-text);
+}
+
+.gem-glow-black-opal {
+  background: var(--gem-black-opal-radial);
+  color: var(--gem-black-opal-text);
+}
+
+.gem-glow-nuummite {
+  background: var(--gem-nuummite-radial);
+  color: var(--gem-nuummite-text);
+}
+
+.gem-glow-tektite {
+  background: var(--gem-tektite-radial);
+  color: var(--gem-tektite-text);
+}
+
+.gem-glow-boulder-opal {
+  background: var(--gem-boulder-opal-radial);
+  color: var(--gem-boulder-opal-text);
+}
+
+.gem-glow-spectrolite {
+  background: var(--gem-spectrolite-radial);
+  color: var(--gem-spectrolite-text);
+}
+
+.gem-glow-alexandrite {
+  background: var(--gem-alexandrite-radial);
+  color: var(--gem-alexandrite-text);
+}
+
+.gem-glow-titanite {
+  background: var(--gem-titanite-radial);
+  color: var(--gem-titanite-text);
+}
+
+.gem-glow-pyrite {
+  background: var(--gem-pyrite-radial);
+  color: var(--gem-pyrite-text);
+}
+
+.gem-glow-gold {
+  background: var(--gem-gold-radial);
+  color: var(--gem-gold-text);
+}
+
+.gem-glow-hematite {
+  background: var(--gem-hematite-radial);
+  color: var(--gem-hematite-text);
+}
+
+.gem-glow-galena {
+  background: var(--gem-galena-radial);
+  color: var(--gem-galena-text);
+}
+
+.gem-glow-tigers-eye {
+  background: var(--gem-tigers-eye-radial);
+  color: var(--gem-tigers-eye-text);
+}
+
+.gem-glow-bronzite {
+  background: var(--gem-bronzite-radial);
+  color: var(--gem-bronzite-text);
+}
+
+.gem-glow-jasper {
+  background: var(--gem-jasper-radial);
+  color: var(--gem-jasper-text);
+}
+
+.gem-glow-smoky-quartz {
+  background: var(--gem-smoky-quartz-radial);
+  color: var(--gem-smoky-quartz-text);
+}
+
+.gem-glow-picture-jasper {
+  background: var(--gem-picture-jasper-radial);
+  color: var(--gem-picture-jasper-text);
+}
+
+.gem-glow-azurite {
+  background: var(--gem-azurite-radial);
+  color: var(--gem-azurite-text);
+}
+
+.gem-glow-azurite-malachite {
+  background: var(--gem-azurite-malachite-radial);
+  color: var(--gem-azurite-malachite-text);
+}
+
+.gem-glow-turquoise {
+  background: var(--gem-turquoise-radial);
+  color: var(--gem-turquoise-text);
+}
+
+.gem-glow-chrysocolla {
+  background: var(--gem-chrysocolla-radial);
+  color: var(--gem-chrysocolla-text);
+}
+
+.gem-glow-lapis-lazuli {
+  background: var(--gem-lapis-lazuli-radial);
+  color: var(--gem-lapis-lazuli-text);
+}
+
+.gem-glow-sodalite {
+  background: var(--gem-sodalite-radial);
+  color: var(--gem-sodalite-text);
+}
+
+.gem-glow-amazonite {
+  background: var(--gem-amazonite-radial);
+  color: var(--gem-amazonite-text);
+}
+
+.gem-glow-unakite {
+  background: var(--gem-unakite-radial);
+  color: var(--gem-unakite-text);
+}
+
+.gem-glow-bloodstone {
+  background: var(--gem-bloodstone-radial);
+  color: var(--gem-bloodstone-text);
+}
+
+.gem-glow-vanadinite {
+  background: var(--gem-vanadinite-radial);
+  color: var(--gem-vanadinite-text);
+}
+
+.gem-glow-stibnite {
+  background: var(--gem-stibnite-radial);
+  color: var(--gem-stibnite-text);
+}
+
+.gem-glow-ulexite {
+  background: var(--gem-ulexite-radial);
+  color: var(--gem-ulexite-text);
+}
+
+.gem-glow-celestite {
+  background: var(--gem-celestite-radial);
+  color: var(--gem-celestite-text);
+}
+
+.gem-glow-phantom-quartz {
+  background: var(--gem-phantom-quartz-radial);
+  color: var(--gem-phantom-quartz-text);
+}
+
+.gem-glow-rutilated-quartz {
+  background: var(--gem-rutilated-quartz-radial);
+  color: var(--gem-rutilated-quartz-text);
+}
+
+.gem-glow-clear-quartz {
+  background: var(--gem-clear-quartz-radial);
+  color: var(--gem-clear-quartz-text);
+}
+
+.gem-glow-blue-lace-agate {
+  background: var(--gem-blue-lace-agate-radial);
+  color: var(--gem-blue-lace-agate-text);
+}
+
+.gem-glow-moss-agate {
+  background: var(--gem-moss-agate-radial);
+  color: var(--gem-moss-agate-text);
+}
+
+.gem-glow-fire-agate {
+  background: var(--gem-fire-agate-radial);
+  color: var(--gem-fire-agate-text);
+}
+
+/* --- Border accent classes (all 86 stones) ------------------------------ */
+.gem-border-amethyst {
+  border-color: var(--gem-amethyst-flat);
+}
+
+.gem-border-malachite {
+  border-color: var(--gem-malachite-flat);
+}
+
+.gem-border-labradorite {
+  border-color: var(--gem-labradorite-flat);
+}
+
+.gem-border-aquamarine {
+  border-color: var(--gem-aquamarine-flat);
+}
+
+.gem-border-sapphire {
+  border-color: var(--gem-sapphire-flat);
+}
+
+.gem-border-blue-topaz {
+  border-color: var(--gem-blue-topaz-flat);
+}
+
+.gem-border-tanzanite {
+  border-color: var(--gem-tanzanite-flat);
+}
+
+.gem-border-blue-kyanite {
+  border-color: var(--gem-blue-kyanite-flat);
+}
+
+.gem-border-larimar {
+  border-color: var(--gem-larimar-flat);
+}
+
+.gem-border-apatite {
+  border-color: var(--gem-apatite-flat);
+}
+
+.gem-border-sugilite {
+  border-color: var(--gem-sugilite-flat);
+}
+
+.gem-border-charoite {
+  border-color: var(--gem-charoite-flat);
+}
+
+.gem-border-iolite {
+  border-color: var(--gem-iolite-flat);
+}
+
+.gem-border-fluorite {
+  border-color: var(--gem-fluorite-flat);
+}
+
+.gem-border-lepidolite {
+  border-color: var(--gem-lepidolite-flat);
+}
+
+.gem-border-emerald {
+  border-color: var(--gem-emerald-flat);
+}
+
+.gem-border-jade {
+  border-color: var(--gem-jade-flat);
+}
+
+.gem-border-peridot {
+  border-color: var(--gem-peridot-flat);
+}
+
+.gem-border-moldavite {
+  border-color: var(--gem-moldavite-flat);
+}
+
+.gem-border-prehnite {
+  border-color: var(--gem-prehnite-flat);
+}
+
+.gem-border-serpentine {
+  border-color: var(--gem-serpentine-flat);
+}
+
+.gem-border-green-tourmaline {
+  border-color: var(--gem-green-tourmaline-flat);
+}
+
+.gem-border-ruby {
+  border-color: var(--gem-ruby-flat);
+}
+
+.gem-border-garnet {
+  border-color: var(--gem-garnet-flat);
+}
+
+.gem-border-rhodonite {
+  border-color: var(--gem-rhodonite-flat);
+}
+
+.gem-border-rhodochrosite {
+  border-color: var(--gem-rhodochrosite-flat);
+}
+
+.gem-border-spinel {
+  border-color: var(--gem-spinel-flat);
+}
+
+.gem-border-kunzite {
+  border-color: var(--gem-kunzite-flat);
+}
+
+.gem-border-morganite {
+  border-color: var(--gem-morganite-flat);
+}
+
+.gem-border-rose-quartz {
+  border-color: var(--gem-rose-quartz-flat);
+}
+
+.gem-border-pink-tourmaline {
+  border-color: var(--gem-pink-tourmaline-flat);
+}
+
+.gem-border-citrine {
+  border-color: var(--gem-citrine-flat);
+}
+
+.gem-border-carnelian {
+  border-color: var(--gem-carnelian-flat);
+}
+
+.gem-border-fire-opal {
+  border-color: var(--gem-fire-opal-flat);
+}
+
+.gem-border-amber {
+  border-color: var(--gem-amber-flat);
+}
+
+.gem-border-sunstone {
+  border-color: var(--gem-sunstone-flat);
+}
+
+.gem-border-imperial-topaz {
+  border-color: var(--gem-imperial-topaz-flat);
+}
+
+.gem-border-aragonite {
+  border-color: var(--gem-aragonite-flat);
+}
+
+.gem-border-moonstone {
+  border-color: var(--gem-moonstone-flat);
+}
+
+.gem-border-pearl {
+  border-color: var(--gem-pearl-flat);
+}
+
+.gem-border-white-opal {
+  border-color: var(--gem-white-opal-flat);
+}
+
+.gem-border-selenite {
+  border-color: var(--gem-selenite-flat);
+}
+
+.gem-border-howlite {
+  border-color: var(--gem-howlite-flat);
+}
+
+.gem-border-obsidian {
+  border-color: var(--gem-obsidian-flat);
+}
+
+.gem-border-black-tourmaline {
+  border-color: var(--gem-black-tourmaline-flat);
+}
+
+.gem-border-onyx {
+  border-color: var(--gem-onyx-flat);
+}
+
+.gem-border-shungite {
+  border-color: var(--gem-shungite-flat);
+}
+
+.gem-border-black-opal {
+  border-color: var(--gem-black-opal-flat);
+}
+
+.gem-border-nuummite {
+  border-color: var(--gem-nuummite-flat);
+}
+
+.gem-border-tektite {
+  border-color: var(--gem-tektite-flat);
+}
+
+.gem-border-boulder-opal {
+  border-color: var(--gem-boulder-opal-flat);
+}
+
+.gem-border-spectrolite {
+  border-color: var(--gem-spectrolite-flat);
+}
+
+.gem-border-alexandrite {
+  border-color: var(--gem-alexandrite-flat);
+}
+
+.gem-border-titanite {
+  border-color: var(--gem-titanite-flat);
+}
+
+.gem-border-pyrite {
+  border-color: var(--gem-pyrite-flat);
+}
+
+.gem-border-gold {
+  border-color: var(--gem-gold-flat);
+}
+
+.gem-border-hematite {
+  border-color: var(--gem-hematite-flat);
+}
+
+.gem-border-galena {
+  border-color: var(--gem-galena-flat);
+}
+
+.gem-border-tigers-eye {
+  border-color: var(--gem-tigers-eye-flat);
+}
+
+.gem-border-bronzite {
+  border-color: var(--gem-bronzite-flat);
+}
+
+.gem-border-jasper {
+  border-color: var(--gem-jasper-flat);
+}
+
+.gem-border-smoky-quartz {
+  border-color: var(--gem-smoky-quartz-flat);
+}
+
+.gem-border-picture-jasper {
+  border-color: var(--gem-picture-jasper-flat);
+}
+
+.gem-border-azurite {
+  border-color: var(--gem-azurite-flat);
+}
+
+.gem-border-azurite-malachite {
+  border-color: var(--gem-azurite-malachite-flat);
+}
+
+.gem-border-turquoise {
+  border-color: var(--gem-turquoise-flat);
+}
+
+.gem-border-chrysocolla {
+  border-color: var(--gem-chrysocolla-flat);
+}
+
+.gem-border-lapis-lazuli {
+  border-color: var(--gem-lapis-lazuli-flat);
+}
+
+.gem-border-sodalite {
+  border-color: var(--gem-sodalite-flat);
+}
+
+.gem-border-amazonite {
+  border-color: var(--gem-amazonite-flat);
+}
+
+.gem-border-unakite {
+  border-color: var(--gem-unakite-flat);
+}
+
+.gem-border-bloodstone {
+  border-color: var(--gem-bloodstone-flat);
+}
+
+.gem-border-vanadinite {
+  border-color: var(--gem-vanadinite-flat);
+}
+
+.gem-border-stibnite {
+  border-color: var(--gem-stibnite-flat);
+}
+
+.gem-border-ulexite {
+  border-color: var(--gem-ulexite-flat);
+}
+
+.gem-border-celestite {
+  border-color: var(--gem-celestite-flat);
+}
+
+.gem-border-phantom-quartz {
+  border-color: var(--gem-phantom-quartz-flat);
+}
+
+.gem-border-rutilated-quartz {
+  border-color: var(--gem-rutilated-quartz-flat);
+}
+
+.gem-border-clear-quartz {
+  border-color: var(--gem-clear-quartz-flat);
+}
+
+.gem-border-blue-lace-agate {
+  border-color: var(--gem-blue-lace-agate-flat);
+}
+
+.gem-border-moss-agate {
+  border-color: var(--gem-moss-agate-flat);
+}
+
+.gem-border-fire-agate {
+  border-color: var(--gem-fire-agate-flat);
+}
+
+/* --- Text color classes (all 86 stones) --------------------------------- */
+.gem-text-amethyst {
+  color: var(--gem-amethyst-flat);
+}
+
+.gem-text-malachite {
+  color: var(--gem-malachite-flat);
+}
+
+.gem-text-labradorite {
+  color: var(--gem-labradorite-flat);
+}
+
+.gem-text-aquamarine {
+  color: var(--gem-aquamarine-flat);
+}
+
+.gem-text-sapphire {
+  color: var(--gem-sapphire-flat);
+}
+
+.gem-text-blue-topaz {
+  color: var(--gem-blue-topaz-flat);
+}
+
+.gem-text-tanzanite {
+  color: var(--gem-tanzanite-flat);
+}
+
+.gem-text-blue-kyanite {
+  color: var(--gem-blue-kyanite-flat);
+}
+
+.gem-text-larimar {
+  color: var(--gem-larimar-flat);
+}
+
+.gem-text-apatite {
+  color: var(--gem-apatite-flat);
+}
+
+.gem-text-sugilite {
+  color: var(--gem-sugilite-flat);
+}
+
+.gem-text-charoite {
+  color: var(--gem-charoite-flat);
+}
+
+.gem-text-iolite {
+  color: var(--gem-iolite-flat);
+}
+
+.gem-text-fluorite {
+  color: var(--gem-fluorite-flat);
+}
+
+.gem-text-lepidolite {
+  color: var(--gem-lepidolite-flat);
+}
+
+.gem-text-emerald {
+  color: var(--gem-emerald-flat);
+}
+
+.gem-text-jade {
+  color: var(--gem-jade-flat);
+}
+
+.gem-text-peridot {
+  color: var(--gem-peridot-flat);
+}
+
+.gem-text-moldavite {
+  color: var(--gem-moldavite-flat);
+}
+
+.gem-text-prehnite {
+  color: var(--gem-prehnite-flat);
+}
+
+.gem-text-serpentine {
+  color: var(--gem-serpentine-flat);
+}
+
+.gem-text-green-tourmaline {
+  color: var(--gem-green-tourmaline-flat);
+}
+
+.gem-text-ruby {
+  color: var(--gem-ruby-flat);
+}
+
+.gem-text-garnet {
+  color: var(--gem-garnet-flat);
+}
+
+.gem-text-rhodonite {
+  color: var(--gem-rhodonite-flat);
+}
+
+.gem-text-rhodochrosite {
+  color: var(--gem-rhodochrosite-flat);
+}
+
+.gem-text-spinel {
+  color: var(--gem-spinel-flat);
+}
+
+.gem-text-kunzite {
+  color: var(--gem-kunzite-flat);
+}
+
+.gem-text-morganite {
+  color: var(--gem-morganite-flat);
+}
+
+.gem-text-rose-quartz {
+  color: var(--gem-rose-quartz-flat);
+}
+
+.gem-text-pink-tourmaline {
+  color: var(--gem-pink-tourmaline-flat);
+}
+
+.gem-text-citrine {
+  color: var(--gem-citrine-flat);
+}
+
+.gem-text-carnelian {
+  color: var(--gem-carnelian-flat);
+}
+
+.gem-text-fire-opal {
+  color: var(--gem-fire-opal-flat);
+}
+
+.gem-text-amber {
+  color: var(--gem-amber-flat);
+}
+
+.gem-text-sunstone {
+  color: var(--gem-sunstone-flat);
+}
+
+.gem-text-imperial-topaz {
+  color: var(--gem-imperial-topaz-flat);
+}
+
+.gem-text-aragonite {
+  color: var(--gem-aragonite-flat);
+}
+
+.gem-text-moonstone {
+  color: var(--gem-moonstone-flat);
+}
+
+.gem-text-pearl {
+  color: var(--gem-pearl-flat);
+}
+
+.gem-text-white-opal {
+  color: var(--gem-white-opal-flat);
+}
+
+.gem-text-selenite {
+  color: var(--gem-selenite-flat);
+}
+
+.gem-text-howlite {
+  color: var(--gem-howlite-flat);
+}
+
+.gem-text-obsidian {
+  color: var(--gem-obsidian-flat);
+}
+
+.gem-text-black-tourmaline {
+  color: var(--gem-black-tourmaline-flat);
+}
+
+.gem-text-onyx {
+  color: var(--gem-onyx-flat);
+}
+
+.gem-text-shungite {
+  color: var(--gem-shungite-flat);
+}
+
+.gem-text-black-opal {
+  color: var(--gem-black-opal-flat);
+}
+
+.gem-text-nuummite {
+  color: var(--gem-nuummite-flat);
+}
+
+.gem-text-tektite {
+  color: var(--gem-tektite-flat);
+}
+
+.gem-text-boulder-opal {
+  color: var(--gem-boulder-opal-flat);
+}
+
+.gem-text-spectrolite {
+  color: var(--gem-spectrolite-flat);
+}
+
+.gem-text-alexandrite {
+  color: var(--gem-alexandrite-flat);
+}
+
+.gem-text-titanite {
+  color: var(--gem-titanite-flat);
+}
+
+.gem-text-pyrite {
+  color: var(--gem-pyrite-flat);
+}
+
+.gem-text-gold {
+  color: var(--gem-gold-flat);
+}
+
+.gem-text-hematite {
+  color: var(--gem-hematite-flat);
+}
+
+.gem-text-galena {
+  color: var(--gem-galena-flat);
+}
+
+.gem-text-tigers-eye {
+  color: var(--gem-tigers-eye-flat);
+}
+
+.gem-text-bronzite {
+  color: var(--gem-bronzite-flat);
+}
+
+.gem-text-jasper {
+  color: var(--gem-jasper-flat);
+}
+
+.gem-text-smoky-quartz {
+  color: var(--gem-smoky-quartz-flat);
+}
+
+.gem-text-picture-jasper {
+  color: var(--gem-picture-jasper-flat);
+}
+
+.gem-text-azurite {
+  color: var(--gem-azurite-flat);
+}
+
+.gem-text-azurite-malachite {
+  color: var(--gem-azurite-malachite-flat);
+}
+
+.gem-text-turquoise {
+  color: var(--gem-turquoise-flat);
+}
+
+.gem-text-chrysocolla {
+  color: var(--gem-chrysocolla-flat);
+}
+
+.gem-text-lapis-lazuli {
+  color: var(--gem-lapis-lazuli-flat);
+}
+
+.gem-text-sodalite {
+  color: var(--gem-sodalite-flat);
+}
+
+.gem-text-amazonite {
+  color: var(--gem-amazonite-flat);
+}
+
+.gem-text-unakite {
+  color: var(--gem-unakite-flat);
+}
+
+.gem-text-bloodstone {
+  color: var(--gem-bloodstone-flat);
+}
+
+.gem-text-vanadinite {
+  color: var(--gem-vanadinite-flat);
+}
+
+.gem-text-stibnite {
+  color: var(--gem-stibnite-flat);
+}
+
+.gem-text-ulexite {
+  color: var(--gem-ulexite-flat);
+}
+
+.gem-text-celestite {
+  color: var(--gem-celestite-flat);
+}
+
+.gem-text-phantom-quartz {
+  color: var(--gem-phantom-quartz-flat);
+}
+
+.gem-text-rutilated-quartz {
+  color: var(--gem-rutilated-quartz-flat);
+}
+
+.gem-text-clear-quartz {
+  color: var(--gem-clear-quartz-flat);
+}
+
+.gem-text-blue-lace-agate {
+  color: var(--gem-blue-lace-agate-flat);
+}
+
+.gem-text-moss-agate {
+  color: var(--gem-moss-agate-flat);
+}
+
+.gem-text-fire-agate {
+  color: var(--gem-fire-agate-flat);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BOX-SHADOW GLOW UTILITIES (all 86 stones)
+   Usage: <div class="gem-shadow-amethyst">
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gem-shadow-amethyst {
+  box-shadow: 0 0 24px 4px rgb(155 89 182 / 50%);
+}
+
+.gem-shadow-malachite {
+  box-shadow: 0 0 24px 4px rgb(58 175 111 / 50%);
+}
+
+.gem-shadow-labradorite {
+  box-shadow: 0 0 24px 4px rgb(74 144 196 / 50%);
+}
+
+.gem-shadow-aquamarine {
+  box-shadow: 0 0 24px 4px rgb(61 159 181 / 45%);
+}
+
+.gem-shadow-sapphire {
+  box-shadow: 0 0 24px 4px rgb(31 58 153 / 60%);
+}
+
+.gem-shadow-blue-topaz {
+  box-shadow: 0 0 24px 4px rgb(2 136 209 / 50%);
+}
+
+.gem-shadow-tanzanite {
+  box-shadow: 0 0 24px 4px rgb(74 45 181 / 55%);
+}
+
+.gem-shadow-blue-kyanite {
+  box-shadow: 0 0 20px 4px rgb(77 130 188 / 45%);
+}
+
+.gem-shadow-larimar {
+  box-shadow: 0 0 20px 4px rgb(58 174 196 / 45%);
+}
+
+.gem-shadow-apatite {
+  box-shadow: 0 0 24px 4px rgb(0 168 150 / 50%);
+}
+
+.gem-shadow-sugilite {
+  box-shadow: 0 0 24px 4px rgb(123 31 162 / 55%);
+}
+
+.gem-shadow-charoite {
+  box-shadow: 0 0 28px 6px rgb(139 47 192 / 45%);
+}
+
+.gem-shadow-iolite {
+  box-shadow: 0 0 20px 4px rgb(80 63 160 / 50%);
+}
+
+.gem-shadow-fluorite {
+  box-shadow: 0 0 24px 4px rgb(122 80 192 / 45%);
+}
+
+.gem-shadow-lepidolite {
+  box-shadow: 0 0 20px 4px rgb(168 126 192 / 40%);
+}
+
+.gem-shadow-emerald {
+  box-shadow: 0 0 24px 4px rgb(10 104 64 / 60%);
+}
+
+.gem-shadow-jade {
+  box-shadow: 0 0 20px 4px rgb(106 158 120 / 45%);
+}
+
+.gem-shadow-peridot {
+  box-shadow: 0 0 24px 4px rgb(122 170 0 / 50%);
+}
+
+.gem-shadow-moldavite {
+  box-shadow: 0 0 28px 6px rgb(30 96 53 / 55%);
+}
+
+.gem-shadow-prehnite {
+  box-shadow: 0 0 20px 4px rgb(140 191 112 / 40%);
+}
+
+.gem-shadow-serpentine {
+  box-shadow: 0 0 20px 4px rgb(90 104 0 / 45%);
+}
+
+.gem-shadow-green-tourmaline {
+  box-shadow: 0 0 24px 4px rgb(0 128 72 / 55%);
+}
+
+.gem-shadow-ruby {
+  box-shadow: 0 0 24px 4px rgb(155 0 32 / 60%);
+}
+
+.gem-shadow-garnet {
+  box-shadow: 0 0 24px 4px rgb(122 24 24 / 55%);
+}
+
+.gem-shadow-rhodonite {
+  box-shadow: 0 0 20px 4px rgb(155 56 88 / 45%);
+}
+
+.gem-shadow-rhodochrosite {
+  box-shadow: 0 0 24px 4px rgb(216 88 128 / 45%);
+}
+
+.gem-shadow-spinel {
+  box-shadow: 0 0 24px 4px rgb(192 0 96 / 50%);
+}
+
+.gem-shadow-kunzite {
+  box-shadow: 0 0 20px 4px rgb(200 120 168 / 40%);
+}
+
+.gem-shadow-morganite {
+  box-shadow: 0 0 20px 4px rgb(224 152 136 / 40%);
+}
+
+.gem-shadow-rose-quartz {
+  box-shadow: 0 0 20px 4px rgb(232 152 168 / 40%);
+}
+
+.gem-shadow-pink-tourmaline {
+  box-shadow: 0 0 24px 4px rgb(200 40 120 / 50%);
+}
+
+.gem-shadow-citrine {
+  box-shadow: 0 0 24px 4px rgb(216 156 0 / 55%);
+}
+
+.gem-shadow-carnelian {
+  box-shadow: 0 0 24px 4px rgb(200 48 0 / 55%);
+}
+
+.gem-shadow-fire-opal {
+  box-shadow: 0 0 28px 6px rgb(240 112 0 / 55%);
+}
+
+.gem-shadow-amber {
+  box-shadow: 0 0 24px 4px rgb(200 128 0 / 50%);
+}
+
+.gem-shadow-sunstone {
+  box-shadow: 0 0 24px 4px rgb(224 120 0 / 50%);
+}
+
+.gem-shadow-imperial-topaz {
+  box-shadow: 0 0 24px 4px rgb(208 128 32 / 55%);
+}
+
+.gem-shadow-aragonite {
+  box-shadow: 0 0 18px 4px rgb(212 160 112 / 40%);
+}
+
+.gem-shadow-moonstone {
+  box-shadow: 0 0 24px 8px rgb(168 184 216 / 45%);
+}
+
+.gem-shadow-pearl {
+  box-shadow: 0 0 16px 4px rgb(236 232 224 / 50%);
+}
+
+.gem-shadow-white-opal {
+  box-shadow: 0 0 24px 6px rgb(224 216 248 / 45%);
+}
+
+.gem-shadow-selenite {
+  box-shadow: 0 0 20px 6px rgb(238 238 232 / 55%);
+}
+
+.gem-shadow-howlite {
+  box-shadow: 0 0 16px 4px rgb(224 224 224 / 50%);
+}
+
+.gem-shadow-obsidian {
+  box-shadow: 0 0 24px 4px rgb(0 0 0 / 80%);
+}
+
+.gem-shadow-black-tourmaline {
+  box-shadow: 0 0 20px 4px rgb(17 17 24 / 85%);
+}
+
+.gem-shadow-onyx {
+  box-shadow: 0 0 20px 4px rgb(24 24 24 / 80%);
+}
+
+.gem-shadow-shungite {
+  box-shadow: 0 0 20px 4px rgb(30 30 30 / 80%);
+}
+
+.gem-shadow-black-opal {
+  box-shadow: 0 0 28px 6px rgb(96 64 255 / 40%);
+}
+
+.gem-shadow-nuummite {
+  box-shadow: 0 0 28px 4px rgb(192 168 48 / 35%);
+}
+
+.gem-shadow-tektite {
+  box-shadow: 0 0 16px 4px rgb(16 16 16 / 85%);
+}
+
+.gem-shadow-boulder-opal {
+  box-shadow: 0 0 24px 4px rgb(112 216 192 / 35%);
+}
+
+.gem-shadow-spectrolite {
+  box-shadow: 0 0 32px 8px rgb(0 240 224 / 40%);
+}
+
+.gem-shadow-alexandrite {
+  box-shadow: 0 0 24px 4px rgb(40 192 96 / 45%);
+}
+
+.gem-shadow-titanite {
+  box-shadow: 0 0 24px 4px rgb(122 156 0 / 50%);
+}
+
+.gem-shadow-pyrite {
+  box-shadow: 0 0 20px 4px rgb(184 144 48 / 45%);
+}
+
+.gem-shadow-gold {
+  box-shadow: 0 0 24px 4px rgb(212 160 32 / 55%);
+}
+
+.gem-shadow-hematite {
+  box-shadow: 0 0 16px 4px rgb(72 72 72 / 60%);
+}
+
+.gem-shadow-galena {
+  box-shadow: 0 0 16px 4px rgb(64 64 96 / 55%);
+}
+
+.gem-shadow-tigers-eye {
+  box-shadow: 0 0 20px 4px rgb(138 80 16 / 50%);
+}
+
+.gem-shadow-bronzite {
+  box-shadow: 0 0 20px 4px rgb(106 72 24 / 50%);
+}
+
+.gem-shadow-jasper {
+  box-shadow: 0 0 20px 4px rgb(154 56 16 / 50%);
+}
+
+.gem-shadow-smoky-quartz {
+  box-shadow: 0 0 20px 4px rgb(80 64 48 / 55%);
+}
+
+.gem-shadow-picture-jasper {
+  box-shadow: 0 0 18px 4px rgb(176 128 80 / 40%);
+}
+
+.gem-shadow-azurite {
+  box-shadow: 0 0 24px 4px rgb(8 64 192 / 55%);
+}
+
+.gem-shadow-azurite-malachite {
+  box-shadow: 0 0 24px 4px rgb(12 88 144 / 50%);
+}
+
+.gem-shadow-turquoise {
+  box-shadow: 0 0 24px 4px rgb(0 168 184 / 50%);
+}
+
+.gem-shadow-chrysocolla {
+  box-shadow: 0 0 24px 4px rgb(0 152 176 / 50%);
+}
+
+.gem-shadow-lapis-lazuli {
+  box-shadow: 0 0 24px 4px rgb(0 48 176 / 55%);
+}
+
+.gem-shadow-sodalite {
+  box-shadow: 0 0 24px 4px rgb(0 48 168 / 55%);
+}
+
+.gem-shadow-amazonite {
+  box-shadow: 0 0 20px 4px rgb(90 170 152 / 45%);
+}
+
+.gem-shadow-unakite {
+  box-shadow: 0 0 18px 4px rgb(154 112 80 / 40%);
+}
+
+.gem-shadow-bloodstone {
+  box-shadow: 0 0 20px 4px rgb(26 80 48 / 55%);
+}
+
+.gem-shadow-vanadinite {
+  box-shadow: 0 0 24px 4px rgb(192 56 0 / 55%);
+}
+
+.gem-shadow-stibnite {
+  box-shadow: 0 0 18px 4px rgb(48 48 80 / 55%);
+}
+
+.gem-shadow-ulexite {
+  box-shadow: 0 0 16px 6px rgb(224 224 240 / 50%);
+}
+
+.gem-shadow-celestite {
+  box-shadow: 0 0 20px 4px rgb(144 184 224 / 45%);
+}
+
+.gem-shadow-phantom-quartz {
+  box-shadow: 0 0 18px 4px rgb(192 192 216 / 45%);
+}
+
+.gem-shadow-rutilated-quartz {
+  box-shadow: 0 0 20px 4px rgb(208 200 168 / 45%);
+}
+
+.gem-shadow-clear-quartz {
+  box-shadow: 0 0 16px 4px rgb(232 232 240 / 50%);
+}
+
+.gem-shadow-blue-lace-agate {
+  box-shadow: 0 0 20px 4px rgb(168 208 236 / 45%);
+}
+
+.gem-shadow-moss-agate {
+  box-shadow: 0 0 18px 4px rgb(168 200 160 / 40%);
+}
+
+.gem-shadow-fire-agate {
+  box-shadow: 0 0 24px 4px rgb(168 64 24 / 50%);
+}
+
+/* ─── Focus/ring utilities (for interactive element focus states) ───────── */
+.gem-ring-amethyst {
+  outline: 2px solid var(--gem-amethyst-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-malachite {
+  outline: 2px solid var(--gem-malachite-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-sapphire {
+  outline: 2px solid var(--gem-sapphire-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-ruby {
+  outline: 2px solid var(--gem-ruby-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-emerald {
+  outline: 2px solid var(--gem-emerald-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-gold {
+  outline: 2px solid var(--gem-gold-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-labradorite {
+  outline: 2px solid var(--gem-labradorite-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-turquoise {
+  outline: 2px solid var(--gem-turquoise-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-fire-opal {
+  outline: 2px solid var(--gem-fire-opal-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-tanzanite {
+  outline: 2px solid var(--gem-tanzanite-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-moonstone {
+  outline: 2px solid var(--gem-moonstone-flat);
+  outline-offset: 2px;
+}
+
+.gem-ring-obsidian {
+  outline: 2px solid var(--gem-obsidian-flat);
+  outline-offset: 2px;
+}
+
+/* ─── Opacity variants for subtle layering ──────────────────────────────── */
+.gem-bg-amethyst\/50 {
+  background: var(--gem-amethyst);
+  opacity: 50%;
+}
+
+.gem-bg-labradorite\/50 {
+  background: var(--gem-labradorite);
+  opacity: 50%;
+}
+
+.gem-bg-obsidian\/80 {
+  background: var(--gem-obsidian);
+  opacity: 80%;
+}
+
+.gem-bg-smoky-quartz\/70 {
+  background: var(--gem-smoky-quartz);
+  opacity: 70%;
+}
+
+.gem-bg-moonstone\/60 {
+  background: var(--gem-moonstone);
+  opacity: 60%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRESET COMPONENT THEMES
+   Pre-assembled palettes for common UI patterns.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hero / landing backdrop — labradorite night sky */
+.theme-hero-labradorite {
+  background: var(--gem-labradorite);
+  color: var(--gem-labradorite-text);
+  box-shadow: inset 0 0 120px 40px rgb(45 63 110 / 60%);
+}
+
+/* Premium / enterprise card — obsidian base + gold border */
+.theme-premium-obsidian {
+  background: var(--gem-obsidian);
+  border: 1px solid var(--gem-gold-flat);
+  color: var(--gem-obsidian-text);
+  box-shadow: 0 0 32px 4px rgb(212 160 32 / 20%);
+}
+
+/* Danger / alert — ruby */
+.theme-alert-ruby {
+  background: var(--gem-ruby);
+  color: var(--gem-ruby-text);
+  box-shadow: 0 0 20px 4px rgb(155 0 32 / 40%);
+}
+
+/* Success / confirm — emerald */
+.theme-success-emerald {
+  background: var(--gem-emerald);
+  color: var(--gem-emerald-text);
+  box-shadow: 0 0 20px 4px rgb(10 104 64 / 40%);
+}
+
+/* Calm / help — aquamarine */
+.theme-calm-aquamarine {
+  background: var(--gem-aquamarine);
+  color: var(--gem-aquamarine-text);
+}
+
+/* Accent CTA — fire opal */
+.theme-cta-fire-opal {
+  background: var(--gem-fire-opal);
+  color: var(--gem-fire-opal-text);
+  box-shadow: 0 4px 24px rgb(224 104 0 / 45%);
+}
+
+/* Mystical / spiritual — charoite */
+.theme-mystic-charoite {
+  background: var(--gem-charoite);
+  color: var(--gem-charoite-text);
+  box-shadow: 0 0 40px 8px rgb(139 47 192 / 35%);
+}
+
+/* Sidebar / nav — sodalite navy */
+.theme-nav-sodalite {
+  background: var(--gem-sodalite);
+  color: var(--gem-sodalite-text);
+  border-right: 2px solid var(--gem-lapis-lazuli-flat);
+}
+
+/* Testimonial / quote card — moonstone */
+.theme-quote-moonstone {
+  background: var(--gem-moonstone);
+  color: var(--gem-moonstone-text);
+  border-left: 4px solid var(--gem-labradorite-flat);
+}
+
+/* Data table header — lapis lazuli + gold */
+.theme-table-lapis {
+  background: var(--gem-lapis-lazuli);
+  color: var(--gem-lapis-lazuli-text);
+  border-bottom: 2px solid var(--gem-gold-flat);
+}
+
+/* ── Extended Preset Themes ────────────────────────────────────────────── */
+
+/* Danger / warning banner — vanadinite (deep orange-red urgency) */
+.theme-warning-vanadinite {
+  background: var(--gem-vanadinite);
+  color: var(--gem-vanadinite-text);
+  box-shadow: 0 0 20px 4px rgb(192 56 0 / 40%);
+}
+
+/* Enterprise executive card — nuummite + gold */
+.theme-enterprise-nuummite {
+  background: var(--gem-nuummite);
+  border: 1px solid var(--gem-gold-flat);
+  color: var(--gem-nuummite-text);
+  box-shadow: 0 0 40px 6px rgb(192 168 48 / 25%);
+}
+
+/* Security / protected feature — black tourmaline */
+.theme-security-tourmaline {
+  background: var(--gem-black-tourmaline);
+  color: var(--gem-black-tourmaline-text);
+  border-left: 3px solid var(--gem-azurite-flat);
+  box-shadow: inset 0 0 40px rgb(17 17 24 / 50%);
+}
+
+/* Onboarding / welcome — morganite warmth */
+.theme-welcome-morganite {
+  background: var(--gem-morganite);
+  color: var(--gem-morganite-text);
+  border: 1px solid var(--gem-rose-quartz-flat);
+}
+
+/* Calm loading / skeleton state — lepidolite */
+.theme-loading-lepidolite {
+  background: var(--gem-lepidolite);
+  color: var(--gem-lepidolite-text);
+  animation: gem-pulse 2s ease-in-out infinite;
+}
+
+/* Info / educational callout — chrysocolla */
+.theme-info-chrysocolla {
+  background: var(--gem-chrysocolla);
+  color: var(--gem-chrysocolla-text);
+  border-left: 4px solid var(--gem-azurite-flat);
+}
+
+/* Launch / reveal moment — spectrolite full spectrum */
+.theme-launch-spectrolite {
+  background: var(--gem-spectrolite);
+  color: var(--gem-spectrolite-text);
+  box-shadow:
+    0 0 60px 12px rgb(0 240 224 / 30%),
+    0 0 20px 4px rgb(240 64 128 / 25%);
+}
+
+/* Analytics / data dashboard — sodalite + gold accent */
+.theme-analytics-sodalite {
+  background: var(--gem-sodalite);
+  color: var(--gem-sodalite-text);
+  border-top: 3px solid var(--gem-citrine-flat);
+}
+
+/* Nature / organic brand — moss agate */
+.theme-organic-moss-agate {
+  background: var(--gem-moss-agate);
+  color: var(--gem-moss-agate-text);
+  border: 1px solid var(--gem-jade-flat);
+}
+
+/* Changelog / version history — phantom quartz */
+.theme-changelog-phantom {
+  background: var(--gem-phantom-quartz);
+  color: var(--gem-phantom-quartz-text);
+  border-left: 3px solid var(--gem-smoky-quartz-flat);
+}
+
+/* Dark cinematic overlay (scrim/modal backdrop) — smoky quartz */
+.theme-scrim-smoky-quartz {
+  background: var(--gem-smoky-quartz);
+  opacity: 85%;
+}
+
+/* 404 / lost in space — tektite with obsidian */
+.theme-404-tektite {
+  background: var(--gem-tektite);
+  color: var(--gem-tektite-text);
+  box-shadow: inset 0 0 120px rgb(0 0 0 / 60%);
+}
+
+/* Meditation / peace — celestite */
+.theme-peace-celestite {
+  background: var(--gem-celestite);
+  color: var(--gem-celestite-text);
+  border: 1px solid var(--gem-blue-lace-agate-flat);
+}
+
+/* Achievement / unlock — imperial topaz + gold */
+.theme-achievement-topaz {
+  background: var(--gem-imperial-topaz);
+  color: var(--gem-imperial-topaz-text);
+  box-shadow: 0 4px 32px rgb(208 128 32 / 50%);
+  border: 1px solid var(--gem-gold-flat);
+}
+
+/* ── Keyframe animation for gem-pulse (loading states) ──────────────────── */
+@keyframes gem-pulse {
+  0%,
+  100% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 65%;
+  }
+}

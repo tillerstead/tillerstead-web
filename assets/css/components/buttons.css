@@ -1,0 +1,107 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s var(--ease-spring),
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgb(255 255 255 / 30%) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform var(--transition-slow);
+}
+
+.btn:hover::before {
+  transform: translateX(100%);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--primary-500, #00a35c), var(--primary-700, #007a44));
+  color: #ffffff;
+  box-shadow: var(--shadow-primary, 0 4px 14px rgb(0 163 92 / 40%));
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-primary);
+  transition-duration: 0.08s;
+}
+
+.btn--accent {
+  background: linear-gradient(135deg, var(--accent-500, #c9a227), var(--accent-600, #b08d1f));
+  color: #ffffff;
+  box-shadow: var(--shadow-accent, 0 4px 14px rgb(201 162 39 / 40%));
+}
+
+.btn--accent:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--accent:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgb(255 255 255 / 60%);
+}
+
+.btn--ghost:hover {
+  background: rgb(255 255 255 / 12%);
+  border-color: rgb(255 255 255 / 85%);
+}
+
+.btn--ghost:active {
+  background: rgb(255 255 255 / 18%);
+  transform: scale(0.98);
+  transition-duration: 0.08s;
+}
+
+.btn--sm {
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
+  min-height: 2.75rem;
+  border-radius: var(--radius-md, 8px);
+}
+
+.btn--lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Universal focus ring */
+.btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgb(0 163 92 / 35%);
+}

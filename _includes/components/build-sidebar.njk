@@ -1,0 +1,12 @@
+<nav class="build-sidenav" aria-label="Build Phase Navigation">
+  <ul>
+    {%- set build_pages = site.pages | where("layout", "build-page") | sort_by("order") -%}
+    {% for bp in build_pages %}
+    <li{% if bp.url == page.url %} class="active"{% endif %}>
+      <a href="{{ bp.url | relative_url }}">
+        {{ bp.build_title | default(bp.title) }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

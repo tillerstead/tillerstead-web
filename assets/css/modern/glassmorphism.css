@@ -1,0 +1,247 @@
+/*
+ * Glassmorphism Utilities
+ * Modern frosted glass effects for cards, nav, modals
+ */
+
+/* ========================================
+   BASE GLASS CLASSES
+   ======================================== */
+
+.glass {
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(150%);
+  border: 1px solid var(--glass-border-light);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(200%);
+  border: 1px solid var(--glass-border-medium);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  color: var(--color-neutral-50);
+}
+
+/* ========================================
+   GLASS CARD
+   ======================================== */
+
+.glass-card {
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-glass);
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-medium);
+  box-shadow: var(--shadow-glass-hover);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   GLASS NAVIGATION
+   ======================================== */
+
+.glass-nav {
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(180%);
+  border-bottom: 1px solid var(--glass-border-light);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+/* ========================================
+   GLASS MODAL/OVERLAY
+   ======================================== */
+
+.glass-modal {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-xl)) saturate(200%);
+  border: 1px solid var(--glass-border-medium);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-2xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.glass-overlay {
+  background: rgb(15 23 42 / 60%);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal-backdrop);
+}
+
+/* ========================================
+   GLASS BUTTON
+   ======================================== */
+
+.glass-btn {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(150%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-6);
+  color: white;
+  font-weight: var(--font-medium);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.glass-btn:hover {
+  background: var(--glass-bg-medium);
+  border-color: var(--glass-border-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-btn:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   GLASS BADGE
+   ======================================== */
+
+.glass-badge {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   GLASS INPUT/FORM
+   ======================================== */
+
+.glass-input {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  color: white;
+  font-size: var(--text-base);
+  transition: all var(--transition-base);
+  width: 100%;
+}
+
+.glass-input::placeholder {
+  color: rgb(255 255 255 / 80%);
+}
+
+.glass-input:focus {
+  outline: none;
+  background: var(--glass-bg-medium);
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 3px rgb(14 165 233 / 20%);
+}
+
+/* ========================================
+   FALLBACKS (browsers without backdrop-filter)
+   ======================================== */
+
+@supports not (backdrop-filter: blur(10px)) {
+  .glass,
+  .glass-card,
+  .glass-nav,
+  .glass-modal,
+  .glass-btn {
+    background: rgb(255 255 255 / 95%);
+    color: var(--color-neutral-900);
+  }
+
+  .glass-dark {
+    background: rgb(15 23 42 / 95%);
+    color: var(--color-neutral-50);
+  }
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+  .glass-card {
+    padding: var(--space-4);
+  }
+
+  .glass-modal {
+    padding: var(--space-6);
+    max-width: 95vw;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 20%) 50%, transparent 100%);
+  transition: left var(--transition-slower);
+}
+
+.glass-shine:hover::before {
+  left: 100%;
+}
+
+/* Glass with gradient border */
+.glass-gradient-border {
+  position: relative;
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-md));
+  border-radius: var(--radius-xl);
+}
+
+.glass-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: var(--gradient-primary);
+  mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

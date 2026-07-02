@@ -1,0 +1,72 @@
+<!-- 
+  Wolf Crest Logo Component
+  Responsive, optimized logo with WebP support and retina displays
+  Enforces aspect-ratio to prevent squishing
+  
+  Usage: { % include components/logo-wolf-crest.html class="custom-class" % }
+  Sizes: default (header), compact (mobile), large (footer/hero)
+-->
+
+{%- set logo_class = class | default("site-logo") -%} {%- set logo_size = size | default("default") -%}
+
+<picture class="{{ logo_class }}">
+  {% if logo_size == "compact" %}
+  <!-- Compact: Mobile/small spaces (min 64px) -->
+  <source srcset="/assets/img/logo/logo-compact.webp 1x, /assets/img/logo/logo-compact@2x.webp 2x" type="image/webp" />
+  <source srcset="/assets/img/logo/logo-compact.png 1x, /assets/img/logo/logo-compact@2x.png 2x" type="image/png" />
+  <img
+    src="/assets/img/logo/logo-compact.png"
+    alt="Tillerstead LLC - Where Craft Meets Accountability"
+    width="80"
+    height="80"
+    class="logo-image"
+    style="aspect-ratio: 1/1; min-width: 64px; min-height: 64px; object-fit: contain"
+    loading="eager"
+    fetchpriority="high"
+  />
+  {% elif logo_size == "large" %}
+  <!-- Large: Footer/hero sections (min 200px) -->
+  <source
+    srcset="/assets/img/logo/logo-optimized.webp 1x, /assets/img/logo/logo-optimized@2x.webp 2x"
+    type="image/webp"
+  />
+  <source srcset="/assets/img/logo/logo-optimized.png 1x, /assets/img/logo/logo-optimized@2x.png 2x" type="image/png" />
+  <img
+    src="/assets/img/logo/logo-optimized.png"
+    alt="Tillerstead LLC - Where Craft Meets Accountability"
+    width="320"
+    height="320"
+    class="logo-image"
+    style="aspect-ratio: 1/1; min-width: 200px; min-height: 200px; object-fit: contain"
+    loading="lazy"
+  />
+  {% else %}
+  <!-- Default: Header/navigation (min 80px) -->
+  <!-- Mobile: compact version -->
+  <source
+    media="(max-width: 640px)"
+    srcset="/assets/img/logo/logo-compact.webp 1x, /assets/img/logo/logo-compact@2x.webp 2x"
+    type="image/webp"
+  />
+  <source
+    media="(max-width: 640px)"
+    srcset="/assets/img/logo/logo-compact.png 1x, /assets/img/logo/logo-compact@2x.png 2x"
+    type="image/png"
+  />
+
+  <!-- Desktop: header version -->
+  <source srcset="/assets/img/logo/logo-header.webp 1x, /assets/img/logo/logo-header@2x.webp 2x" type="image/webp" />
+  <source srcset="/assets/img/logo/logo-header.png 1x, /assets/img/logo/logo-header@2x.png 2x" type="image/png" />
+
+  <img
+    src="/assets/img/logo/logo-header.png"
+    alt="Tillerstead LLC - Where Craft Meets Accountability"
+    width="100"
+    height="100"
+    class="logo-image"
+    style="aspect-ratio: 1/1; min-width: 80px; min-height: 80px; object-fit: contain"
+    loading="eager"
+    fetchpriority="high"
+  />
+  {% endif %}
+</picture>

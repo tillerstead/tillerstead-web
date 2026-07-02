@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+---
+{#- Default layout — extends base, adds build blocks + CTA + credentials -#}
+{%- set showBreadcrumbs = true if not build_guide else false -%}
+
+{#- Build Guide Hero -#}
+{% if build_guide %}
+{% include "layout/build-hero.njk" %}
+{% endif %}
+
+{#- Build TOC + Body -#}
+{% if build_guide and toc %}
+<div class="container">
+  <div class="build-layout">
+    <aside class="build-toc" aria-label="Table of Contents">
+      <h2 class="toc-title">On This Page</h2>
+      <nav class="toc-nav" id="toc-nav"></nav>
+    </aside>
+    <article class="build-article prose">{{ content | safe }}</article>
+  </div>
+</div>
+{% elif build_guide %}
+<div class="container">
+  <article class="build-article prose" style="max-width: 800px; margin: 0 auto">{{ content | safe }}</article>
+</div>
+{% else %}
+{{ content | safe }}
+{% endif %}
+
+{#- Build Phase Nav -#}
+{% if build_guide %}
+{% include "layout/build-phase-nav.njk" %}
+{% endif %}
+
+<div class="default-cta text-center scroll-fade-in premium-cta mt-4">
+  {% include "components/cta-buttons.njk" %}
+</div>
+
+{% include "components/credential-badges.njk" %}
+
+{#- Build CTA -#}
+{% if build_guide %}
+{% include "layout/build-cta.njk" %}
+{% endif %}

@@ -1,0 +1,105 @@
+{
+  "id": "/",
+  "name": "Tillerstead LLC - Professional Tile Installation",
+  "short_name": "Tillerstead",
+  "description": "Where Craft Meets Accountability - TCNA-compliant tile installation in South Jersey",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "any",
+  "theme_color": "#10b981",
+  "background_color": "#1f2937",
+  "categories": ["business", "home improvement"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/assets/icons/android-chrome-192x192.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/android-chrome-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "TillerPro",
+      "short_name": "Calculator",
+      "url": "/tools/",
+      "description": "Open the tile calculator app",
+      "icons": [{ "src": "/assets/icons/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tile Calculator",
+      "short_name": "Tile Calc",
+      "url": "/tools/#/calculators",
+      "description": "Calculate tile quantities"
+    },
+    {
+      "name": "View Portfolio",
+      "short_name": "Portfolio",
+      "url": "/portfolio/",
+      "description": "See our tile installation work"
+    },
+    {
+      "name": "Get a Quote",
+      "short_name": "Quote",
+      "url": "/contact/",
+      "description": "Request a free estimate"
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "url": "/services/",
+      "description": "View tile installation services"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/img/tillerstead-work/bathrooms/IMG_7989-800.webp",
+      "sizes": "800x600",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "TCNA-compliant bathroom tile installation"
+    }
+  ]
+}

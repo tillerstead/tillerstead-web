@@ -1,0 +1,57 @@
+{# Unified Tillerstead Navigation System Data-driven from _data/navigation.yml Desktop: Elegant horizontal
+menu with dropdowns Mobile: Beautiful right-side drawer with accordions #}
+
+<!-- Desktop Navigation -->
+<nav class="ts-nav" aria-label="Primary Navigation">
+  <ul class="ts-nav__list">
+    {% for item in navigation.primary %}
+    <li
+      class="ts-nav__item {% if item.has_dropdown %}ts-nav__item--dropdown{% endif %} {% if item.cta %}ts-nav__item--cta{% endif %}"
+    >
+      {% if item.has_dropdown %}
+      <!-- Dropdown Trigger -->
+      <button
+        type="button"
+        class="ts-nav__link ts-nav__trigger"
+        aria-expanded="false"
+        aria-controls="dropdown-{{ item.id }}"
+        aria-haspopup="true"
+      >
+        <span class="ts-nav__text">{{ item.title }}</span>
+        <svg class="ts-nav__arrow" aria-hidden="true" width="12" height="12" viewBox="0 0 12 12">
+          <path
+            d="M2.5 4.5L6 8L9.5 4.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <ul id="dropdown-{{ item.id }}" class="ts-nav__dropdown">
+        {% for child in item.children %}
+        <li class="ts-nav__dropdown-item {% if child.featured %}ts-nav__dropdown-item--featured{% endif %}">
+          <a href="{{ child.url }}">
+            {% if child.icon %}<span class="ts-nav__icon">{{ child.icon }}</span>{% endif %}
+            <span class="ts-nav__dropdown-text">
+              {% if child.featured %}<strong>{{ child.title }}</strong>{% else %}{{ child.title }}{% endif %} {% if
+              child.subtitle %}<small>{{ child.subtitle }}</small>{% endif %}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <!-- Regular Link -->
+      <a href="{{ item.url }}" class="ts-nav__link {% if item.cta %}ts-nav__link--cta{% endif %}">
+        <span class="ts-nav__text">{{ item.title }}</span>
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{# Mobile toggle + drawer live in header-v2.njk — not duplicated here #}

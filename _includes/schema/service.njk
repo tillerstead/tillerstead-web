@@ -1,0 +1,58 @@
+<!-- Service Schema Template -->
+<!-- Usage: {% include "schema/service.njk" %} -->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "{{ name }}",
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://tillerstead.com/#business",
+      "name": "Tillerstead LLC",
+      "image": "https://tillerstead.com/assets/img/logo/logo-social-512.png",
+      "telephone": "+1-609-862-8808",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Atlantic City",
+        "containedIn": {
+          "@type": "AdministrativeArea",
+          "name": "Atlantic County"
+        }
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Atlantic County"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Ocean County"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Cape May County"
+      }
+    ],
+    "description": "{{ description }}",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tile & Waterproofing Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "{{ name }}"
+          }
+        }
+      ]
+    }
+  }
+</script>

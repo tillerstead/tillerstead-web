@@ -1,0 +1,677 @@
+---
+layout: default
+title: 'Build Phase Guides'
+permalink: /build/
+meta_title: 'TCNA-Compliant Build Phases | Tillerstead'
+meta_description: 'Step-by-step guides to TCNA-compliant tile shower construction. From permits and codes to waterproofing and final verification—understand what happens on your project.'
+description: 'A step-by-step guide through proper bathroom and shower construction. Each phase follows TCNA standards and New Jersey building codes.'
+show_breadcrumbs: false
+body_class: page-build-hub
+build_guide: false
+---
+
+<!-- Hero Section -->
+<section class="build-hero">
+  <div class="container">
+    <div class="build-hero__content">
+      <span class="build-hero__eyebrow">TCNA 2024 · ANSI A108/A118 Compliant</span>
+      <h1 class="build-hero__title">Build Phase Guides</h1>
+      <p class="build-hero__summary">
+        Eight comprehensive guides walking through each step of proper bathroom and shower construction—from permits and
+        codes through waterproofing, tile installation, and final verification. Learn what should happen on your project
+        and why each phase matters.
+      </p>
+      <div class="build-hero__badges">
+        <span class="build-hero__badge">TCNA 2024</span>
+        <span class="build-hero__badge">ANSI A108/A118</span>
+        <span class="build-hero__badge">NJ UCC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Phase Cards Grid -->
+<section class="build-phases">
+  <div class="container">
+    <div class="build-phases__wrapper">
+      <div class="phase-grid">
+        {%- set phases = build_phases.build_phases | sort_by("order") -%} {% for phase in phases %}
+        <a href="{{ phase.url | relative_url }}" class="phase-card">
+          <div class="phase-card__header">
+            <span class="phase-card__number">{{ phase.order }}</span>
+            <span class="phase-card__indicator">Phase {{ phase.order }} of 8</span>
+          </div>
+          <h2 class="phase-card__title">{{ phase.title }}</h2>
+          <div class="phase-card__footer">
+            <span class="phase-card__cta">Read Guide <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to Use Section -->
+<section class="build-howto">
+  <div class="container">
+    <div class="build-howto__grid">
+      <div class="build-howto__content">
+        <h2 class="build-howto__title">How to Use These Guides</h2>
+        <p class="build-howto__intro">
+          Whether you're a homeowner planning a remodel, a contractor looking for standards-based documentation, or an
+          inspector aligning expectations—these guides serve different purposes:
+        </p>
+
+        <div class="build-howto__cases">
+          <div class="build-howto__case">
+            <h3>🏠 For Homeowners</h3>
+            <p>Understand what should happen on your project, ask better questions, and evaluate contractor quality.</p>
+          </div>
+          <div class="build-howto__case">
+            <h3>🔧 For Contractors</h3>
+            <p>Reference these as standards-based documentation when discussing methods with clients or inspectors.</p>
+          </div>
+          <div class="build-howto__case">
+            <h3>📋 For Inspectors</h3>
+            <p>Align expectations with TCNA methods and New Jersey code requirements from the start.</p>
+          </div>
+        </div>
+      </div>
+      <div class="build-howto__callout">
+        <div class="build-howto__callout-box">
+          <h3>📖 Reading Order</h3>
+          <p>
+            <strong>New to remodeling?</strong> Start with Phase 1 (Codes, Permits & Inspections) and work through
+            sequentially.
+          </p>
+          <p><strong>Specific question?</strong> Jump directly to the relevant phase—each guide stands alone.</p>
+          <a href="/build/nj-codes-permits/" class="btn btn--primary">Start with Phase 1</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Links Section -->
+<section class="build-quicklinks">
+  <div class="container">
+    <h2 class="build-quicklinks__title">Quick Phase Reference</h2>
+    <div class="build-quicklinks__grid">
+      <div class="build-quicklinks__group">
+        <h3>Planning & Preparation</h3>
+        <ul>
+          <li><a href="/build/nj-codes-permits/">Phase 1: Codes, Permits & Inspections</a></li>
+          <li><a href="/build/shower-pans-slopes-drains/">Phase 2: Shower Pans, Slopes & Drains</a></li>
+        </ul>
+      </div>
+      <div class="build-quicklinks__group">
+        <h3>Waterproofing & Structure</h3>
+        <ul>
+          <li><a href="/build/waterproofing-systems/">Phase 3: Waterproofing Systems</a></li>
+          <li><a href="/build/curbs-curbless/">Phase 4: Curbs & Curbless Showers</a></li>
+          <li><a href="/build/framing-benches-niches/">Phase 5: Benches, Seats & Niches</a></li>
+        </ul>
+      </div>
+      <div class="build-quicklinks__group">
+        <h3>Installation & Verification</h3>
+        <ul>
+          <li><a href="/build/tile-installation-standards/">Phase 6: Tile Installation Standards</a></li>
+          <li><a href="/build/flood-testing/">Phase 7: Flood Testing & Verification</a></li>
+          <li><a href="/build/common-build-failures/">Phase 8: Common Failures & Red Flags</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="build-faq">
+  <div class="container">
+    <h2 class="build-faq__title">Frequently Asked Questions</h2>
+    <div class="build-faq__list" itemscope itemtype="https://schema.org/FAQPage">
+      {%- set faqs = build_phases.faq -%} {% for item in faqs %}
+      <article class="build-faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 class="build-faq__question" itemprop="name">{{ item.question }}</h3>
+        <div class="build-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">{{ item.answer }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="build-cta">
+  <div class="container">
+    <div class="build-cta__content">
+      <h2 class="build-cta__title">Ready to Start Your Project?</h2>
+      <p class="build-cta__text">
+        Get a detailed estimate from a licensed NJ contractor who builds to these standards.
+      </p>
+      <div class="build-cta__actions">
+        <a href="/contact/" class="btn btn--primary btn--lg">Request an Estimate</a>
+        <a href="tel:+16098628808" class="btn btn--outline-light btn--lg">Call (609) 862-8808</a>
+      </div>
+      <p class="build-cta__credential">
+        <small>NJ HIC #13VH10808800 • TCNA-Compliant Methods • 5-Year Workmanship Warranty</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ======
+   Build Hub Page Styles
+   DARK THEME - Emerald glow headers, gold hover
+   ====== */
+
+  /* Hero */
+  .build-hero {
+    background: linear-gradient(135deg, #0f2a1f 0%, #0a1a14 100%);
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    color: #fff;
+  }
+
+  .build-hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .build-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #10b981;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  .build-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .build-hero__summary {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 1.5rem;
+  }
+
+  .build-hero__badges {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .build-hero__badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 0.875rem;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+
+  .build-hero__badge:hover {
+    background: rgba(201, 162, 39, 0.2);
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+
+  /* Phase Cards Section */
+  .build-phases {
+    background: #121414;
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .build-phases__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .phase-card {
+    display: flex;
+    flex-direction: column;
+    background: #1a1d1c;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #10b981, #c9a227);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .phase-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 40px rgba(16, 185, 129, 0.2),
+      0 0 30px rgba(201, 162, 39, 0.1);
+    border-color: #c9a227;
+  }
+
+  .phase-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .phase-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .phase-card__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #10b981;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .phase-card:hover .phase-card__number {
+    background: #c9a227;
+    box-shadow: 0 0 25px rgba(201, 162, 39, 0.5);
+  }
+
+  .phase-card__indicator {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .phase-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 auto;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+
+  .phase-card:hover .phase-card__title {
+    color: #c9a227;
+  }
+
+  .phase-card__footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .phase-card__cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #10b981;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .phase-card:hover .phase-card__cta {
+    color: #c9a227;
+    text-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
+  }
+
+  /* How To Section */
+  .build-howto {
+    background: #0a0c0b;
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
+  .build-howto__grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .build-howto__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .build-howto__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .build-howto__intro {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .build-howto__cases {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .build-howto__case h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .build-howto__case:hover h3 {
+    color: #c9a227;
+  }
+
+  .build-howto__case p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    padding-left: 2rem;
+    line-height: 1.6;
+  }
+
+  .build-howto__callout-box {
+    background: #1a1d1c;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+  }
+
+  .build-howto__callout-box h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    margin-bottom: 1rem;
+  }
+
+  .build-howto__callout-box p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .build-howto__callout-box .btn--primary {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .build-howto__callout-box .btn--primary:hover {
+    background: #c9a227;
+    transform: translateY(-2px);
+    color: #000;
+    box-shadow: 0 0 25px rgba(201, 162, 39, 0.5);
+  }
+
+  /* Quick Links Section */
+  .build-quicklinks {
+    background: #121414;
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
+  .build-quicklinks__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .build-quicklinks__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .build-quicklinks__group {
+    background: #1a1d1c;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .build-quicklinks__group:hover {
+    border-color: #c9a227;
+    box-shadow: 0 4px 30px rgba(201, 162, 39, 0.15);
+  }
+
+  .build-quicklinks__group h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #10b981;
+    transition: all 0.3s ease;
+  }
+
+  .build-quicklinks__group:hover h3 {
+    color: #c9a227;
+    border-color: #c9a227;
+    text-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+  }
+
+  .build-quicklinks__group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .build-quicklinks__group li {
+    margin-bottom: 0.5rem;
+  }
+
+  .build-quicklinks__group a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+  }
+
+  .build-quicklinks__group a:hover {
+    color: #c9a227;
+    text-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+  }
+
+  /* FAQ Section */
+  .build-faq {
+    background: #0a0c0b;
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
+  .build-faq__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .build-faq__list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .build-faq__item {
+    background: #1a1d1c;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .build-faq__item:hover {
+    border-color: #c9a227;
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.1);
+  }
+
+  .build-faq__question {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    transition: color 0.2s ease;
+  }
+
+  .build-faq__item:hover .build-faq__question {
+    color: #c9a227;
+  }
+
+  .build-faq__answer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .build-cta {
+    background: linear-gradient(135deg, #0f2a1f 0%, #0a1a14 100%);
+    padding: clamp(3rem, 6vw, 4rem) 0;
+    border-top: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .build-cta__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .build-cta__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #10b981;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  .build-cta__text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+  }
+
+  .build-cta__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .build-cta .btn--primary {
+    background: #10b981;
+    color: #fff;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .build-cta .btn--primary:hover {
+    background: #c9a227;
+    border-color: #c9a227;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(201, 162, 39, 0.5);
+  }
+
+  .build-cta .btn--outline-light {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .build-cta .btn--outline-light:hover {
+    background: transparent;
+    border-color: #c9a227;
+    color: #c9a227;
+    text-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
+  }
+
+  .build-cta__credential {
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .phase-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .build-cta__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .build-cta__actions .btn--primary,
+    .build-cta__actions .btn--outline-light {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+</style>

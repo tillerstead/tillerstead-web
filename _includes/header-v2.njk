@@ -1,0 +1,161 @@
+<header class="ts-header" id="site-header" aria-label="Main Header">
+  <div class="ts-header__container">
+    {#- Logo + Branding -#}
+    <div class="ts-header__branding">
+      <a href="/" class="ts-header__logo-link" aria-label="Tillerstead LLC - Home">
+        <img
+          src="/assets/img/logo/logo-header@2x.webp?v={{ site.cache_version }}"
+          alt="Tillerstead Logo"
+          class="ts-header__logo"
+          width="60"
+          height="60"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </a>
+      <div class="ts-header__info">
+        <span class="ts-header__company">Tillerstead LLC</span>
+        <span class="ts-header__region">South Jersey • Licensed Contractor</span>
+      </div>
+    </div>
+
+    {#- Desktop Navigation -#}
+    {% include "navigation/ts-navigation.njk" %}
+
+    {#- Header Actions: Search + Phone + CTA -#}
+    <div class="ts-header__actions">
+      <button
+        type="button"
+        class="ts-header__search-btn"
+        id="search-trigger"
+        aria-label="Search site"
+        aria-expanded="false"
+        aria-controls="search-overlay"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </button>
+      <a href="tel:+16098628808" class="ts-header__phone-btn" aria-label="Call (609)&nbsp;862&#8209;8808">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="ts-header__phone-text">Call Now</span>
+      </a>
+      <a href="/contact/" class="ts-header__cta-btn">
+        Free Estimate
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    {#- Mobile Menu Toggle -#}
+    <button
+      type="button"
+      class="ts-nav-toggle"
+      aria-expanded="false"
+      aria-controls="ts-mobile-nav"
+      aria-label="Open navigation menu"
+    >
+      <span class="ts-hamburger" aria-hidden="true">
+        <span class="ts-hamburger__line"></span>
+        <span class="ts-hamburger__line"></span>
+        <span class="ts-hamburger__line"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+{#- Mobile Navigation Drawer -#}
+<div
+  id="ts-mobile-nav"
+  class="ts-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  aria-hidden="true"
+  inert
+>
+  <div class="ts-drawer__header">
+    <div class="ts-drawer__branding">
+      <img src="/assets/img/logo/logo-header@2x.webp?v={{ site.cache_version }}" alt="Tillerstead" class="ts-drawer__logo" width="44" height="44" loading="lazy" />
+      <div class="ts-drawer__header-info">
+        <span class="ts-drawer__title">Tillerstead LLC</span>
+        <span class="ts-drawer__subtitle">Licensed NJ Contractor</span>
+      </div>
+    </div>
+    <button type="button" class="ts-drawer__close" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  {#- Mobile Search -#}
+  <div class="ts-drawer__search">
+    <div class="ts-drawer__search-field">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input
+        type="search"
+        class="ts-drawer__search-input"
+        placeholder="Search guides, services..."
+        aria-label="Search site"
+        id="mobile-search-input"
+      />
+    </div>
+  </div>
+
+  {#- Mobile Nav Links -#}
+  <nav class="ts-drawer__body" aria-label="Mobile Navigation">
+    <ul class="ts-drawer__list">
+      {% for item in navigation.primary %}
+      <li class="ts-drawer__item{% if item.has_dropdown %} ts-drawer__item--accordion{% endif %}">
+        {% if item.has_dropdown %}
+        <button
+          type="button"
+          id="mobile-accordion-trigger-{{ item.id }}"
+          class="ts-drawer__link ts-drawer__accordion-trigger"
+          aria-expanded="false"
+          aria-controls="mobile-accordion-{{ item.id }}"
+        >
+          <span class="ts-drawer__text">{{ item.title }}</span>
+          <svg class="ts-drawer__chevron" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20">
+            <path d="M7 8l3 3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+        <ul id="mobile-accordion-{{ item.id }}" class="ts-drawer__accordion" aria-labelledby="mobile-accordion-trigger-{{ item.id }}" hidden>
+          {% for child in item.children %}
+          <li class="ts-drawer__accordion-item{% if child.featured %} ts-drawer__accordion-item--featured{% endif %}">
+            <a href="{{ child.url }}">
+              {% if child.icon %}<span class="ts-nav__icon">{{ child.icon }}</span>{% endif %}
+              {% if child.featured %}<strong>{{ child.title }}</strong>{% else %}{{ child.title }}{% endif %}
+              {% if child.subtitle %}<small class="ts-drawer__item-sub">{{ child.subtitle }}</small>{% endif %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <a href="{{ item.url }}" class="ts-drawer__link{% if item.cta %} ts-drawer__link--cta{% endif %}">
+          <span class="ts-drawer__text">{{ item.title }}</span>
+        </a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="ts-drawer__footer">
+      <a href="/contact/" class="ts-drawer__footer-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get Free Estimate
+      </a>
+      <div class="ts-drawer__footer-meta">
+        <span class="ts-drawer__license">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          NJ HIC #13VH10808800
+        </span>
+        <a href="tel:+16098628808" class="ts-drawer__phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (609)&nbsp;862&#8209;8808
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="ts-drawer__overlay" aria-hidden="true"></div>
+</div>
+

@@ -1,0 +1,102 @@
+- category: "General Questions"
+  items:
+    - question: "What areas do you cover?"
+      answer: |
+        We serve <strong>Atlantic, Ocean, and Cape May Counties</strong> in South Jersey, including Egg Harbor Township, Galloway, Toms River, Brick, Ocean City, Sea Isle City, and nearby towns.
+    - question: "Are you licensed and insured?"
+      answer: |
+        Yes. Tillerstead LLC is a <strong>New Jersey licensed Home Improvement Contractor (HIC #13VH10808800)</strong> with liability insurance. Certificates are available on request. All permitted bathroom and tile work is performed by licensed professionals as required by law.
+    - question: "What warranty do you offer?"
+      answer: |
+        We provide a <strong>2-year workmanship warranty</strong> covering defects in our installation. Manufacturer warranties on materials are separate and often longer. Normal wear, homeowner damage, or structural movement are not covered.
+    - question: "Will I get a written contract?"
+      answer: |
+        Yes. Every project over $500 includes a detailed written contract per New Jersey law, outlining scope, materials, timeline, payment schedule, and your 3-day right to cancel. No surprises—everything is clearly documented.
+
+- category: "Project Process"
+  items:
+    - question: "How do I request an estimate?"
+      answer: |
+        Use our <a href="/contact/">estimate request form</a> or call <a href="tel:+16098628808">(609) 862-8808</a>. We'll visit your site, discuss your goals, and provide a free, detailed written estimate.
+    - question: "Do you handle permits?"
+      answer: |
+        Yes, when required. We manage the permit process and inspections for projects needing plumbing, structural, or electrical work. Cosmetic-only jobs may not need permits—we'll clarify during your estimate. <a href="/build/nj-codes-permits/">Learn more about NJ codes and permits →</a>
+    - question: "How long will my project take?"
+      answer: |
+        Typical timelines:
+        <ul>
+          <li><strong>Tile-only:</strong> 3–7 days</li>
+          <li><strong>Shower rebuild:</strong> 1–2 weeks</li>
+          <li><strong>Full remodel:</strong> 2–4 weeks</li>
+        </ul>
+        You'll get a specific schedule in your contract. We communicate proactively about any delays.
+    - question: "How does payment work?"
+      answer: |
+        Per NJ contractor regulations, deposits are limited to one-third (33%) of the contract price:
+        <ul>
+          <li><strong>Deposit:</strong> Up to 1/3 at contract signing (covers materials)</li>
+          <li><strong>Progress payments:</strong> At milestones based on work completed</li>
+          <li><strong>Final payment:</strong> After completion and walkthrough</li>
+        </ul>
+        All payment terms are detailed in your written contract per NJ HIC requirements.
+
+- category: "Technical Standards & Methods"
+  items:
+    - question: "What is TCNA compliance?"
+      answer: |
+        The <strong>Tile Council of North America (TCNA)</strong> sets industry standards for tile installation. We follow TCNA methods for prep, waterproofing, and installation—no shortcuts. Most tile failures result from skipping these steps. <a href="/build/">Explore our Build Phase guides →</a>
+    - question: "Do you perform flood testing?"
+      answer: |
+        Yes, when the project allows. Flood testing (ASTM D5957) checks shower pan waterproofing before tile is installed. Not all systems require it, but when done, we document results with photos. <a href="/build/flood-testing/">Learn about flood testing →</a>
+    - question: "Which waterproofing systems do you use?"
+      answer: |
+        We use <strong>ANSI A118.10-compliant</strong> systems:
+        <ul>
+          <li><strong>Sheet membranes:</strong> Schluter DITRA/KERDI, Laticrete Hydro Ban Board</li>
+          <li><strong>Liquid membranes:</strong> Laticrete Hydro Ban, Custom RedGard</li>
+          <li><strong>Traditional:</strong> Hot-mop or CPE liners (as needed)</li>
+        </ul>
+        We select the right system for your project and never mix incompatible products. <a href="/blog/waterproofing-redgard-vs-kerdi-vs-hydroban/">See our comparison of RedGard, KERDI, and HYDRO BAN.</a> <a href="/build/waterproofing-systems/">Learn about waterproofing →</a>
+    - question: "Can you install large-format tile?"
+      answer: |
+        Yes. Large-format tile (over 15") needs:
+        <ul>
+          <li>Substrate flatness to ANSI specs (1/8" in 10')</li>
+          <li>Full back-buttering</li>
+          <li>Lippage control systems</li>
+          <li>Medium-bed mortars if needed</li>
+        </ul>
+        We assess and prep as needed. <a href="/build/tile-installation-standards/">Learn about tile installation →</a>
+    - question: "Do you install heated floors?"
+      answer: |
+        Yes, we install electric radiant floor heating under tile. This includes subfloor evaluation, uncoupling membrane, electrician coordination, and compatible thinset. Heated floors add comfort to any tiled space.
+
+- category: "Materials & Products"
+  items:
+    - question: "Do you supply tile, or should I?"
+      answer: |
+        Either works:
+        <ul>
+          <li><strong>We supply:</strong> We source tile at trade pricing, handle ordering, delivery, and overage.</li>
+          <li><strong>You supply:</strong> You choose and buy tile/grout; we advise on quantity and suitability.</li>
+        </ul>
+        We always include installation materials (thinset, waterproofing) in our scope.
+    - question: "Which grout do you recommend?"
+      answer: |
+        We recommend <strong>epoxy or urethane grout</strong> for most jobs:
+        <ul>
+          <li>No sealing needed</li>
+          <li>Consistent color</li>
+          <li>Superior durability in wet areas</li>
+        </ul>
+        Cement grout is an option for some projects. We'll review choices and maintenance with you.
+    - question: "Can I use natural stone in my shower?"
+      answer: |
+        Yes, with proper planning. Natural stone needs:
+        <ul>
+          <li>Sealing (initial and ongoing)</li>
+          <li>Proper slope for drainage</li>
+          <li>Compatible setting materials</li>
+          <li>Realistic maintenance expectations</li>
+        </ul>
+        Some stones (like marble) are more porous and require more care. We'll discuss details during your consultation.

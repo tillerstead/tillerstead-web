@@ -1,0 +1,1026 @@
+@media (max-width: 768px) {
+  button,
+  a,
+  [role='button'],
+  .btn,
+  .nav-toggle,
+  .nav-close,
+  [role='menuitem'],
+  [role='tab'],
+  .tab-button,
+  .calc-tab,
+  .app-sidebar-link,
+  input[type='button'],
+  input[type='submit'],
+  input[type='reset'],
+  input[type='checkbox'],
+  input[type='radio'] {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px 16px;
+    touch-action: manipulation;
+  }
+
+  a.btn,
+  button.btn {
+    padding: 12px 24px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  input[type='search'],
+  textarea,
+  select {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    appearance: none;
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .hero-summary {
+    font-size: 1rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .section-summary {
+    font-size: 1rem;
+  }
+
+  .service-title,
+  .process-step .step-title,
+  .material-title,
+  .testimonial-author {
+    font-size: 1.125rem;
+  }
+
+  .service-description,
+  .material-description,
+  .step-description {
+    font-size: 0.9375rem;
+  }
+
+  .cta-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .cta-summary {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero,
+  .home-services,
+  .home-process,
+  .home-materials,
+  .home-testimonials,
+  .home-cta {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .services-grid,
+  .materials-grid,
+  .process-steps {
+    gap: 1.5rem;
+  }
+
+  .hero-facts {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(160 32 48 / 10%);
+  }
+
+  .hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .service-card,
+  .process-step,
+  .material-card,
+  .testimonial-card,
+  .highlight-item {
+    padding: 1.5rem;
+  }
+
+  .hero-actions,
+  .services-actions,
+  .cta-actions {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .hero-actions a,
+  .services-actions a,
+  .cta-actions a {
+    width: 100%;
+  }
+
+  .btn--block,
+  .btn--primary,
+  .btn--secondary-outline,
+  .hero-actions .btn,
+  .services-actions .btn,
+  .cta-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .trust-bar .trust-bar__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .trust-bar {
+    padding: 0.75rem 0;
+  }
+
+  .trust-bar .trust-bar__item {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  html[data-pointer='coarse'] .btn {
+    min-height: 48px;
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-drawer {
+    width: 90vw;
+    max-width: 320px;
+    padding: 1.5rem 1rem;
+  }
+
+  .nav-drawer a {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-drawer a:active,
+  .nav-drawer a:hover {
+    background: rgb(160 32 48 / 15%);
+  }
+
+  .drawer-cta {
+    margin-top: 1.5rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .drawer-trust {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-group,
+  .form-row {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .hero-image,
+  .service-image,
+  .portfolio-image {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  picture,
+  picture img {
+    width: 100%;
+  }
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .stagger-1,
+  .stagger-2,
+  .stagger-3,
+  .stagger-4 {
+    transition-delay: 0 !important;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .service-card:hover,
+    .process-step:hover,
+    .material-card:hover,
+    .testimonial-card:hover,
+    .highlight-item:hover,
+    .btn:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .service-card:hover::before,
+    .material-card:hover::after {
+      transform: none;
+    }
+  }
+
+  .service-card,
+  .process-step,
+  .material-card,
+  .testimonial-card {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  }
+
+  .service-card:active,
+  .process-step:active,
+  .material-card:active,
+  .testimonial-card:active {
+    opacity: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: clamp(14px, 2vw, 16px);
+    color: rgb(255 255 255 / 90%);
+    background: #0f1210;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
+
+  h3 {
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
+  }
+
+  p,
+  li {
+    font-size: clamp(0.9375rem, 2.5vw, 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .site-header,
+  .app-header {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+
+  .nav-drawer,
+  .app-sidebar {
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+  }
+
+  .sticky-cta,
+  .fixed-footer,
+  .app-footer {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .container,
+  .app-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-summary {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-hero,
+  .home-services,
+  .home-process,
+  .home-materials,
+  .home-testimonials,
+  .home-cta {
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-facts,
+  .hero-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card,
+  .process-step,
+  .material-card,
+  .testimonial-card {
+    padding: 1rem;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9375rem;
+  }
+
+  .nav-drawer {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: -1rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .home-hero,
+  .home-services,
+  .home-process,
+  .home-cta {
+    padding: 1rem 0;
+  }
+
+  .hero-grid {
+    gap: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+  }
+
+  .hero-actions a {
+    width: auto;
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (pointer: coarse) {
+  button,
+  a,
+  [role='button'] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn:active {
+    opacity: 80%;
+    transform: scale(0.98);
+  }
+}
+
+@media (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  :focus-visible {
+    outline: 3px solid var(--tiller-color-gold, #c73a4f);
+    outline-offset: 4px;
+  }
+
+  .btn:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid var(--tiller-color-gold, #c73a4f);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: #0f1210;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    width: 100%;
+    max-width: 100vw;
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .calc-input,
+  .calc-field input,
+  .calc-field select {
+    font-size: 16px;
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .calc-result,
+  .result-card {
+    font-size: 1.125rem;
+    padding: 1rem;
+  }
+
+  .calc-tabs,
+  .app-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .calc-tabs::-webkit-scrollbar,
+  .app-tabs::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollable,
+  .app-content,
+  .calc-results,
+  .modal-content {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  .scroll-x,
+  .table-wrapper,
+  .chart-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid,
+  .card-grid,
+  .service-grid,
+  .feature-grid,
+  .calc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card,
+  .service-card,
+  .calc-card,
+  .result-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-group,
+  .action-group,
+  .calc-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .btn-group .btn,
+  .action-group .btn,
+  .calc-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 400px) {
+    .btn-group--horizontal {
+      flex-direction: row;
+    }
+
+    .btn-group--horizontal .btn {
+      flex: 1;
+    }
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  button:active,
+  .btn:active,
+  a.btn:active {
+    transform: scale(0.97);
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:active,
+  .service-card:active,
+  .calc-card:active {
+    transform: scale(0.99);
+    transition: transform 0.15s ease;
+  }
+
+  .page-transition {
+    animation: fade-in 0.3s ease;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0%;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 100%;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal,
+  .dialog,
+  .drawer {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .modal-content,
+  .dialog-content {
+    max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem -1rem;
+    padding: 0 1rem;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  @media (max-width: 400px) {
+    .table--stack thead {
+      display: none;
+    }
+
+    .table--stack tbody tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      border: 1px solid var(--tiller-grout, #c9a227);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .table--stack td {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border: none;
+    }
+
+    .table--stack td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-visible {
+    display: block !important;
+  }
+
+  .mobile-mt-0 {
+    margin-top: 0 !important;
+  }
+
+  .mobile-mb-0 {
+    margin-bottom: 0 !important;
+  }
+
+  .mobile-py-1 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .mobile-px-1 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+  }
+
+  .mobile-text-lg {
+    font-size: 1.125rem !important;
+  }
+
+  .mobile-w-full {
+    width: 100% !important;
+  }
+
+  .mobile-w-auto {
+    width: auto !important;
+  }
+}
+
+@media print {
+  .nav-toggle,
+  .site-header,
+  .nav-drawer,
+  .cta-actions,
+  .app-sidebar,
+  .calc-tabs {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000000 !important;
+    text-shadow: none !important;
+    text-decoration-color: currentcolor;
+  }
+}
+
+@media (max-width: 768px) {
+  .card,
+  .service-card,
+  .calc-card,
+  .section {
+    contain: layout style paint;
+  }
+
+  .lazy-section,
+  .below-fold {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
+  * {
+    backface-visibility: hidden;
+  }
+}
+
+/* ============================================================
+   MERGED FROM: scroll-fix-mobile.css
+   Fixes scroll blocking from mobile nav, overflow, pointer-events
+   ============================================================ */
+
+/* Ensure scroll works when nav is closed */
+body:not(.nav-open, .menu-open) {
+  overflow: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  pointer-events: auto !important;
+}
+
+body:not(.nav-open) .ts-main-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Nav drawer should not block interaction when closed */
+.ts-drawer[aria-hidden='true'],
+#ts-mobile-nav[aria-hidden='true'],
+#mobile-nav-drawer[aria-hidden='true'] {
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+/* Nav overlay should not block interaction when nav is closed */
+.nav-overlay:not(.is-open),
+.ts-drawer__overlay[aria-hidden='true'] {
+  pointer-events: none !important;
+  visibility: hidden;
+  opacity: 0%;
+}
+
+.nav-overlay.is-open,
+.ts-drawer__overlay:not([aria-hidden='true']) {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 100%;
+}
+
+/* Prevent body scroll lock unless nav is actually open */
+body.nav-open,
+body.menu-open {
+  overflow: hidden !important;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Mobile: Fix bottom nav from blocking scroll */
+@media (max-width: 768px) {
+  .app-bottom-nav,
+  .mobile-bottom-nav,
+  .bottom-nav {
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .app-bottom-nav__link,
+  .mobile-bottom-nav__link,
+  .bottom-nav__link {
+    pointer-events: auto;
+  }
+
+  .ts-main-content,
+  .app-main,
+  .app-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  body:not(.nav-open, .menu-open) {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    position: static !important;
+    height: auto !important;
+  }
+
+  .ts-header,
+  .app-header,
+  header[role='banner'] {
+    pointer-events: auto;
+    z-index: 10;
+  }
+
+  .ts-nav-toggle,
+  #mobile-menu-toggle,
+  .app-header__menu {
+    pointer-events: auto !important;
+    z-index: 1001;
+  }
+
+  .app-bottom-nav,
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+}
+
+/* Desktop: Prevent nav-open from affecting scroll */
+@media (min-width: 769px) {
+  body.nav-open {
+    overflow: auto !important;
+    height: auto !important;
+  }
+
+  .ts-drawer[aria-hidden='true'],
+  #ts-mobile-nav[aria-hidden='true'],
+  .mobile-nav-drawer[aria-hidden='true'] {
+    pointer-events: none !important;
+  }
+}
+
+/* Emergency scroll restore (failsafe) */
+body[data-scroll-blocked='false'] {
+  overflow-y: auto !important;
+  pointer-events: auto !important;
+}
+
+/* Accessibility: Ensure focusable elements are always interactive */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  pointer-events: auto !important;
+}
+
+/* A11y toolbar should not block scroll when closed */
+.a11y-toolbar:not([aria-expanded='true']),
+.a11y-toolbar__panel[hidden] {
+  pointer-events: none !important;
+  visibility: hidden;
+}
+
+.a11y-toolbar[aria-expanded='true'],
+.a11y-toolbar__panel:not([hidden]) {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Ensure all interactive elements in bottom nav are accessible */
+.app-bottom-nav *,
+.mobile-bottom-nav *,
+.bottom-nav * {
+  pointer-events: auto;
+}

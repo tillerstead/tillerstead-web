@@ -1,0 +1,179 @@
+<!-- Labor Time Estimator View (pre-rendered for Tools Hub router) -->
+<section class="tools-section" id="labor-calculator" aria-labelledby="labor-calculator-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="labor-calculator-title" class="tools-section__title">Labor Time Estimator</h2>
+      <p class="tools-section__desc">Estimate project duration based on tile type, pattern, and prep work.</p>
+    </header>
+
+    <div class="tools-card">
+      <div class="form-grid form-grid--2col">
+        <div class="form-field">
+          <label for="labor-tile-type" class="form-label form-label--required">Tile Type</label>
+          <select id="labor-tile-type" class="form-select">
+            <option value="">Select tile size...</option>
+            <option value="mosaic">Mosaic (1&times;1, 2&times;2)</option>
+            <option value="subway">Subway (3&times;6)</option>
+            <option value="small">Small (4&times;4 &ndash; 6&times;6)</option>
+            <option value="standard">Standard (12&times;12)</option>
+            <option value="medium">Medium (12&times;24)</option>
+            <option value="large">Large Format (24&times;24+)</option>
+            <option value="plank">Plank (6&times;36, 8&times;48)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="labor-pattern" class="form-label">Pattern</label>
+          <select id="labor-pattern" class="form-select">
+            <option value="straight">Straight / Stacked</option>
+            <option value="offset">Running Bond / Offset</option>
+            <option value="diagonal">Diagonal</option>
+            <option value="herringbone">Herringbone</option>
+            <option value="versailles">Versailles / Modular</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="labor-area" class="form-label form-label--required">Total Tile Area</label>
+          <div class="form-inline">
+            <input type="number" id="labor-area" class="form-input" placeholder="100" min="10" max="1000" value="100" />
+            <span class="form-inline__suffix">sq ft</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="labor-surface" class="form-label">Surface Type</label>
+          <select id="labor-surface" class="form-select">
+            <option value="floor">Floor</option>
+            <option value="wall">Wall</option>
+            <option value="shower">Shower Enclosure</option>
+            <option value="backsplash">Backsplash</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="labor-complexity" class="form-label">Complexity</label>
+          <select id="labor-complexity" class="form-select">
+            <option value="simple">Simple (Few Cuts)</option>
+            <option value="moderate" selected>Moderate</option>
+            <option value="complex">Complex (Many Cuts/Details)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Sq Ft Helper -->
+      <div class="sqft-helper" data-sqft-helper data-target-floor="#labor-area">
+        <div class="tools-card">
+          <h4 class="calc-results__title">Sq Ft Helper</h4>
+          <div class="form-grid form-grid--3col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-width">Width</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-width"
+                  class="form-input"
+                  data-sqft="width"
+                  placeholder="e.g., 8"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sqft-length">Length</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-length"
+                  class="form-input"
+                  data-sqft="length"
+                  placeholder="e.g., 10"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid form-grid--2col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-floor-output">Floor Area</label>
+              <div class="form-inline">
+                <input
+                  type="text"
+                  id="sqft-floor-output"
+                  class="form-input"
+                  data-sqft-output="floor"
+                  value="—"
+                  readonly
+                />
+                <span class="form-inline__suffix">sq ft</span>
+              </div>
+              <span class="form-hint">&asymp; width &times; length</span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="btn-group btn-group--horizontal">
+              <button type="button" class="btn btn--primary" data-sqft-action="use-floor">Use floor area</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <fieldset class="form-fieldset">
+        <legend class="form-fieldset__legend">Prep Work Included</legend>
+        <div class="form-grid form-grid--3col">
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-demo" />
+            <span class="form-checkbox__text">Demolition</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-levelprep" />
+            <span class="form-checkbox__text">Floor Leveling</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-waterproof" />
+            <span class="form-checkbox__text">Waterproofing</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-backerboard" />
+            <span class="form-checkbox__text">Backer Board Install</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-schluter" />
+            <span class="form-checkbox__text">Edge Trim/Schluter</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="labor-niche" />
+            <span class="form-checkbox__text">Niche Installation</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="button" class="btn btn--primary" id="calc-labor-btn">Estimate Time</button>
+
+      <!-- Results -->
+      <div class="calc-results" id="labor-calc-results" hidden>
+        <h4 class="calc-results__title">Estimated Project Duration</h4>
+        <div class="labor-estimate-display">
+          <div class="labor-estimate__days">
+            <span class="labor-estimate__value" id="result-labor-days">—</span>
+            <span class="labor-estimate__unit">working days</span>
+          </div>
+          <p class="labor-estimate__detail" id="result-labor-detail"></p>
+        </div>
+
+        <div class="calc-results__breakdown">
+          <h5 class="calc-results__subtitle">Time Breakdown</h5>
+          <div class="labor-breakdown" id="labor-breakdown-list"></div>
+        </div>
+
+        <p class="calc-results__note">
+          <strong>Note:</strong> Estimates assume professional tile installer working standard 8-hour days. Actual time
+          varies based on site conditions and installer experience.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

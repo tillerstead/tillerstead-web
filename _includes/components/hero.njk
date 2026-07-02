@@ -1,0 +1,64 @@
+{# Hero section component #}
+{# Usage:
+  {% set hero = {
+    eyebrow: "Premium Services",
+    title: "Professional Home Improvement",
+    subtitle: "Trusted by New Jersey homeowners since...",
+    cta_text: "Get Started",
+    cta_href: "/early-access",
+    secondary_cta: { text: "Learn More", href: "/services/" }
+  } %}
+  {% include "components/hero.njk" %}
+#}
+
+<section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 overflow-hidden">
+  
+  {# Background decoration #}
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(217,119,6,0.15),transparent_50%)]" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(217,119,6,0.1),transparent_50%)]" aria-hidden="true"></div>
+  
+  <div class="relative mx-auto max-w-4xl px-6 py-24 text-center">
+    
+    {# Eyebrow #}
+    {% if hero.eyebrow %}
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+      {{ hero.eyebrow }}
+    </div>
+    {% endif %}
+
+    {# Title #}
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 text-wrap">
+      {{ hero.title }}
+    </h1>
+
+    {# Subtitle #}
+    {% if hero.subtitle %}
+    <p class="text-lg sm:text-xl leading-relaxed text-slate-300 max-w-2xl mx-auto mb-10">
+      {{ hero.subtitle }}
+    </p>
+    {% endif %}
+
+    {# CTAs #}
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      
+      {# Primary CTA #}
+      <a href="{{ hero.cta_href or '/early-access' }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold shadow-lg shadow-amber-500/25 motion-safe:transition-all motion-safe:hover:bg-amber-400 motion-safe:hover:shadow-amber-500/40">
+        {{ hero.cta_text or "Get Started" }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+
+      {# Secondary CTA #}
+      {% if hero.secondary_cta %}
+      <a href="{{ hero.secondary_cta.href }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-600 text-slate-200 text-sm font-semibold motion-safe:transition-all motion-safe:hover:border-amber-500/50 motion-safe:hover:text-white">
+        {{ hero.secondary_cta.text }}
+      </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>

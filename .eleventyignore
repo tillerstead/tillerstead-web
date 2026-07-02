@@ -1,0 +1,111 @@
+# Build tooling
+node_modules/
+vendor/
+.jekyll-cache/
+_site/
+Gemfile
+Gemfile.lock
+*.gemspec
+
+# IDE / OS
+.git/
+.github/
+.vscode/
+.vs/
+.DS_Store
+.editorconfig
+.gitignore
+.gitattributes
+
+# Linting / formatting configs
+eslint.config.js
+.lighthouserc.json
+.htmlhintrc
+.htmlvalidate.json
+.hintrc
+.stylelintrc.json
+.stylelintignore
+.prettierrc.json
+.prettierignore
+.pa11yci.json
+.size-limit.cjs
+.npmrc
+.nvmrc
+.ruby-version
+playwright.config.js
+browserconfig.xml
+.eleventy.js
+
+# Dev scripts and tools
+scripts/
+admin/
+docs/
+codebooks/
+_drafts/
+tillerstead-toolkit/
+toolkit/
+Contractor-Command-Center/
+_audit/
+_reports/
+tests/
+dev/
+.ai/
+.devcontainer/
+.git-encrypt/
+.githooks/
+.venv/
+.venv-py312/
+
+# Dev shell scripts
+*.ps1
+*.sh
+*.bat
+
+# Non-content markdown in root
+README.md
+LICENSE
+CLAUDE.md
+AI_IMPORTANT.md
+BRAND-GUIDELINES.md
+COLOR-STANDARD.md
+CODEOWNERS
+CONTRIBUTING.md
+GOVERNANCE.md
+IP_POLICY.md
+SECURITY.md
+CHANGELOG.md
+AUDIT_REPORT.md
+MODERNIZATION_FINDINGS.md
+README-OPUS-OPTIMIZATION.md
+
+# Config files that aren't site content
+*.config.js
+*.config.cjs
+*.toml
+render.yaml
+workbox-config.cjs
+
+# Backup patterns
+*.bak
+*.bak.*
+backup-pages/
+archive/
+
+# Data files that aren't content
+_data/ventures.js
+_idx.txt
+local_changes_list.txt
+seo-audit-result.txt
+PREVIEW_README.txt
+
+# Package files
+package.json
+package-lock.json
+
+# HTML files that are standalone tools (not Eleventy pages)
+academy-revenue.html
+flip-roi.html
+partnership.html
+
+# Old Jekyll layouts (replaced by Nunjucks)
+_layouts/

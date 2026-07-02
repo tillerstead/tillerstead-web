@@ -1,0 +1,64 @@
+{#- Base layout — replaces Jekyll _includes/layout/page-shell.html
+    All other layouts extend this. -#}
+<!DOCTYPE html>
+<html lang="en"{% if htmlAttrs %} {{ htmlAttrs }}{% endif %}>
+  <head>
+    <title>
+      {%- if meta_title %}{{ meta_title | e }}{%- elif title %}{{ title | e }} | {{ site.title | e }}{%- else %}{{ site.title | e }}{%- endif -%}
+    </title>
+    {% include "layout/head.njk" %}
+    {% if not minimal_shell %}{% include "schema/schema-combined.njk" %}{% endif %}
+    {% include "layout/meta-open-graph.njk" %}
+    {% include "layout/meta-geo.njk" %}
+    {% include "layout/meta-canonical.njk" %}
+    {% include "layout/meta-success-confetti.njk" %}
+    {% if page.url == "/contact/" %}{% include "forms/contact-page.njk" %}{% endif %}
+    {% if extra_head %}{{ extra_head | safe }}{% endif %}
+    <link rel="stylesheet" href="/assets/css/components/nav-system-v2.css?v={{ site.cache_version }}" />
+  </head>
+  <body class="ts-body{% if body_class %} {{ body_class }}{% endif %}{% if layout_body_class %} {{ layout_body_class }}{% endif %}{% if build_guide %} page-build-guide{% endif %}">
+    <nav class="skip-links" aria-label="Skip navigation">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+    </nav>
+    {% if not minimal_shell %}
+    <div class="scroll-progress" aria-hidden="true"></div>
+    {% include "navigation/utility-bar.njk" %}
+    {% include "header-v2.njk" %}
+    {% include "components/search-overlay.njk" %}
+    {% if showBreadcrumbs !== false %}{% include "navigation/ts-breadcrumbs.njk" %}{% endif %}
+    {% endif %}
+    <main class="ts-main-content" id="main-content" aria-label="Main content">
+      {% block main %}{{ content | safe }}{% endblock %}
+    </main>
+    {% if not minimal_shell %}
+    {% include "layout/footer.njk" %}
+    {#- Accessibility toolbar (all devices) -#}
+    {% include "components/a11y-toolbar.njk" %}
+    {#- Bottom action bar (replaces old sticky CTA) -#}
+    {% include "components/bottom-bar.njk" %}
+    {% endif %}
+
+    {#- Lead Magnet - Desktop Homepage only -#}
+    {% if is_home == true and not minimal_shell %}
+    <div class="desktop-only-features">{% include "components/lead-magnet-popup.njk" %}</div>
+    {% endif %}
+    {% include "layout/scripts.njk" %}
+    {% if not minimal_shell %}
+    <script>
+      {#- Load search index for client-side search -#}
+      fetch('/assets/js/search-index.json')
+        .then(r => r.ok ? r.json() : [])
+        .then(data => { window.__TILLERSTEAD_SEARCH_INDEX = data; })
+        .catch(() => {});
+    </script>
+    <script src="/assets/js/navigation-system-v2.js?v={{ site.cache_version }}" defer></script>
+    {% endif %}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js?v={{ site.cache_version }}').catch((err) => console.warn('[SW] Registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>

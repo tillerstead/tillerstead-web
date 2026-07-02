@@ -1,0 +1,173 @@
+<!-- Desktop Left Rail Navigation -->
+<nav class="nav-rail__inner">
+  <!-- Project Info -->
+  <div class="nav-rail__header">
+    <h2 class="nav-rail__project-name" id="nav-project-name">Untitled Project</h2>
+    <button class="nav-rail__edit-name" aria-label="Edit project name" onclick="editProjectName()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M11.5 1.5l3 3L5 14H2v-3L11.5 1.5z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tool Categories -->
+  <div class="nav-rail__section">
+    <h3 class="nav-rail__section-title">Coverage Calculators</h3>
+    <ul class="nav-rail__list">
+      <li>
+        <a href="#/tile" data-route="tile" class="nav-rail__link">
+          <span class="nav-rail__icon">🧱</span>
+          <span class="nav-rail__text">Tile Quantity</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/grout" data-route="grout" class="nav-rail__link">
+          <span class="nav-rail__icon">🪣</span>
+          <span class="nav-rail__text">Grout Calculator</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/mortar" data-route="mortar" class="nav-rail__link">
+          <span class="nav-rail__icon">🔧</span>
+          <span class="nav-rail__text">Mortar Coverage</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/waterproof" data-route="waterproof" class="nav-rail__link">
+          <span class="nav-rail__icon">💧</span>
+          <span class="nav-rail__text">Waterproofing</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-rail__section">
+    <h3 class="nav-rail__section-title">Structural & Prep</h3>
+    <ul class="nav-rail__list">
+      <li>
+        <a href="#/slope" data-route="slope" class="nav-rail__link">
+          <span class="nav-rail__icon">📐</span>
+          <span class="nav-rail__text">Shower Slope</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/leveling" data-route="leveling" class="nav-rail__link">
+          <span class="nav-rail__icon">📏</span>
+          <span class="nav-rail__text">Self-Leveling</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-rail__section">
+    <h3 class="nav-rail__section-title">Planning & Design</h3>
+    <ul class="nav-rail__list">
+      <li>
+        <a href="#/labor" data-route="labor" class="nav-rail__link">
+          <span class="nav-rail__icon">⏱️</span>
+          <span class="nav-rail__text">Labor Estimate</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/visualizer" data-route="visualizer" class="nav-rail__link">
+          <span class="nav-rail__icon">🎨</span>
+          <span class="nav-rail__text">Pattern Visualizer</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Divider -->
+  <hr class="nav-rail__divider" />
+
+  <!-- Quick Actions -->
+  <div class="nav-rail__section">
+    <h3 class="nav-rail__section-title">Actions</h3>
+    <ul class="nav-rail__list">
+      <li>
+        <a href="#/overview" data-route="overview" class="nav-rail__link">
+          <span class="nav-rail__icon">📊</span>
+          <span class="nav-rail__text">Overview</span>
+        </a>
+      </li>
+      <li data-requires-auth>
+        <a href="#/dashboard" data-route="dashboard" class="nav-rail__link">
+          <span class="nav-rail__icon">📈</span>
+          <span class="nav-rail__text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/export" data-route="export" class="nav-rail__link">
+          <span class="nav-rail__icon">📤</span>
+          <span class="nav-rail__text">Export Project</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/quote" data-route="quote" class="nav-rail__link nav-rail__link--primary">
+          <span class="nav-rail__icon">📄</span>
+          <span class="nav-rail__text">Generate Quote</span>
+        </a>
+      </li>
+      <li data-requires-auth>
+        <a href="#/admin" data-route="admin" class="nav-rail__link">
+          <span class="nav-rail__icon">⚙️</span>
+          <span class="nav-rail__text">Admin Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mini Project Summary (Desktop) -->
+  <div class="nav-rail__mini-summary">
+    <div class="mini-summary__stat">
+      <span class="mini-summary__label">Progress</span>
+      <div class="mini-summary__progress">
+        <div class="mini-summary__progress-bar" style="width: 0%"></div>
+      </div>
+      <span class="mini-summary__value" id="nav-progress-text">0%</span>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Update nav project name from state
+  (function () {
+    if (!window.ProjectState) return;
+
+    function updateNavProjectName() {
+      const nameEl = document.getElementById('nav-project-name');
+      const name = window.ProjectState.get('project.name') || 'Untitled Project';
+      if (nameEl) nameEl.textContent = name;
+    }
+
+    function updateNavProgress() {
+      const progressBar = document.querySelector('.mini-summary__progress-bar');
+      const progressText = document.getElementById('nav-progress-text');
+      const percent = window.ProjectState.calculateCompletionPercent();
+
+      if (progressBar) progressBar.style.width = `${percent}%`;
+      if (progressText) progressText.textContent = `${percent}%`;
+    }
+
+    // Initial update
+    updateNavProjectName();
+    updateNavProgress();
+
+    // Listen for state changes
+    window.ProjectState.on('change', (data) => {
+      if (data.path.startsWith('project.name')) {
+        updateNavProjectName();
+      }
+      updateNavProgress();
+    });
+  })();
+
+  // Edit project name
+  window.editProjectName = function () {
+    const current = window.ProjectState ? window.ProjectState.get('project.name') : 'Untitled Project';
+    const newName = prompt('Enter project name:', current);
+    if (newName && newName !== current && window.ProjectState) {
+      window.ProjectState.set('project.name', newName);
+    }
+  };
+</script>

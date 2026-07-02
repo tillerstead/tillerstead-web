@@ -1,0 +1,370 @@
+---
+layout: default
+title: 'Frequently Asked Questions | Tillerstead'
+description: 'Common questions about tile installation, waterproofing, bathroom remodeling, and working with Tillerstead in South Jersey. TCNA standards explained.'
+permalink: /faq/
+body_class: page-faq
+---
+
+<!-- Hero Section -->
+<section class="faq-hero">
+  <div class="container">
+    <div class="faq-hero__content">
+      <span class="faq-hero__eyebrow">Questions & Answers</span>
+      <h1 class="faq-hero__title">Frequently Asked Questions</h1>
+      <p class="faq-hero__summary">
+        Clear answers about tile installation, waterproofing systems, and working with a licensed New Jersey contractor.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Peace of Mind Assurance -->
+{% include "components/ts-peace-of-mind.njk" %}
+
+<!-- FAQ Sections -->
+<section class="faq-content">
+  <div class="container">
+    <div class="faq-content__wrapper">
+      {% for section in faq %} {%- set is_even = loop.index % 2 -%}
+      <div class="faq-category {% if is_even == 0 %}faq-category--alt{% endif %}">
+        <h2 class="faq-category__title" id="faq-{{ loop.index }}">{{ section.category }}</h2>
+        <div class="faq-list">
+          {% for faq in section.items %}
+          <details class="faq-item" {% if loop.first and loop.parentloop.first %}open{% endif %}>
+            <summary class="faq-item__question">
+              <span>{{ faq.question }}</span>
+              <svg
+                class="faq-item__icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-item__answer">{{ faq.answer | markdownify }}</div>
+          </details>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="faq-cta">
+  <div class="container">
+    <div class="faq-cta__content">
+      <h2 class="faq-cta__title">Still Have Questions?</h2>
+      <p class="faq-cta__text">
+        We're happy to discuss your project in detail. Request a free estimate or give us a call.
+      </p>
+      <div class="faq-cta__actions">
+        <a href="/contact/" class="btn btn--primary btn--lg">Request Free Estimate</a>
+        <a href="tel:+16098628808" class="btn btn--outline-light btn--lg">Call (609) 862-8808</a>
+        <a href="mailto:support@tillerstead.com" class="btn btn--outline-light btn--lg">Email Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* FAQ Page - Premium Styling */
+
+  /* Peace of Mind Component */
+  .ts-peace-of-mind {
+    background: linear-gradient(135deg, var(--tiller-color-gold, #c9a227) 0%, #b8941f 100%);
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
+    text-align: center;
+  }
+
+  .ts-peace-of-mind__text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    line-height: 1.7;
+    color: #fff;
+  }
+
+  .ts-peace-of-mind__text strong {
+    display: block;
+    font-size: clamp(1.125rem, 3vw, 1.375rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Hero */
+  .faq-hero {
+    background: linear-gradient(
+      135deg,
+      var(--tiller-color-green, #1a3d2e) 0%,
+      var(--tiller-color-green-dark, #0f2a1f) 100%
+    );
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    color: #fff;
+  }
+
+  .faq-hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .faq-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tiller-color-gold, #c9a227);
+    margin-bottom: 1rem;
+  }
+
+  .faq-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .faq-hero__summary {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  /* FAQ Content - Dark Theme */
+  .faq-content {
+    background: var(--tiller-bg-darker, #0d0f0d);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .faq-content__wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* FAQ Category */
+  .faq-category {
+    margin-bottom: 3rem;
+    background: var(--tiller-bg-dark, #121414);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(201, 162, 39, 0.1);
+  }
+
+  .faq-category--alt {
+    background: var(--tiller-bg-stone, #1a1c1a);
+  }
+
+  .faq-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-category__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--tiller-color-emerald, #10b981);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  /* FAQ List */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* FAQ Item - Dark Card Style with Gradient */
+  .faq-item {
+    background: linear-gradient(135deg, var(--tiller-bg-stone, #1a1c1a) 0%, rgba(26, 61, 46, 0.15) 100%);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: var(--tiller-color-emerald, #10b981);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(16, 185, 129, 0.1);
+  }
+
+  .faq-item[open] {
+    border-color: var(--tiller-color-gold, #c9a227);
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(201, 162, 39, 0.15);
+  }
+
+  .faq-item__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #fff;
+    list-style: none;
+    transition: background 0.15s ease;
+    background: transparent;
+  }
+
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__question:hover {
+    background: rgba(16, 185, 129, 0.08);
+  }
+
+  .faq-item__question span {
+    flex: 1;
+    padding-right: 1rem;
+  }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    color: var(--tiller-color-gold, #c9a227);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(180deg);
+    color: var(--tiller-color-emerald, #10b981);
+  }
+
+  .faq-item__answer {
+    padding: 0 1.5rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    border-top: 1px solid rgba(201, 162, 39, 0.1);
+    margin-top: -0.25rem;
+    padding-top: 1.25rem;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .faq-item__answer p {
+    margin: 0 0 1rem;
+  }
+
+  .faq-item__answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-item__answer ul,
+  .faq-item__answer ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .faq-item__answer li {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .faq-item__answer strong {
+    color: var(--tiller-color-emerald, #10b981);
+  }
+
+  .faq-item__answer a {
+    color: var(--tiller-color-gold, #c9a227);
+    text-decoration: underline;
+    text-decoration-color: rgba(201, 162, 39, 0.4);
+  }
+
+  .faq-item__answer a:hover {
+    color: var(--tiller-color-emerald, #10b981);
+    text-decoration-color: var(--tiller-color-emerald, #10b981);
+  }
+
+  /* CTA Section */
+  .faq-cta {
+    background: var(--tiller-gradient-emerald-accessible, linear-gradient(135deg, #006c47, #047857));
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
+  .faq-cta__content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .faq-cta__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .faq-cta__text {
+    font-size: 1.125rem;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+
+  .faq-cta__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .faq-cta .btn--primary {
+    background: #fff;
+    color: var(--tiller-color-green, #1a3d2e);
+  }
+
+  .faq-cta .btn--primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .faq-cta .btn--outline-light {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .faq-cta .btn--outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .faq-cta__actions {
+      flex-direction: column;
+    }
+
+    .faq-cta__actions .btn {
+      width: 100%;
+    }
+
+    .faq-item__question {
+      padding: 1rem 1.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-category {
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+  }
+</style>

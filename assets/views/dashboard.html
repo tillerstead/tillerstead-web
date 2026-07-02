@@ -1,0 +1,535 @@
+<!-- Dashboard View Fragment — injected into #app-content by ToolsHubRouter -->
+<style>
+  /* ── Dashboard-scoped variables (avoid leaking into Hub) ── */
+  .dashboard-view {
+    --dash-primary: #10b981;
+    --dash-secondary: #059669;
+    --dash-success: #10b981;
+    --dash-warning: #f59e0b;
+    --dash-danger: #ef4444;
+    --dash-bg: #f8fafc;
+    --dash-surface: #ffffff;
+    --dash-text: #1e293b;
+    --dash-text-secondary: #64748b;
+    --dash-border: #e2e8f0;
+    --dash-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --dash-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --dash-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    color: var(--dash-text);
+    line-height: 1.6;
+  }
+
+  .dashboard-view .dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Header */
+  .dashboard-view .dashboard-header {
+    margin-bottom: 2rem;
+  }
+  .dashboard-view .dashboard-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dash-primary);
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-view .dashboard-header p {
+    color: var(--dash-text-secondary);
+    font-size: 1rem;
+  }
+
+  /* Location Selector */
+  .dashboard-view .location-selector {
+    background: var(--dash-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--dash-shadow-md);
+  }
+  .dashboard-view .location-selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .location-selector-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  /* Buttons — scoped as .dash-btn to avoid collision with Hub's .btn */
+  .dashboard-view .dash-btn {
+    padding: 0.625rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dashboard-view .dash-btn-primary {
+    background: linear-gradient(135deg, var(--dash-primary), var(--dash-secondary));
+    color: white;
+  }
+  .dashboard-view .dash-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--dash-shadow-md);
+  }
+  .dashboard-view .dash-btn-secondary {
+    background: white;
+    color: var(--dash-primary);
+    border: 2px solid var(--dash-primary);
+  }
+  .dashboard-view .dash-btn-secondary:hover {
+    background: rgba(16, 185, 129, 0.05);
+  }
+
+  /* Location Grid */
+  .dashboard-view .location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .dashboard-view .location-card {
+    background: white;
+    border: 2px solid var(--dash-border);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .dashboard-view .location-card:hover {
+    border-color: var(--dash-primary);
+    box-shadow: var(--dash-shadow-md);
+    transform: translateY(-2px);
+  }
+  .dashboard-view .location-card.active {
+    border-color: var(--dash-primary);
+    background: rgba(16, 185, 129, 0.05);
+  }
+  .dashboard-view .location-card.active::before {
+    content: '✓';
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 24px;
+    height: 24px;
+    background: var(--dash-success);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
+  .dashboard-view .location-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-view .location-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--dash-text-secondary);
+  }
+
+  /* Metrics Grid */
+  .dashboard-view .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .dashboard-view .metric-card {
+    background: var(--dash-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--dash-shadow-md);
+    transition: all 0.2s;
+  }
+  .dashboard-view .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--dash-shadow-lg);
+  }
+  .dashboard-view .metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .metric-label {
+    font-size: 0.875rem;
+    color: var(--dash-text-secondary);
+    font-weight: 500;
+  }
+  .dashboard-view .metric-icon {
+    font-size: 1.5rem;
+  }
+  .dashboard-view .metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-view .metric-change {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .dashboard-view .metric-change.positive {
+    color: var(--dash-success);
+  }
+  .dashboard-view .metric-change.negative {
+    color: var(--dash-danger);
+  }
+
+  /* Charts Section */
+  .dashboard-view .charts-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .dashboard-view .chart-card {
+    background: var(--dash-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--dash-shadow-md);
+  }
+  .dashboard-view .chart-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .chart-placeholder {
+    height: 250px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dash-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  /* Recent Quotes Table */
+  .dashboard-view .recent-quotes {
+    background: var(--dash-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--dash-shadow-md);
+    margin-bottom: 2rem;
+  }
+  .dashboard-view .recent-quotes h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .quotes-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .dashboard-view .quotes-table th {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--dash-border);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dash-text-secondary);
+  }
+  .dashboard-view .quotes-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--dash-border);
+  }
+  .dashboard-view .quotes-table tr:hover {
+    background: rgba(16, 185, 129, 0.02);
+  }
+  .dashboard-view .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .dashboard-view .status-badge.pending {
+    background: rgba(251, 191, 36, 0.15);
+    color: #d97706;
+  }
+  .dashboard-view .status-badge.signed {
+    background: rgba(16, 185, 129, 0.15);
+    color: #059669;
+  }
+  .dashboard-view .status-badge.sent {
+    background: rgba(59, 130, 246, 0.15);
+    color: #2563eb;
+  }
+
+  /* Regional Pricing Editor */
+  .dashboard-view .pricing-editor {
+    background: var(--dash-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--dash-shadow-md);
+  }
+  .dashboard-view .pricing-editor h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .pricing-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .dashboard-view .pricing-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px 100px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(16, 185, 129, 0.02);
+    border-radius: 6px;
+  }
+  .dashboard-view .pricing-row label {
+    font-weight: 500;
+  }
+  .dashboard-view .pricing-row input {
+    padding: 0.5rem;
+    border: 1px solid var(--dash-border);
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+  .dashboard-view .pricing-row input:focus {
+    outline: none;
+    border-color: var(--dash-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+  .dashboard-view .pricing-row .input-group {
+    position: relative;
+  }
+  .dashboard-view .pricing-row .input-prefix {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dash-text-secondary);
+  }
+  .dashboard-view .pricing-row input[type='number'] {
+    padding-left: 1.75rem;
+  }
+
+  /* Modal */
+  .dashboard-view .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashboard-view .modal.active {
+    display: flex;
+  }
+  .dashboard-view .modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    padding: 2rem;
+    box-shadow: var(--dash-shadow-lg);
+  }
+  .dashboard-view .modal-header {
+    margin-bottom: 1.5rem;
+  }
+  .dashboard-view .modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .dashboard-view .modal-body {
+    margin-bottom: 1.5rem;
+  }
+  .dashboard-view .form-field {
+    margin-bottom: 1rem;
+  }
+  .dashboard-view .form-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-view .form-field input,
+  .dashboard-view .form-field select,
+  .dashboard-view .form-field textarea {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid var(--dash-border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+  }
+  .dashboard-view .form-field input:focus,
+  .dashboard-view .form-field select:focus,
+  .dashboard-view .form-field textarea:focus {
+    outline: none;
+    border-color: var(--dash-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+  .dashboard-view .modal-footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .dashboard-view .dashboard {
+      padding: 1rem;
+    }
+    .dashboard-view .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+    .dashboard-view .charts-section {
+      grid-template-columns: 1fr;
+    }
+    .dashboard-view .quotes-table {
+      font-size: 0.875rem;
+    }
+    .dashboard-view .pricing-row {
+      grid-template-columns: 1fr;
+    }
+    .dashboard-view .location-selector-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<div class="dashboard-view">
+  <div class="dashboard">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1>📊 TillerPro™ Dashboard</h1>
+      <p>Multi-location performance tracking and management</p>
+    </div>
+
+    <!-- Location Selector -->
+    <div class="location-selector">
+      <div class="location-selector-header">
+        <h2>Select Location</h2>
+        <button class="dash-btn dash-btn-primary" onclick="openAddLocationModal()">➕ Add Location</button>
+      </div>
+      <div class="location-grid" id="location-grid">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="metrics-grid" id="metrics-grid">
+      <!-- Dynamically populated -->
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-card">
+        <h3>Quote Volume Trend</h3>
+        <div class="chart-placeholder" id="quote-volume-chart">
+          Chart will render here (integrate Chart.js or similar)
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Win Rate by Location</h3>
+        <div class="chart-placeholder" id="win-rate-chart">Chart will render here</div>
+      </div>
+    </div>
+
+    <!-- Recent Quotes Table -->
+    <div class="recent-quotes">
+      <h3>Recent Quotes</h3>
+      <div style="overflow-x: auto">
+        <table class="quotes-table" id="quotes-table">
+          <thead>
+            <tr>
+              <th>Quote #</th>
+              <th>Customer</th>
+              <th>Location</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Regional Pricing Editor -->
+    <div class="pricing-editor">
+      <h3>⚙️ Regional Pricing Configuration</h3>
+      <p style="color: var(--dash-text-secondary); margin-bottom: 1rem">
+        Customize pricing by location to account for regional cost variations.
+      </p>
+      <div class="pricing-grid" id="pricing-grid">
+        <!-- Dynamically populated -->
+      </div>
+      <div style="margin-top: 1.5rem; text-align: right">
+        <button class="dash-btn dash-btn-primary" onclick="savePricing()">💾 Save Pricing Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Location Modal -->
+  <div class="modal" id="add-location-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add New Location</h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-field">
+          <label for="location-name">Location Name *</label>
+          <input type="text" id="location-name" placeholder="e.g., Newark Branch" required />
+        </div>
+        <div class="form-field">
+          <label for="location-address">Address</label>
+          <input type="text" id="location-address" placeholder="123 Main St, Newark, NJ" />
+        </div>
+        <div class="form-field">
+          <label for="location-manager">Manager</label>
+          <input type="text" id="location-manager" placeholder="John Smith" />
+        </div>
+        <div class="form-field">
+          <label for="location-phone">Phone</label>
+          <input type="tel" id="location-phone" placeholder="(973) 555-0100" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="dash-btn dash-btn-secondary" onclick="closeAddLocationModal()">Cancel</button>
+        <button class="dash-btn dash-btn-primary" onclick="addLocation()">Add Location</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic script loader (replaces static <script src="...">) -->
+<script>
+  (function () {
+    const id = 'dashboard-manager-script';
+    if (!document.getElementById(id)) {
+      const s = document.createElement('script');
+      s.id = id;
+      s.src = '/assets/js/dashboard-manager.js';
+      document.body.appendChild(s);
+    }
+  })();
+</script>

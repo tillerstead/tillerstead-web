@@ -1,0 +1,199 @@
+<!-- Waterproofing Calculator View (pre-rendered for Tools Hub router) -->
+<section class="tools-section" id="waterproof-calculator" aria-labelledby="waterproof-calculator-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="waterproof-calculator-title" class="tools-section__title">Waterproofing Calculator</h2>
+      <p class="tools-section__desc">Estimate membrane, seam tape, and accessories for wet-area waterproofing.</p>
+    </header>
+
+    <div class="tools-card">
+      <div class="form-grid form-grid--2col">
+        <div class="form-field">
+          <label for="wp-system" class="form-label form-label--required">Waterproofing System</label>
+          <select id="wp-system" class="form-select">
+            <option value="schluter-kerdi">Schluter KERDI</option>
+            <option value="laticrete">LATICRETE Hydro Ban</option>
+            <option value="custom-redgard">Custom RedGard (Liquid)</option>
+            <option value="mapei-aquadefense">Mapei AquaDefense</option>
+            <option value="go-board">GoBoard Panels</option>
+            <option value="noble-deck">Noble Deck</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="wp-location" class="form-label">Application Area</label>
+          <select id="wp-location" class="form-select">
+            <option value="shower">Shower Walls &amp; Floor</option>
+            <option value="shower-walls">Shower Walls Only</option>
+            <option value="shower-floor">Shower Floor Only</option>
+            <option value="tub-surround">Tub Surround</option>
+            <option value="bathroom-floor">Bathroom Floor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="wp-floor-area" class="form-label">Floor Area</label>
+          <div class="form-inline">
+            <input type="number" id="wp-floor-area" class="form-input" placeholder="16" min="0" max="500" value="16" />
+            <span class="form-inline__suffix">sq ft</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="wp-wall-area" class="form-label">Wall Area</label>
+          <div class="form-inline">
+            <input type="number" id="wp-wall-area" class="form-input" placeholder="72" min="0" max="2000" value="72" />
+            <span class="form-inline__suffix">sq ft</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="wp-corners" class="form-label">Inside Corners</label>
+          <input type="number" id="wp-corners" class="form-input" placeholder="4" min="0" max="20" value="4" />
+        </div>
+      </div>
+
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="wp-niches" class="form-label">Niches/Benches</label>
+          <input type="number" id="wp-niches" class="form-input" placeholder="1" min="0" max="5" value="1" />
+        </div>
+      </div>
+
+      <!-- Sq Ft Helper (with height for wall area) -->
+      <div class="sqft-helper" data-sqft-helper data-target-floor="#wp-floor-area" data-target-wall="#wp-wall-area">
+        <div class="tools-card">
+          <h4 class="calc-results__title">Sq Ft Helper</h4>
+          <div class="form-grid form-grid--3col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-width">Width</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-width"
+                  class="form-input"
+                  data-sqft="width"
+                  placeholder="e.g., 8"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sqft-length">Length</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-length"
+                  class="form-input"
+                  data-sqft="length"
+                  placeholder="e.g., 10"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sqft-height">Height</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-height"
+                  class="form-input"
+                  data-sqft="height"
+                  placeholder="e.g., 8"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid form-grid--2col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-floor-output">Floor Area</label>
+              <div class="form-inline">
+                <input
+                  type="text"
+                  id="sqft-floor-output"
+                  class="form-input"
+                  data-sqft-output="floor"
+                  value="—"
+                  readonly
+                />
+                <span class="form-inline__suffix">sq ft</span>
+              </div>
+              <span class="form-hint">&asymp; width &times; length</span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sqft-walls-output">Wall Area (4 walls)</label>
+              <div class="form-inline">
+                <input
+                  type="text"
+                  id="sqft-walls-output"
+                  class="form-input"
+                  data-sqft-output="walls"
+                  value="—"
+                  readonly
+                />
+                <span class="form-inline__suffix">sq ft</span>
+              </div>
+              <span class="form-hint">&asymp; 2 &times; height &times; (width + length)</span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="btn-group btn-group--horizontal">
+              <button type="button" class="btn btn--primary" data-sqft-action="use-floor">Use floor area</button>
+              <button type="button" class="btn btn--primary" data-sqft-action="use-walls">Use wall area</button>
+            </div>
+          </div>
+          <p class="form-hint">
+            For Shower: fill both (floor + walls). For Bathroom Floor: fill floor only. Adjust for openings as needed.
+          </p>
+        </div>
+      </div>
+
+      <fieldset class="form-fieldset">
+        <legend class="form-fieldset__legend">Include</legend>
+        <div class="form-grid form-grid--3col">
+          <label class="form-checkbox">
+            <input type="checkbox" id="wp-valve" checked />
+            <span class="form-checkbox__text">Mixing Valve</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="wp-drain" />
+            <span class="form-checkbox__text">Drain Assembly</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="wp-curb" checked />
+            <span class="form-checkbox__text">Curb</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="button" class="btn btn--primary" id="calc-waterproof-btn">Calculate Materials</button>
+
+      <!-- Results -->
+      <div class="calc-results" id="waterproof-calc-results" hidden>
+        <h4 class="calc-results__title">Waterproofing Materials</h4>
+        <div class="calc-results__grid">
+          <div class="calc-result">
+            <span class="calc-result__label" id="wp-membrane-label">Membrane</span>
+            <span class="calc-result__value calc-result__value--highlight" id="result-wp-membrane">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Seam Tape / Band</span>
+            <span class="calc-result__value" id="result-wp-tape">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Corner Seals</span>
+            <span class="calc-result__value" id="result-wp-corners">—</span>
+          </div>
+        </div>
+        <div class="calc-results__accessories" id="wp-accessories"></div>
+        <p class="calc-results__note" id="wp-system-note"></p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,203 @@
+# _data/home.yml
+# Tillerstead.com Homepage Content Data
+# NJ HIC #13VH10808800
+
+hero:
+  eyebrow: "Licensed New Jersey HIC #13VH10808800"
+  eyebrow_line2: "Standards-Driven Work"
+  title: "Tile, Waterproofing & Bathroom Remodeling Built the Right Way"
+  subtitle: "Measured. Verified. Documented."
+  summary: >
+    Beautiful finishes start with the invisible work: flat substrates, correct materials,
+    and a waterproofing system built as a complete assembly. We follow published
+    tile industry methods and manufacturer requirements—so your bathroom performs
+    long after the final photo. Serving Atlantic, Ocean, and Cape May Counties in South Jersey, New Jersey.
+  primary:
+    label: "Request a Written Estimate"
+    url: /contact/
+  secondary:
+    label: "View Portfolio"
+    url: /portfolio/
+  facts:
+    - icon: "badge"
+      label: "NJ HIC Licensed"
+      text: "#13VH10808800"
+    - icon: "shield"
+      label: "System-Based Builds"
+      text: "Prep · Waterproof · Verify"
+    - icon: "map"
+      label: "Service Area"
+      text: "Atlantic · Ocean · Cape May"
+  highlights:
+    - "Substrate flatness verified for the tile size and layout plan"
+    - "Waterproofing assemblies installed as complete systems, per manufacturer specs"
+    - "Flood testing performed where required or method-appropriate (documented)"
+    - "Photo documentation available for owner records and closeout"
+
+trust_bar:
+  aria_label: "Credentials and protections"
+  items:
+    - icon: "badge"
+      text: "New Jersey HIC #13VH10808800"
+    - icon: "check-circle"
+      text: "TCNA 2024 compliant assemblies"
+    - icon: "shield"
+      text: "Insured contractor — certificate available on request"
+    - icon: "map"
+      text: "Atlantic, Ocean & Cape May Counties, New Jersey"
+    - icon: "document"
+      text: "Written scope, change orders, and warranties"
+
+services:
+  eyebrow: "Built for Durability, Not Just Day-One Looks"
+  title: "Tile & Waterproofing<br>Services That Hold Up"
+  summary: >
+    Tile performs when the assembly is built correctly: proper substrate preparation,
+    compatible mortars, verified coverage, movement accommodation, and waterproofing
+    where the application demands it. We build to published industry methods and
+    product specifications—not guesswork.
+  homeowner_note: >
+    You don’t need to speak “construction” to hire well. We explain the plan in plain language,
+    provide a written scope, and document critical steps so you know what’s behind the finish.
+  cards:
+    - icon: tile
+      title: "Tile Installation (Ceramic & Porcelain)"
+      description: >
+        Floors and walls installed with correct prep, layout planning, and compatible materials—
+        designed for clean lines and long-term performance.
+      details:
+        - "Substrate evaluated and corrected for the tile format"
+        - "Mortar and grout selected for the tile, substrate, and exposure"
+        - "Coverage verified during installation, especially in wet areas"
+        - "Movement accommodation at perimeters and changes of plane"
+        - "Layout planned to reduce awkward cuts and narrow slivers"
+      url: "/services/#tile"
+
+    - icon: stone
+      title: "Natural Stone & Large-Format Tile"
+      description: >
+        Stone and large-format tile require tighter tolerances, stronger support, and careful planning.
+        We build the substrate and setting system to match the material—not the other way around.
+      details:
+        - "Flatness and substrate readiness addressed for large-format requirements"
+        - "Setting methods selected to support full contact and long-term stability"
+        - "Materials matched to stone type and manufacturer specifications"
+        - "Sealers used where appropriate, based on product data and application"
+        - "Heat, sunlight, and transitions considered in the plan"
+      url: "/services/#stone"
+
+    - icon: waterproofing
+      title: "Shower Waterproofing Systems"
+      description: >
+        Wet areas are built as waterproofing assemblies first—then tiled. We use membranes and system components
+        appropriate to the application, detailed at corners, penetrations, and drains, and verified before finishes.
+      details:
+        - "Membrane and drain integration planned as one coherent system"
+        - "Corners, seams, niches, curbs, and penetrations detailed per system requirements"
+        - "Slope and drainage confirmed before tile installation"
+        - "Flood testing performed where required or method-appropriate (documented)"
+        - "Closeout guidance provided for care and long-term maintenance"
+      url: "/services/#waterproofing"
+
+  actions:
+    primary:
+      label: "Request a Written Estimate"
+      url: /contact/
+    secondary:
+      label: "Explore the Portfolio"
+      url: /portfolio/
+
+  note: >
+    Work is performed using published tile industry methods and applicable product standards,
+    with written scope, change orders (if needed), and warranty terms provided before work begins.
+
+process:
+  eyebrow: "A Clear Sequence You Can Understand"
+  title: "Transparent Workflow.<br>Written Scope.<br>Verified Steps."
+  summary: >
+    A bathroom remodel runs smoothly when decisions are made early and the build follows a defined order.
+    We keep scope clear, document key phases, and confirm readiness before moving forward.
+  fun_fact: >
+    Many failures originate before the first tile is installed. That’s why we focus on substrate readiness,
+    water management, and verification before finishes conceal the work.
+  steps:
+    - title: "Site Assessment & Scope Definition"
+      icon: clipboard
+      description: >
+        We review the space, identify constraints, and define scope boundaries—so the estimate matches reality.
+
+    - title: "Written Estimate & Approval"
+      icon: document
+      description: >
+        You receive a written proposal outlining scope, materials, sequencing, and warranty terms.
+        Work begins after approval.
+
+    - title: "Build, Verify, Document"
+      icon: check-circle
+      description: >
+        We prepare surfaces, construct waterproofing assemblies where needed, and verify readiness before tile goes in.
+        Key phases are documented.
+
+    - title: "Closeout & Owner Packet"
+      icon: check-circle
+      description: >
+        Walkthrough, care guidance, warranty paperwork, and a photo record of critical stages suitable for owner records.
+
+materials:
+  eyebrow: "Materials Selected for the Application"
+  title: "The Right Components for Wet Areas and High-Traffic Spaces"
+  summary: >
+    Materials are selected based on substrate, exposure, and performance requirements—not convenience.
+    Mortars, membranes, and grouts are specified in writing and matched to the installation system.
+  callout: >
+    We don’t substitute “one-size-fits-all” products for system components without written approval.
+    Product selection follows published data sheets and the requirements of the method used.
+  items:
+    - icon: tile
+      title: "Mortars & Grouts"
+      description: >
+        Mortars and grouts are selected based on tile type, size, substrate, and service conditions.
+      points:
+        - "Compatible mortars selected for performance and environment"
+        - "Grout selected for joint width, cleaning needs, and exposure"
+        - "Higher-performance options used when the application demands it"
+
+    - icon: waterproofing
+      title: "Waterproofing Components"
+      description: >
+        Waterproofing systems are chosen by application and integrated as complete assemblies, including drain connection and detailing.
+      points:
+        - "Membranes and accessories selected as a matched system"
+        - "Seams and penetrations detailed per manufacturer requirements"
+        - "Verification performed before finishes conceal the work"
+
+    - icon: stone
+      title: "Natural Stone & Specialty Materials"
+      description: >
+        Stone installations are planned around support, compatibility, and maintenance expectations.
+      points:
+        - "Stone-appropriate prep and setting materials"
+        - "Sealers used where appropriate per product data"
+        - "Finish and maintenance guidance provided at closeout"
+
+  note: "Every installation is built as an assembly and documented for owner records."
+
+testimonials:
+  eyebrow: "Verified Client Feedback"
+  title: "Real Reviews from Real South Jersey Homeowners"
+  limit: 3
+  reviews: null # uses site.data.reviews.reviews by default
+
+cta:
+  eyebrow: "Start with a Written Scope"
+  title: "Request a Written Estimate You Can Trust"
+  summary: >
+    Clear scope, transparent pricing, and documentation you can keep.
+    Licensed New Jersey HIC #13VH10808800—serving Atlantic, Ocean & Cape May Counties.
+  primary:
+    label: "Request a Written Estimate"
+    url: /contact/
+  secondary:
+    label: "Call/Text"
+    url: "tel:+16098628808"
+  note: "NJ HIC #13VH10808800 · Serving Atlantic, Ocean & Cape May"

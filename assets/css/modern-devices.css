@@ -1,0 +1,852 @@
+/**
+ * MODERN DEVICE OPTIMIZATION
+ * Clean, fast, premium experience for:
+ * - Latest smartphones (iPhone 15 Pro, Galaxy S24, Pixel 8)
+ * - Large tablets (iPad Pro 12.9", Galaxy Tab S9+)
+ * - Desktop displays (1440p, 4K, 5K, ultrawide)
+ * 
+ * Features leveraged:
+ * - 120Hz ProMotion displays
+ * - HDR color spaces
+ * - Hardware acceleration
+ * - Container queries
+ * - Modern CSS Grid
+ * - High-DPI retina displays
+ */
+
+/* ====================================
+   1. MODERN SMARTPHONE OPTIMIZATION
+   ==================================== */
+
+/**
+ * iPhone 15 Pro Max: 430x932, 120Hz OLED, HDR
+ * Galaxy S24 Ultra: 440x968, 120Hz AMOLED, HDR
+ * Pixel 8 Pro: 448x984, 120Hz LTPO OLED
+ */
+@media (min-width: 390px) and (max-width: 480px) {
+  /* Optimize for latest flagships */
+  :root {
+    --fluid-spacing: clamp(1rem, 3vw, 1.5rem);
+    --fluid-radius: clamp(12px, 2vw, 16px);
+  }
+
+  /* Leverage 120Hz smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @supports (scroll-behavior: smooth) {
+    * {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Hardware acceleration for 120Hz animations */
+  .sticky-cta-bar,
+  .mobile-nav,
+  .a11y-toolbar,
+  button,
+  .btn,
+  .card {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Smooth transitions for ProMotion */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Optimize fonts for OLED */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Prevent layout shift */
+  img,
+  video,
+  iframe {
+    content-visibility: auto;
+  }
+}
+
+/* Dynamic Island support (iPhone 14 Pro+, iPhone 15 Pro+) */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (min-width: 390px) and (max-width: 480px) {
+    .ts-header {
+      padding-top: max(16px, env(safe-area-inset-top));
+    }
+
+    .mobile-nav__header {
+      padding-top: max(20px, calc(env(safe-area-inset-top) + 4px));
+    }
+  }
+}
+
+/* ====================================
+   2. LARGE SMARTPHONE (PHABLET)
+   ==================================== */
+
+/**
+ * iPhone 15 Pro Max, Galaxy S24 Ultra
+ * Larger content, better use of screen real estate
+ */
+@media (min-width: 428px) and (max-width: 768px) {
+  :root {
+    --container-padding: 24px;
+    --section-spacing: 4rem;
+  }
+
+  .container,
+  .ts-main-content {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  /* Larger typography on big phones */
+  h1 {
+    font-size: clamp(2.25rem, 6vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 5vw, 2.5rem);
+  }
+
+  /* Card grids - 2 column on large phones */
+  .card-grid,
+  .ts-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Sticky CTA - more comfortable on large screens */
+  .sticky-cta-bar {
+    min-height: 76px;
+    padding: 14px 20px;
+    gap: 12px;
+  }
+
+  .sticky-cta-btn {
+    min-height: 64px;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ====================================
+   3. TABLET PORTRAIT (768px - 1024px)
+   ==================================== */
+
+/**
+ * iPad Mini, iPad Air, iPad Pro 11" portrait
+ * Galaxy Tab S9, Surface Go
+ */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  :root {
+    --container-max-width: 92%;
+    --section-spacing: 5rem;
+    --grid-gap: 2rem;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* Hybrid navigation - show both desktop nav AND mobile toggle */
+  .desktop-nav {
+    display: flex;
+  }
+
+  .mobile-nav__toggle {
+    display: none; /* Hide hamburger, use desktop nav */
+  }
+
+  /* Typography - readable but not too large */
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  /* 2-column card grids */
+  .card-grid,
+  .ts-services-grid,
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  /* 3-column for features */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Forms - wider but not full screen */
+  form {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Prevent zoom */
+  }
+
+  /* Touch targets still important on tablets */
+  button,
+  .btn,
+  a.btn {
+    min-height: 48px;
+    padding: 12px 24px;
+  }
+
+  /* No sticky mobile CTA on tablets */
+  .sticky-cta-bar {
+    display: none;
+  }
+
+  /* Images - higher quality */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ====================================
+   4. TABLET LANDSCAPE (1024px - 1366px)
+   ==================================== */
+
+/**
+ * iPad Pro 11" landscape, iPad Pro 12.9" landscape
+ * Surface Pro, Galaxy Tab S9+
+ */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  :root {
+    --container-max-width: min(92%, 1600px);
+    --section-spacing: 6rem;
+    --grid-gap: 2.5rem;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  /* Full desktop navigation */
+  .desktop-nav {
+    display: flex;
+  }
+
+  .mobile-nav__toggle,
+  .mobile-nav {
+    display: none;
+  }
+
+  /* 3-column layouts */
+  .card-grid,
+  .ts-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  /* Hero sections - impressive on large tablets */
+  .hero {
+    min-height: 60vh;
+    padding: 6rem 0;
+  }
+
+  /* Typography - larger, impactful */
+  h1 {
+    font-size: clamp(3rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+  }
+
+  /* Sidebar layouts work well */
+  .content-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  /* Hover states important on tablets with trackpads */
+  @media (hover: hover) {
+    a:hover,
+    button:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+    }
+  }
+}
+
+/* ====================================
+   5. DESKTOP (1440px - 1920px)
+   ==================================== */
+
+/**
+ * MacBook Pro 14"/16", iMac 24"
+ * 1440p monitors, standard desktop displays
+ */
+@media (min-width: 1440px) and (max-width: 1920px) {
+  :root {
+    --container-max-width: min(92%, 1800px);
+    --section-spacing: 8rem;
+    --grid-gap: 3rem;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  /* 4-column layouts for rich content */
+  .card-grid--rich {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  /* 3-column for standard cards */
+  .card-grid,
+  .ts-services-grid,
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  /* Hero - full impact */
+  .hero {
+    min-height: 70vh;
+    padding: 8rem 0;
+  }
+
+  /* Typography - desktop scale */
+  h1 {
+    font-size: clamp(3.5rem, 5vw, 5rem);
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    letter-spacing: -0.01em;
+  }
+
+  /* Sidebar layouts */
+  .content-with-sidebar {
+    grid-template-columns: 1fr 360px;
+    gap: 4rem;
+  }
+
+  /* Asymmetric grids */
+  .grid-asymmetric {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+
+  /* Enhanced hover effects */
+  @media (hover: hover) {
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 12px 40px rgb(0 0 0 / 20%),
+        0 0 0 1px rgb(201 162 39 / 10%);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+  }
+
+  /* Parallax effects */
+  .parallax-bg {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ====================================
+   6. LARGE DESKTOP (4K/5K)
+   ==================================== */
+
+/**
+ * 4K monitors (3840x2160)
+ * 5K iMac (5120x2880)
+ * Ultra-wide displays
+ */
+@media (min-width: 2560px) {
+  :root {
+    --container-max-width: min(94%, 3200px);
+    --section-spacing: 10rem;
+    --grid-gap: 4rem;
+    --font-size-base: 1.125rem;
+  }
+
+  body {
+    font-size: var(--font-size-base);
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  /* 4-5 column layouts */
+  .card-grid--rich {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  /* Massive typography */
+  h1 {
+    font-size: clamp(4rem, 6vw, 6rem);
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+  }
+
+  /* Larger buttons */
+  .btn,
+  button {
+    font-size: 1.25rem;
+    padding: 1.25rem 3rem;
+    min-height: 64px;
+  }
+
+  /* Hero sections - cinematic */
+  .hero {
+    min-height: 80vh;
+    padding: 12rem 0;
+  }
+
+  /* Images - crisp on 4K */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* Multi-column content */
+  .content-columns {
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid rgb(255 255 255 / 10%);
+  }
+}
+
+/* ====================================
+   7. RETINA / HIGH DPI DISPLAYS
+   ==================================== */
+
+/**
+ * 2x displays: iPhone, MacBook Pro
+ * 3x displays: iPhone Plus/Pro Max
+ */
+/* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  /* Font smoothing for retina */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Sharper borders */
+  *::before,
+  *::after {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Optimize images */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* Thinner borders on retina */
+  hr,
+  .border {
+    border-width: 0.5px;
+  }
+}
+
+/* 3x displays (iPhone Pro Max) */
+/* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi), (min-resolution: 3dppx) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimizequality;
+  }
+}
+
+/* ====================================
+   8. HDR / WIDE COLOR GAMUT
+   ==================================== */
+
+/**
+ * iPhone 12+, iPad Pro, MacBook Pro
+ * Displays supporting P3 color space
+ */
+@media (dynamic-range: high) {
+  :root {
+    /* P3 color space for vibrant colors */
+    --tiller-color-emerald: color(display-p3 0 0.88 0.52);
+    --tiller-color-gold: color(display-p3 0.83 0.69 0.22);
+  }
+}
+
+/* ====================================
+   9. HARDWARE ACCELERATION
+   ==================================== */
+
+/**
+ * Force GPU acceleration for smooth 120Hz
+ */
+.animated,
+.card,
+.btn,
+.sticky-cta-bar,
+.mobile-nav,
+.a11y-toolbar,
+.hero,
+.parallax-bg,
+[data-scroll] {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change after animation */
+.animated:not(:hover, :focus, :active) {
+  will-change: auto;
+}
+
+/* ====================================
+   10. MODERN CSS GRID LAYOUTS
+   ==================================== */
+
+/**
+ * CSS Grid for complex, responsive layouts
+ */
+
+/* Auto-fit grid - responsive without media queries */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 2rem;
+}
+
+/* Auto-fill grid - always fills space */
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Masonry-style grid */
+.grid-masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 20px;
+  gap: 1.5rem;
+}
+
+.grid-masonry > * {
+  grid-row-end: span var(--row-span, 10);
+}
+
+/* Featured grid layout */
+.grid-featured {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1.5rem;
+}
+
+.grid-featured > :first-child {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+@media (max-width: 1024px) {
+  .grid-featured {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-featured > :first-child {
+    grid-column: 1 / 3;
+  }
+}
+
+/* ====================================
+   11. CONTAINER QUERIES (Modern)
+   ==================================== */
+
+/**
+ * Component-level responsive design
+ */
+@supports (container-type: inline-size) {
+  .card-container {
+    container-type: inline-size;
+    container-name: card;
+  }
+
+  @container card (min-width: 400px) {
+    .card__title {
+      font-size: 1.5rem;
+    }
+
+    .card__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+/* ====================================
+   12. PERFORMANCE OPTIMIZATIONS
+   ==================================== */
+
+/**
+ * CSS containment for faster rendering
+ */
+.card,
+.section,
+.component {
+  contain: layout style paint;
+}
+
+/* Lazy load images below fold */
+img[loading='lazy'] {
+  content-visibility: auto;
+}
+
+/* Reduce paint area */
+.hero,
+.section {
+  contain: paint;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ====================================
+   13. MODERN GLASSMORPHISM
+   ==================================== */
+
+/**
+ * Blur effects for modern premium look
+ */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .glass {
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgb(255 255 255 / 20%);
+  }
+
+  .glass-dark {
+    background: rgb(0 0 0 / 60%);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  .sticky-cta-bar,
+  .ts-header,
+  .mobile-nav {
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+}
+
+/* ====================================
+   14. ASPECT RATIO (Modern)
+   ==================================== */
+
+/**
+ * Native aspect ratio support
+ */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-widescreen {
+  aspect-ratio: 21 / 9;
+}
+
+/* Fallback for older browsers */
+@supports not (aspect-ratio: 16 / 9) {
+  .aspect-video {
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .aspect-video > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ====================================
+   15. DARK MODE OPTIMIZATION
+   ==================================== */
+
+/**
+ * System dark mode preference
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Optimize images for dark mode */
+  img {
+    opacity: 95%;
+  }
+
+  img:hover {
+    opacity: 100%;
+  }
+}
+
+/* ====================================
+   16. PRINT OPTIMIZATION
+   ==================================== */
+
+/**
+ * Clean print output for all devices
+ */
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000000;
+    background: #ffffff;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  /* Hide interactive elements */
+  .sticky-cta-bar,
+  .mobile-nav,
+  .a11y-toolbar,
+  button:not(.print-visible),
+  nav {
+    display: none !important;
+  }
+
+  /* Expand links */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666666;
+  }
+
+  /* Page breaks */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  img {
+    max-width: 100%;
+    break-inside: avoid;
+  }
+}
+
+/* ====================================
+   17. ULTRA-WIDE DISPLAYS
+   ==================================== */
+
+/**
+ * 21:9, 32:9 ultrawide monitors
+ */
+@media (min-aspect-ratio: 21 / 9) {
+  .container {
+    max-width: min(80%, 2000px);
+  }
+
+  .grid-ultrawide {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .hero {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+}
+
+/* ====================================
+   18. FOLDABLE DEVICES
+   ==================================== */
+
+/**
+ * Samsung Galaxy Fold, Surface Duo
+ */
+@media (min-width: 653px) and (max-width: 717px) {
+  /* Fold-specific optimizations */
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Horizontal fold */
+@media (horizontal-viewport-segments: 2) {
+  .hero {
+    margin-top: env(viewport-segment-top 0 0);
+    margin-bottom: env(viewport-segment-bottom 1 0);
+  }
+}

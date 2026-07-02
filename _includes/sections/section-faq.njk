@@ -1,0 +1,19 @@
+{# Homepage FAQ Section Parameters: - data: The faq data object from _data/home.yml #}
+{%- set faq = data -%}
+
+<div class="container container--wide">
+  <header class="section-header">
+    {% if faq.eyebrow %}<p class="section-eyebrow">{{ faq.eyebrow }}</p>{% endif %}
+    <h2 id="faq-heading" class="section-title">{{ faq.title | default("Frequently Asked Questions") }}</h2>
+  </header>
+  {% if faq.items %}
+  <dl class="faq-list">
+    {% for item in faq.items %}
+    <div class="faq-item ts-tile-framed">
+      <dt class="faq-question">{{ item.question }}</dt>
+      <dd class="faq-answer">{{ item.answer }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+  {% endif %}
+</div>

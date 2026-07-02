@@ -1,0 +1,31 @@
+<!-- Article/Blog Post Schema Template -->
+<!-- Usage: Add to blog post layout -->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ title }}",
+    "description": "{{ meta_description | default(page.description) }}",
+    "image": "{{ page.image | default("/assets/img/social/og-image.webp") | absolute_url }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Tillerstead LLC",
+      "url": "https://tillerstead.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tillerstead LLC",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tillerstead.com/assets/img/logo/logo-social-512.png"
+      }
+    },
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default(page.date) | date_to_xmlschema }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}"
+    }
+  }
+</script>

@@ -1,0 +1,130 @@
+# ============================================
+# Tillerstead.com — Site Configuration
+# Extracted from _config.yml for Eleventy
+# ============================================
+
+title: 'Tillerstead LLC'
+tagline: 'TCNA-Compliant Tile & Stone Installation — South Jersey, New Jersey'
+description: >-
+  Expert TCNA-compliant tile and stone installation in South Jersey, New Jersey. Specializing in custom showers,
+  heated floors, waterproof assemblies, and natural stone surfaces. Licensed New Jersey Home Improvement Contractor
+  (HIC #13VH10808800) proudly serving Atlantic, Ocean, and Cape May Counties with precision craftsmanship,
+  transparent pricing, and direct owner oversight on every project.
+url: 'https://tillerstead.com'
+baseurl: ''
+timezone: 'America/New_York'
+locale: 'en_US'
+assets_version: '2026-04-18.2'
+cache_version: '2026-04-18.2'
+
+# Logo & default images
+logo: '/assets/img/logo/logo-optimized.png'
+default_og_image: '/assets/img/social/og-image.png'
+hero_default_image: '/assets/img/tillerstead-work/bathrooms/after-entry-shot.jpg'
+
+# Business variables
+company:
+  owner: 'Tyler, Owner/Operator'
+  phone_display: '(609) 862-8808'
+  phone_link: '+16098628808'
+  hic: '13VH10808800'
+  address_line: '325 E. Jimmie Leeds Road, Suite 7-333'
+  address_city: 'Galloway'
+  address_region: 'NJ'
+  address_postal_code: '08205'
+  email: 'contact@tillerstead.com'
+  email_support: 'support@tillerstead.com'
+  email_sales: 'sales@tillerstead.com'
+  email_quotes: 'quotes@tillerstead.com'
+  email_legal: 'legal@tillerstead.com'
+  email_dmca: 'dmca@tillerstead.com'
+  email_warranty: 'warranty@tillerstead.com'
+  email_stewardship: 'stewardship@tillerstead.com'
+  email_education: 'education@tillerstead.com'
+
+# SEO & Social
+seo:
+  type: LocalBusiness
+  links:
+    - https://tillerstead.com
+    - https://www.instagram.com/tillerstead
+    - https://www.facebook.com/share/17ZQCR2zdZ/
+    - https://x.com/tillerstead
+
+social:
+  name: 'Tillerstead LLC'
+  type: 'LocalBusiness'
+  links:
+    - 'https://tillerstead.com'
+    - 'https://www.instagram.com/tillerstead'
+    - 'https://www.facebook.com/share/17ZQCR2zdZ/'
+    - 'https://x.com/tillerstead'
+
+twitter:
+  username: tillerstead
+  card: summary_large_image
+
+facebook:
+  publisher: 'https://www.facebook.com/share/17ZQCR2zdZ/'
+
+geo:
+  region: 'US-NJ'
+  placename: 'Galloway, New Jersey'
+  position: '39.4929;-74.4824'
+
+author:
+  name: 'Tyler'
+  url: 'https://tillerstead.com/about/'
+
+service_areas:
+  - 'Atlantic County'
+  - 'Ocean County'
+  - 'Cape May County'
+  - 'Burlington County'
+  - 'Camden County'
+  - 'Gloucester County'
+
+keywords:
+  - 'TCNA-compliant tile installation South Jersey'
+  - 'Custom shower waterproofing New Jersey HIC contractor'
+  - 'Heated floor tile systems Atlantic County'
+  - 'Natural stone and marble tile New Jersey'
+  - 'Large format tile installation NJ'
+  - 'Licensed tile contractor Atlantic County'
+  - 'tile installer near me South Jersey'
+  - 'bathroom remodel Atlantic City NJ'
+  - 'tile contractor Ocean County NJ'
+  - 'Cape May County tile installation'
+  - 'curbless shower installation NJ'
+  - 'Schluter system installer New Jersey'
+  - 'Kerdi waterproofing contractor'
+  - 'best tile contractor Atlantic County reviews'
+
+# UX flags
+site_preset: 'brand-2025'
+ui:
+  animations_enabled: true
+  respect_reduced_motion: true
+
+ux:
+  cta_primary_label: 'Book a TCNA-Compliant Consultation'
+  cta_secondary_label: 'See Tile Services'
+  reassurances:
+    - 'New Jersey licensed & insured • HIC #13VH10808800'
+    - 'Written scopes, change orders, and transparent pricing'
+    - 'Owner on site — no subcontracted labor'
+    - 'Waterproof assemblies per TCNA standards'
+    - 'All work documented for warranty and compliance'
+  value_props:
+    - 'Design consultations: align vision, budget, and timeline'
+    - 'Transparent scheduling and material lead times'
+    - 'Monthly property care plans with photo documentation'
+    - 'All installations meet or exceed TCNA and manufacturer specs'
+
+# Forms
+forms:
+  endpoint: 'https://formsubmit.co/support@tillerstead.com'
+  guide_endpoint: 'https://formsubmit.co/support@tillerstead.com'
+  redirect_path: '/success/?form=contact'
+  guide_redirect_path: '/download/nj-tile-guide/thank-you/'
+  subject: 'New Tillerstead LLC inquiry — TCNA/New Jersey HIC Compliant'

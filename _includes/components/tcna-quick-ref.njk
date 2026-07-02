@@ -1,0 +1,227 @@
+{# TCNA Quick Reference Widget Displays frequently referenced TCNA methods and codes Usage: {% include "components/tcna-quick-ref.njk" %} #}
+
+<div class="tcna-quick-reference">
+  <div class="quick-ref-header">
+    <h4>🔧 TCNA Quick Reference</h4>
+    <p>Commonly referenced installation standards</p>
+  </div>
+
+  <div class="quick-ref-grid">
+    <div class="ref-item">
+      <strong>A118.10</strong>
+      <span>Waterproofing membrane performance standard</span>
+      <a href="/tcna-methods/#waterproofing">Details →</a>
+    </div>
+
+    <div class="ref-item">
+      <strong>B415</strong>
+      <span>Schluter Kerdi system installation</span>
+      <a href="/tcna-methods/#waterproofing">Details →</a>
+    </div>
+
+    <div class="ref-item">
+      <strong>A108.1A</strong>
+      <span>Thin-set over cement board (walls)</span>
+      <a href="/tcna-methods/#installation-methods">Details →</a>
+    </div>
+
+    <div class="ref-item">
+      <strong>A108.10</strong>
+      <span>Bonded mortar bed (shower floors)</span>
+      <a href="/tcna-methods/#installation-methods">Details →</a>
+    </div>
+
+    <div class="ref-item">
+      <strong>EJ171</strong>
+      <span>Movement joints at changes of plane</span>
+      <a href="/tcna-methods/#movement-joints">Details →</a>
+    </div>
+
+    <div class="ref-item">
+      <strong>IRC R302.5.2</strong>
+      <span>NJ waterproofing requirement</span>
+      <a href="/nj-code-compliance/#waterproofing">Details →</a>
+    </div>
+  </div>
+
+  <div class="quick-ref-footer">
+    <a href="/tcna-methods/" class="ref-link-primary">Full TCNA Methods Guide →</a>
+    <a href="/nj-code-compliance/" class="ref-link-secondary">NJ Code Compliance →</a>
+  </div>
+</div>
+
+<style>
+  .tcna-quick-reference {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .quick-ref-header h4 {
+    margin: 0 0 0.25rem 0;
+    color: #1a5490;
+    font-size: 1.25rem;
+  }
+
+  .quick-ref-header p {
+    margin: 0 0 1rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .quick-ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ref-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: all 0.2s;
+  }
+
+  .ref-item:hover {
+    border-color: #0066cc;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .ref-item strong {
+    color: #0066cc;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .ref-item span {
+    color: #4b5563;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .ref-item a {
+    color: #0066cc;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  .ref-item a:hover {
+    text-decoration: underline;
+  }
+
+  .quick-ref-footer {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+    flex-wrap: wrap;
+  }
+
+  .ref-link-primary,
+  .ref-link-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .ref-link-primary {
+    background: #0066cc;
+    color: white;
+  }
+
+  .ref-link-primary:hover {
+    background: #0052a3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.3);
+  }
+
+  .ref-link-secondary {
+    background: white;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+  }
+
+  .ref-link-secondary:hover {
+    background: #f0f7ff;
+  }
+
+  @media (max-width: 768px) {
+    .quick-ref-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quick-ref-footer {
+      flex-direction: column;
+    }
+
+    .ref-link-primary,
+    .ref-link-secondary {
+      text-align: center;
+    }
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    .tcna-quick-reference {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-color: #374151;
+    }
+
+    .quick-ref-header h4 {
+      color: #60a5fa;
+    }
+
+    .quick-ref-header p {
+      color: #9ca3af;
+    }
+
+    .ref-item {
+      background: #1f2937;
+      border-color: #374151;
+    }
+
+    .ref-item:hover {
+      border-color: #60a5fa;
+      box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+    }
+
+    .ref-item strong {
+      color: #60a5fa;
+    }
+
+    .ref-item span {
+      color: #d1d5db;
+    }
+
+    .ref-item a {
+      color: #60a5fa;
+    }
+
+    .quick-ref-footer {
+      border-top-color: #374151;
+    }
+
+    .ref-link-secondary {
+      background: #1f2937;
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+
+    .ref-link-secondary:hover {
+      background: #374151;
+    }
+  }
+</style>

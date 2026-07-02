@@ -1,0 +1,62 @@
+# Normalize text files to LF in repo
+* text=auto eol=lf
+
+# Explicit line endings
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.md   text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.scss text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+
+# Binary files
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.gif  binary
+*.ico  binary
+*.svg  binary
+*.pdf  binary
+
+# GitHub Actions/workflows: always LF
+.github/workflows/* text eol=lf
+# === PROPRIETARY FILE ENCRYPTION ===
+# TillerPro Suite and Calculator files are encrypted before commit
+# Using git-crypt for secure AES-256 encryption
+
+# TillerPro Suite
+tillerpro.html filter=git-crypt diff=git-crypt
+assets/js/tillerpro-config.js filter=git-crypt diff=git-crypt
+assets/css/pages/tillerpro.css filter=git-crypt diff=git-crypt
+_includes/sections/tillerpro-banner.html filter=git-crypt diff=git-crypt
+
+# Calculator System - Backend
+tillerstead-toolkit/backend/app/calculators/*.py filter=git-crypt diff=git-crypt
+tillerstead-toolkit/backend/app/api/calculators.py filter=git-crypt diff=git-crypt
+
+# Calculator System - Frontend
+assets/js/build-calculators.js filter=git-crypt diff=git-crypt
+assets/js/financing-calculator.js filter=git-crypt diff=git-crypt
+assets/js/adapters/*-calculator-adapter.js filter=git-crypt diff=git-crypt
+
+# Calculator HTML Components
+_includes/tools/*-calculator.html filter=git-crypt diff=git-crypt
+tools/pricing-calculator.html filter=git-crypt diff=git-crypt
+
+# Calculator Documentation (contains proprietary formulas)
+tillerstead-toolkit/CALCULATOR_SYSTEM.md filter=git-crypt diff=git-crypt
+tillerstead-toolkit/CALCULATOR_ROADMAP.md filter=git-crypt diff=git-crypt
+
+# Test files with proprietary logic
+tests/calculator-formulas.test.js filter=git-crypt diff=git-crypt
+
+# Admin system files (contain authentication logic)
+admin/*.js filter=git-crypt diff=git-crypt
+admin/**/*.js filter=git-crypt diff=git-crypt

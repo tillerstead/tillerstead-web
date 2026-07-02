@@ -1,0 +1,599 @@
+/**
+ * MOBILE THUMB ZONE OPTIMIZATION
+ * Optimizes all touch targets for one-handed mobile use
+ * Based on iOS and Android ergonomic guidelines
+ * 
+ * Thumb Zones:
+ * - EASY: Bottom 1/3 of screen, corners reachable
+ * - MEDIUM: Middle 1/3, requires slight stretch
+ * - HARD: Top 1/3, requires hand repositioning
+ * 
+ * Goal: All primary actions in EASY zone, secondary in MEDIUM
+ */
+
+/* ====================================
+   1. MINIMUM TOUCH TARGET SIZES
+   ==================================== */
+
+/**
+ * Apple HIG: 44pt minimum (44px)
+ * Android Material: 48dp minimum (48px)
+ * We use 48px for better thumb accuracy
+ */
+@media (max-width: 768px) {
+  /* All interactive elements */
+  button,
+  [role='button'],
+  a.btn,
+  input[type='submit'],
+  input[type='button'],
+  .mobile-nav__toggle,
+  .mobile-nav a,
+  .mobile-nav button,
+  .sticky-cta-btn,
+  .a11y-toolbar__btn,
+  .ts-header__actions a,
+  .cta-button,
+  [onclick],
+  [role='link'],
+  [tabindex='0'] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Form inputs - larger for easier tapping */
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  input[type='url'],
+  input[type='search'],
+  select,
+  textarea {
+    min-height: 52px;
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+
+  /* Checkboxes and radios - larger tap area */
+  input[type='checkbox'],
+  input[type='radio'] {
+    min-width: 32px;
+    min-height: 32px;
+    margin: 8px;
+  }
+
+  /* Labels for checkboxes/radios - expand tap area */
+  label:has(input[type='checkbox']),
+  label:has(input[type='radio']) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+}
+
+/* ====================================
+   2. SPACING BETWEEN TOUCH TARGETS
+   ==================================== */
+
+/**
+ * WCAG 2.5.8: Target Size Spacing (AAA)
+ * Minimum 8px spacing between targets
+ * We use 12px for better accuracy
+ */
+@media (max-width: 768px) {
+  /* Button groups - adequate spacing */
+  .btn-group button,
+  .btn-group .btn,
+  .ts-header__actions a {
+    margin: 6px;
+  }
+
+  /* Navigation links - vertical spacing */
+  .mobile-nav__list > li {
+    margin-bottom: 8px;
+  }
+
+  .mobile-nav__list a,
+  .mobile-nav__list button {
+    padding: 14px 20px;
+    margin: 4px 0;
+  }
+
+  /* Form fields - spacing */
+  .form-field,
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  /* Sticky CTA buttons - spacing */
+  .sticky-cta-bar {
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ====================================
+   3. STICKY CTA - THUMB ZONE OPTIMIZED
+   ==================================== */
+
+/**
+ * Position: Bottom (EASY thumb zone)
+ * Height: 72px (comfortable thumb reach)
+ * Safe area: iOS notch/home indicator support
+ */
+@media (max-width: 768px) {
+  /* Sticky CTA bar - core styles in /assets/css/components/sticky-mobile-cta.css */
+  .sticky-cta-bar {
+    /* Thumb zone optimizations only - don't override base styles */
+  }
+}
+
+/* Extra small phones - handled in sticky-mobile-cta.css */
+
+/* ====================================
+   4. MOBILE NAV TOGGLE - THUMB OPTIMIZED
+   ==================================== */
+
+/**
+ * Position: Top right (easily reachable with thumb)
+ * Size: 48x48px minimum
+ */
+@media (max-width: 768px) {
+  .mobile-nav__toggle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    /* Thumb-friendly size */
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    /* Remove tap highlight */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav__toggle:active {
+    background: rgb(201 162 39 / 10%);
+    transform: scale(0.95);
+  }
+
+  /* Hamburger lines */
+  .mobile-nav__toggle .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Animated hamburger to X */
+  .mobile-nav__toggle[aria-expanded='true'] .hamburger:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-nav__toggle[aria-expanded='true'] .hamburger:nth-child(2) {
+    opacity: 0%;
+    transform: scaleX(0);
+  }
+
+  .mobile-nav__toggle[aria-expanded='true'] .hamburger:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* ====================================
+   5. MOBILE NAV DRAWER - THUMB FRIENDLY
+   ==================================== */
+
+/**
+ * Full-screen drawer with large tap targets
+ * Links sized for easy thumb tapping
+ */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgb(0 0 0 / 95%);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    /* Slide in from right */
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-nav[aria-hidden='false'] {
+    transform: translateX(0);
+  }
+
+  /* Nav header with close button */
+  .mobile-nav__header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+    padding-top: calc(16px + env(safe-area-inset-top));
+  }
+
+  .mobile-nav__close {
+    /* Thumb-friendly close button */
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255 255 255 / 10%);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav__close:active {
+    background: rgb(255 255 255 / 20%);
+    transform: scale(0.9);
+  }
+
+  /* Nav body */
+  .mobile-nav__body {
+    padding: 0 20px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom)); /* Space for sticky CTA */
+  }
+
+  /* Nav list */
+  .mobile-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav__list > li {
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  /* Nav links - LARGE tap targets */
+  .mobile-nav__list a {
+    display: block;
+    padding: 18px 16px;
+    min-height: 56px;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav__list a:active {
+    background: rgb(201 162 39 / 10%);
+    transform: translateX(4px);
+  }
+
+  /* Accordion triggers */
+  .mobile-nav__accordion-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 18px 16px;
+    min-height: 56px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav__accordion-trigger:active {
+    background: rgb(201 162 39 / 10%);
+  }
+
+  .mobile-nav__accordion-trigger .arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s;
+  }
+
+  .mobile-nav__accordion-trigger[aria-expanded='true'] .arrow {
+    transform: rotate(90deg);
+  }
+
+  /* Submenu */
+  .mobile-nav__submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgb(255 255 255 / 5%);
+  }
+
+  .mobile-nav__submenu li {
+    border-bottom: 1px solid rgb(255 255 255 / 5%);
+  }
+
+  .mobile-nav__submenu a {
+    padding: 14px 24px;
+    min-height: 52px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(255 255 255 / 90%);
+  }
+
+  /* CTA button in nav */
+  .mobile-nav__cta {
+    background: linear-gradient(
+      135deg,
+      var(--tiller-color-gold, #c9a227),
+      var(--tiller-color-gold-dark, #9a7a1a)
+    ) !important;
+    color: #000000 !important;
+    border-radius: 12px;
+    margin-top: 16px;
+    text-align: center;
+  }
+}
+
+/* ====================================
+   6. ACCESSIBILITY TOOLBAR - THUMB ZONE
+   ==================================== */
+
+/**
+ * Position: Bottom right (easy thumb reach)
+ * Size: 56px toggle button
+ */
+@media (max-width: 768px) {
+  .a11y-toolbar {
+    bottom: calc(72px + 16px + env(safe-area-inset-bottom)); /* Above sticky CTA */
+    right: 16px;
+  }
+
+  .a11y-toolbar__toggle {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+
+    /* Larger tap target */
+    padding: 16px;
+
+    /* Enhanced visual feedback */
+    box-shadow:
+      0 4px 16px rgb(0 0 0 / 30%),
+      0 0 20px rgb(16 185 129 / 20%);
+  }
+
+  .a11y-toolbar__toggle:active {
+    transform: scale(0.92);
+  }
+
+  /* Panel positioning */
+  .a11y-toolbar__panel {
+    bottom: 72px; /* Above toggle */
+    right: 0;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+  }
+}
+
+/* Extra small - adjust a11y position */
+@media (max-width: 375px) {
+  .a11y-toolbar {
+    bottom: calc(64px + 12px + env(safe-area-inset-bottom));
+    right: 12px;
+  }
+
+  .a11y-toolbar__toggle {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ====================================
+   7. FORM BUTTONS - THUMB OPTIMIZED
+   ==================================== */
+
+/**
+ * Large, easy-to-tap submit buttons
+ * Positioned for thumb reach
+ */
+@media (max-width: 768px) {
+  /* Submit buttons */
+  button[type='submit'],
+  input[type='submit'],
+  .form-submit,
+  .btn--submit {
+    width: 100%;
+    min-height: 56px;
+    padding: 16px 24px;
+    font-size: 1.125rem;
+    border-radius: 12px;
+
+    /* Sticky to bottom for long forms */
+    margin-top: 24px;
+  }
+
+  /* Button groups - stack vertically on mobile */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  /* Secondary buttons */
+  .btn--secondary,
+  .btn--ghost {
+    min-height: 48px;
+  }
+}
+
+/* ====================================
+   8. HEADER ACTIONS - THUMB FRIENDLY
+   ==================================== */
+
+/**
+ * Header CTAs optimized for thumb tapping
+ */
+@media (max-width: 768px) {
+  .ts-header__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .ts-header__actions a,
+  .ts-header__actions .btn {
+    min-height: 44px;
+    min-width: auto;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  /* Primary CTA larger */
+  .ts-header__actions .btn--primary {
+    min-height: 48px;
+    padding: 12px 20px;
+    font-weight: 700;
+  }
+}
+
+/* ====================================
+   9. SCROLL TO TOP - THUMB ACCESSIBLE
+   ==================================== */
+
+/**
+ * Bottom right, above sticky CTA
+ * Large enough for easy thumb tap
+ */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    position: fixed;
+    bottom: calc(72px + 80px + env(safe-area-inset-bottom)); /* Above CTA and a11y */
+    right: 16px;
+    z-index: 9997;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(26 42 58 / 90%);
+    color: #ffffff;
+    border: 2px solid rgb(201 162 39 / 30%);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .scroll-to-top:active {
+    transform: scale(0.9);
+  }
+}
+
+/* ====================================
+   10. LANDSCAPE ORIENTATION
+   ==================================== */
+
+/**
+ * Adjust for landscape mode (shorter height)
+ */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce sticky CTA height */
+  .sticky-cta-bar {
+    min-height: 60px;
+    padding: 8px 12px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .sticky-cta-btn {
+    min-height: 48px;
+    padding: 8px 6px;
+  }
+
+  /* Adjust a11y toolbar */
+  .a11y-toolbar {
+    bottom: calc(60px + 12px + env(safe-area-inset-bottom));
+  }
+
+  .a11y-toolbar__toggle {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ====================================
+   11. REDUCE MOTION
+   ==================================== */
+
+/**
+ * Respect user preferences
+ */
+@media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+  .sticky-cta-btn,
+  .mobile-nav__toggle,
+  .mobile-nav,
+  .a11y-toolbar__toggle {
+    transition: none !important;
+  }
+}
+
+/* ====================================
+   12. SAFE AREA SUPPORT
+   ==================================== */
+
+/**
+ * Full support for iPhone notch and home indicator
+ */
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .sticky-cta-bar {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+
+    .mobile-nav__body {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+
+    .mobile-nav__header {
+      padding-top: calc(16px + env(safe-area-inset-top));
+    }
+  }
+}

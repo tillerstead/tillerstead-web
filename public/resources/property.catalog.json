@@ -1,0 +1,114 @@
+{
+  "catalogVersion": "1.0.0",
+  "contractVersion": "1.0.0",
+  "domain": "property",
+  "entries": [
+    {
+      "data": {
+        "county": "statewide",
+        "id": "nj-property-records",
+        "records": ["deed history", "tax card", "parcel map", "permit log", "survey"],
+        "summary": "Collect deed chain, parcel identifiers, tax cards, permits, surveys, and recorded easements before evaluating a dispute.",
+        "title": "New Jersey property records intake"
+      },
+      "id": "records-nj-property-records",
+      "metadata": {
+        "domain": "property",
+        "source": "property-record-guides"
+      },
+      "tags": ["property", "records", "statewide"],
+      "title": "New Jersey property records intake"
+    },
+    {
+      "data": {
+        "county": "statewide",
+        "id": "improvement-documentation",
+        "records": [
+          "contracts",
+          "change orders",
+          "inspection notes",
+          "photos",
+          "material invoices"
+        ],
+        "summary": "Pair before/after photos, contracts, invoices, inspection notes, and code references for each phase of work.",
+        "title": "Improvement evidence package"
+      },
+      "id": "records-improvement-documentation",
+      "metadata": {
+        "domain": "property",
+        "source": "property-record-guides"
+      },
+      "tags": ["property", "records", "statewide"],
+      "title": "Improvement evidence package"
+    },
+    {
+      "data": {
+        "activity": "lot-clearing",
+        "checklist": [
+          "Confirm zoning district and principal permitted use.",
+          "Review tree removal, stormwater, and grading permit thresholds.",
+          "Document neighboring setbacks, drainage paths, and utility conflicts.",
+          "Preserve contractor logs, deliveries, and disposal receipts."
+        ],
+        "id": "lot-clearing",
+        "jurisdiction": "NJ"
+      },
+      "id": "land-use-lot-clearing",
+      "metadata": {
+        "domain": "property",
+        "source": "land-use-checklists"
+      },
+      "tags": ["property", "land-use", "lot-clearing"],
+      "title": "lot-clearing land-use checklist"
+    },
+    {
+      "data": {
+        "activity": "bathroom-remodel",
+        "checklist": [
+          "Verify permit scope for plumbing, electrical, and structural changes.",
+          "Document waterproofing assembly, inspection dates, and approved materials.",
+          "Retain lien-waiver and progress-payment milestones.",
+          "Track punch-list completion against contract language."
+        ],
+        "id": "bath-remodel",
+        "jurisdiction": "NJ"
+      },
+      "id": "land-use-bath-remodel",
+      "metadata": {
+        "domain": "property",
+        "source": "land-use-checklists"
+      },
+      "tags": ["property", "land-use", "bathroom-remodel"],
+      "title": "bathroom-remodel land-use checklist"
+    },
+    {
+      "data": {
+        "factors": [
+          "parcel size and usable area",
+          "improvement age and finish quality",
+          "permitted versus unpermitted additions",
+          "comparable sales and neighborhood adjustment",
+          "stormwater, wetlands, or access limitations"
+        ]
+      },
+      "id": "tax-assessment-factors",
+      "metadata": {
+        "domain": "property",
+        "source": "assessment-guide"
+      },
+      "tags": ["property", "tax-assessment"],
+      "title": "Property tax assessment factors"
+    }
+  ],
+  "entryCount": 5,
+  "generatedAt": "2026-04-12T17:18:23.785Z",
+  "generatorVersion": "0.0.0",
+  "integrityHash": "14a1329f71672d510fd1a7b159877a3c7bc90b47bc853bfc0e430540b8908f86",
+  "providerId": "tillerstead",
+  "resourceTypes": [
+    "property.records_overview",
+    "property.land_use_checklist",
+    "property.tax_assessment",
+    "property.environmental_compliance"
+  ]
+}

@@ -1,0 +1,440 @@
+/* stylelint-disable selector-max-type -- Legacy footer-social selector is referenced by templates; do not rename during boundary repair. */
+
+/* ============================================
+   COMPREHENSIVE FIXES - January 2026
+   ============================================ 
+   
+   Fixes:
+   1. Navigation blur overlay positioned correctly
+   2. Accessibility button integrated into action buttons
+   3. Color contrast improvements
+   4. Empty header space removed
+   5. Footer alignment fixes
+   6. Duplicate icon removal
+*/
+
+/* ============================================
+   FIX 1: Navigation Drawer Blur Overlay
+   ============================================ */
+
+/* Remove blur from appearing over menu - overlay should be behind drawer */
+.ts-drawer__overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgb(0 0 0 / 60%) !important;
+  backdrop-filter: blur(4px) !important;
+  opacity: 0% !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease !important;
+  z-index: 1990 !important; /* Below drawer */
+  pointer-events: none !important;
+}
+
+.ts-drawer {
+  z-index: 2000 !important; /* Above overlay */
+}
+
+.ts-drawer[aria-hidden='false'] .ts-drawer__overlay {
+  opacity: 100% !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* ============================================
+   FIX 2: Accessibility Button Integration
+   ============================================ */
+
+/* Move a11y toolbar into action buttons container */
+.a11y-toolbar {
+  position: static !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.a11y-toolbar__toggle {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 0.5rem 1rem !important;
+  background: transparent !important;
+  border: 2px solid var(--tiller-color-gold, #c9a227) !important;
+  border-radius: 8px !important;
+  color: var(--tiller-color-gold, #c9a227) !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  z-index: auto !important;
+}
+
+.a11y-toolbar__toggle:hover {
+  background: var(--tiller-color-gold, #c9a227) !important;
+  color: #000000 !important;
+  transform: translateY(-2px) !important;
+}
+
+.a11y-toolbar__toggle:focus-visible {
+  outline: 3px solid var(--tiller-color-emerald, #00e184) !important;
+  outline-offset: 3px !important;
+}
+
+.a11y-toolbar__toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Panel positioning when integrated */
+.a11y-toolbar__panel {
+  position: fixed !important;
+  top: 80px !important;
+  right: 1rem !important;
+  bottom: auto !important;
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: auto !important;
+  z-index: 2100 !important;
+}
+
+/* Mobile: make it part of header actions */
+@media (max-width: 768px) {
+  .ts-header__actions .a11y-toolbar {
+    order: 1;
+  }
+
+  .ts-header__actions > :not(.a11y-toolbar) {
+    order: 2;
+  }
+
+  .a11y-toolbar__toggle {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0 !important; /* Hide text on mobile */
+  }
+
+  .a11y-toolbar__toggle svg {
+    margin: 0 !important;
+  }
+}
+
+/* ============================================
+   FIX 3: Header Empty Space Fix
+   (Consolidated into components/header-nav.css)
+   ============================================ */
+
+/* ============================================
+   FIX 4: Footer Alignment Fixes
+   (Footer columns consolidated into footer.css)
+   ============================================ */
+
+/* Fix footer social icons alignment */
+.footer-social {
+  display: flex !important;
+  gap: 1rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.footer-social a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  flex-shrink: 0 !important;
+}
+
+.footer-social svg {
+  width: 22px !important;
+  height: 22px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Remove duplicate icons */
+.footer-social a svg + svg {
+  display: none !important;
+}
+
+/* Footer list alignment */
+.footer-bottom {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+
+.footer-legal {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.5rem 1rem !important;
+  justify-content: flex-end !important;
+}
+
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+  }
+
+  .footer-legal {
+    justify-content: center !important;
+  }
+
+  .footer-social {
+    justify-content: center !important;
+  }
+}
+
+/* ============================================
+   FIX 5: Color Contrast Improvements
+   ============================================ */
+
+/* Improve text contrast on light backgrounds */
+.page-light,
+.light-theme,
+.bg-white,
+.bg-light {
+  color: #1a1a1a !important;
+}
+
+.page-light a,
+.light-theme a,
+.bg-white a,
+.bg-light a {
+  color: #006c47 !important; /* WCAG AA compliant emerald */
+  text-decoration: underline !important;
+  text-decoration-color: rgb(0 108 71 / 40%) !important;
+}
+
+.page-light a:hover,
+.page-light a:focus,
+.light-theme a:hover,
+.light-theme a:focus,
+.bg-white a:hover,
+.bg-white a:focus,
+.bg-light a:hover,
+.bg-light a:focus {
+  color: #8c6a12 !important; /* WCAG AA compliant gold */
+  text-decoration-color: #8c6a12 !important;
+}
+
+/* Ensure headings have good contrast */
+.page-light h1,
+.page-light h2,
+.page-light h3,
+.page-light h4,
+.page-light h5,
+.page-light h6,
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4,
+.light-theme h5,
+.light-theme h6 {
+  color: #00703e !important; /* Dark emerald for contrast */
+  text-shadow: none !important;
+}
+
+/* Button contrast fixes — AA 4.5:1 with white text */
+.btn-primary,
+.btn--primary {
+  background: linear-gradient(135deg, #006c47, #047857) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn--primary:hover,
+.btn--primary:focus {
+  background: linear-gradient(135deg, #047857, #006c47) !important;
+  color: #ffffff !important;
+}
+
+/* Body text color — override system.css #1e1f1d default for dark theme */
+body {
+  color: var(--tiller-text-primary, #ffffff) !important;
+}
+
+.btn-secondary,
+.btn--secondary,
+.btn-ghost,
+.btn--ghost {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn--secondary:hover,
+.btn--secondary:focus,
+.btn-ghost:hover,
+.btn-ghost:focus,
+.btn--ghost:hover,
+.btn--ghost:focus {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+/* Footer text contrast */
+.footer-list a {
+  color: #e5e7eb !important; /* Light gray for better contrast on dark */
+  font-weight: 500 !important;
+}
+
+.footer-list a:hover,
+.footer-list a:focus {
+  color: #fbbf24 !important; /* Brighter gold for better contrast */
+  text-shadow: 0 0 8px rgb(251 191 36 / 40%) !important;
+}
+
+.footer-group-title {
+  color: #fbbf24 !important; /* Brighter gold */
+  font-weight: 700 !important;
+}
+
+.footer-copyright,
+.footer-legal {
+  color: #9ca3af !important; /* Better contrast gray */
+}
+
+.footer-legal a {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+}
+
+.footer-legal a:hover,
+.footer-legal a:focus {
+  color: #fbbf24 !important;
+}
+
+/* ============================================
+   FIX 6: Card Softened Edges for White Sections
+   ============================================ */
+
+/* Apply to all white/light sections */
+.section-white,
+.section-light,
+.bg-white,
+.bg-light,
+.page-light > section,
+.light-theme > section,
+[style*='background: white'],
+[style*='background: #fff'],
+[style*='background-color: white'],
+[style*='background-color: #fff'] {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 3rem 2rem !important;
+  margin: 2rem auto !important;
+  max-width: min(96%, 1400px) !important;
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 8%),
+    0 4px 12px rgb(0 0 0 / 5%) !important;
+  border: 1px solid rgb(0 0 0 / 6%) !important;
+}
+
+/* Nested sections shouldn't double-apply */
+.section-white .section-white,
+.section-light .section-light,
+.bg-white .bg-white,
+.bg-light .bg-light {
+  margin: 1rem 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Hover effect for interactive cards */
+.section-white.card-interactive:hover,
+.section-light.card-interactive:hover {
+  box-shadow:
+    0 4px 8px rgb(0 0 0 / 10%),
+    0 8px 24px rgb(0 0 0 / 8%) !important;
+  transform: translateY(-2px) !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .section-white,
+  .section-light,
+  .bg-white,
+  .bg-light {
+    border-radius: 12px !important;
+    padding: 2rem 1.5rem !important;
+    margin: 1rem auto !important;
+  }
+}
+
+/* ============================================
+   FIX 7: Additional Accessibility Improvements
+   ============================================ */
+
+/* Focus visible indicators */
+*:focus-visible {
+  outline: 3px solid #00e184 !important;
+  outline-offset: 3px !important;
+  border-radius: 4px !important;
+}
+
+.page-light *:focus-visible,
+.light-theme *:focus-visible {
+  outline-color: #00a35c !important;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute !important;
+  top: -100px !important;
+  left: 0 !important;
+  background: #00a35c !important;
+  color: #ffffff !important;
+  padding: 1rem 2rem !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  z-index: 9999 !important;
+  border-radius: 0 0 8px !important;
+}
+
+.skip-to-content:focus {
+  top: 0 !important;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ts-header,
+  .ts-footer {
+    border: 2px solid currentColor !important;
+  }
+
+  .btn,
+  button,
+  a {
+    border: 2px solid currentColor !important;
+  }
+}

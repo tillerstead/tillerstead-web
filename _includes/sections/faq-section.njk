@@ -1,0 +1,49 @@
+{# FAQ Section Include Renders a reusable FAQ section with optional schema.org markup. Usage: {% include "features/faq-section.njk" %} #}
+{%- set faq_title -%}{{ title | default("Frequently Asked Questions") }}{%- endset -%} {%- set faq_id -%}{{ id | default("faq-section") }}{%- endset -%}
+
+<section
+  class="ts-section ts-faq {% if bg_class %}{{ bg_class }}{% else %}bg-soft{% endif %}"
+  aria-labelledby="{{ faq_id }}"
+>
+  <div class="container">
+    <header class="section-header text-center">
+      {% if eyebrow %}
+      <span class="eyebrow eyebrow--dark">{{ eyebrow }}</span>
+      {% endif %}
+      <h2 id="{{ faq_id }}" class="heading-2">{{ faq_title }}</h2>
+      {% if description %}
+      <p class="lead">{{ description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="faq">
+      {%- if items -%} {%- for item in items -%}
+      <details class="faq-item" {% if item.open %}open{% endif %}>
+        <summary>{{ item.question }}</summary>
+        <div class="faq-body">{{ item.answer | markdownify }}</div>
+      </details>
+      {%- endfor -%} {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- if schema == true and items -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for item in items -%}
+      {
+        "@type": "Question",
+        "name": "{{ item.question | e }}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ item.answer | strip_html | e }}"
+        }
+      }{%- if not (loop.last) -%},{%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+</script>
+{%- endif -%}

@@ -1,0 +1,725 @@
+/*
+ * UX Enhancements - Critical Improvements
+ * Fixes: Touch targets, focus states, safe areas, loading states
+ */
+
+/* ========================================
+   IMPROVED TOUCH TARGETS (WCAG AAA 44x44px)
+   ======================================== */
+
+/* Mobile button sizing - WCAG AAA compliance */
+@media (max-width: 768px) {
+  .btn,
+  button,
+  [type='submit'],
+  [type='button'],
+  [type='reset'],
+  .button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 1.25rem 1.75rem;
+  }
+
+  .btn--sm {
+    min-height: 44px;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Ensure CTA buttons are tappable */
+  .sticky-cta__btn {
+    min-height: 48px;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Mobile nav items */
+  .mobile-nav__link,
+  .mobile-nav-link {
+    min-height: 48px;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Form inputs */
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'],
+  select,
+  textarea {
+    min-height: 48px;
+    padding: 0.875rem 1rem;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* ========================================
+   SAFE AREA INSETS (iPhone Notch/Home Indicator)
+   ======================================== */
+
+/* Sticky CTA safe area */
+.sticky-cta {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Mobile nav safe area */
+.mobile-nav,
+.mobile-nav-drawer {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Bottom-fixed elements */
+.fixed-bottom,
+[class*='sticky-bottom'],
+[class*='fixed-bottom'] {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Viewport safe areas */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* ========================================
+   GLOBAL FOCUS INDICATORS (Keyboard Navigation)
+   ======================================== */
+
+/* Remove default outlines */
+*:focus {
+  outline: none;
+}
+
+/* Modern focus-visible styles (keyboard only) */
+*:focus-visible {
+  outline: 3px solid var(--color-primary-500, #0ea5e9);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Specific element focus styles */
+a:focus-visible {
+  outline-color: var(--color-primary-600, #1e40af);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+[type='submit']:focus-visible,
+[type='button']:focus-visible {
+  outline-color: var(--color-accent-500, #f59e0b);
+  outline-width: 4px;
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-color: var(--color-primary-500, #0ea5e9);
+  outline-width: 3px;
+  outline-offset: 1px;
+}
+
+/* Skip link enhancement */
+.skip-link:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow: 0 0 20px rgb(0 0 0 / 50%);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+/* Button loading state */
+.btn--loading,
+.button--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.btn--loading::after,
+.button--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 3px solid rgb(255 255 255 / 30%);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form loading overlay */
+.form--loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 60%;
+}
+
+.form--loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(255 255 255 / 90%);
+  z-index: 10;
+  border-radius: var(--radius-lg, 8px);
+}
+
+.form--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 4px solid var(--color-neutral-300, #d1d5db);
+  border-top-color: var(--color-primary-500, #0ea5e9);
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+  z-index: 11;
+}
+
+/* ========================================
+   ERROR VISIBILITY
+   ======================================== */
+
+/* Form error summary - ALWAYS visible when errors exist */
+.error-summary {
+  display: none;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background: #fef2f2;
+  border: 2px solid #dc2626;
+  border-left-width: 6px;
+  border-radius: var(--radius-md, 6px);
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.error-summary.visible,
+.error-summary[aria-hidden='false'] {
+  display: block;
+  animation: shake 0.4s ease-in-out;
+}
+
+.error-summary__icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+.error-summary__title {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+.error-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.error-list li {
+  margin-bottom: 0.5rem;
+}
+
+.error-list a {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+.error-list a:hover {
+  color: #991b1b;
+}
+
+/* Individual field errors - more prominent */
+.error-message,
+.field-error {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #fee2e2;
+  border-left: 3px solid #dc2626;
+  color: #991b1b;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.error-message::before,
+.field-error::before {
+  content: '⚠ ';
+  margin-right: 0.25rem;
+}
+
+/* Input error state */
+input.error,
+textarea.error,
+select.error,
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: #dc2626;
+  border-width: 2px;
+  background-color: #fef2f2;
+}
+
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
+  border-color: #991b1b;
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 10%);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+/* ========================================
+   SUCCESS STATES
+   ======================================== */
+
+/* Success toast */
+.toast--success {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #ecfdf5;
+  border: 2px solid #10b981;
+  border-left-width: 6px;
+  border-radius: var(--radius-md, 6px);
+  color: #065f46;
+  font-weight: 600;
+  box-shadow: 0 10px 40px rgb(16 185 129 / 20%);
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.toast--success::before {
+  content: '✓';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #10b981;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 1.125rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0%;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500, #0ea5e9),
+    var(--color-primary-700, #0369a1)
+  );
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0%;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgb(14 165 233 / 40%);
+  z-index: 998;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.back-to-top.visible {
+  opacity: 100%;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600, #0284c7),
+    var(--color-primary-800, #075985)
+  );
+  box-shadow: 0 8px 30px rgb(14 165 233 / 60%);
+  transform: translateY(-4px);
+}
+
+.back-to-top:active {
+  transform: translateY(-2px);
+}
+
+.back-to-top::before {
+  content: '↑';
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 48px;
+    height: 48px;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    right: 1rem;
+  }
+
+  .back-to-top::before {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust if sticky CTA is visible */
+  .sticky-cta.visible ~ .back-to-top {
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ========================================
+   SKELETON SCREENS
+   ======================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-200, #e5e7eb) 0%,
+    var(--color-neutral-100, #f3f4f6) 50%,
+    var(--color-neutral-200, #e5e7eb) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-md, 6px);
+}
+
+.skeleton--text {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.skeleton--title {
+  height: 2rem;
+  margin-bottom: 1rem;
+  width: 60%;
+}
+
+.skeleton--button {
+  height: 48px;
+  width: 120px;
+}
+
+.skeleton--card {
+  height: 300px;
+  border-radius: var(--radius-lg, 8px);
+}
+
+.skeleton--circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION SUPPORT
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--loading::after,
+  .form--loading::after,
+  .skeleton {
+    animation: none;
+  }
+
+  .back-to-top {
+    transition: opacity 0.1s;
+  }
+
+  .toast--success {
+    animation: none;
+  }
+
+  .error-summary.visible {
+    animation: none;
+  }
+}
+
+/* ========================================
+   HIGH CONTRAST MODE
+   ======================================== */
+
+@media (prefers-contrast: more) {
+  *:focus-visible {
+    outline-width: 4px;
+    outline-offset: 4px;
+  }
+
+  .error-summary,
+  .error-message,
+  .field-error {
+    border-width: 3px;
+  }
+
+  input.error,
+  textarea.error,
+  select.error {
+    border-width: 3px;
+  }
+}
+
+/* ============================================================
+   MERGED FROM: ui-polish.css
+   Global interaction quality: focus rings, selection, scrolling
+   ============================================================ */
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Text Selection */
+::selection {
+  background: rgb(0 163 92 / 25%);
+  color: inherit;
+}
+
+/* Global Focus Ring Standard */
+:focus-visible {
+  outline: 2px solid var(--primary-400, #00c46c);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgb(0 163 92 / 20%);
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Nav-specific focus rings */
+.ts-nav__link:focus-visible,
+.ts-nav__trigger:focus-visible,
+.ts-nav-toggle:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow:
+    0 0 0 2px rgb(0 0 0 / 20%),
+    0 0 0 5px rgb(255 255 255 / 50%);
+  border-radius: var(--radius-md, 8px);
+}
+
+.ts-drawer__link:focus-visible,
+.ts-drawer__accordion-trigger:focus-visible,
+.ts-drawer__close:focus-visible {
+  outline: 2px solid var(--primary-500, #00a35c);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(0 163 92 / 20%);
+  border-radius: var(--radius-sm, 6px);
+}
+
+.ts-nav__dropdown a:focus-visible {
+  outline: 2px solid var(--primary-500, #00a35c);
+  outline-offset: -2px;
+  box-shadow: none;
+  background: var(--primary-50, #f0fdf8);
+  color: var(--primary-700, #00703e);
+}
+
+.ts-header .btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgb(255 255 255 / 30%);
+}
+
+/* Smooth Scrollbar on Overflow Containers */
+.ts-drawer,
+.ts-nav__dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0 163 92 / 40%) transparent;
+}
+
+.ts-drawer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ts-drawer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ts-drawer::-webkit-scrollbar-thumb {
+  background: rgb(0 163 92 / 40%);
+  border-radius: 4px;
+}
+
+/* Header Action Buttons */
+.ts-header__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 0.75vw, 0.75rem);
+  flex-shrink: 0;
+}
+
+.ts-header__actions .btn--ghost {
+  border-color: rgb(255 255 255 / 55%);
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  padding: 0.4375rem 1rem;
+}
+
+.ts-header__actions .btn--primary {
+  font-size: clamp(0.8125rem, 0.85vw, 0.875rem);
+  padding: 0.4375rem 1rem;
+  box-shadow: 0 2px 10px rgb(0 163 92 / 35%);
+}
+
+.ts-header__actions .btn--primary:hover {
+  box-shadow: 0 4px 18px rgb(0 163 92 / 45%);
+}
+
+/* Nav Dropdown Item Focus Ring (inset) */
+.ts-nav__dropdown a:focus-visible {
+  outline-offset: -2px;
+}
+
+/* CTA Button Nav Item Lift */
+.ts-nav__item--cta .ts-nav__link:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.08s;
+}
+
+/* Accordion Trigger Chevron */
+.ts-drawer__chevron {
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-left: auto;
+}
+
+.ts-drawer__accordion-trigger[aria-expanded='true'] .ts-drawer__chevron {
+  transform: rotate(180deg);
+}
+
+/* Drawer Close Button */
+.ts-drawer__close {
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.ts-drawer__close:hover {
+  transform: rotate(90deg);
+}
+
+.ts-drawer__close:active {
+  transform: rotate(90deg) scale(0.9);
+  transition-duration: 0.08s;
+}
+
+/* Placeholder Color */
+input::placeholder,
+textarea::placeholder {
+  color: rgb(107 114 128 / 80%);
+  transition: color 0.2s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: rgb(107 114 128 / 45%);
+}
+
+/* Link Default Transitions */
+a {
+  transition: color 0.18s ease;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ts-drawer__close:hover {
+    transform: none;
+  }
+}
+
+/* Print: hide nav chrome */
+@media print {
+  .ts-header,
+  .ts-drawer,
+  .ts-nav-toggle {
+    display: none !important;
+  }
+}

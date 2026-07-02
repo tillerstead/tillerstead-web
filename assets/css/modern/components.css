@@ -1,0 +1,371 @@
+/*
+ * Modern Component Styles
+ * Buttons, Cards, Forms, Navigation - Tech-Forward Professional
+ */
+
+/* ========================================
+   BUTTONS - Modern Design
+   ======================================== */
+
+.btn-modern {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: 1;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  min-height: var(--btn-height-md);
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+}
+
+.btn-modern:active {
+  transform: translateY(0);
+}
+
+.btn-modern:focus-visible {
+  outline: 3px solid var(--color-primary-400);
+  outline-offset: 3px;
+}
+
+/* Button sizes */
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  min-height: var(--btn-height-sm);
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
+  min-height: var(--btn-height-lg);
+}
+
+.btn-xl {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-xl);
+  min-height: var(--btn-height-xl);
+}
+
+/* Button variants */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-primary);
+}
+
+.btn-accent {
+  background: var(--gradient-accent);
+  color: white;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn-success {
+  background: var(--gradient-success);
+  color: white;
+  box-shadow: var(--shadow-success);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary-500);
+  border: 2px solid var(--color-primary-500);
+}
+
+.btn-ghost:hover {
+  background: var(--color-primary-500);
+  color: white;
+}
+
+/* ========================================
+   CARDS - Modern Glass Design
+   ======================================== */
+
+.card-modern {
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-glass);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0%;
+  transition: opacity var(--transition-base);
+}
+
+.card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glass-hover), var(--shadow-xl);
+  border-color: var(--glass-border-medium);
+}
+
+.card-modern:hover::before {
+  opacity: 100%;
+}
+
+.card-header {
+  margin-bottom: var(--space-6);
+}
+
+.card-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-2) 0;
+  background: var(--gradient-primary);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-400);
+  margin: 0;
+}
+
+.card-body {
+  margin-bottom: var(--space-6);
+}
+
+.card-footer {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--glass-border-light);
+}
+
+/* ========================================
+   FORMS - Modern Input Design
+   ======================================== */
+
+.form-modern {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-neutral-300);
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-base);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 2px solid var(--glass-border-light);
+  border-radius: var(--radius-lg);
+  color: white;
+  transition: all var(--transition-base);
+}
+
+.form-input::placeholder {
+  color: rgb(255 255 255 / 75%);
+}
+
+.form-input:focus {
+  outline: none;
+  background: var(--glass-bg-medium);
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 4px rgb(14 165 233 / 15%);
+}
+
+.form-input:focus + .form-label {
+  color: var(--color-primary-400);
+}
+
+/* Floating label variant */
+.form-floating {
+  position: relative;
+}
+
+.form-floating .form-input {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-2);
+}
+
+.form-floating .form-label {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-4);
+  margin: 0;
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+
+.form-floating .form-input:focus + .form-label,
+.form-floating .form-input:not(:placeholder-shown) + .form-label {
+  top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-primary-400);
+}
+
+/* ========================================
+   NAVIGATION - Glassmorphic Header
+   ======================================== */
+
+.nav-modern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--glass-bg-medium);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(180%);
+  border-bottom: 1px solid var(--glass-border-light);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
+  z-index: var(--z-sticky);
+  transition: all var(--transition-base);
+}
+
+.nav-modern.scrolled {
+  background: var(--glass-bg-strong);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 12%);
+}
+
+.nav-container {
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  background: var(--gradient-primary);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: var(--color-neutral-200);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: color var(--transition-base);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ========================================
+   BADGES - Modern Status Indicators
+   ======================================== */
+
+.badge-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--glass-border-light);
+}
+
+.badge-success {
+  background: rgb(16 185 129 / 20%);
+  border-color: var(--color-success-500);
+  color: var(--color-success-300);
+}
+
+.badge-primary {
+  background: rgb(14 165 233 / 20%);
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-300);
+}
+
+.badge-accent {
+  background: rgb(245 158 11 / 20%);
+  border-color: var(--color-accent-500);
+  color: var(--color-accent-300);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .card-modern {
+    padding: var(--space-6);
+  }
+
+  .nav-links {
+    gap: var(--space-3);
+  }
+
+  .btn-modern {
+    width: 100%;
+    justify-content: center;
+  }
+}

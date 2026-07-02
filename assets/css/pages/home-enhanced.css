@@ -1,0 +1,705 @@
+/* ========================================
+   HOMEPAGE ENHANCEMENTS - Modern Design
+   ======================================== */
+
+/* ==========================================
+   HERO BASE LAYOUT (moved from home.css)
+   ========================================== */
+
+.home-hero {
+  padding: 4rem 0;
+  background: linear-gradient(
+    135deg,
+    var(--tiller-bg-dark, #1a1c1a) 0%,
+    var(--tiller-bg-stone, #222524) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--tiller-color-gold, #c9a227);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 12px rgb(201 162 39 / 40%);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--tiller-color-emerald, #10b981);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 30px rgb(16 185 129 / 40%);
+  animation: fade-in-up 0.8s ease forwards;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--tiller-text-primary, #ffffff);
+  margin-bottom: 1.5rem;
+  animation: fade-in-up 0.8s ease 0.1s forwards;
+  opacity: 0%;
+}
+
+.hero-summary {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--tiller-text-secondary, rgb(255 255 255 / 85%));
+  margin-bottom: 2rem;
+  animation: fade-in-up 0.8s ease 0.2s forwards;
+  opacity: 0%;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fade-in-up 0.8s ease 0.3s forwards;
+  opacity: 0%;
+}
+
+.hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgb(201 162 39 / 20%);
+  animation: fade-in-up 0.8s ease 0.4s forwards;
+  opacity: 0%;
+}
+
+.fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.fact-item:hover {
+  transform: translateY(-4px);
+}
+
+.fact-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--tiller-text-muted, rgb(255 255 255 / 60%));
+  letter-spacing: 0.05em;
+}
+
+.fact-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--tiller-color-emerald, #10b981);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .fact-text {
+    white-space: normal;
+  }
+}
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 33px;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 40%),
+    0 0 0 1px rgb(201 162 39 / 20%);
+  animation: fade-in-right 0.8s ease 0.2s forwards;
+  opacity: 0%;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 40px rgb(0 0 0 / 50%),
+    0 0 0 2px rgb(201 162 39 / 40%);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
+  max-height: 500px;
+  transition: transform 0.6s ease;
+}
+
+.hero-image:hover img {
+  transform: scale(1.05);
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--tiller-bg-stone, #222524);
+  border-radius: 33px;
+  border: 1px solid rgb(201 162 39 / 20%);
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-4px);
+  border-color: rgb(16 185 129 / 40%);
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 30%),
+    0 0 20px rgb(16 185 129 / 15%);
+}
+
+.highlight-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--tiller-color-emerald, #10b981);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  box-shadow: 0 0 12px rgb(16 185 129 / 40%);
+}
+
+.highlight-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--tiller-text-secondary, rgb(255 255 255 / 85%));
+}
+
+/* Apply modern design system to homepage sections */
+
+/* ==========================================
+   HERO SECTION - Gradient Text & Glass Frame
+   ========================================== */
+
+.page-home #hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient mesh background for hero */
+.page-home #hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgb(14 165 233 / 8%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgb(245 158 11 / 6%) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgb(16 185 129 / 5%) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gradient text effect on hero title */
+.page-home .hero-title,
+.page-home .heading-1.hero-title {
+  background: linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #f59e0b 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glassmorphic frame for hero content */
+.page-home .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-home .hero-image-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.page-home .hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgb(16 185 129 / 30%), rgb(14 165 233 / 20%));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0%;
+  transition: opacity 0.4s ease;
+}
+
+.page-home .hero-image-wrapper:hover::before {
+  opacity: 100%;
+}
+
+/* ==========================================
+   SERVICE CARDS - Glassmorphism
+   ========================================== */
+
+.page-home #services .service-card,
+.page-home .service-card {
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 10%);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 20%),
+    inset 0 1px 1px rgb(255 255 255 / 10%);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glassmorphic gradient border on hover */
+.page-home .service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgb(16 185 129 / 40%),
+    rgb(14 165 233 / 30%),
+    rgb(245 158 11 / 30%)
+  );
+  mask:
+    linear-gradient(#ffffff 0 0) content-box,
+    linear-gradient(#ffffff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0%;
+  transition: opacity 0.4s ease;
+}
+
+.page-home .service-card:hover::before {
+  opacity: 100%;
+}
+
+.page-home .service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 16px 48px rgb(0 0 0 / 30%),
+    0 0 40px rgb(16 185 129 / 15%),
+    inset 0 1px 1px rgb(255 255 255 / 15%);
+  border-color: rgb(16 185 129 / 30%);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(12px)) {
+  .page-home .service-card {
+    background: rgb(30 41 59 / 85%);
+  }
+}
+
+/* ==========================================
+   PROCESS CARDS - Green Accent Border
+   ========================================== */
+
+.page-home #process .process-step,
+.page-home .process-step {
+  background: rgb(255 255 255 / 4%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-left: 3px solid #10b981;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 15%);
+  transition:
+    border-left-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-left-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-home .process-step:hover {
+  border-left-color: #0ea5e9;
+  border-left-width: 4px;
+  transform: translateX(4px);
+  box-shadow:
+    -4px 0 20px rgb(16 185 129 / 30%),
+    0 8px 32px rgb(0 0 0 / 25%);
+}
+
+/* Step numbers with gradient */
+.page-home .process-step .step-number {
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgb(16 185 129 / 40%);
+}
+
+/* ==========================================
+   MATERIALS CARDS - Dark Glass
+   ========================================== */
+
+.page-home #materials .material-card,
+.page-home .material-card {
+  background: rgb(15 23 42 / 60%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 12%);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 30%),
+    inset 0 1px 1px rgb(255 255 255 / 8%);
+  transition:
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-home .material-card:hover {
+  background: rgb(15 23 42 / 75%);
+  border-color: rgb(245 158 11 / 30%);
+  box-shadow:
+    0 12px 40px rgb(0 0 0 / 40%),
+    0 0 30px rgb(245 158 11 / 10%);
+  transform: translateY(-6px);
+}
+
+/* ==========================================
+   SECTION BACKGROUNDS - Gradient Mesh
+   ========================================== */
+
+/* Alternating gradient mesh backgrounds */
+.page-home #services {
+  position: relative;
+}
+
+.page-home #services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgb(16 185 129 / 6%) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgb(14 165 233 / 5%) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-home #process {
+  position: relative;
+}
+
+.page-home #process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgb(245 158 11 / 4%) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgb(16 185 129 / 3%) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-home #materials {
+  position: relative;
+}
+
+.page-home #materials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 30%, rgb(14 165 233 / 5%) 0%, transparent 50%),
+    radial-gradient(circle at 50% 70%, rgb(16 185 129 / 4%) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content is above gradient overlays */
+.page-home section > .container,
+.page-home section > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================
+   TESTIMONIAL CARDS - Enhanced Glass
+   ========================================== */
+
+.page-home #testimonials .testimonial-card,
+.page-home .testimonial-card {
+  background: rgb(255 255 255 / 6%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgb(255 255 255 / 12%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+  transition:
+    background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-home .testimonial-card:hover {
+  background: rgb(255 255 255 / 8%);
+  border-color: rgb(245 158 11 / 25%);
+  box-shadow:
+    0 12px 40px rgb(0 0 0 / 30%),
+    0 0 25px rgb(245 158 11 / 8%);
+  transform: translateY(-4px);
+}
+
+/* Star ratings with glow */
+.page-home .testimonial-rating {
+  color: #f59e0b;
+  text-shadow: 0 0 8px rgb(245 158 11 / 50%);
+}
+
+/* ==========================================
+   STICKY MOBILE CTA
+   ========================================== */
+
+.mobile-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgb(15 23 42 / 95%);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgb(16 185 129 / 20%);
+  box-shadow:
+    0 -4px 20px rgb(0 0 0 / 40%),
+    0 0 30px rgb(16 185 129 / 10%);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-sticky-cta.visible {
+  transform: translateY(0);
+}
+
+.mobile-sticky-cta .cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mobile-sticky-cta .btn {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  white-space: nowrap;
+}
+
+/* Hide on desktop */
+@media (min-width: 1024px) {
+  .mobile-sticky-cta {
+    display: none;
+  }
+}
+
+/* ==========================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ========================================== */
+
+/* Fade in from bottom */
+.scroll-fade-in {
+  opacity: 0%;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.scroll-fade-in.animated {
+  opacity: 100%;
+  transform: translateY(0);
+}
+
+/* Stagger delays for cards */
+.scroll-fade-in:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.scroll-fade-in:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.scroll-fade-in:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.scroll-fade-in:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+/* Scale in effect */
+.scroll-scale-in {
+  opacity: 0%;
+  transform: scale(0.9);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-scale-in.animated {
+  opacity: 100%;
+  transform: scale(1);
+}
+
+/* ==========================================
+   TRUST BAR ENHANCEMENTS
+   ========================================== */
+
+.page-home #trust .trust-item {
+  background: rgb(255 255 255 / 4%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(255 255 255 / 8%);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.page-home #trust .trust-item:hover {
+  background: rgb(255 255 255 / 8%);
+  border-color: rgb(16 185 129 / 30%);
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgb(16 185 129 / 15%);
+}
+
+/* Mobile: 2-row grid instead of horizontal scroll */
+@media (max-width: 768px) {
+  .page-home #trust .trust-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    overflow: visible;
+  }
+}
+
+/* ==========================================
+   ENHANCED BUTTON STYLES
+   ========================================== */
+
+.page-home .btn--primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+  border: none;
+  box-shadow: 0 4px 20px rgb(16 185 129 / 40%);
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-home .btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  opacity: 0%;
+  transition: opacity 0.3s ease;
+}
+
+.page-home .btn--primary:hover::before {
+  opacity: 100%;
+}
+
+.page-home .btn--primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgb(16 185 129 / 50%);
+}
+
+/* Ensure text stays above gradient */
+.page-home .btn--primary > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================
+   RESPONSIVE OPTIMIZATIONS
+   ========================================== */
+
+@media (max-width: 640px) {
+  /* Reduce parallax intensity on mobile */
+  .page-home section::before {
+    opacity: 50%;
+  }
+
+  /* Smaller transforms on mobile */
+  .page-home .service-card:hover,
+  .page-home .material-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hero-title {
+    animation: none;
+  }
+
+  .page-home .service-card,
+  .page-home .process-step,
+  .page-home .material-card,
+  .page-home .testimonial-card {
+    transition-duration: 0.01ms;
+  }
+
+  .scroll-fade-in,
+  .scroll-scale-in {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Safety net: if JS hasn't added .animated within 4s, make content visible */
+@keyframes scroll-fade-failsafe {
+  to {
+    opacity: 100%;
+    transform: none;
+  }
+}
+
+.scroll-fade-in:not(.animated),
+.scroll-scale-in:not(.animated) {
+  animation: scroll-fade-failsafe 0s linear 1.5s forwards;
+}

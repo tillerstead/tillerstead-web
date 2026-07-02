@@ -1,0 +1,552 @@
+---
+layout: page
+title: Room Planner
+meta_title: Free Tile Room Planner — Tillerstead
+description: >-
+  Plan your tile project in minutes. Enter room dimensions, choose surfaces,
+  pick your tile, and get instant material estimates — free, no login required.
+permalink: /room-planner/
+body_class: page-room-planner
+extra_head: '<link rel="stylesheet" href="/assets/css/room-planner.css">'
+noindex: false
+---
+
+<section class="planner-hero">
+  <h1>🛠️ Room Planner</h1>
+  <p class="hero-subtitle">
+    Enter your room dimensions, choose which surfaces to tile, and get an instant material estimate. No login. No fluff.
+    Just numbers you can trust.
+  </p>
+</section>
+
+<div id="room-planner-app" class="planner-app">
+  <!-- Room list -->
+  <div id="rooms-container"></div>
+
+  <button type="button" id="add-room-btn" class="btn btn--primary">+ Add Room</button>
+
+  <!-- Tile selection -->
+  <fieldset class="planner-card">
+    <legend>Tile Selection</legend>
+    <div class="tile-grid">
+      <div>
+        <label for="tile-width">Tile Width (in)</label>
+        <input id="tile-width" type="number" min="1" max="48" value="12" step="0.5" />
+      </div>
+      <div>
+        <label for="tile-height">Tile Height (in)</label>
+        <input id="tile-height" type="number" min="1" max="48" value="12" step="0.5" />
+      </div>
+      <div>
+        <label for="tiles-per-box">Tiles / Box</label>
+        <input id="tiles-per-box" type="number" min="1" max="100" value="12" />
+      </div>
+      <div>
+        <label for="tile-pattern">Layout Pattern</label>
+        <select id="tile-pattern">
+          <option value="straight">Straight / Grid</option>
+          <option value="offset-third">1/3 Offset</option>
+          <option value="offset-half">Brick (1/2 Offset)</option>
+          <option value="running-bond">Running Bond</option>
+          <option value="diagonal">Diagonal (45°)</option>
+          <option value="herringbone">Herringbone</option>
+          <option value="mosaic">Mosaic</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Calculate button -->
+  <div class="calculate-area">
+    <button type="button" id="calculate-btn" class="btn btn--primary btn--lg">Calculate Estimate</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results-container" style="display: none">
+    <h2 style="margin-top: 2rem">📋 Your Estimate</h2>
+    <div id="results-diagram"></div>
+    <div id="results-content"></div>
+
+    <!-- Product Suggestions -->
+    <div id="results-suggestions" style="display: none; margin-top: 1.5rem">
+      <h3 style="margin: 0 0 0.75rem">🛒 Suggested Products</h3>
+      <div id="suggestions-content"></div>
+      <p class="suggestions-note">Suggestions based on imported catalog data. Prices and availability may vary.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="planner-cta">
+      <p class="cta-heading">Ready to get started?</p>
+      <p class="cta-body">
+        These estimates are for planning purposes. Contact us for an exact quote with on-site measurements.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Request a Free Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- Room Planner Engine -->
+<script src="/assets/js/estimator-engine.js"></script>
+<script>
+  (function () {
+    'use strict';
+
+    var E = window.TillersteadEstimator;
+
+    // ── Waste profiles (fallback if engine not loaded) ──
+    var WASTE = {
+      straight: { base: 10, breakage: 5, complexity: 0 },
+      'offset-third': { base: 12, breakage: 5, complexity: 0 },
+      'offset-half': { base: 15, breakage: 5, complexity: 0 },
+      'running-bond': { base: 12, breakage: 5, complexity: 0 },
+      diagonal: { base: 18, breakage: 5, complexity: 0 },
+      herringbone: { base: 25, breakage: 5, complexity: 0 },
+      mosaic: { base: 12, breakage: 3, complexity: 0 },
+    };
+
+    var MORTAR_SQFT_PER_BAG = 70;
+    var GROUT_SQFT_PER_BAG = 95;
+    var WP_SQFT_PER_GAL = 55;
+
+    function toFt(feet, inches) {
+      return (parseFloat(feet) || 0) + (parseFloat(inches) || 0) / 12;
+    }
+
+    function totalWaste(pattern) {
+      var profiles = (E && E.WASTE_PROFILES) || WASTE;
+      var w = profiles[pattern] || profiles['straight'];
+      return w.base + w.breakage + (w.complexity || 0);
+    }
+
+    // ── Room state ──
+    var roomCounter = 0;
+    var rooms = [];
+
+    function createRoom() {
+      roomCounter++;
+      var id = 'room-' + roomCounter;
+      var room = { id: id };
+      rooms.push(room);
+
+      var div = document.createElement('div');
+      div.id = id;
+      div.className = 'planner-card planner-room';
+
+      div.innerHTML =
+        '<div class="room-header">' +
+        '<input type="text" class="room-name" placeholder="Room name (e.g., Master Bath)" value="Room ' +
+        roomCounter +
+        '" />' +
+        '<button type="button" class="remove-room-btn" data-room="' +
+        id +
+        '"' +
+        ' aria-label="Remove room" title="Remove room">✕</button>' +
+        '</div>' +
+        '<div class="room-type-group">' +
+        '<label>Room Type</label>' +
+        '<select class="room-type">' +
+        '<option value="bathroom">Bathroom</option>' +
+        '<option value="shower">Shower</option>' +
+        '<option value="kitchen">Kitchen</option>' +
+        '<option value="laundry">Laundry</option>' +
+        '<option value="mudroom">Mudroom</option>' +
+        '<option value="entryway">Entryway</option>' +
+        '<option value="living-room">Living Room</option>' +
+        '<option value="hallway">Hallway</option>' +
+        '<option value="basement">Basement</option>' +
+        '<option value="other">Other</option>' +
+        '</select>' +
+        '</div>' +
+        '<div class="dim-grid">' +
+        dimField('Length', id, 'len') +
+        dimField('Width', id, 'wid') +
+        dimField('Ceiling Height', id, 'ht') +
+        '</div>' +
+        '<fieldset class="surfaces-fieldset">' +
+        '<legend>Surfaces to Tile</legend>' +
+        '<div class="surface-toggles">' +
+        surfaceToggle(id, 'floor', 'Floor', true) +
+        surfaceToggle(id, 'full-walls', 'Full Walls', false) +
+        surfaceToggle(id, 'half-walls', 'Half Walls (48″)', false) +
+        surfaceToggle(id, 'backsplash', 'Backsplash (18″)', false) +
+        surfaceToggle(id, 'shower-walls', 'Shower Walls (3-wall)', false) +
+        surfaceToggle(id, 'tub-surround', 'Tub Surround (60″)', false) +
+        surfaceToggle(id, 'ceiling', 'Ceiling', false) +
+        '</div>' +
+        '</fieldset>';
+
+      document.getElementById('rooms-container').appendChild(div);
+
+      div.querySelector('.remove-room-btn').addEventListener('click', function () {
+        rooms = rooms.filter(function (r) {
+          return r.id !== id;
+        });
+        div.remove();
+      });
+    }
+
+    function dimField(label, roomId, key) {
+      return (
+        '<div>' +
+        '<label>' +
+        label +
+        '</label>' +
+        '<div class="dim-inputs">' +
+        '<input type="number" class="dim-' +
+        key +
+        '-ft" min="0" max="100" placeholder="ft" value="' +
+        (key === 'ht' ? '8' : '') +
+        '" />' +
+        '<span class="dim-unit">\'</span>' +
+        '<input type="number" class="dim-' +
+        key +
+        '-in" min="0" max="11" placeholder="in" value="0" />' +
+        '<span class="dim-unit">″</span>' +
+        '</div>' +
+        '</div>'
+      );
+    }
+
+    function surfaceToggle(roomId, kind, label, checked) {
+      return (
+        '<label class="surface-label">' +
+        '<input type="checkbox" class="surface-cb" data-surface="' +
+        kind +
+        '"' +
+        (checked ? ' checked' : '') +
+        ' />' +
+        '<span>' +
+        label +
+        '</span>' +
+        '</label>'
+      );
+    }
+
+    // ── Geometry ──
+    function computeSurfaces(roomEl, roomType) {
+      var lenFt = toFt(roomEl.querySelector('.dim-len-ft').value, roomEl.querySelector('.dim-len-in').value);
+      var widFt = toFt(roomEl.querySelector('.dim-wid-ft').value, roomEl.querySelector('.dim-wid-in').value);
+      var htFt = toFt(roomEl.querySelector('.dim-ht-ft').value, roomEl.querySelector('.dim-ht-in').value);
+      var perimeter = 2 * (lenFt + widFt);
+
+      var checkboxes = roomEl.querySelectorAll('.surface-cb');
+      var surfaces = [];
+      for (var i = 0; i < checkboxes.length; i++) {
+        var cb = checkboxes[i];
+        if (!cb.checked) continue;
+        var kind = cb.getAttribute('data-surface');
+        var gross = 0;
+
+        switch (kind) {
+          case 'floor':
+            gross = lenFt * widFt;
+            break;
+          case 'full-walls':
+            gross = perimeter * htFt;
+            break;
+          case 'half-walls':
+            gross = perimeter * 4;
+            break; // 48″ wainscot, all walls
+          case 'backsplash':
+            gross = lenFt * 1.5;
+            break; // 18″ height, one wall (length)
+          case 'ceiling':
+            gross = lenFt * widFt;
+            break;
+          case 'shower-walls':
+            gross = (widFt + 2 * Math.min(widFt, lenFt)) * htFt;
+            break; // 3-wall alcove
+          case 'tub-surround':
+            gross = (widFt + 2 * Math.min(widFt, lenFt)) * 5;
+            break; // 60″ height, 3 walls
+        }
+
+        surfaces.push({ kind: kind, sqft: Math.round(gross * 100) / 100 });
+      }
+
+      return { lenFt: lenFt, widFt: widFt, htFt: htFt, perimeter: perimeter, surfaces: surfaces, roomType: roomType };
+    }
+
+    // ── Estimate calculation ──
+    function calculate() {
+      var tileW = parseFloat(document.getElementById('tile-width').value) || 12;
+      var tileH = parseFloat(document.getElementById('tile-height').value) || 12;
+      var perBox = parseInt(document.getElementById('tiles-per-box').value, 10) || 12;
+      var pattern = document.getElementById('tile-pattern').value;
+      var waste = totalWaste(pattern);
+      var tileAreaSqFt = (tileW * tileH) / 144;
+
+      var allSections = [];
+      var grandTotalSqft = 0;
+      var materialTotals = { tile: 0, mortar: 0, grout: 0, waterproof: 0 };
+
+      var roomEls = document.getElementById('rooms-container').children;
+      for (var r = 0; r < roomEls.length; r++) {
+        var el = roomEls[r];
+        var roomName = el.querySelector('.room-name').value || 'Room ' + (r + 1);
+        var roomType = el.querySelector('.room-type').value;
+        var geo = computeSurfaces(el, roomType);
+        var roomLines = [];
+        var roomSqft = 0;
+
+        for (var s = 0; s < geo.surfaces.length; s++) {
+          var surf = geo.surfaces[s];
+          if (surf.sqft <= 0) continue;
+          roomSqft += surf.sqft;
+
+          var rawTiles = surf.sqft / tileAreaSqFt;
+          var adjTiles = Math.ceil(rawTiles * (1 + waste / 100));
+          var boxes = Math.ceil(adjTiles / perBox);
+          materialTotals.tile += boxes;
+          roomLines.push({
+            surface: surf.kind,
+            category: 'tile',
+            material: 'Tile (' + tileW + '″×' + tileH + '″, ' + pattern + ')',
+            qty: adjTiles + ' tiles → ' + boxes + ' box(es)',
+            sqft: surf.sqft,
+          });
+
+          var mortarBags = Math.ceil((surf.sqft / MORTAR_SQFT_PER_BAG) * 1.05);
+          materialTotals.mortar += mortarBags;
+          roomLines.push({
+            surface: surf.kind,
+            category: 'mortar',
+            material: 'Thinset Mortar (50 lb bag)',
+            qty: mortarBags + ' bag(s)',
+            sqft: surf.sqft,
+          });
+
+          var groutBags = Math.ceil((surf.sqft / GROUT_SQFT_PER_BAG) * 1.05);
+          materialTotals.grout += groutBags;
+          roomLines.push({
+            surface: surf.kind,
+            category: 'grout',
+            material: 'Sanded Grout (25 lb bag)',
+            qty: groutBags + ' bag(s)',
+            sqft: surf.sqft,
+          });
+
+          var isWet =
+            ['bathroom', 'shower', 'laundry'].indexOf(roomType) >= 0 &&
+            ['floor', 'shower-walls', 'tub-surround'].indexOf(surf.kind) >= 0;
+          if (isWet) {
+            var wpGal = Math.ceil((surf.sqft / WP_SQFT_PER_GAL) * 1.1);
+            materialTotals.waterproof += wpGal;
+            roomLines.push({
+              surface: surf.kind,
+              category: 'waterproofing',
+              material: 'Waterproofing Membrane (gal)',
+              qty: wpGal + ' gallon(s)',
+              sqft: surf.sqft,
+            });
+          }
+        }
+
+        if (roomLines.length > 0) {
+          allSections.push({ name: roomName, lines: roomLines, sqft: roomSqft, geo: geo });
+          grandTotalSqft += roomSqft;
+        }
+      }
+
+      renderResults(allSections, grandTotalSqft, waste, pattern, materialTotals);
+    }
+
+    // ── SVG floor plan diagram ──
+    function renderDiagram(sections) {
+      var container = document.getElementById('results-diagram');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (!E || !E.renderDiagramSVG) return;
+      if (sections.length === 0) return;
+
+      // Use first room for diagram
+      var geo = sections[0].geo;
+      if (!geo || geo.lenFt <= 0 || geo.widFt <= 0) return;
+
+      var diagramData = {
+        rooms: [{ x: 0, y: 0, width: geo.widFt, height: geo.lenFt, label: sections[0].name }],
+      };
+
+      var svg = E.renderDiagramSVG(diagramData, { maxWidth: 360, maxHeight: 240 });
+      if (svg) {
+        container.innerHTML =
+          '<details class="diagram-details" open><summary>Floor Plan</summary>' +
+          '<div class="diagram-content">' +
+          svg +
+          '</div></details>';
+      }
+    }
+
+    // ── Product suggestions via commerce v2.0 ──
+    function renderSuggestions(materialTotals) {
+      var sugEl = document.getElementById('results-suggestions');
+      var contentEl = document.getElementById('suggestions-content');
+      if (!sugEl || !contentEl) return;
+      if (!E || !E.CatalogStore || !E.matchLineToProducts) return;
+      if (E.CatalogStore.getStats().products === 0) return;
+
+      var storePref = E.CatalogStore.getStorePreference();
+      var retailer = (storePref && storePref.retailer) || 'homedepot';
+      var categories = [
+        { key: 'tile', label: 'Tile', unit: 'box', qty: materialTotals.tile },
+        { key: 'mortar', label: 'Thinset Mortar', unit: 'bag', qty: materialTotals.mortar },
+        { key: 'grout', label: 'Grout', unit: 'bag', qty: materialTotals.grout },
+        { key: 'waterproofing', label: 'Waterproofing', unit: 'gal', qty: materialTotals.waterproof },
+      ];
+
+      var html = '';
+      var totalCost = 0;
+      var hasCost = false;
+
+      categories.forEach(function (cat) {
+        if (cat.qty <= 0) return;
+        var lineProxy = {
+          category: cat.key,
+          description: cat.label,
+          rawQuantity: cat.qty,
+          adjustedQuantity: cat.qty,
+          packsNeeded: cat.qty,
+          packUnit: cat.unit,
+        };
+        var suggestions = E.matchLineToProducts(lineProxy, { maxResults: 3 });
+        if (suggestions.length === 0) return;
+
+        // Enrich URLs
+        if (E.RetailerURLBuilder) {
+          suggestions.forEach(function (s) {
+            if (!s.product.productUrl && s.product.sku) {
+              s.product.productUrl = E.RetailerURLBuilder.buildURL(s.product.sku, retailer);
+            }
+          });
+        }
+
+        var top = suggestions[0];
+        var confBadge = top.confidence === 'high' ? '🟢' : top.confidence === 'medium' ? '🟡' : '🟠';
+        var priceStr = top.price ? '$' + top.price.price.toFixed(2) + '/ea' : '';
+        var costStr = top.estimatedCost ? '$' + top.estimatedCost.toFixed(2) : '';
+        if (top.estimatedCost > 0) {
+          totalCost += top.estimatedCost;
+          hasCost = true;
+        }
+        var urlAttr = top.product.productUrl
+          ? ' href="' + escapeHtml(top.product.productUrl) + '" target="_blank" rel="noopener sponsored"'
+          : '';
+        var tag = urlAttr ? 'a' : 'span';
+
+        html += '<div class="product-card">';
+        html += '<div class="product-info">';
+        html +=
+          '<div class="product-name">' +
+          escapeHtml(cat.label) +
+          ' <span class="product-qty">(' +
+          cat.qty +
+          ' ' +
+          cat.unit +
+          ')</span></div>';
+        html += '<' + tag + ' class="product-title"' + urlAttr + '>' + escapeHtml(top.product.title) + '</' + tag + '>';
+        html += '<div class="product-detail">';
+        html += (top.product.brand ? escapeHtml(top.product.brand) + ' · ' : '') + escapeHtml(top.product.sku);
+        html += (priceStr ? ' · ' + priceStr : '') + '</div>';
+        html += '</div>';
+        html += '<div class="product-meta">';
+        html += '<span title="Match: ' + top.matchScore + '%">' + confBadge + ' ' + top.matchScore + '%</span>';
+        html += costStr ? '<div class="product-cost">' + costStr + '</div>' : '';
+        html += '</div></div>';
+      });
+
+      if (!html) return;
+
+      if (hasCost) {
+        html += '<div class="estimate-total">' + 'Estimated Total: $' + totalCost.toFixed(2) + '</div>';
+      }
+
+      contentEl.innerHTML = html;
+      sugEl.style.display = 'block';
+    }
+
+    // ── Render results ──
+    function renderResults(sections, totalSqft, waste, pattern, materialTotals) {
+      var container = document.getElementById('results-container');
+      var content = document.getElementById('results-content');
+
+      if (sections.length === 0) {
+        content.innerHTML =
+          '<p class="estimate-error">No rooms or surfaces to estimate. Add a room and enter dimensions.</p>';
+        container.style.display = 'block';
+        return;
+      }
+
+      var html =
+        '<div class="estimate-summary">' +
+        '<strong>Total Tileable Area:</strong> ' +
+        totalSqft.toFixed(1) +
+        ' sqft &nbsp;|&nbsp; ' +
+        '<strong>Waste Factor:</strong> ' +
+        waste +
+        '% (' +
+        pattern +
+        ' pattern)' +
+        '</div>';
+
+      for (var i = 0; i < sections.length; i++) {
+        var sec = sections[i];
+        html += '<div class="room-result">';
+        html +=
+          '<h3>' + escapeHtml(sec.name) + ' <span class="room-sqft">(' + sec.sqft.toFixed(1) + ' sqft)</span></h3>';
+        html += '<table class="materials-table">';
+        html += '<thead><tr>' + '<th>Surface</th>' + '<th>Material</th>' + '<th>Quantity</th>' + '</tr></thead><tbody>';
+
+        for (var j = 0; j < sec.lines.length; j++) {
+          var line = sec.lines[j];
+          html += '<tr>';
+          html += '<td>' + escapeHtml(formatSurface(line.surface)) + '</td>';
+          html += '<td>' + escapeHtml(line.material) + '</td>';
+          html += '<td>' + escapeHtml(line.qty) + '</td>';
+          html += '</tr>';
+        }
+
+        html += '</tbody></table></div>';
+      }
+
+      html +=
+        '<p class="estimate-disclaimer">' +
+        '⚠️ These quantities are estimates for planning purposes only. Actual quantities may vary based on ' +
+        'room layout, substrate conditions, and installation details. All coverage rates sourced from manufacturer TDS data. ' +
+        'Contact us for a precise on-site measurement and professional quote.</p>';
+
+      content.innerHTML = html;
+      container.style.display = 'block';
+
+      // Render floor plan diagram and product suggestions
+      renderDiagram(sections);
+      renderSuggestions(materialTotals);
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function formatSurface(kind) {
+      var map = {
+        floor: 'Floor',
+        'full-walls': 'Full Walls',
+        'half-walls': 'Half Walls',
+        backsplash: 'Backsplash',
+        ceiling: 'Ceiling',
+        'shower-walls': 'Shower Walls',
+        'tub-surround': 'Tub Surround',
+      };
+      return map[kind] || kind;
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
+    // ── Init ──
+    document.getElementById('add-room-btn').addEventListener('click', createRoom);
+    document.getElementById('calculate-btn').addEventListener('click', calculate);
+    createRoom();
+  })();
+</script>

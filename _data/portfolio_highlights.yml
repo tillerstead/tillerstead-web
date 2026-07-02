@@ -1,0 +1,81 @@
+highlights:
+  - file: "/assets/img/tillerstead-work/bathrooms/bathroom-remodel-finished.webp"
+    alt: "Finished bathroom remodel with tiled shower, stone trim, and upgraded fixtures"
+    category: "Bathroom Remodels"
+    title: "Full Bathroom Remodel"
+    desc: "Tile shower + floor delivered with clean layout, tight joints, and a documented closeout."
+    ar: "4/3"
+
+  - file: "/assets/img/tillerstead-work/bathrooms/bathroom-marble-floor-finish.jpg"
+    alt: "Marble-look bathroom floor with curbless shower entry"
+    category: "Showers & Wet Areas"
+    title: "Marble Shower + Heated Floor"
+    desc: "Flood-tested shower tied into a large-format floor with clean transitions and trim work."
+    ar: "4/3"
+
+  - file: "/assets/img/tillerstead-work/bathrooms/bathroom-marble-shower-niche.jpg"
+    alt: "Porcelain slab shower wall with mosaic niche detailing near a window"
+    category: "Showers & Wet Areas"
+    title: "Niche + Window Detailing"
+    desc: "Layout planned around fixtures and window lines—tight cuts, clean edges, and shelf detailing."
+    ar: "4/3"
+
+  - file: "/assets/img/tillerstead-work/bathrooms/large-format-tile-installation.jpg"
+    alt: "Wood-look feature wall transitioning into a marble-look shower surround"
+    category: "Feature Walls"
+    title: "Accent Wall Tie-In"
+    desc: "Feature wall blended into the shower surround with aligned joints and finished edges."
+    ar: "4/3"
+
+  - file: "/assets/img/tillerstead-work/bathrooms/bathroom-floor-ditra-progress.jpg"
+    alt: "Bathroom floor preparation showing uncoupling membrane and snapped layout lines"
+    category: "Floors"
+    title: "Floor Prep + Layout"
+    desc: "Uncoupling membrane installed and layout snapped before setting the first tile."
+    ar: "4/3"
+
+  # --- Items below are currently outside /tillerstead-work/ (kept as-is to avoid broken images) ---
+  - file: "/assets/img/bathroom-remodel-final.webp"
+    alt: "Modern bathroom remodel with large-format tile and stone accents"
+    category: "Bathroom Remodels"
+    title: "Master Bath Remodel"
+    desc: "Large-format tile, clean trims, and a waterproofed wet-area system installed per spec."
+    ar: "4/3"
+    todo_move: true
+    target_file: "/assets/img/tillerstead-work/bathrooms/master-bath-remodel-final.webp"
+
+  - file: "/assets/img/kitchen-green.jpg"
+    alt: "Kitchen with updated tile backsplash and fixtures"
+    category: "Kitchens"
+    title: "Kitchen Upgrade"
+    desc: "Backsplash tile work delivered with a clear scope, clean lines, and tidy finish."
+    ar: "4/3"
+    todo_move: true
+    target_file: "/assets/img/tillerstead-work/kitchens/kitchen-upgrade-green.jpg"
+
+  - file: "/assets/img/bathroom-remodel-2.webp"
+    alt: "Guest bathroom refresh with classic tile and updated fixtures"
+    category: "Bathroom Remodels"
+    title: "Guest Bath Refresh"
+    desc: "A clean refresh focused on moisture durability, sharp lines, and a balanced layout."
+    ar: "4/3"
+    todo_move: true
+    target_file: "/assets/img/tillerstead-work/bathrooms/guest-bath-refresh.webp"
+
+  - file: "/assets/img/hardwood-room.jpg"
+    alt: "Living room with new hardwood flooring and fresh trim lines"
+    category: "Floors"
+    title: "Hardwood Living Room"
+    desc: "A bright, durable flooring upgrade with clean transitions and a finished edge."
+    ar: "4/3"
+    todo_move: true
+    target_file: "/assets/img/tillerstead-work/floors/hardwood-living-room.jpg"
+
+  - file: "/assets/img/tile-pattern-dark.jpg"
+    alt: "Dark tile pattern concept used for a modern backsplash look"
+    category: "Design"
+    title: "Modern Backsplash Concept"
+    desc: "A bold pattern option for clients who want contrast, depth, and clean geometry."
+    ar: "4/3"
+    todo_move: true
+    target_file: "/assets/img/tillerstead-work/design/modern-backsplash-concept-dark.jpg"

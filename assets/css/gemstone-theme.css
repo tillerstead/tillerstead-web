@@ -1,0 +1,81 @@
+/* Gemstone gradients for Tillerstead — inspired by Evident & Founder Hub */
+:root {
+  /* Hero/CTA backgrounds */
+  --ts-hero-gradient: var(--gem-malachite);
+  --ts-cta-gradient: var(--gem-amethyst);
+  --ts-accent-gradient: var(--gem-sapphire);
+
+  /* Section backgrounds */
+  --ts-section-gradient: var(--gem-labradorite);
+
+  /* Button backgrounds */
+  --ts-btn-gradient: var(--gem-emerald);
+
+  /* Badge backgrounds */
+  --ts-badge-gradient: var(--gem-gold);
+
+  /* Text on gemstone backgrounds */
+  --ts-hero-text: var(--gem-malachite-text);
+  --ts-cta-text: var(--gem-amethyst-text);
+  --ts-accent-text: var(--gem-sapphire-text);
+  --ts-section-text: var(--gem-labradorite-text);
+  --ts-btn-text: var(--gem-emerald-text);
+  --ts-badge-text: #ffffff;
+}
+
+.hero {
+  background: var(--ts-hero-gradient);
+  color: var(--ts-hero-text);
+  box-shadow: 0 8px 32px 0 rgb(34 49 63 / 18%);
+  animation: gemstone-fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta {
+  background: var(--ts-cta-gradient);
+  color: var(--ts-cta-text);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgb(155 89 182 / 18%);
+  animation: gemstone-fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section {
+  background: var(--ts-section-gradient);
+  color: var(--ts-section-text);
+}
+
+.btn-primary {
+  background: var(--ts-btn-gradient);
+  color: var(--ts-btn-text);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px 0 rgb(22 163 74 / 18%);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--gem-emerald-radial);
+  color: var(--gem-emerald-text);
+  box-shadow: 0 4px 16px 0 rgb(22 163 74 / 28%);
+}
+
+.badge {
+  background: var(--ts-badge-gradient);
+  color: var(--ts-badge-text);
+  border-radius: 0.5rem;
+  padding: 0.25em 0.75em;
+  font-weight: 600;
+}
+
+@keyframes gemstone-fade-in {
+  0% {
+    opacity: 0%;
+    transform: translateY(32px) scale(0.98);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translateY(0) scale(1);
+  }
+}

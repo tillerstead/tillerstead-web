@@ -1,0 +1,98 @@
+# Tillerstead LLC Amazon Associate Product Links
+# Purpose: Help homeowners and DIYers choose reliable tools/materials and support site development via affiliate commissions.
+# Note: TCNA/ANSI standards govern installation methods and material classifications—product selection is based on published specs and field experience.
+
+metadata:
+  updated: "2025-12-28"
+  disclosure: >
+    Tillerstead LLC participates in the Amazon Services LLC Associates Program,
+    an affiliate advertising program designed to provide a means for sites to earn advertising fees by linking to Amazon.com.
+    If you purchase through our links, we may earn a small commission at no extra cost to you.
+  editorial_policy: >
+    We only list products we have personally used or would confidently use based on published specifications.
+    No paid placements. No brand sponsorships. Installation standards are governed by the TCNA Handbook and ANSI A108/A118;
+    products are selected to support those requirements, not replace them.
+  transparency_note: >
+    Always follow the manufacturer’s data sheet for the specific product you buy.
+    If a project involves structural, electrical, plumbing, or other trade-licensed work, use properly licensed professionals.
+
+categories:
+  - id: planning-essentials
+    name: "Project Planning & DIY Essentials"
+    description: >
+      Start here if you’re planning a renovation, gathering estimates, or scoping work before committing.
+      Good documentation reduces surprises, protects your budget, and helps you compare contractors fairly.
+    rank: 10
+    products:
+      - id: room-planner
+        name: "Room-By-Room Project Planner"
+        full_name: "Room By Room Project Planner: Organize Interior Design Ideas, Sketch Layouts, Contractor Quotes & More"
+        amazon_url: "https://amzn.to/4qls9kO"
+        type: "Planning & Documentation"
+        specs: null
+        why_we_like_it: >
+          A simple way to keep layouts, measurements, selections, and quotes in one place.
+          The clearer your scope is, the easier it is to get accurate estimates and avoid change-order surprises.
+        pro_tip: >
+          Before any demo, photograph every wall and corner and write down fixture locations, shutoffs, and access panels.
+          That documentation helps future trades and reduces “we didn’t see that” disputes.
+        brand: "House To Home Publishing"
+        used_by_tillerstead: true
+        notes: "Best for homeowners comparing bids and tracking selections."
+
+      - id: bosch-glm100-23
+        name: "BOSCH Laser Distance Measure"
+        full_name: "BOSCH GLM100-23 100 Ft Blaze Laser Distance Measure"
+        amazon_url: "https://amzn.to/4atkxIk"
+        type: "Precision Measurement"
+        specs: "100 ft range; ±1/16 in accuracy; includes batteries (per listing)"
+        why_we_like_it: >
+          Fast, accurate measurements for walls, floors, ceiling heights, and layout planning.
+          Measuring diagonals helps identify out-of-square rooms early—critical for clean tile layouts and realistic expectations.
+        pro_tip: >
+          Measure wall-to-wall and diagonal-to-diagonal. If diagonals don’t match, the room isn’t square—plan your layout,
+          grout lines, and focal points accordingly before ordering tile.
+        brand: "BOSCH"
+        used_by_tillerstead: true
+        notes: "Great for estimating, layout, and material takeoffs."
+
+  - id: installation-tools
+    name: "Installation Tools & Finish Quality"
+    description: >
+      Tools that help control alignment, spacing, and finish quality—especially with large-format tile and tight sightlines.
+      We pick items that improve consistency and reduce the risk of avoidable defects.
+    rank: 9
+    products:
+      - id: dgsl-leveling-system
+        name: "DGSL Tile Leveling System"
+        full_name: "DGSL Tile Leveling System with Plier - 1200-Piece Spacers Clips and 300-Piece Reusable Wedges"
+        amazon_url: "https://amzn.to/49rOXIT"
+        type: "Leveling & Spacing"
+        specs: "1/16 in spacing; includes plier tool (per listing)"
+        why_we_like_it: >
+          Helps control lippage and keeps grout joints consistent during curing—especially on large-format tile.
+          It doesn’t “fix” a bad substrate, but it does improve consistency when the prep is correct.
+        pro_tip: >
+          Leveling systems are a finishing tool—not a substitute for substrate flattening.
+          If the floor isn’t within tolerance for the tile format, fix prep first.
+        brand: "DGSL"
+        used_by_tillerstead: true
+        notes: >
+          Confirm joint width with your tile manufacturer and your installer’s layout plan.
+          Wrong spacing or layout choices can create avoidable alignment issues.
+
+      - id: cotton-farm-cheesecloth
+        name: "Ultra-Dense Cheesecloth (Final Buffing)"
+        full_name: "Cotton Farm Grade 100 XL Cheese Cloth - Ultra-Dense Butter Muslin"
+        amazon_url: "https://amzn.to/4p6jqBU"
+        type: "Cleanup & Finish"
+        specs: "36 x 36 in; unbleached cotton; reusable (per listing)"
+        why_we_like_it: >
+          Useful for final buffing after grout haze removal—less lint than paper products and gentle on many surfaces.
+          Always confirm compatibility with the specific tile/stone finish you have.
+        pro_tip: >
+          Follow grout cure times and use the manufacturer-approved cleaning method.
+          Start gentle (water + approved cleaner) and avoid aggressive abrasives on polished surfaces.
+        brand: "Cotton Farm"
+        used_by_tillerstead: true
+        notes: "Test a small area first—especially on polished stone or soft finishes."

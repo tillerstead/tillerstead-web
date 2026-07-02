@@ -1,0 +1,656 @@
+/**
+ * ====================================
+ * SPACING & LAYOUT SYSTEM - TILLERSTEAD
+ * ====================================
+ * Consistent spacing, containers, and layout utilities
+ * Replaces inconsistent margin/padding across the site
+ */
+
+/* ====================================
+   CONTAINER SYSTEM
+   ==================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--tiller-container-max-width, min(98%, 2400px));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(0.75rem, 2vw, 1.5rem);
+  padding-right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.container--wide {
+  max-width: var(--tiller-container-xl, min(94%, 2200px));
+}
+
+.container--narrow {
+  max-width: var(--tiller-container-text-width, min(90%, 900px));
+}
+
+.container--full {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ====================================
+   SECTION SPACING
+   ==================================== */
+
+section {
+  padding: clamp(2rem, 4vw, 4rem) 0;
+}
+
+section.section--compact {
+  padding: clamp(1.5rem, 3vw, 3rem) 0;
+}
+
+section.section--spacious {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+section.section--no-top {
+  padding-top: 0;
+}
+
+section.section--no-bottom {
+  padding-bottom: 0;
+}
+
+/* ====================================
+   STACK SPACING (Vertical Flow)
+   ==================================== */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.stack--xs {
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.stack--sm {
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.stack--md {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.stack--lg {
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stack--xl {
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.stack--2xl {
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+/* ====================================
+   CLUSTER SPACING (Horizontal Flow)
+   ==================================== */
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  align-items: center;
+}
+
+.cluster--sm {
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.cluster--lg {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cluster--xl {
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.cluster--center {
+  justify-content: center;
+}
+
+.cluster--between {
+  justify-content: space-between;
+}
+
+.cluster--end {
+  justify-content: flex-end;
+}
+
+/* ====================================
+   GRID SYSTEM
+   ==================================== */
+
+.grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+
+@media (min-width: 768px) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.grid--gap-sm {
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.grid--gap-lg {
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+/* ====================================
+   MARGIN UTILITIES
+   ==================================== */
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.mt-2 {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.mt-3 {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.mt-4 {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.mt-5 {
+  margin-top: clamp(3rem, 6vw, 4rem);
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.mb-2 {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.mb-3 {
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.mb-4 {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.mb-5 {
+  margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.ml-0 {
+  margin-left: 0;
+}
+
+.ml-1 {
+  margin-left: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.ml-2 {
+  margin-left: clamp(1rem, 2vw, 1.5rem);
+}
+
+.ml-3 {
+  margin-left: clamp(1.5rem, 3vw, 2rem);
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+.mr-1 {
+  margin-right: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.mr-2 {
+  margin-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.mr-3 {
+  margin-right: clamp(1.5rem, 3vw, 2rem);
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.my-1 {
+  margin-top: clamp(0.5rem, 1vw, 0.75rem);
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.my-2 {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.my-3 {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.my-4 {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* ====================================
+   PADDING UTILITIES
+   ==================================== */
+
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.p-2 {
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.p-3 {
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.p-4 {
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.pt-1 {
+  padding-top: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.pt-2 {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.pt-3 {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.pt-4 {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.pb-1 {
+  padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.pb-2 {
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.pb-3 {
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.pb-4 {
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.px-1 {
+  padding-left: clamp(0.5rem, 1vw, 0.75rem);
+  padding-right: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.px-2 {
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.px-3 {
+  padding-left: clamp(1.5rem, 3vw, 2rem);
+  padding-right: clamp(1.5rem, 3vw, 2rem);
+}
+
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.py-1 {
+  padding-top: clamp(0.5rem, 1vw, 0.75rem);
+  padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.py-2 {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.py-3 {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ====================================
+   TEXT ALIGNMENT
+   ==================================== */
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+/* ====================================
+   DISPLAY UTILITIES
+   ==================================== */
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/* ====================================
+   WIDTH UTILITIES
+   ==================================== */
+
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.max-w-xs {
+  max-width: 320px;
+}
+
+.max-w-sm {
+  max-width: 480px;
+}
+
+.max-w-md {
+  max-width: 640px;
+}
+
+.max-w-lg {
+  max-width: 800px;
+}
+
+.max-w-xl {
+  max-width: 1024px;
+}
+
+.max-w-2xl {
+  max-width: 1280px;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+/* ====================================
+   FLEXBOX UTILITIES
+   ==================================== */
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+/* ====================================
+   POSITION UTILITIES
+   ==================================== */
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+/* ====================================
+   OVERFLOW UTILITIES
+   ==================================== */
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* ====================================
+   RESPONSIVE BREAKPOINTS
+   ==================================== */
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  section {
+    padding: clamp(2rem, 4vw, 3rem) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}

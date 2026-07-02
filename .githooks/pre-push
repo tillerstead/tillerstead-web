@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+set -eu
+
+echo ""
+echo "[pre-push] Full build gate..."
+
+# Build site (this is what actually catches front matter / YAML / liquid breakage)
+if command -v bundle >/dev/null 2>&1; then
+  bundle exec jekyll build --trace
+else
+  echo "[pre-push] ERROR: bundle not found. Install ruby/bundler or run via your activate-ruby.ps1."
+  exit 1
+fi
+
+# Optional link check (if script exists)
+if [ -f "./scripts/check-links.js" ]; then
+  node "./scripts/check-links.js"
+fi
+
+echo "[pre-push] OK — push allowed"
+echo ""

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs><linearGradient id="brand-grad-tillerstead-color" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a6840"/><stop offset="100%" stop-color="#d89c00"/></linearGradient></defs>
+<g>
+<g><rect x="426.89" y="792.37" width="170.22" height="32.84" stroke="#0a6840" stroke-width="3.30752" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="374.29" y="825.21" width="275.42" height="32.84" stroke="#0a6840" stroke-width="3.30752" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="289.18" y="858.05" width="445.64" height="32.84" stroke="#0a6840" stroke-width="3.30752" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="512" y1="178.59" x2="512" y2="792.37" stroke="#0a6840" stroke-width="5.25312" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512,139.68 L532.48,171.42 L512,196 L491.52,171.42 Z" stroke="#0a6840" stroke-width="2.72384" fill="#d89c00"/>
+<path d="M230.2,330.14 Q512,313.47 793.8,330.14" stroke="#0a6840" stroke-width="4.47488" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="512" cy="330.14" r="17.41" stroke="#0a6840" stroke-width="2.9184" fill="none"/>
+<circle cx="512" cy="330.14" r="6.14" fill="#0a6840" stroke="none"/>
+<line x1="230.2" y1="330.14" x2="230.2" y2="549.89" stroke="#0a6840" stroke-width="2.1401600000000003" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="11.67,7.78"/>
+<line x1="793.8" y1="330.14" x2="793.8" y2="549.89" stroke="#0a6840" stroke-width="2.1401600000000003" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="11.67,7.78"/>
+<line x1="138.45" y1="549.89" x2="321.95" y2="549.89" stroke="#0a6840" stroke-width="4.0857600000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M138.45,549.89 Q230.2,586.59 321.95,549.89" stroke="#0a6840" stroke-width="4.0857600000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="702.05" y1="549.89" x2="885.55" y2="549.89" stroke="#0a6840" stroke-width="4.0857600000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M702.05,549.89 Q793.8,586.59 885.55,549.89" stroke="#0a6840" stroke-width="4.0857600000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g>
+</svg>

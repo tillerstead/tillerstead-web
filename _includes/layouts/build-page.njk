@@ -1,0 +1,77 @@
+---
+layout: layouts/default.njk
+layout_body_class: page-build-guide
+build_guide: true
+---
+{%- set phase_order = order or build_order -%}
+{%- set phases = build_phases.build_phases | sort_by("order") -%}
+
+<section class="build-guide-hero bg-gradient-primary scroll-fade-in premium-hero">
+  <div class="container">
+    <nav class="build-breadcrumb" aria-label="Breadcrumb">
+      <a href="/build/">Build Guides</a>
+      <span aria-hidden="true">›</span>
+      <span>Phase {{ phase_order }}</span>
+    </nav>
+    <span class="phase-badge">Phase {{ phase_order }} of 8</span>
+    <h1 class="build-guide-title heading-1 text-shadow">{{ build_title or title }}</h1>
+    <p class="build-guide-description lead text-white-80">{{ description }}</p>
+    {% include "components/credential-badges.njk" %}
+  </div>
+</section>
+
+<section class="build-guide-content ts-section scroll-fade-in">
+  <div class="container">
+    <div class="guide-layout {% if toc %}has-toc{% endif %}">
+      {% if toc %}
+      <aside class="guide-toc" aria-label="Table of Contents">
+        <h2 class="toc-title">On This Page</h2>
+        <nav class="toc-nav" id="toc-nav"></nav>
+      </aside>
+      {% endif %}
+      <article class="guide-article prose">{{ content | safe }}</article>
+    </div>
+
+    {%- set prev_order = phase_order | minus(1) -%}
+    {%- set next_order = phase_order | plus(1) -%}
+    {%- set prev_phase = phases | where("order", prev_order) | first -%}
+    {%- set next_phase = phases | where("order", next_order) | first -%}
+
+    <nav class="phase-navigation" aria-label="Build Phase Navigation">
+      <div class="phase-nav-links">
+        {% if prev_phase %}
+        <a href="{{ prev_phase.url }}" class="phase-nav-link phase-nav-prev btn btn--ghost">
+          <span class="phase-nav-label">← Previous</span>
+          <span class="phase-nav-title">Phase {{ prev_phase.order }}: {{ prev_phase.title }}</span>
+        </a>
+        {% else %}
+        <a href="/build/" class="phase-nav-link phase-nav-prev btn btn--ghost">
+          <span class="phase-nav-label">← Back</span>
+          <span class="phase-nav-title">All Build Guides</span>
+        </a>
+        {% endif %}
+        {% if next_phase %}
+        <a href="{{ next_phase.url }}" class="phase-nav-link phase-nav-next btn btn--primary">
+          <span class="phase-nav-label">Next →</span>
+          <span class="phase-nav-title">Phase {{ next_phase.order }}: {{ next_phase.title }}</span>
+        </a>
+        {% else %}
+        <a href="/contact/" class="phase-nav-link phase-nav-next phase-nav-cta btn btn--primary btn--pulse" data-magnetic>
+          <span class="phase-nav-label">Ready to Build?</span>
+          <span class="phase-nav-title">Request an Estimate</span>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="build-guide-cta bg-gradient-primary ts-section scroll-fade-in premium-cta">
+  <div class="container text-center">
+    <h2 class="text-white heading-2">Ready to Start Your Project?</h2>
+    <p class="text-white-80 lead">
+      Get a detailed estimate for your bathroom or shower remodel from a licensed NJ contractor who follows these standards.
+    </p>
+    <div class="cta-buttons flex flex-center gap-cta-btns mt-2">{% include "components/cta-buttons.njk" %}</div>
+  </div>
+</section>

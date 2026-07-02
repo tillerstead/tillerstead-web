@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ meta_description or description }}" />
+  <meta name="theme-color" content="#0a6840" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <title>{{ title }} — Tillerstead LLC</title>
+  
+  {# Canonical URL #}
+  <link rel="canonical" href="{{ page.url | url }}" />
+  
+  {# Font preloading #}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" />
+  
+  {# Styles #}
+  <link rel="stylesheet" href="/assets/css/tokens.css?v={{ build.hash }}" />
+  <link rel="stylesheet" href="/assets/css/base.css?v={{ build.hash }}" />
+  <link rel="stylesheet" href="/assets/css/utilities.css?v={{ build.hash }}" />
+  {% if pageCSS %}<link rel="stylesheet" href="{{ pageCSS }}{% if '?' in pageCSS %}&{% else %}?{% endif %}v={{ build.hash }}" />{% endif %}
+  
+  {# Favicon #}
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest?v={{ build.hash }}" />
+  
+  {# No-JS fallback #}
+  <script>
+    document.documentElement.classList.replace('no-js', 'js');
+  </script>
+</head>
+
+<body style="background-color: var(--color-surface-primary); color: var(--color-text-primary);" class="antialiased">
+  
+  {# Skip to main #}
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:text-white focus:px-4 focus:py-2 focus:rounded" style="background-color: var(--color-brand-primary);">
+    Skip to main content
+  </a>
+
+  {# Header #}
+  {% include "components/header.njk" %}
+
+  {# Main content #}
+  <main id="main" class="flex-1">
+    {{ content | safe }}
+  </main>
+
+  {# Footer #}
+  {% include "components/footer.njk" %}
+
+  {# Scripts #}
+  <script src="/assets/js/main.js?v={{ build.hash }}" defer></script>
+  {% if pageJS %}<script src="{{ pageJS }}{% if '?' in pageJS %}&{% else %}?{% endif %}v={{ build.hash }}" defer></script>{% endif %}
+  
+</body>
+</html>

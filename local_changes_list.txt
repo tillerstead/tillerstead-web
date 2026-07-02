@@ -1,0 +1,3 @@
+ M .venv-py312/Lib/site-packages/_distutils_hack/__pycache__/__init__.cpython-312.pyc
+ D package-lock.json
+?? local_changes_list.txt

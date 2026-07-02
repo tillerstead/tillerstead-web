@@ -1,0 +1,79 @@
+_site/
+.jekyll-cache/
+.vs/
+.mcp-agents/
+dist/
+reports/
+optimization-reports/
+node_modules/
+/.bundle
+vendor/bundle/
+
+# Ruby / build caches
+.sass-cache/
+.cache/
+.rubocop-cache/
+
+# Playwright test artifacts
+playwright-report/
+test-results/
+.playwright-artifacts*/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Python virtual environments (legacy standalone-repo artifacts)
+.venv/
+.venv-py312/
+venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+*.min.js.map
+*.min.css.map
+
+# Report/audit artifacts (generated, not source)
+bandit-report.json
+compliance-audit-report.json
+contrast-audit-report.json
+lighthouse-mobile-report.json
+npm-audit.json
+lighthouse-report.html
+lint-css-output.txt
+lint-js-output.txt
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Python virtual environments
+.venv/
+.venv-*/
+
+# Encryption keys (NEVER COMMIT)
+.git-encrypt/encryption.key
+.git-encrypt/*.key
+.git-crypt-key
+
+# Admin credentials (password hashes)
+admin/config/users.json
+build-manifest.json

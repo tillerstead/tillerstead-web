@@ -1,0 +1,56 @@
+build_phases:
+  - title: 'Codes, Permits & Inspections'
+    url: '/build/phase-01/'
+    order: 1
+  - title: 'Shower Pans, Slopes & Drains'
+    url: '/build/phase-02/'
+    order: 2
+  - title: 'Waterproofing Systems'
+    url: '/build/phase-03/'
+    order: 3
+  - title: 'Curbs & Curbless Showers'
+    url: '/build/phase-04/'
+    order: 4
+  - title: 'Benches, Seats & Niches'
+    url: '/build/phase-05/'
+    order: 5
+  - title: 'Tile Installation Standards'
+    url: '/build/phase-06/'
+    order: 6
+  - title: 'Flood Testing & Verification'
+    url: '/build/phase-07/'
+    order: 7
+  - title: 'Common Failures & Red Flags'
+    url: '/build/phase-08/'
+    order: 8
+
+faq:
+  - question: 'What is the Build Phase?'
+    answer: 'The Build Phase is a step-by-step guide that mirrors how properly permitted bathroom and shower projects unfold in New Jersey. It covers everything from codes and permits through final verification, helping you understand what should happen on your project and why each phase matters.'
+
+  - question: 'Do I need to read all eight guides?'
+    answer: "Not necessarily! Start with 'Codes, Permits & Inspections' if you’re new to remodeling, or jump to the chapter that addresses your specific concern. Each guide is standalone—pick what’s relevant for you!"
+
+  - question: 'Are these guides only for homeowners?'
+    answer: 'Nope! Homeowners use them for understanding their project and evaluating contractors. Contractors reference them as standards-based documentation. Inspectors and architects use them to align expectations for code compliance in New Jersey.'
+
+  - question: 'What standards do these guides reference?'
+    answer: 'These guides follow the TCNA 2024 Handbook (Tile Council of North America), ANSI standards (A108, A118.10, A118.12), and New Jersey building codes. They’re like a blueprint for the best practices in bathroom and shower remodeling!'
+
+  - question: 'Can I use these guides as a DIY manual?'
+    answer: 'Well, sort of... but they are educational, not step-by-step DIY instructions. These guides explain what should happen and why—but tiling and waterproofing require proper tools, training, and code compliance. We always recommend hiring licensed pros!'
+
+  - question: 'What if my inspector wants something different than what these guides say?'
+    answer: 'Great question! Local interpretations vary, and your inspector may have specific expectations. These guides reflect typical New Jersey practice and TCNA standards, but always confirm details with your local code official early on to avoid surprises.'
+
+  - question: "How do these guides relate to Tillerstead's services?"
+    answer: 'At Tillerstead, we build projects using the methods described in these guides. These guides aren’t marketing—they’re educational. We believe homeowners deserve transparency and to understand the quality work behind their bathroom remodel.'
+
+  - question: 'Are there specific product recommendations in the guides?'
+    answer: 'The guides focus on system design and assembly principles, not specific brands. We emphasize compatibility and code requirements over brand names. Product selection depends on your budget, site conditions, and specific code needs.'
+
+  - question: 'Can I link to these guides or share them?'
+    answer: 'Absolutely! These guides are public resources, so feel free to share them with contractors, inspectors, family, or anyone planning a remodel. The more people understand quality bathroom construction, the better!'
+
+  - question: 'How often are these guides updated?'
+    answer: 'We update these guides whenever there are changes to New Jersey codes, revisions to TCNA standards, or new lessons learned from real projects. Check back periodically for the latest information. We’re always staying up to date!'

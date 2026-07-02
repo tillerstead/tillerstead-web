@@ -1,0 +1,28 @@
+{# Trust Bar Component Displays brand credentials in a horizontal bar format Uses centralized brand data from
+_data/brand.yml Usage: {% include "components/c-trust-bar.njk" %} {% include "components/c-trust-bar.njk" %} {% include "components/c-trust-bar.njk" %} Parameters: style: "full" (default), "compact", "minimal"
+animate: true (default), false #} {%- set brand = brand -%} {%- set style = style
+| default("full") -%} {%- set animate = animate | default(true) -%}
+
+<section
+  class="ts-trust-bar ts-trust-bar--{{ style }}{% if animate %} ts-trust-bar--animated{% endif %}"
+  aria-label="Credentials and protections"
+>
+  <div class="container">
+    <ul class="ts-trust-bar__list">
+      {% for cred in brand.credentials %}
+      <li class="ts-trust-bar__item">
+        {% if style == "full" %}
+        <span class="ts-trust-bar__icon ts-icon ts-icon--{{ cred.icon }}" aria-hidden="true"></span>
+        {% endif %}
+        <span class="ts-trust-bar__text">
+          {% if style == "minimal" %} {{ cred.label }}: {{ cred.value }} {% else %}
+          <span class="ts-trust-bar__label">{{ cred.label }}</span>
+          {% if style == "full" %}
+          <span class="ts-trust-bar__value">{{ cred.value }}</span>
+          {% endif %} {% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

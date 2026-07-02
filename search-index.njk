@@ -1,0 +1,19 @@
+---
+permalink: /assets/js/search-index.json
+eleventyExcludeFromCollections: true
+---
+[
+  {%- set comma = false -%}
+  {%- for page in collections.all -%}
+    {%- if page.url and page.data.title and not page.data.eleventyExcludeFromCollections -%}
+      {%- if comma %},{% endif -%}
+      {%- set comma = true -%}
+      {
+        "title": {{ page.data.title | dump | safe }},
+        "url": {{ page.url | dump | safe }},
+        "type": {% if page.data.tags and "post" in page.data.tags %}"blog"{% elif page.data.tags and "build-guide" in page.data.tags %}"guide"{% elif page.data.layout == "page" %}"page"{% else %}"page"{% endif %},
+        "snippet": {{ page.data.description | default("") | truncate(120) | dump | safe }}
+      }
+    {%- endif -%}
+  {%- endfor -%}
+]

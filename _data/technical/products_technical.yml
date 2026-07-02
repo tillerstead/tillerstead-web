@@ -1,0 +1,362 @@
+# Tillerstead Technical Products Database
+# =====
+#
+# PURPOSE: Source-backed technical specifications for calculator formulas
+# WARNING: Do NOT modify coverage values without updating the source citation
+#
+# Each product entry must have:
+#   - brand, product_name, category
+#   - packaging (size, unit)
+#   - coverage model with units
+#   - sources array with URL and retrieval date
+#   - notes explaining variance factors
+#
+# Last updated: 2026-01-19
+
+metadata:
+  updated: "2026-01-19"
+  maintainer: "Tillerstead LLC"
+  purpose: "Technical specifications for tile installation calculators"
+  disclaimer: >
+    Coverage rates are manufacturer-specified values from official TDS documents.
+    Actual coverage varies by substrate condition, application technique, and environmental factors.
+    Always verify with the specific product's current technical data sheet before purchasing.
+
+# ==
+# THINSET MORTARS
+# ==
+thinset_mortars:
+  - id: versabond-lft
+    brand: "Custom Building Products"
+    product_name: "VersaBond LFT Professional Large Format Tile Mortar"
+    category: "thinset"
+    type: "medium-bed modified"
+    packaging:
+      size: 50
+      unit: "lb"
+    coverage:
+      model: "by_trowel_notch"
+      rates:
+        - trowel: "1/4 x 1/4 sq"
+          min_sqft: 90
+          max_sqft: 100
+          note: 'For tile up to 8"×8"'
+        - trowel: "1/4 x 3/8 sq"
+          min_sqft: 60
+          max_sqft: 67
+          note: 'For tile 8"×8" to 13"×13"'
+        - trowel: "1/2 x 1/2 sq"
+          min_sqft: 42
+          max_sqft: 47
+          warning: "NOT RECOMMENDED FOR LFT - use U-notch instead"
+        - trowel: "3/4 x 9/16 U-notch @ 45°"
+          min_sqft: 34
+          max_sqft: 42
+          note: 'RECOMMENDED for LFT ≥15"'
+        - trowel: "3/4 x 9/16 U-notch @ 30°"
+          min_sqft: 38
+          max_sqft: 47
+          note: 'RECOMMENDED for LFT ≥15" - same yield as 1/2" sq but better coverage'
+    thickness_range:
+      min_inches: 0.09375
+      max_inches: 0.75
+      note: '3/32" minimum to 3/4" maximum continuous thickness'
+    standards:
+      - "ANSI A118.4"
+      - "ANSI A118.11"
+      - "ANSI A118.15"
+    sources:
+      - name: "Custom Building Products VersaBond LFT TDS"
+        url: "https://www.custombuildingproducts.com/products/versabond-lft-professional-large-format-tile-mortar"
+        retrieved: "2026-01-19"
+      - name: "VersaBond LFT TDS PDF"
+        url: "https://images.homedepot.ca/pdf/VersaBond%20LFT%20TDS%20English-pdf.pdf"
+        retrieved: "2026-01-19"
+    notes: >
+      IMPORTANT: Custom Building Products does NOT recommend 1/2" x 1/2" square notch 
+      trowel for Large Format Tile. The 1/2" spacing makes it more difficult to bed 
+      tiles and achieve proper coverage. Use U-notch or ridged trowel that promotes 
+      mortar ridge collapse. Coverage: ≥80% dry areas, ≥95% wet areas with all tile 
+      edges supported. Larger tiles, deep back patterns, and ungauged stone may 
+      require back-troweling (flat-back or notched-back) to achieve proper coverage.
+
+  - id: versabond
+    brand: "Custom Building Products"
+    product_name: "VersaBond Professional Thin-Set Mortar"
+    category: "thinset"
+    type: "modified"
+    packaging:
+      size: 50
+      unit: "lb"
+    coverage:
+      model: "by_trowel_notch"
+      rates:
+        - trowel: "1/4 x 1/4 sq"
+          min_sqft: 90
+          max_sqft: 100
+        - trowel: "1/4 x 3/8 sq"
+          min_sqft: 60
+          max_sqft: 67
+        - trowel: "1/2 x 1/2 sq"
+          min_sqft: 42
+          max_sqft: 47
+    standards:
+      - "ANSI A118.4"
+      - "ANSI A118.11"
+    sources:
+      - name: "Custom Building Products VersaBond TDS"
+        url: "https://www.custombuildingproducts.com/products/versabond-professional-thin-set-mortar-2"
+        retrieved: "2026-01-19"
+    notes: >
+      Standard thin-set mortar. For Large Format Tile (≥15"), use VersaBond LFT instead.
+      Coverage varies by substrate flatness, tile back pattern, and troweling technique.
+      Add 15-30% for back-buttering.
+
+  - id: mapei-kerabond
+    brand: "Mapei"
+    product_name: "Kerabond T Premium Dry-Set Mortar"
+    category: "thinset"
+    type: "unmodified"
+    packaging:
+      size: 50
+      unit: "lb"
+    coverage:
+      model: "by_trowel_notch"
+      rates:
+        - trowel: "1/4 x 1/4 sq"
+          min_sqft: 75
+          max_sqft: 100
+        - trowel: "1/2 x 1/2 sq"
+          min_sqft: 40
+          max_sqft: 50
+    standards:
+      - "ANSI A118.1"
+    sources:
+      - name: "Mapei Kerabond TDS"
+        url: "https://www.mapei.com/us/en-us/products-and-solutions/products/detail/kerabond-t"
+        retrieved: "2026-01-19"
+    notes: >
+      Unmodified thinset - required for use with Schluter KERDI membrane.
+      Add latex additive for improved bond in wet areas.
+
+# ==
+# WATERPROOFING MEMBRANES
+# ==
+waterproofing_membranes:
+  - id: redgard
+    brand: "Custom Building Products"
+    product_name: "RedGard Waterproofing and Crack Prevention Membrane"
+    category: "waterproofing"
+    type: "liquid"
+    packaging:
+      - size: 1
+        unit: "gallon"
+      - size: 3.5
+        unit: "gallon"
+    coverage:
+      model: "liquid_two_coat"
+      sqft_per_gallon_total: 55
+      sqft_per_gallon_per_coat: 110
+      wet_mils_per_coat: 20
+      dry_mils_total: 24
+    standards:
+      - "ANSI A118.10"
+      - "ANSI A118.12"
+      - "IAPMO"
+      - "ICC-ES ESR-1413"
+    sources:
+      - name: "Custom Building Products TDS-104"
+        url: "https://www.custombuildingproducts.com/wp-content/uploads/TDS-104-021425.pdf"
+        retrieved: "2026-01-19"
+      - name: "Custom Building Products TB94"
+        url: "https://www.custombuildingproducts.com/media/60997801/tb94-understanding-the-coverage-rate-for-redgard.pdf"
+        retrieved: "2026-01-19"
+    notes: >
+      Two coats required for ANSI A118.10 waterproofing compliance.
+      Apply at 15 mils wet per coat minimum. Color changes from pink to red when dry.
+      Apply with 3/4" nap roller or 3/16"x1/4" V-notch trowel.
+
+  - id: aquadefense
+    brand: "Mapei"
+    product_name: "Mapelastic AquaDefense"
+    category: "waterproofing"
+    type: "liquid"
+    packaging:
+      - size: 1
+        unit: "gallon"
+      - size: 5
+        unit: "gallon"
+    coverage:
+      model: "liquid_two_coat"
+      sqft_per_gallon_total: 60
+      dry_mils_total: 20
+    standards:
+      - "ANSI A118.10"
+      - "ANSI A118.12"
+    sources:
+      - name: "Mapei AquaDefense TDS"
+        url: "https://www.wjgrosvenor.com/wp-content/uploads/2024/05/AquaDefense_TDS.pdf"
+        retrieved: "2026-01-19"
+    notes: >
+      Two coats required. Embed fabric tape in first coat at corners and seams.
+      Flood-testable after 12 hours of drying.
+
+  - id: hydroban
+    brand: "LATICRETE"
+    product_name: "Hydro Ban"
+    category: "waterproofing"
+    type: "liquid"
+    packaging:
+      - size: 1
+        unit: "gallon"
+      - size: 5
+        unit: "gallon"
+    coverage:
+      model: "liquid_two_coat"
+      sqft_per_gallon_total: 50
+      cured_thickness_inches: "0.020 - 0.030"
+    standards:
+      - "ANSI A118.10"
+      - "ANSI A118.12"
+    sources:
+      - name: "LATICRETE Hydro Ban TDS"
+        url: "https://cdn-global.laticrete.com/-/media/project/laticrete-international/north-america/product-documents/product-data-sheets/lds6630_hydro-ban.ashx"
+        retrieved: "2026-01-19"
+    notes: >
+      Apply two coats with drying time between. Use with Hydro Ban Board for shower niches.
+      Self-curing - no special curing required.
+
+  - id: kerdi
+    brand: "Schluter"
+    product_name: "KERDI Waterproofing Membrane"
+    category: "waterproofing"
+    type: "sheet"
+    packaging:
+      - size: 54.5
+        unit: "sqft"
+        dimensions: '3''3" x 16''5"'
+      - size: 108
+        unit: "sqft"
+        dimensions: '3''3" x 33'''
+      - size: 215
+        unit: "sqft"
+        dimensions: '3''3" x 65''7"'
+      - size: 323
+        unit: "sqft"
+        dimensions: '3''3" x 98''5"'
+      - size: 646
+        unit: "sqft"
+        dimensions: '6''7" x 98''5"'
+    coverage:
+      model: "sheet_membrane"
+      thickness_mils: 8
+    standards:
+      - "ANSI A118.10"
+    thinset_requirement: "unmodified (ANSI A118.1)"
+    sources:
+      - name: "Schluter Waterproofing Data Sheet"
+        url: "https://assets.schluter.com/asset/570120892212/document_6plrad34eh1rj0g61f54npqu6c/Waterproofing%20Data%20Sheet.pdf"
+        retrieved: "2026-01-19"
+      - name: "Schluter KERDI Product Page"
+        url: "https://www.schluter.com/schluter-us/en_US/Membranes/Waterproofing-(KERDI)/Schluter%C2%AE-KERDI/p/KERDI"
+        retrieved: "2026-01-19"
+    notes: >
+      MUST be set in unmodified thinset. Use KERDI-BAND for all seams and corners.
+      Overlap seams by at least 2 inches. Use KERDI-KERECK for pre-formed corners.
+
+# ==
+# GROUTS
+# ==
+grouts:
+  - id: polyblend-sanded
+    brand: "Custom Building Products"
+    product_name: "Polyblend Sanded Grout"
+    category: "grout"
+    type: "sanded"
+    joint_width_min_inches: 0.125
+    packaging:
+      size: 25
+      unit: "lb"
+    coverage:
+      model: "varies_by_tile"
+      note: "Coverage varies greatly by tile size, joint width, and depth"
+    standards:
+      - "ANSI A118.6"
+    sources:
+      - name: "Custom Building Products Polyblend"
+        url: "https://www.custombuildingproducts.com/products/polyblend-sanded-grout"
+        retrieved: "2026-01-19"
+    notes: >
+      Use for joints 1/8" and larger. Coverage depends on tile size, joint width, and tile thickness.
+      Use manufacturer coverage charts or geometric formula.
+
+  - id: polyblend-unsanded
+    brand: "Custom Building Products"
+    product_name: "Polyblend Non-Sanded Grout"
+    category: "grout"
+    type: "unsanded"
+    joint_width_max_inches: 0.125
+    packaging:
+      size: 10
+      unit: "lb"
+    standards:
+      - "ANSI A118.6"
+    sources:
+      - name: "Custom Building Products Polyblend"
+        url: "https://www.custombuildingproducts.com/products/polyblend-non-sanded-grout"
+        retrieved: "2026-01-19"
+    notes: >
+      Use for joints less than 1/8". Also recommended for polished marble and soft stone
+      to prevent scratching.
+
+# ==
+# SELF-LEVELING COMPOUNDS
+# ==
+self_levelers:
+  - id: mapei-slf-plus
+    brand: "Mapei"
+    product_name: "Self-Leveler Plus"
+    category: "leveling"
+    packaging:
+      size: 50
+      unit: "lb"
+    coverage:
+      model: "volume_based"
+      cubic_feet_per_bag: 0.5
+      sqft_at_eighth_inch: 48
+    thickness_range:
+      min_inches: 0.125
+      max_inches: 1.0
+    standards:
+      - "ASTM C1708"
+    sources:
+      - name: "Mapei Self-Leveler Plus"
+        url: "https://www.mapei.com/us/en-us/products-and-solutions/products/detail/self-leveler-plus"
+        retrieved: "2026-01-19"
+    notes: >
+      Use Mapei Primer T or ECO Prim Grip for priming. Can be extended with aggregate for deeper pours.
+      Coverage based on 1/8" application depth.
+
+  - id: ardex-k15
+    brand: "ARDEX"
+    product_name: "ARDEX K 15"
+    category: "leveling"
+    packaging:
+      size: 50
+      unit: "lb"
+    coverage:
+      model: "volume_based"
+      cubic_feet_per_bag: 0.4
+      sqft_at_eighth_inch: 44
+    thickness_range:
+      min_inches: 0.0625
+      max_inches: 2.0
+    standards:
+      - "ASTM C1708"
+    sources:
+      - name: "ARDEX K 15 Product Page"
+        url: "https://www.ardexamericas.com/product/ardex-k-15/"
+        retrieved: "2026-01-19"
+    notes: >
+      Premium self-leveler with rapid drying. Primer required.
+      Can be feathered to 1/16" at edges.

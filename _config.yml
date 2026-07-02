@@ -1,0 +1,361 @@
+# #  Tillerstead.com — _config.yml
+#
+# ----------------------------
+# Site identity
+# ----------------------------
+title: "Tillerstead LLC"
+tagline: "TCNA-Compliant Tile & Stone Installation — South Jersey, New Jersey"
+description: >-
+  Expert TCNA-compliant tile and stone installation in South Jersey, New Jersey. Specializing in custom showers,
+  heated floors, waterproof assemblies, and natural stone surfaces. Licensed New Jersey Home Improvement Contractor
+  (HIC #13VH10808800) proudly serving Atlantic, Ocean, and Cape May Counties with precision craftsmanship,
+  transparent pricing, and direct owner oversight on every project.
+url: "https://tillerstead.com"
+baseurl: ""
+timezone: "America/New_York"
+
+# ----------------------------
+# Build settings
+# ----------------------------
+permalink: pretty
+encoding: utf-8
+markdown: kramdown
+highlighter: rouge
+
+# Incremental builds (disable for production, enable for dev)
+incremental: false
+
+# Verbose errors
+strict_front_matter: false
+
+# Performance optimizations
+profile: false # Set to true to profile build performance
+quiet: false
+safe: false # Allow plugins
+
+# Source and destination
+source: .
+destination: ./_site
+
+# ----------------------------
+# Plugins
+# ----------------------------
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+  - jekyll-include-cache
+  # Note: jekyll-paginate-v2 installed in Gemfile but disabled — using custom blog listing at /blog/
+
+# Feed settings
+feed:
+  posts_limit: 20
+  excerpt_only: false
+
+# Sitemap settings
+sitemap:
+  priority: 1.0
+  changefreq: weekly
+  lastmod: true
+
+# SEO tag settings
+seo:
+  type: LocalBusiness
+  links:
+    - https://tillerstead.com
+    - https://www.instagram.com/tillerstead
+    - https://www.facebook.com/share/17ZQCR2zdZ/
+    - https://x.com/tillerstead
+
+# Pagination (disabled - using custom blog listing)
+# paginate: 10
+# paginate_path: "/blog/page:num/"
+
+# ----------------------------
+# Markdown / Kramdown
+# ----------------------------
+kramdown:
+  auto_ids: true
+  toc_levels: 2..3
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+
+# ----------------------------
+# Collections
+# ----------------------------
+# Build phases now use static /build/ folder structure
+# No collections needed
+
+# ----------------------------
+# Defaults (uniform build pages)
+# ----------------------------
+defaults:
+  - scope:
+      path: "build"
+    values:
+      layout: default
+      show_breadcrumbs: false
+
+# ----------------------------
+# SEO & Social
+# ----------------------------
+keywords:
+  # Primary service keywords
+  - "TCNA-compliant tile installation South Jersey"
+  - "Custom shower waterproofing New Jersey HIC contractor"
+  - "Heated floor tile systems Atlantic County"
+  - "Natural stone and marble tile New Jersey"
+  - "Large format tile installation NJ"
+  - "Licensed tile contractor Atlantic County"
+  - "Owner-supervised tile projects NJ"
+  - "Written scopes and change orders NJ"
+  # Location-based keywords
+  - "tile installer near me South Jersey"
+  - "bathroom remodel Atlantic City NJ"
+  - "tile contractor Ocean County NJ"
+  - "Cape May County tile installation"
+  - "Galloway NJ tile contractor"
+  - "Egg Harbor Township tile installer"
+  - "Margate tile and stone contractor"
+  - "Ventnor bathroom tile installation"
+  - "Brigantine custom tile work"
+  - "Somers Point tile services"
+  # Service-specific keywords
+  - "curbless shower installation NJ"
+  - "walk-in shower tile contractor"
+  - "bathroom floor heating installation"
+  - "radiant floor tile NJ"
+  - "Schluter system installer New Jersey"
+  - "Kerdi waterproofing contractor"
+  - "porcelain tile installation South Jersey"
+  - "ceramic tile contractor Atlantic County"
+  - "backsplash installation NJ"
+  - "kitchen tile contractor South Jersey"
+  - "fireplace tile surround NJ"
+  - "outdoor tile patio installation"
+  - "pool deck tile contractor NJ"
+  # Trust & quality keywords
+  - "insured tile contractor New Jersey"
+  - "bonded tile installer NJ"
+  - "professional tile setter South Jersey"
+  - "expert tile craftsmanship NJ"
+  - "warranty backed tile installation"
+  - "transparent pricing tile contractor"
+  # Long-tail keywords
+  - "best tile contractor Atlantic County reviews"
+  - "affordable tile installation South Jersey"
+  - "residential tile contractor near me"
+  - "commercial tile installation NJ"
+  - "bathroom renovation contractor South Jersey"
+
+# Local business SEO
+locale: "en_US"
+geo:
+  region: "US-NJ"
+  placename: "Galloway, New Jersey"
+  position: "39.4929;-74.4824"
+
+# Schema.org structured data
+author:
+  name: "Tyler"
+  url: "https://tillerstead.com/about/"
+
+webmaster_verifications:
+  google: "" # Add Google Search Console verification code
+  bing: "" # Add Bing Webmaster verification code
+
+social:
+  name: "Tillerstead LLC"
+  type: "LocalBusiness"
+  links:
+    - "https://tillerstead.com"
+    - "https://www.instagram.com/tillerstead?igsh=MWg5NjlwNXBnYXM2Mg%3D%3D&utm_source=qr"
+    - "https://www.facebook.com/share/17ZQCR2zdZ/?mibextid=wwXIfr"
+    - "https://x.com/tillerstead?s=21"
+
+# Open Graph & Twitter Cards
+twitter:
+  username: tillerstead
+  card: summary_large_image
+
+facebook:
+  publisher: "https://www.facebook.com/share/17ZQCR2zdZ/?mibextid=wwXIfr"
+
+logo: "/assets/img/logo/logo-optimized.png"
+default_og_image: "/assets/img/social/og-image.png"
+hero_default_image: "/assets/img/tillerstead-work/bathrooms/after-entry-shot.jpg"
+assets_version: "2025-11-23.1"
+
+# Service areas for local SEO
+service_areas:
+  - "Atlantic County"
+  - "Ocean County"
+  - "Cape May County"
+  - "Burlington County"
+  - "Camden County"
+  - "Gloucester County"
+
+# ----------------------------
+# Business variables
+# ----------------------------
+company:
+  owner: "Tyler, Owner/Operator"
+  phone_display: "(609) 862-8808"
+  phone_link: "+16098628808"
+  hic: "13VH10808800"
+  address_line: "325 E. Jimmie Leeds Road, Suite 7-333"
+  address_city: "Galloway"
+  address_region: "NJ"
+  address_postal_code: "08205"
+  # Email addresses (ProtonMail end-to-end encrypted with catchall)
+  email: "info@tillerstead.com" # General inquiries (default/fallback)
+  email_support: "support@tillerstead.com" # Customer support and questions
+  email_sales: "sales@tillerstead.com" # New business inquiries
+  email_quotes: "quotes@tillerstead.com" # Quote requests and estimates
+  email_legal: "legal@tillerstead.com" # Legal, licensing, and trademark inquiries
+  email_dmca: "dmca@tillerstead.com" # Copyright and DMCA notices
+  email_warranty: "warranty@tillerstead.com" # Warranty claims and service
+
+# ----------------------------
+# UX flags
+# ----------------------------
+site_preset: "brand-2025"
+ui:
+  animations_enabled: true
+  respect_reduced_motion: true
+
+# ----------------------------
+# Accessibility Settings
+# ----------------------------
+accessibility:
+  toolbar: false # Set true to show a11y toolbar by default (or use ?a11y-tools URL param)
+  auto_detect_preferences: true
+  text_to_speech: true
+  visual_alerts: true
+
+ux:
+  cta_primary_label: "Book a TCNA-Compliant Consultation"
+  cta_secondary_label: "See Tile Services"
+  reassurances:
+    - "New Jersey licensed & insured • HIC #13VH10808800"
+    - "Written scopes, change orders, and transparent pricing"
+    - "Owner on site — no subcontracted labor"
+    - "Waterproof assemblies per TCNA standards"
+    - "All work documented for warranty and compliance"
+  value_props:
+    - "Design consultations: align vision, budget, and timeline"
+    - "Transparent scheduling and material lead times"
+    - "Monthly property care plans with photo documentation"
+    - "All installations meet or exceed TCNA and manufacturer specs"
+
+# ----------------------------
+# Forms
+# ----------------------------
+forms:
+  endpoint: "https://formsubmit.co/support@tillerstead.com"
+  guide_endpoint: "https://formsubmit.co/support@tillerstead.com"
+  redirect_path: "/success/?form=contact"
+  guide_redirect_path: "/download/nj-tile-guide/thank-you/"
+  subject: "New Tillerstead LLC inquiry — TCNA/New Jersey HIC Compliant"
+
+# Exclusions — keep only site content, exclude everything else
+# ----------------------------
+exclude:
+  # Build tooling
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-metadata
+  - .jekyll-cache
+  - _site
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - "*.gemspec"
+
+  # IDE / OS
+  - .git
+  - .github
+  - .vscode
+  - .vs
+  - .DS_Store
+  - .editorconfig
+  - .gitignore
+  - .gitattributes
+
+  # Linting / formatting configs
+  - eslint.config.js
+  - ".lighthouserc.json"
+  - ".htmlhintrc"
+  - ".htmlvalidate.json"
+  - ".hintrc"
+  - ".stylelintrc.json"
+  - ".stylelintignore"
+  - ".prettierrc.json"
+  - ".prettierignore"
+  - ".pa11yci.json"
+  - ".size-limit.cjs"
+  - ".npmrc"
+  - ".nvmrc"
+  - ".ruby-version"
+  - playwright.config.js
+  - browserconfig.xml
+
+  # Dev scripts and tools
+  - scripts/
+  - tools/
+  - admin/
+  - docs/
+  - codebooks/
+  - tillerstead-toolkit/
+  - Contractor-Command-Center/
+  - _audit/
+  - _reports/
+
+  # Dev shell scripts
+  - "*.ps1"
+  - "*.sh"
+  - "*.bat"
+
+  # Non-content markdown in root
+  - README.md
+  - LICENSE
+  - AI_IMPORTANT.md
+  - BRAND-GUIDELINES.md
+  - COLOR-STANDARD.md
+  - CODEOWNERS
+  - "**/*-COMPLETE.md"
+  - "**/*-GUIDE.md"
+  - "**/*-REPORT.md"
+  - "**/*-STRATEGY.md"
+  - "**/*-IMPLEMENTATION.md"
+
+  # Config files that aren't site content
+  - "*.config.js"
+  - "*.toml"
+  - render.yaml
+
+  # Backup patterns
+  - "*.bak"
+  - "*.bak.*"
+  - "**/*.bak"
+  - "**/*.bak.*"
+  - backup-pages/
+  - archive/
+
+# Include — files Jekyll should process
+# ----------------------------
+include:
+  - .well-known
+  - build/
+
+keep_files:
+  - CNAME
+  - assets/

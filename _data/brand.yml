@@ -1,0 +1,264 @@
+# _data/brand.yml
+# Tillerstead Brand Variables - Single Source of Truth
+# NJ HIC #13VH10808800
+
+# COMPANY IDENTITY
+company:
+  legal_name: 'Tillerstead LLC'
+  display_name: 'Tillerstead'
+  owner: 'Tyler'
+  owner_title: 'Owner/Operator'
+  founded: 2024
+  hic_license: '13VH10808800'
+  phone_display: '(609) 862-8808'
+  phone_link: '+16098628808'
+  # Professional email addresses (ProtonMail end-to-end encrypted with catchall)
+  email: 'info@tillerstead.com' # General inquiries (default/fallback)
+  email_support: 'support@tillerstead.com' # Customer support and questions
+  email_sales: 'sales@tillerstead.com' # New business inquiries
+  email_quotes: 'quotes@tillerstead.com' # Quote requests and estimates
+  email_legal: 'legal@tillerstead.com' # Legal, licensing, trademark inquiries
+  email_dmca: 'dmca@tillerstead.com' # Copyright and DMCA notices
+  email_warranty: 'warranty@tillerstead.com' # Warranty claims and service
+  website: 'https://tillerstead.com'
+
+# Physical Address
+address:
+  street: '325 E. Jimmie Leeds Road, Suite 7-333'
+  city: 'Galloway'
+  state: 'NJ'
+  postal_code: '08205'
+  country: 'US'
+
+# BRAND MESSAGING
+messaging:
+  # Primary tagline (header, hero)
+  tagline: 'Where Craft Meets Accountability'
+
+  # Service tagline (footer, meta)
+  service_tagline: 'TCNA-Compliant Tile &amp; Stone Installation — South Jersey'
+
+  # Philosophy (3 words)
+  philosophy: 'Measured. Verified. Documented.'
+
+  # Core promise (one sentence)
+  promise: 'Beautiful finishes start with the invisible work.'
+
+  # Mission statement
+  mission: >
+    Build tile installations the right way—with verified substrates, proper waterproofing,
+    and complete documentation—so homeowners get beautiful finishes that perform for decades.
+
+  # Vision statement
+  vision: >
+    Become New Jersey's most trusted tile contractor by combining industry-standard
+    methodology with transparent communication.
+
+  # Elevator pitch (30 seconds)
+  elevator_pitch: >
+    Tillerstead is a licensed New Jersey tile contractor specializing in bathroom remodels
+    and waterproofing systems. We follow TCNA standards—not shortcuts—and document every step.
+    What makes us different? Owner on site, written scope before work starts, and photo
+    documentation you can keep for warranty purposes.
+
+# BRAND PILLARS (core values)
+pillars:
+  - name: 'Technical Authority'
+    description: 'TCNA 2024, ANSI standards, manufacturer compliance'
+    icon: 'badge'
+
+  - name: 'Transparency'
+    description: 'Written scopes, change orders, photo documentation'
+    icon: 'document'
+
+  - name: 'Direct Accountability'
+    description: 'Owner on site, no subcontracted labor, single point of contact'
+    icon: 'shield'
+
+  - name: 'Craftsmanship'
+    description: 'Substrate prep, system-based waterproofing, planned layouts'
+    icon: 'tools'
+
+# VALUE PROPOSITIONS
+value_props:
+  homeowners:
+    - 'Beautiful finishes start with invisible work'
+    - "You don't need to speak 'construction' to hire well"
+    - 'Built to published standards, not assumptions'
+
+  discerning:
+    - 'TCNA 2024 compliant assemblies'
+    - 'Flood testing performed where required (documented)'
+    - 'Materials matched to application, not availability'
+
+  trust:
+    - 'New Jersey licensed & insured • HIC #13VH10808800'
+    - 'Written scopes, change orders, and warranties'
+    - 'Owner on site—no subcontracted labor'
+
+# TRUST BADGES / CREDENTIALS
+credentials:
+  - label: 'NJ HIC Licensed'
+    value: '#13VH10808800'
+    icon: 'badge'
+
+  - label: 'TCNA Compliant'
+    value: '2024 Handbook'
+    icon: 'check-circle'
+
+  - label: 'Fully Insured'
+    value: 'Contractor'
+    icon: 'shield'
+
+  - label: 'Service Area'
+    value: 'Atlantic, Ocean & Cape May Counties'
+    icon: 'map'
+
+# SERVICE AREAS
+service_areas:
+  primary:
+    - name: 'Atlantic County'
+      cities:
+        - 'Galloway'
+        - 'Egg Harbor Township'
+        - 'Atlantic City'
+        - 'Margate'
+        - 'Ventnor'
+        - 'Brigantine'
+        - 'Somers Point'
+
+    - name: 'Ocean County'
+      cities:
+        - 'Toms River'
+        - 'Barnegat'
+        - 'Long Beach Island'
+        - 'Manahawkin'
+
+    - name: 'Cape May County'
+      cities:
+        - 'Cape May'
+        - 'Ocean City'
+        - 'Sea Isle City'
+        - 'Wildwood'
+
+  secondary:
+    - 'Burlington County'
+    - 'Camden County'
+    - 'Gloucester County'
+
+# SOCIAL MEDIA
+social:
+  handle: 'tillerstead'
+  links:
+    website: 'https://tillerstead.com'
+    instagram: 'https://www.instagram.com/tillerstead'
+    facebook: 'https://www.facebook.com/share/17ZQCR2zdZ/'
+    twitter: 'https://x.com/tillerstead'
+
+  # Standard bio for all platforms
+  bio: 'Licensed NJ tile contractor • HIC #13VH10808800 • TCNA methods • Atlantic, Ocean & Cape May Counties'
+
+# BRAND COLORS
+colors:
+  # Primary palette
+  primary:
+    emerald: '#00e184'
+    emerald_dark: '#00b46a'
+    emerald_light: '#3bf0aa'
+    emerald_accessible: '#008f5d' # WCAG AA on white
+
+  gold:
+    base: '#d4af37'
+    dark: '#9c7a14'
+    light: '#f2d75c'
+    accessible: '#8c6a12' # WCAG AA on white
+
+  slate:
+    darkest: '#000000'
+    dark: '#0f0f0f'
+    card: '#161616'
+    hover: '#222222'
+
+  silver:
+    base: '#d7dadd'
+    dark: '#8e9399'
+    light: '#eef1f5'
+
+  # Semantic colors
+  semantic:
+    success: '#00e184'
+    warning: '#d4af37'
+    error: '#f87171'
+    info: '#38bdf8'
+
+  # Text colors
+  text:
+    primary: '#ffffff'
+    secondary: '#e5e7eb'
+    tertiary: '#9ca3af'
+    muted: '#6b7280'
+
+# BRAND VOICE
+voice:
+  characteristics:
+    - trait: 'Knowledgeable'
+      description: 'Expert without being condescending'
+      example: 'Substrate flatness matters for tile sizes over 15 inches'
+
+    - trait: 'Plain-Speaking'
+      description: 'Technical made accessible'
+      example: "You don't need to speak 'construction' to hire well"
+
+    - trait: 'Reassuring'
+      description: 'Confidence without arrogance'
+      example: 'We follow published methods—not guesswork'
+
+    - trait: 'Direct'
+      description: 'Clear and actionable'
+      example: 'Written scope. Photo documentation. Warranty backed.'
+
+  do:
+    - 'Use industry terms, then explain them'
+    - 'Lead with the benefit to the homeowner'
+    - 'Back claims with standards (TCNA, ANSI, HIC)'
+    - "Acknowledge the homeowner's perspective"
+
+  dont:
+    - 'Use jargon without context'
+    - 'Make promises without backing'
+    - 'Dismiss competitors—let work speak'
+    - 'Oversell or use superlatives carelessly'
+
+# CTA LABELS
+cta:
+  primary: 'Request a Written Estimate'
+  primary_alt: 'Book a TCNA-Compliant Consultation'
+  secondary: 'View Portfolio'
+  secondary_alt: 'See Tile Services'
+  contact: 'Get in Touch'
+  learn_more: 'Learn More'
+
+# INDUSTRY STANDARDS
+standards:
+  - name: 'TCNA'
+    full_name: 'Tile Council of North America'
+    version: '2024 Handbook'
+
+  - name: 'ANSI'
+    full_name: 'American National Standards Institute'
+    specs:
+      - 'A108 (Workmanship)'
+      - 'A118 (Materials)'
+
+  - name: 'NJ HIC'
+    full_name: 'New Jersey Home Improvement Contractor'
+    license: '13VH10808800'
+
+# SIGNATURE BLOCK
+signature:
+  template: |
+    Tyler
+    Owner/Operator, Tillerstead LLC
+    NJ HIC #13VH10808800
+    (609) 862-8808 | support@tillerstead.com
+    "Where Craft Meets Accountability"

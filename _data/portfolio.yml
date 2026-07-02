@@ -1,0 +1,121 @@
+# Portfolio slider entries for /portfolio/
+# Conversion-optimized for NJ tile + wet-area work
+# Note: TCNA/ANSI references are phrased defensibly (no over-claims)
+
+projects:
+  - id: bathroom-complete
+    title: "Full Bathroom Tile Installation"
+    tags: ["showers", "floors"]
+    file: "/assets/img/tillerstead-work/bathrooms/after-entry-shot.jpg"
+    alt: "Completed bathroom tile installation by Tillerstead LLC in South Jersey"
+    caption: >
+      Finished bathroom system with documented prep, clean lines, and
+      wet-area detailing consistent with TCNA methods and applicable ANSI standards.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 10
+
+  - id: lft-vanity-wall
+    title: "Large-Format Vanity Wall"
+    tags: ["showers", "large-format"]
+    file: "/assets/img/tillerstead-work/bathrooms/after-lft-vanity-wall.jpg"
+    alt: "Large-format tile vanity wall with aligned layout and finished edges"
+    caption: >
+      Large-format tile layout with straight lines, finished edges, and
+      substrate preparation verified for the tile format.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 9
+
+  - id: shower-subway-decor
+    title: "Subway Tile Shower with Accent"
+    tags: ["showers", "details"]
+    file: "/assets/img/concepts/shower-white-subway-with-decor-tile.webp"
+    file_fallback: "/assets/img/concepts/shower-white-subway-with-decor-tile.jpg"
+    alt: "White subway tile shower with decorative accent tile band"
+    caption: >
+      Classic subway tile pattern with integrated decorative accent band.
+      Waterproofing and proper slope ensure long-term durability.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 8
+
+  - id: wall-tile-detail
+    title: "Wall Tile Detail (Pre-Grout)"
+    tags: ["showers", "details"]
+    file: "/assets/img/tillerstead-work/bathrooms/bathroom-wall-tile-detail-pre-grout.webp"
+    file_fallback: "/assets/img/tillerstead-work/bathrooms/bathroom-wall-tile-detail-pre-grout.jpg"
+    alt: "Bathroom wall tile detail before grout showing consistent joint spacing"
+    caption: >
+      Pre-grout detail: consistent spacing, clean cuts, and readiness checks
+      completed before grout and final seal-up.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 7
+
+  - id: lft-installation
+    title: "Large-Format Tile Installation"
+    tags: ["floors", "large-format"]
+    file: "/assets/img/tillerstead-work/bathrooms/large-format-tile-installation.webp"
+    file_fallback: "/assets/img/tillerstead-work/bathrooms/large-format-tile-installation.jpg"
+    alt: "Large-format tile installation in progress with clip system for lippage control"
+    caption: >
+      In-progress install: clip system used to manage lippage,
+      mortar and trowel selection matched to the tile,
+      and coverage verified during setting.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 6
+
+  - id: backsplash-white
+    title: "Kitchen Backsplash"
+    tags: ["backsplash", "details"]
+    file: "/assets/img/concepts/backsplash-white.webp"
+    file_fallback: "/assets/img/concepts/backsplash-white.jpg"
+    alt: "Clean white kitchen backsplash tile installation"
+    caption: >
+      Kitchen backsplash with precise cuts around outlets and clean transitions.
+      Proper surface prep ensures lasting adhesion.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 5
+
+  - id: waterproof-membrane
+    title: "Membrane & Substrate Prep"
+    tags: ["floors", "showers", "prep"]
+    file: "/assets/img/tillerstead-work/bathrooms/lft-decoupling-membrane-sealed.jpeg"
+    alt: "Uncoupling or waterproofing membrane installed over a prepared substrate for tile assembly"
+    caption: >
+      Prep phase: membrane installed over a prepared substrate to support the tile assembly.
+      Details and transitions completed per the selected system specifications.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 4
+
+  - id: wood-look-plank
+    title: "Wood-Look Plank Tile"
+    tags: ["floors", "large-format"]
+    file: "/assets/img/concepts/brown-tile-plank-flooring.webp"
+    file_fallback: "/assets/img/concepts/brown-tile-plank-flooring.jpg"
+    alt: "Brown wood-look plank tile flooring installation"
+    caption: >
+      Wood-look plank tile with staggered pattern for natural appearance.
+      Large-format installation requires proper mortar coverage and leveling.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 3
+
+  - id: hardwood-flooring
+    title: "Hardwood Flooring"
+    tags: ["floors", "remodeling"]
+    file: "/assets/img/tillerstead-work/floors/hardwood-room.jpg"
+    alt: "Hardwood flooring installation showing clean lines and transitions"
+    caption: >
+      Hardwood installation with clean transitions and substrate preparation
+      consistent with manufacturer requirements.
+    location: "South Jersey"
+    ar: "4/3"
+    priority: 2
+
+meta:
+  compliance_note: "NJ HIC #13VH10808800 · Tile assemblies follow TCNA 2024 methods and applicable ANSI A108/A118 standards."

@@ -1,0 +1,26 @@
+{# Homepage Process Section
+   Reads process data from _data/home.yml via the global `home` variable.
+   Also available through `data` (set in index.md). #}
+{%- set process = data.process | default(home.process) -%}
+
+<section class="home-process bg-soft" aria-labelledby="process-title">
+  <div class="container container--wide">
+    <header class="section-header">
+      <p class="section-eyebrow">{{ process.eyebrow }}</p>
+      <h2 id="process-title" class="section-title">{{ process.title }}</h2>
+      <p class="section-summary">{{ process.summary }}</p>
+    </header>
+
+    <div class="process-steps">
+      {% for step in process.steps %}
+      <div class="process-step ts-tile-bordered">
+        <div class="step-number" aria-label="Step {{ loop.index }}">{{ loop.index }}</div>
+        <h3 class="step-title">{{ step.title }}</h3>
+        <p class="step-description">{{ step.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="process-fun-fact"><strong>Why this matters:</strong> {{ process.fun_fact }}</p>
+  </div>
+</section>

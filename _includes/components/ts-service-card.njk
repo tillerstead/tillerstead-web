@@ -1,0 +1,101 @@
+<!--
+  ===== Tillerstead Service Card Component =====
+  Premium service card with icon, description, and CTA
+  
+  Usage:
+    {% include "components/ts-service-card.njk" %}
+  
+  Parameters:
+    - title (required): Card heading
+    - tagline (optional): Badge text above title
+    - description (optional): Card description
+    - icon (optional): Icon name (tile, stone, waterproofing, default)
+    - details (optional): Pipe-separated list of bullet points
+    - url (optional): Link URL (defaults to contact page)
+-->
+{%- set icon = icon | default("tile") -%} {%- set card_id = id | default(title) | slugify -%} {%- set icon_svg -%} {%- case icon -%} {%- when 'tile' -%}
+<svg class="ts-service-card__icon-mark ts-icon ts-icon--tile" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  <rect x="4" y="4" width="16" height="16" rx="2" class="ts-icon__stroke"></rect>
+  <rect x="28" y="4" width="16" height="16" rx="2" class="ts-icon__stroke"></rect>
+  <rect x="4" y="28" width="16" height="16" rx="2" class="ts-icon__stroke"></rect>
+  <rect x="28" y="28" width="16" height="16" rx="2" class="ts-icon__stroke"></rect>
+</svg>
+{%- when 'stone' -%}
+<svg class="ts-service-card__icon-mark ts-icon ts-icon--stone" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  <path d="M24 6 40 20 30 42H18L8 20 24 6Z" class="ts-icon__stroke"></path>
+  <path d="M24 6 24 42" class="ts-icon__stroke"></path>
+  <path d="M8 20h32" class="ts-icon__stroke"></path>
+</svg>
+{%- when 'waterproofing' -%}
+<svg
+  class="ts-service-card__icon-mark ts-icon ts-icon--waterproofing"
+  viewBox="0 0 48 48"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d="M24 6c7 9 12 15 12 22a12 12 0 0 1-24 0c0-7 5-13 12-22Z" class="ts-icon__stroke"></path>
+  <path d="M18 30c1.5 3 4.2 5 6 6" class="ts-icon__stroke"></path>
+</svg>
+{%- else -%}
+<svg
+  class="ts-service-card__icon-mark ts-icon ts-icon--default"
+  viewBox="0 0 48 48"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d="M10 34 19.5 24.5" class="ts-icon__stroke"></path>
+  <path d="M22 12a8 8 0 0 1 11.3 11.3L26 30.5 17.5 22l5.3-5.3A4 4 0 0 0 22 12Z" class="ts-icon__stroke"></path>
+  <path d="M14 30 10 40l10-4" class="ts-icon__stroke"></path>
+</svg>
+{%- endcase -%} {%- endset -%} {%- set tagline = tagline | default("TCNA-compliant methods • New Jersey
+HIC-licensed") -%} {%- set description = description | default("Standards-based tile and waterproofing work
+for South Jersey, New Jersey homes—scoped, documented, and built to last.") -%} {%- set detail_items = details -%} {%- if detail_items and '|' in detail_items -%} {%- set detail_items = detail_items | split("|") -%} {%-
+elif detail_items and ';' in detail_items -%} {%- set detail_items = detail_items | split(";") -%} {%- elif
+detail_items and ',' in detail_items -%} {%- set detail_items = detail_items | split(",") -%} {%- endif -%}
+
+<article
+  class="ts-card ts-card--interactive ts-service-card ts-fade-in"
+  id="{{ card_id }}"
+  aria-labelledby="{{ card_id }}-title"
+>
+  <header class="ts-card__header">
+    <span class="ts-service-card__icon" aria-hidden="true">{{ icon_svg | trim }}</span>
+    <div>
+      {% if tagline %}
+      <p class="ts-service-card__tagline">{{ tagline }}</p>
+      {% endif %}
+      <h3 class="ts-service-card__title" id="{{ card_id }}-title">{{ title }}</h3>
+    </div>
+  </header>
+
+  <div class="ts-service-card__body">
+    {% if description %}
+    <p class="ts-service-card__desc">{{ description }}</p>
+    {% endif %} {% if detail_items and detail_items.length > 0 %}
+    <ul class="ts-service-card__points" role="list">
+      {% for item in detail_items %}
+      <li>{{ item | trim }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <footer class="ts-card__footer">
+    <a
+      class="ts-btn ts-btn--primary ts-service-card__cta"
+      href="{% if url %}{{ url | relative_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}"
+      aria-label="Learn more about {{ title | default("this service") }}"
+    >
+      <span> {% if url %}Learn more{% else %}Request consultation{% endif %} </span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M6 12L10 8L6 4"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </footer>
+</article>

@@ -1,0 +1,7 @@
+# Cloudflare Pages — Tillerstead
+# Used by: wrangler pages deploy (local emergency deploys + CF Pages native integration)
+# Build output: products/tillerstead/_site/
+
+name = "tillerstead"
+compatibility_date = "2026-05-08"
+pages_build_output_dir = "./_site"

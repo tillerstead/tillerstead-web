@@ -1,0 +1,185 @@
+# =
+# Tillerstead Navigation - 2026 Contractor UX
+# Data-driven nav for desktop dropdowns + mobile accordions
+# =
+
+primary:
+  # --- Top-level links (no dropdown) ---
+  - id: services
+    title: 'Services'
+    url: '/services/'
+    match: '^/(services|pricing|plans|financing)(/|$)'
+    has_dropdown: true
+    aria_label: 'Services &amp; Pricing'
+    children:
+      - id: all-services
+        title: 'All Services'
+        url: '/services/'
+      - id: pricing
+        title: 'Pricing'
+        url: '/pricing/'
+      - id: plans
+        title: 'Service Plans'
+        url: '/plans/'
+      - id: financing
+        title: 'Financing'
+        url: '/financing/'
+
+  - id: portfolio
+    title: 'Portfolio'
+    url: '/portfolio/'
+    match: '^/portfolio(/|$)'
+
+  # --- Build Guides dropdown ---
+  - id: build
+    title: 'Build Guides'
+    url: '/build/'
+    match: '^/build(/|$)'
+    has_dropdown: true
+    aria_label: 'Build Guides &amp; Standards'
+    children:
+      - id: codes-permits
+        title: 'Codes &amp; Permits'
+        url: '/build/nj-codes-permits/'
+      - id: shower-pans-slopes
+        title: 'Shower Pans &amp; Slopes'
+        url: '/build/shower-pans-slopes-drains/'
+      - id: waterproofing-systems
+        title: 'Waterproofing Systems'
+        url: '/build/waterproofing-systems/'
+      - id: curbs-curbless
+        title: 'Curbless Showers'
+        url: '/build/curbs-curbless/'
+      - id: benches-niches
+        title: 'Benches &amp; Niches'
+        url: '/build/framing-benches-niches/'
+      - id: tile-standards
+        title: 'Tile Standards (TCNA)'
+        url: '/build/tile-installation-standards/'
+      - id: flood-testing
+        title: 'Flood Testing'
+        url: '/build/flood-testing/'
+      - id: common-failures
+        title: 'Common Build Failures'
+        url: '/build/common-build-failures/'
+      - id: nj-code-compliance
+        title: 'NJ Code Compliance'
+        url: '/nj-code-compliance/'
+
+  - id: reviews
+    title: 'Reviews'
+    url: '/reviews/'
+    match: '^/reviews(/|$)'
+
+  # --- Resources dropdown (blog + room planner) ---
+  - id: resources
+    title: 'Resources'
+    url: '/blog/'
+    match: '^/(blog|room-planner|homeowner-resources|download)(/|$)'
+    has_dropdown: true
+    aria_label: 'Resources &amp; Tools'
+    children:
+      - id: blog
+        title: 'Blog &amp; Guides'
+        url: '/blog/'
+      - id: room-planner
+        title: 'Room Planner'
+        subtitle: 'Free tile layout tool'
+        url: '/room-planner/'
+      - id: homeowner-resources
+        title: 'Homeowner Resources'
+        url: '/homeowner-resources/'
+      - id: nj-tile-guide
+        title: 'NJ Tile Guide (PDF)'
+        url: '/download/nj-tile-guide/'
+
+  # --- About dropdown ---
+  - id: about
+    title: 'About'
+    url: '/about/'
+    match: '^/about(/|$)'
+    has_dropdown: true
+    aria_label: 'About Tillerstead'
+    children:
+      - id: about-us
+        title: 'Our Story'
+        url: '/about/'
+      - id: process
+        title: 'Our Process'
+        url: '/process/'
+      - id: for-gcs
+        title: 'For Contractors'
+        url: '/for-general-contractors/'
+      - id: faq
+        title: 'FAQ'
+        url: '/faq/'
+      - id: products
+        title: 'Products We Use'
+        url: '/products/'
+      - id: contact
+        title: 'Contact'
+        url: '/contact/'
+
+secondary:
+  - id: privacy
+    title: 'Privacy'
+    url: '/privacy/'
+  - id: terms
+    title: 'Terms'
+    url: '/terms/'
+
+footer:
+  - group: 'Service Areas'
+    items:
+      - title: 'Atlantic County'
+        url: '/atlantic-county-nj/'
+      - title: 'Ocean County'
+        url: '/ocean-county-nj/'
+      - title: 'Cape May County'
+        url: '/cape-may-county-nj/'
+  - group: 'Learn'
+    items:
+      - title: 'FAQ'
+        url: '/faq/'
+      - title: 'Products'
+        url: '/products/'
+      - title: 'Blog'
+        url: '/blog/'
+  - group: 'Build Guides'
+    items:
+      - title: 'Codes &amp; Permits'
+        url: '/build/nj-codes-permits/'
+      - title: 'Shower Pans &amp; Slopes'
+        url: '/build/shower-pans-slopes-drains/'
+      - title: 'Waterproofing Systems'
+        url: '/build/waterproofing-systems/'
+      - title: 'Curbless Showers'
+        url: '/build/curbs-curbless/'
+      - title: 'Benches &amp; Niches'
+        url: '/build/framing-benches-niches/'
+      - title: 'Tile Standards (TCNA)'
+        url: '/build/tile-installation-standards/'
+      - title: 'Flood Testing'
+        url: '/build/flood-testing/'
+      - title: 'Common Build Failures'
+        url: '/build/common-build-failures/'
+  - group: 'Company'
+    items:
+      - title: 'About'
+        url: '/about/'
+      - title: 'For Contractors'
+        url: '/for-general-contractors/'
+      - title: 'Contact'
+        url: '/contact/'
+  - group: 'Legal'
+    items:
+      - title: 'Privacy'
+        url: '/privacy/'
+      - title: 'Terms'
+        url: '/terms/'
+  - group: 'Ecosystem'
+    items:
+      - title: 'Evident Technologies'
+        url: 'https://evident.icu'
+      - title: 'Founder Hub'
+        url: 'https://devon-tyler.com'

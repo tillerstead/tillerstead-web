@@ -1,0 +1,220 @@
+<!-- Mobile Bottom Sheet Navigation -->
+<div class="nav-sheet__handle" aria-label="Drag to close">
+  <span class="nav-sheet__handle-bar"></span>
+</div>
+
+<div class="nav-sheet__content">
+  <!-- Header -->
+  <div class="nav-sheet__header">
+    <h2 class="nav-sheet__title">Tools & Calculators</h2>
+    <button
+      class="nav-sheet__close"
+      aria-label="Close navigation"
+      onclick="document.getElementById('nav-backdrop').click()"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tool List (Scrollable) -->
+  <nav class="nav-sheet__nav">
+    <!-- Coverage Calculators -->
+    <div class="nav-sheet__section">
+      <h3 class="nav-sheet__section-title">Coverage Calculators</h3>
+      <div class="nav-sheet__grid">
+        <a
+          href="#/tile"
+          data-route="tile"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">🧱</span>
+          <span class="nav-sheet__text">Tile Quantity</span>
+        </a>
+        <a
+          href="#/grout"
+          data-route="grout"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">🪣</span>
+          <span class="nav-sheet__text">Grout</span>
+        </a>
+        <a
+          href="#/mortar"
+          data-route="mortar"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">🔧</span>
+          <span class="nav-sheet__text">Mortar</span>
+        </a>
+        <a
+          href="#/waterproof"
+          data-route="waterproof"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">💧</span>
+          <span class="nav-sheet__text">Waterproof</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Structural & Prep -->
+    <div class="nav-sheet__section">
+      <h3 class="nav-sheet__section-title">Structural & Prep</h3>
+      <div class="nav-sheet__grid">
+        <a
+          href="#/slope"
+          data-route="slope"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📐</span>
+          <span class="nav-sheet__text">Shower Slope</span>
+        </a>
+        <a
+          href="#/leveling"
+          data-route="leveling"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📏</span>
+          <span class="nav-sheet__text">Leveling</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Planning & Design -->
+    <div class="nav-sheet__section">
+      <h3 class="nav-sheet__section-title">Planning & Design</h3>
+      <div class="nav-sheet__grid">
+        <a
+          href="#/labor"
+          data-route="labor"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">⏱️</span>
+          <span class="nav-sheet__text">Labor</span>
+        </a>
+        <a
+          href="#/visualizer"
+          data-route="visualizer"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">🎨</span>
+          <span class="nav-sheet__text">Visualizer</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="nav-sheet__section">
+      <h3 class="nav-sheet__section-title">Actions</h3>
+      <div class="nav-sheet__grid">
+        <a
+          href="#/overview"
+          data-route="overview"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📊</span>
+          <span class="nav-sheet__text">Overview</span>
+        </a>
+        <a
+          href="#/dashboard"
+          data-route="dashboard"
+          data-requires-auth
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📈</span>
+          <span class="nav-sheet__text">Dashboard</span>
+        </a>
+        <a
+          href="#/export"
+          data-route="export"
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📤</span>
+          <span class="nav-sheet__text">Export</span>
+        </a>
+        <a
+          href="#/admin"
+          data-route="admin"
+          data-requires-auth
+          class="nav-sheet__card"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">⚙️</span>
+          <span class="nav-sheet__text">Admin</span>
+        </a>
+        <a
+          href="#/quote"
+          data-route="quote"
+          class="nav-sheet__card nav-sheet__card--primary"
+          onclick="document.getElementById('nav-backdrop').click()"
+        >
+          <span class="nav-sheet__icon">📄</span>
+          <span class="nav-sheet__text">Generate Quote</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // Swipe to close gesture
+  (function () {
+    const sheet = document.getElementById('nav-sheet');
+    const handle = sheet?.querySelector('.nav-sheet__handle');
+
+    if (!sheet || !handle) return;
+
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+
+    function onTouchStart(e) {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      sheet.style.transition = 'none';
+    }
+
+    function onTouchMove(e) {
+      if (!isDragging) return;
+      currentY = e.touches[0].clientY;
+      const diff = currentY - startY;
+
+      // Only allow downward swipe
+      if (diff > 0) {
+        sheet.style.transform = `translateY(${diff}px)`;
+      }
+    }
+
+    function onTouchEnd(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      sheet.style.transition = '';
+      sheet.style.transform = '';
+
+      const diff = currentY - startY;
+
+      // Close if swiped down more than 100px
+      if (diff > 100) {
+        document.getElementById('nav-backdrop')?.click();
+      }
+    }
+
+    handle.addEventListener('touchstart', onTouchStart);
+    handle.addEventListener('touchmove', onTouchMove);
+    handle.addEventListener('touchend', onTouchEnd);
+  })();
+</script>

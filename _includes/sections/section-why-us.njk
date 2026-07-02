@@ -1,0 +1,21 @@
+{# Homepage Why Us Section Parameters: - data: The why_us data object from _data/home.yml #}
+{%- set why_us = data -%}
+
+<div class="container container--wide">
+  <header class="section-header">
+    {% if why_us.eyebrow %}<p class="section-eyebrow">{{ why_us.eyebrow }}</p>{% endif %}
+    <h2 id="why-us-heading" class="section-title">{{ why_us.title | default("Why Choose Tillerstead") }}</h2>
+    {% if why_us.subtitle %}<p class="section-subtitle">{{ why_us.subtitle }}</p>{% endif %}
+  </header>
+  {% if why_us.items %}
+  <div class="why-us-grid">
+    {% for item in why_us.items %}
+    <div class="why-us-card ts-tile-framed">
+      {% if item.icon %}<div class="why-us-icon">{{ item.icon }}</div>{% endif %}
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

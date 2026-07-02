@@ -1,0 +1,261 @@
+/*
+ * Vendor Integrations — Lenis + AOS + Open Props utilities
+ * Loaded BEFORE other CSS to establish baseline
+ */
+
+/* ========================================
+   LENIS SMOOTH SCROLL OVERRIDES
+   ======================================== */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto; /* Lenis handles scroll, disable native */
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ========================================
+   AOS ANIMATION CUSTOMIZATIONS
+   Extends AOS defaults with Tillerstead theming
+   ======================================== */
+
+/* Faster, springier AOS transitions */
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Stagger children with data-aos-delay auto-increment */
+[data-aos-stagger] > [data-aos] {
+  transition-delay: calc(var(--aos-stagger-idx, 0) * 80ms);
+}
+
+/* Custom AOS animation: gold reveal (brand-specific) */
+[data-aos='gold-reveal'] {
+  opacity: 0%;
+  transform: translateY(24px) scale(0.97);
+  transition-property: opacity, transform;
+}
+
+[data-aos='gold-reveal'].aos-animate {
+  opacity: 100%;
+  transform: translateY(0) scale(1);
+}
+
+/* Custom AOS animation: slide-scale */
+[data-aos='slide-scale'] {
+  opacity: 0%;
+  transform: translateX(-30px) scale(0.95);
+  transition-property: opacity, transform;
+}
+
+[data-aos='slide-scale'].aos-animate {
+  opacity: 100%;
+  transform: translateX(0) scale(1);
+}
+
+/* ========================================
+   WHITESPACE & SPACING UTILITY SYSTEM
+   Powered by Open Props design tokens
+   ======================================== */
+
+:root {
+  /* Fluid spacing scale (Open Props inspired) */
+  --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  --size-fluid-4: clamp(2rem, 4vw, 3rem);
+  --size-fluid-5: clamp(3rem, 6vw, 5rem);
+  --size-fluid-6: clamp(4rem, 8vw, 7rem);
+
+  /* Content width tokens */
+  --size-content-1: 20ch;
+  --size-content-2: 45ch;
+  --size-content-3: 60ch;
+
+  /* Section rhythm */
+  --section-gap: var(--size-fluid-5);
+  --section-pad-block: var(--size-fluid-5);
+  --section-pad-inline: var(--size-fluid-3);
+
+  /* Card rhythm */
+  --card-gap: var(--size-fluid-2);
+  --card-pad: var(--size-fluid-3);
+
+  /* Animation tokens */
+  --ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1);
+  --ease-squish-2: cubic-bezier(0.5, -0.1, 0.1, 1.5);
+  --ease-out-5: cubic-bezier(0, 0, 0, 1);
+}
+
+/* ─── Section Spacing ─── */
+.section,
+section,
+.ts-section {
+  padding-block: var(--section-pad-block);
+  padding-inline: var(--section-pad-inline);
+}
+
+.section + .section,
+section + section,
+.ts-section + .ts-section {
+  margin-top: 0; /* collapse double padding */
+}
+
+/* ─── Whitespace Filler Utilities ─── */
+.gap-fluid-1 {
+  gap: var(--size-fluid-1);
+}
+
+.gap-fluid-2 {
+  gap: var(--size-fluid-2);
+}
+
+.gap-fluid-3 {
+  gap: var(--size-fluid-3);
+}
+
+.gap-fluid-4 {
+  gap: var(--size-fluid-4);
+}
+
+.pad-fluid-1 {
+  padding: var(--size-fluid-1);
+}
+
+.pad-fluid-2 {
+  padding: var(--size-fluid-2);
+}
+
+.pad-fluid-3 {
+  padding: var(--size-fluid-3);
+}
+
+.pad-fluid-4 {
+  padding: var(--size-fluid-4);
+}
+
+.space-y-fluid-1 > * + * {
+  margin-top: var(--size-fluid-1);
+}
+
+.space-y-fluid-2 > * + * {
+  margin-top: var(--size-fluid-2);
+}
+
+.space-y-fluid-3 > * + * {
+  margin-top: var(--size-fluid-3);
+}
+
+.space-y-fluid-4 > * + * {
+  margin-top: var(--size-fluid-4);
+}
+
+/* ─── Content Width Utilities ─── */
+.content-narrow {
+  max-width: var(--size-content-1);
+  margin-inline: auto;
+}
+
+.content-reading {
+  max-width: var(--size-content-2);
+  margin-inline: auto;
+}
+
+.content-wide {
+  max-width: var(--size-content-3);
+  margin-inline: auto;
+}
+
+/* ─── Layout Helpers ─── */
+.flow > * + * {
+  margin-top: var(--flow-space, var(--size-fluid-2));
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--size-fluid-2));
+  align-items: center;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--card-gap);
+}
+
+.grid-auto-lg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: var(--card-gap);
+}
+
+/* ─── Scroll Progress Bar (enhanced) ─── */
+.ts-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--tiller-color-emerald, #00e184),
+    var(--tiller-color-gold, #d4af37)
+  );
+  z-index: 9999;
+  transition: width 50ms linear;
+  pointer-events: none;
+}
+
+/* ========================================
+   PERFORMANCE: GPU-ACCELERATED ANIMATIONS
+   ======================================== */
+
+[data-aos],
+.animate-on-scroll,
+.scroll-fade-in,
+.scroll-scale-in {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Remove will-change after animation completes */
+[data-aos].aos-animate {
+  will-change: auto;
+}
+
+/* ========================================
+   REDUCED MOTION SAFETY NET
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 100% !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .ts-scroll-progress {
+    transition: none;
+  }
+
+  html.lenis,
+  html.lenis body,
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+}

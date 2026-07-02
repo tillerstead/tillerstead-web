@@ -1,0 +1,225 @@
+<!-- Project Overview Component -->
+<div class="overview-page">
+  <!-- Header -->
+  <header class="overview-header">
+    <h1 class="overview-title" id="overview-project-name">Untitled Project</h1>
+    <div class="overview-meta">
+      <span class="overview-date" id="overview-date">Started today</span>
+    </div>
+  </header>
+
+  <!-- Project Summary Cards -->
+  <div class="overview-grid">
+    <!-- Progress Card -->
+    <div class="overview-card overview-card--highlight">
+      <div class="card-header">
+        <h2 class="card-title">📊 Project Progress</h2>
+      </div>
+      <div class="card-body">
+        <div class="progress-ring">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"></circle>
+            <circle
+              id="progress-circle"
+              cx="60"
+              cy="60"
+              r="54"
+              fill="none"
+              stroke="#10b981"
+              stroke-width="8"
+              stroke-dasharray="339.292"
+              stroke-dashoffset="339.292"
+              transform="rotate(-90 60 60)"
+            ></circle>
+          </svg>
+          <div class="progress-text">
+            <span class="progress-percent" id="overview-progress">0%</span>
+            <span class="progress-label">Complete</span>
+          </div>
+        </div>
+        <p class="card-hint" id="overview-hint">Start by entering room dimensions</p>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="overview-card">
+      <div class="card-header">
+        <h2 class="card-title">📏 Project Stats</h2>
+      </div>
+      <div class="card-body">
+        <div class="stat-list">
+          <div class="stat-item">
+            <span class="stat-label">Total Area</span>
+            <span class="stat-value" id="stat-area">0 sq ft</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Rooms</span>
+            <span class="stat-value" id="stat-rooms">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tiles Needed</span>
+            <span class="stat-value" id="stat-tiles">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Est. Budget</span>
+            <span class="stat-value" id="stat-budget">$0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="overview-card">
+      <div class="card-header">
+        <h2 class="card-title">🚀 Quick Start</h2>
+      </div>
+      <div class="card-body">
+        <div class="action-list">
+          <a href="#/tile" class="action-btn">
+            <span class="action-icon">🧱</span>
+            <span class="action-text">Calculate Tile</span>
+          </a>
+          <a href="#/grout" class="action-btn">
+            <span class="action-icon">🪣</span>
+            <span class="action-text">Calculate Grout</span>
+          </a>
+          <a href="#/visualizer" class="action-btn">
+            <span class="action-icon">🎨</span>
+            <span class="action-text">Visualize Pattern</span>
+          </a>
+          <a href="#/estimate" class="action-btn action-btn--primary">
+            <span class="action-icon">💬</span>
+            <span class="action-text">Get Quote</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional Features Banner -->
+  <div class="overview-banner">
+    <div class="banner-content">
+      <div class="banner-icon">⚡</div>
+      <div class="banner-text">
+        <h3 class="banner-title">TillerPro™ Enterprise Suite</h3>
+        <p class="banner-desc">
+          Professional quote generation, financing calculator, e-signature integration, and multi-location management
+        </p>
+      </div>
+      <a href="#/quote" class="banner-cta">Generate Quote →</a>
+    </div>
+  </div>
+
+  <!-- Getting Started Guide (for new users) -->
+  <div class="overview-guide" id="overview-guide">
+    <h3 class="guide-title">🎯 Professional Workflow</h3>
+    <ol class="guide-steps">
+      <li class="guide-step">
+        <strong>Precision Measurements:</strong> Enter exact dimensions with our TCNA-compliant calculators for accurate
+        material estimates.
+      </li>
+      <li class="guide-step">
+        <strong>Material Selection:</strong> Choose tile size, type, and pattern. Automatic waste factor calculations
+        ensure you order the right quantity.
+      </li>
+      <li class="guide-step">
+        <strong>Complete Estimates:</strong> Automatic calculations for grout, mortar, waterproofing, and labor costs
+        based on industry standards.
+      </li>
+      <li class="guide-step">
+        <strong>Professional Quotes:</strong> Generate contract-ready proposals with legal protection, financing
+        options, and e-signature capabilities.
+      </li>
+    </ol>
+    <button class="btn-dismiss" onclick="document.getElementById('overview-guide').style.display = 'none'">
+      Got it!
+    </button>
+  </div>
+</div>
+
+<script>
+  // Update overview with ProjectState
+  (function () {
+    if (!window.ProjectState) return;
+
+    function updateOverview() {
+      const summary = window.ProjectState.getSummary();
+
+      // Project name
+      const nameEl = document.getElementById('overview-project-name');
+      if (nameEl) nameEl.textContent = summary.projectName || 'Untitled Project';
+
+      // Mode
+      const modeEl = document.getElementById('overview-mode');
+      if (modeEl) {
+        const mode = window.ProjectState.get('mode') || 'homeowner';
+        modeEl.textContent = mode === 'contractor' ? 'Contractor Mode' : 'Homeowner Mode';
+      }
+
+      // Date
+      const dateEl = document.getElementById('overview-date');
+      if (dateEl) {
+        const created = window.ProjectState.get('project.createdAt');
+        if (created) {
+          const date = new Date(created);
+          const days = Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
+          dateEl.textContent = days === 0 ? 'Started today' : `Started ${days} days ago`;
+        }
+      }
+
+      // Progress
+      const percent = summary.completionPercent || 0;
+      const progressEl = document.getElementById('overview-progress');
+      if (progressEl) progressEl.textContent = `${percent}%`;
+
+      // Progress ring
+      const circle = document.getElementById('progress-circle');
+      if (circle) {
+        const circumference = 2 * Math.PI * 54; // radius = 54
+        const offset = circumference - (percent / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+        circle.style.transition = 'stroke-dashoffset 0.5s ease';
+      }
+
+      // Hint
+      const hints = [
+        'Start by entering room dimensions',
+        'Choose your tile size and type',
+        'Calculate materials needed',
+        'Review labor estimate',
+        'Almost there! Request a quote',
+        'Project complete! Export or get quote',
+      ];
+      const hintIndex = Math.min(Math.floor(percent / 20), hints.length - 1);
+      const hintEl = document.getElementById('overview-hint');
+      if (hintEl) hintEl.textContent = hints[hintIndex];
+
+      // Stats
+      const areaEl = document.getElementById('stat-area');
+      if (areaEl) areaEl.textContent = `${summary.totalArea || 0} sq ft`;
+
+      const roomsEl = document.getElementById('stat-rooms');
+      if (roomsEl) roomsEl.textContent = summary.roomCount || 0;
+
+      const tilesEl = document.getElementById('stat-tiles');
+      if (tilesEl) {
+        const count = summary.tileCount || 0;
+        const boxes = summary.boxesNeeded || 0;
+        tilesEl.textContent = boxes ? `${count} (${boxes} boxes)` : count || 0;
+      }
+
+      const budgetEl = document.getElementById('stat-budget');
+      if (budgetEl) {
+        const budget = summary.budgetEstimate || 0;
+        budgetEl.textContent = budget ? `$${budget.toLocaleString()}` : '$0';
+      }
+    }
+
+    // Initial update
+    updateOverview();
+
+    // Listen for changes
+    window.ProjectState.on('change', updateOverview);
+    window.ProjectState.on('batch-update', updateOverview);
+  })();
+</script>

@@ -1,0 +1,773 @@
+/* ============================================
+   Tillerstead Navigation System
+   Beautiful desktop menu + mobile drawer
+   ============================================ */
+
+/* ── Legacy .nav-link glow (merged from navigation.css) ── */
+.nav-link {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--tiller-color-emerald, #10b981);
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 0 10px rgb(16 185 129 / 80%),
+    0 0 25px rgb(16 185 129 / 60%),
+    0 0 40px rgb(16 185 129 / 40%);
+}
+
+.ts-header__region abbr {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* ============================================
+   DESKTOP NAVIGATION (769px+)
+   ============================================ */
+
+.ts-nav {
+  display: none;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  .ts-nav {
+    display: flex;
+  }
+
+  .ts-nav-toggle {
+    display: none;
+  }
+}
+
+/* Navigation List */
+.ts-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.125rem, 1vw, 1rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Items */
+.ts-nav__item {
+  position: relative;
+}
+
+/* Navigation Links */
+.ts-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem clamp(0.625rem, 1vw, 1rem);
+  color: rgb(255 255 255 / 75%);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.85vw, 0.9375rem);
+  border-radius: var(--radius-md, 8px);
+  transition:
+    color 0.2s var(--tiller-ease-smooth, ease),
+    background 0.2s var(--tiller-ease-smooth, ease),
+    box-shadow 0.2s var(--tiller-ease-smooth, ease);
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect — emerald tint */
+.ts-nav__link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(0 225 132 / 8%), rgb(212 175 55 / 4%));
+  opacity: 0%;
+  transition: opacity 0.25s var(--tiller-ease-smooth, ease);
+  border-radius: inherit;
+}
+
+.ts-nav__link:hover::before,
+.ts-nav__link:focus::before {
+  opacity: 100%;
+}
+
+/* Underline Effect */
+.ts-nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 1.5rem);
+  height: 2px;
+  background: var(--tiller-color-gold, #d4af37);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 2px;
+}
+
+.ts-nav__link:hover::after,
+.ts-nav__link:focus::after,
+.ts-nav__trigger[aria-expanded='true']::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.ts-nav__link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgb(0 225 132 / 25%);
+}
+
+/* CTA Button Style */
+.ts-nav__item--cta .ts-nav__link {
+  background: linear-gradient(135deg, var(--tiller-color-emerald, #00e184), var(--tiller-color-emerald-dark, #00b46a));
+  color: #0a100d;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgb(0 225 132 / 25%);
+  border: none;
+}
+
+.ts-nav__item--cta .ts-nav__link::before,
+.ts-nav__item--cta .ts-nav__link::after {
+  display: none;
+}
+
+.ts-nav__item--cta .ts-nav__link:hover {
+  background: linear-gradient(135deg, var(--tiller-color-emerald-light, #3bf0aa), var(--tiller-color-emerald, #00e184));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgb(0 225 132 / 30%);
+  color: #0a100d;
+}
+
+/* Dropdown Arrow */
+.ts-nav__arrow {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.ts-nav__trigger[aria-expanded='true'] .ts-nav__arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   DROPDOWN MENUS
+   ============================================ */
+
+/* Hover bridge — invisible rect fills the gap between trigger and dropdown */
+.ts-nav__item--dropdown {
+  position: relative;
+}
+
+.ts-nav__item--dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0.75rem; /* matches gap to dropdown */
+  background: transparent;
+  pointer-events: none;
+}
+
+.ts-nav__item--dropdown:hover::after,
+.ts-nav__item--dropdown:has([aria-expanded='true'])::after {
+  pointer-events: auto;
+}
+
+.ts-nav__dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 280px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 98%), rgb(245 248 245 / 96%));
+  border: 1px solid rgb(0 225 132 / 15%);
+  border-radius: var(--tiller-border-radius-lg, 12px);
+  box-shadow:
+    0 12px 48px rgb(0 0 0 / 20%),
+    0 4px 16px rgb(0 0 0 / 10%),
+    0 0 0 1px rgb(0 225 132 / 8%);
+  padding: 0.5rem;
+  list-style: none;
+  margin: 0;
+  opacity: 0%;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.25s;
+  z-index: var(--z-dropdown, 1000);
+}
+
+/* Right-align the last two dropdowns so they don't clip the viewport */
+.ts-nav__item--dropdown:nth-last-of-type(-n+2) .ts-nav__dropdown {
+  left: auto;
+  right: 0;
+  transform: translateY(-8px);
+}
+
+.ts-nav__item--dropdown:nth-last-of-type(-n+2) .ts-nav__trigger[aria-expanded='true'] + .ts-nav__dropdown {
+  transform: translateY(0);
+}
+
+/* Dropdown Arrow/Triangle — centered by default */
+.ts-nav__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(0 225 132 / 15%);
+}
+
+.ts-nav__dropdown::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid rgb(255 255 255 / 98%);
+}
+
+/* Right-aligned arrows for last 2 dropdowns */
+.ts-nav__item--dropdown:nth-last-of-type(-n+2) .ts-nav__dropdown::before {
+  left: auto;
+  right: 1.25rem;
+  transform: none;
+}
+
+.ts-nav__item--dropdown:nth-last-of-type(-n+2) .ts-nav__dropdown::after {
+  left: auto;
+  right: calc(1.25rem + 1px);
+  transform: none;
+}
+
+/* Show Dropdown */
+.ts-nav__trigger[aria-expanded='true'] + .ts-nav__dropdown {
+  opacity: 100%;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition:
+    opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+/* Dropdown Items */
+.ts-nav__dropdown-item {
+  margin: 0;
+}
+
+.ts-nav__dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--neutral-900, #1a1a1a);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: var(--radius-md, 8px);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dropdown Item Hover Effect */
+.ts-nav__dropdown a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--tiller-color-emerald, #00e184);
+  border-radius: 0 3px 3px 0;
+  transform: scaleY(0);
+  transition: transform 0.2s var(--tiller-ease-bounce, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.ts-nav__dropdown a:hover::before,
+.ts-nav__dropdown a:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.ts-nav__dropdown a:hover,
+.ts-nav__dropdown a:focus-visible {
+  background: rgb(0 225 132 / 6%);
+  color: var(--tiller-color-emerald-dark, #00b46a);
+}
+
+/* Featured Item (TillerPro) */
+.ts-nav__dropdown-item--featured a {
+  background: linear-gradient(135deg, var(--tiller-color-emerald-dark, #00b46a), var(--tiller-color-emerald, #00e184));
+  color: #ffffff;
+  font-weight: 600;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgb(0 225 132 / 25%);
+}
+
+.ts-nav__dropdown-item--featured a::before {
+  display: none;
+}
+
+.ts-nav__dropdown-item--featured a:hover {
+  background: linear-gradient(135deg, var(--tiller-color-emerald, #00e184), var(--tiller-color-emerald-light, #3bf0aa));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgb(0 225 132 / 30%);
+  padding-left: 1rem;
+}
+
+.ts-nav__icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ts-nav__dropdown-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.ts-nav__dropdown-text small {
+  font-size: 0.75rem;
+  opacity: 90%;
+  font-weight: 400;
+}
+
+/* ============================================
+   BUILD GUIDES DROPDOWN - Compact 2-Column Grid
+   ============================================ */
+
+#dropdown-build {
+  min-width: 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.125rem;
+  padding: 0.625rem;
+
+  /* position: absolute inherited from .ts-nav__dropdown — do NOT override */
+}
+
+#dropdown-build .ts-nav__dropdown-item a {
+  padding: 0.625rem 0.75rem 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+#dropdown-build .ts-nav__dropdown-item a:hover {
+  padding-left: 0.875rem; /* same — no jump */
+}
+
+/* ============================================
+   MOBILE NAVIGATION TOGGLE (< 769px)
+   ============================================ */
+
+.ts-nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1001;
+}
+
+@media (min-width: 769px) {
+  .ts-nav-toggle {
+    display: none;
+  }
+}
+
+/* Hamburger Icon */
+.ts-hamburger {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.ts-hamburger__line {
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 4px;
+  transition:
+    transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+  transform-origin: center;
+}
+
+/* Hamburger Animation */
+.ts-nav-toggle[aria-expanded='true'] .ts-hamburger__line:nth-child(1) {
+  transform: translateY(7.75px) rotate(45deg);
+}
+
+.ts-nav-toggle[aria-expanded='true'] .ts-hamburger__line:nth-child(2) {
+  opacity: 0%;
+  transform: scaleX(0);
+}
+
+.ts-nav-toggle[aria-expanded='true'] .ts-hamburger__line:nth-child(3) {
+  transform: translateY(-7.75px) rotate(-45deg);
+}
+
+/* ============================================
+   MOBILE DRAWER (< 769px)
+   ============================================ */
+
+.ts-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(380px, 88vw);
+  height: 100dvh;
+  background: var(--surface-cream, #fefbf6);
+  box-shadow: -8px 0 40px rgb(0 0 0 / 25%);
+  z-index: var(--z-modal, 2000);
+  transition: right 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* Improve mobile scrolling feel */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 769px) {
+  .ts-drawer {
+    display: none;
+  }
+}
+
+/* Drawer Open State */
+.ts-drawer[aria-hidden='false'] {
+  right: 0;
+}
+
+/* Drawer Overlay */
+.ts-drawer__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 55%);
+  backdrop-filter: blur(3px);
+  opacity: 0%;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0.3s;
+  z-index: 1999;
+  pointer-events: none;
+}
+
+.ts-drawer[aria-hidden='false'] .ts-drawer__overlay {
+  opacity: 100%;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0s;
+}
+
+/* Drawer Header */
+.ts-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-500, #00a35c), var(--primary-700, #00703e));
+  border-bottom: 3px solid var(--accent-500, #c5914d);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.ts-drawer__branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ts-drawer__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.ts-drawer__title {
+  font-family: var(--font-display, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.ts-drawer__close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 15%);
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ts-drawer__close:hover {
+  background: rgb(255 255 255 / 25%);
+  transform: rotate(90deg);
+}
+
+/* Drawer Body */
+.ts-drawer__body {
+  flex: 1;
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+/* Drawer List */
+.ts-drawer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Drawer Items */
+.ts-drawer__item {
+  margin: 0;
+}
+
+/* Drawer Links */
+.ts-drawer__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  color: var(--neutral-900, #1a1a1a);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.ts-drawer__link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--primary-50, #f0fdf8), transparent);
+  opacity: 0%;
+  transition: opacity 0.2s ease;
+}
+
+.ts-drawer__link:hover::before,
+.ts-drawer__accordion-trigger[aria-expanded='true']::before {
+  opacity: 100%;
+}
+
+.ts-drawer__link:hover,
+.ts-drawer__accordion-trigger[aria-expanded='true'] {
+  border-left-color: var(--primary-500, #00a35c);
+  color: var(--primary-700, #00703e);
+}
+
+/* Chevron Icon */
+.ts-drawer__chevron {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.ts-drawer__accordion-trigger[aria-expanded='true'] .ts-drawer__chevron {
+  transform: rotate(180deg);
+}
+
+/* Accordion Panel */
+.ts-drawer__accordion {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--neutral-50, #f8f8f8);
+  border-left: 3px solid var(--primary-500, #00a35c);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ts-drawer__accordion:not([hidden]) {
+  max-height: 600px;
+}
+
+.ts-drawer__accordion-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem 0.875rem 2.5rem;
+  color: var(--neutral-700, #404040);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.ts-drawer__accordion-item a:hover {
+  color: var(--primary-700, #00703e);
+  background: var(--primary-50, #f0fdf8);
+  border-left-color: var(--accent-500, #c5914d);
+  padding-left: 2.75rem;
+}
+
+/* Featured Accordion Item */
+.ts-drawer__accordion-item--featured a {
+  background: linear-gradient(135deg, var(--accent-500, #c5914d), var(--accent-600, #b07c3a));
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-md, 8px);
+  border-left: none;
+  box-shadow: 0 2px 8px rgb(197 145 77 / 30%);
+}
+
+.ts-drawer__accordion-item--featured a:hover {
+  background: linear-gradient(135deg, var(--accent-600, #b07c3a), #976715);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgb(197 145 77 / 40%);
+  padding-left: 1.5rem;
+}
+
+/* CTA Link in Drawer */
+.ts-drawer__link--cta {
+  background: linear-gradient(135deg, var(--accent-500, #c5914d), var(--accent-600, #b07c3a));
+  color: #ffffff;
+  margin: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  text-align: center;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgb(197 145 77 / 30%);
+  border: none;
+}
+
+.ts-drawer__link--cta::before {
+  display: none;
+}
+
+.ts-drawer__link--cta:hover {
+  background: linear-gradient(135deg, var(--accent-600, #b07c3a), #976715);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgb(197 145 77 / 40%);
+  color: #ffffff;
+  border: none;
+}
+
+/* Drawer Footer */
+.ts-drawer__footer {
+  padding: 1.5rem;
+  border-top: 2px solid var(--neutral-100, #e8e8e8);
+  background: var(--neutral-50, #f8f8f8);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ts-drawer__secondary-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: var(--primary-700, #00703e);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: 2px solid var(--primary-500, #00a35c);
+  border-radius: var(--radius-md, 8px);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ts-drawer__secondary-link:hover {
+  background: var(--primary-500, #00a35c);
+  color: #ffffff;
+}
+
+.ts-drawer__trust {
+  text-align: center;
+}
+
+.ts-drawer__license {
+  font-size: 0.8125rem;
+  color: var(--neutral-600, #666666);
+  font-weight: 500;
+}
+
+/* ============================================
+   BODY SCROLL LOCK
+   ============================================ */
+
+body.nav-open {
+  overflow: hidden;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+.ts-nav__link:focus,
+.ts-drawer__link:focus,
+.ts-nav-toggle:focus,
+.ts-drawer__close:focus {
+  outline: 2px solid var(--accent-500, #c5914d);
+  outline-offset: 2px;
+}
+
+/* Skip to content for keyboard users */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+  padding: 1rem;
+  background: var(--primary-500, #00a35c);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1rem;
+}

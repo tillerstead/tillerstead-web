@@ -1,0 +1,19 @@
+{# Homepage Trust Bar Section (data-driven) Parameters: - data: The trust_bar data object from
+_data/home.yml #} {%- set trust = data -%}
+
+<section class="trust-bar" aria-label="{{ trust.aria_label | default("Credentials and protections") }}">
+  <div class="container container--wide">
+    <ul class="trust-bar__list stagger-children" role="list">
+      {% for item in trust.items %}
+      <li class="trust-bar__item">
+        {% if item.icon %}
+        <svg class="ts-trust-icon" aria-hidden="true" focusable="false" width="24" height="24">
+          <use href="#icon-{{ item.icon }}"></use>
+        </svg>
+        {% endif %}
+        <span>{{ item.text }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{# Homepage Materials & Compliance Section
+   Reads materials data from _data/home.yml via the global `home` variable.
+   Also available through `data` (set in index.md). #}
+{%- set materials = data.materials | default(home.materials) -%}
+
+<section class="home-materials" aria-labelledby="materials-title">
+  <div class="container container--wide">
+    <header class="section-header">
+      <p class="section-eyebrow">{{ materials.eyebrow }}</p>
+      <h2 id="materials-title" class="section-title">{{ materials.title }}</h2>
+      <p class="section-summary">{{ materials.summary }}</p>
+    </header>
+
+    <div class="materials-callout">
+      <p>{{ materials.callout }}</p>
+    </div>
+
+    <div class="materials-grid">
+      {% for item in materials.items %}
+      <div class="material-card ts-stone-card">
+        <h3 class="material-title">{{ item.title }}</h3>
+        <p class="material-description">{{ item.description }}</p>
+        <ul class="material-points">
+          {% for point in item.points %}
+          <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="materials-note">{{ materials.note }}</p>
+  </div>
+</section>

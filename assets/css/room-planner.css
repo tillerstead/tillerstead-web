@@ -1,0 +1,379 @@
+/* ═══════════════════════════════════════════════
+   Room Planner — /assets/css/room-planner.css
+   Scoped to body.page-room-planner
+   ═══════════════════════════════════════════════ */
+
+/* ── Design tokens ── */
+.page-room-planner {
+  --ts-border: #e5e7eb;
+  --ts-border-input: #d1d5db;
+  --ts-border-light: #f3f4f6;
+  --ts-primary: #2563eb;
+  --ts-primary-bg: #f0f9ff;
+  --ts-success-bg: #f0fdf4;
+  --ts-text-muted: #6b7280;
+  --ts-text-muted-light: #9ca3af;
+  --ts-table-header: #f9fafb;
+  --ts-danger: #ef4444;
+}
+
+/* ── Hero ── */
+.planner-hero {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.planner-hero h1 {
+  margin: 0 0 0.5rem;
+}
+
+.planner-hero .hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--ts-text-muted);
+}
+
+/* ── App container ── */
+.planner-app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* ── Cards (fieldsets + room cards) ── */
+.planner-card {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+}
+
+.planner-card legend {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+}
+
+.planner-room {
+  margin: 1rem 0;
+  position: relative;
+}
+
+/* ── Tile-selection grid ── */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* ── Form controls (inputs, selects, labels) ── */
+.planner-app label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.planner-app input[type='number'],
+.planner-app input[type='text'],
+.planner-app select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--ts-border-input);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.planner-app input[type='number']::-webkit-inner-spin-button,
+.planner-app input[type='number']::-webkit-outer-spin-button {
+  opacity: 100%;
+}
+
+/* ── Add-room button spacing ── */
+#add-room-btn {
+  margin: 1rem 0;
+}
+
+/* ── Room header row ── */
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.room-name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.remove-room-btn {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--ts-danger);
+}
+
+/* ── Room type group ── */
+.room-type-group {
+  margin-bottom: 0.75rem;
+}
+
+/* ── Dimension grid (3-col) ── */
+.dim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dim-grid label {
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.dim-inputs {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.dim-inputs input {
+  width: 50%;
+  padding: 0.4rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.dim-unit {
+  font-size: 0.8rem;
+  color: #888888;
+}
+
+/* ── Surfaces fieldset ── */
+.surfaces-fieldset {
+  border: 1px solid var(--ts-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.surfaces-fieldset legend {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0 0.25rem;
+}
+
+.surface-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.surface-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--ts-border-input);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: #ffffff;
+}
+
+.surface-cb:checked + span {
+  font-weight: 700;
+  color: var(--ts-primary);
+}
+
+/* ── Calculate button area ── */
+.calculate-area {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.calculate-area .btn {
+  padding: 0.75rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+/* ── Results container ── */
+.estimate-summary {
+  background: var(--ts-success-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.room-result {
+  margin-bottom: 1.5rem;
+}
+
+.room-result h3 .room-sqft {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--ts-text-muted);
+}
+
+/* ── Materials table ── */
+.materials-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.materials-table thead tr {
+  background: var(--ts-table-header);
+  text-align: left;
+}
+
+.materials-table th {
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--ts-border);
+}
+
+.materials-table td {
+  padding: 0.4rem 0.5rem;
+}
+
+.materials-table tbody tr {
+  border-bottom: 1px solid var(--ts-border-light);
+}
+
+.materials-table td:last-child {
+  font-weight: 600;
+}
+
+/* ── Estimate footer ── */
+.estimate-disclaimer {
+  font-size: 0.8rem;
+  color: var(--ts-text-muted-light);
+  margin-top: 1rem;
+}
+
+.estimate-error {
+  color: var(--ts-danger);
+  font-weight: 600;
+}
+
+/* ── Product suggestion cards ── */
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--ts-border);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info .product-name {
+  font-weight: 600;
+}
+
+.product-info .product-qty {
+  font-weight: 400;
+  color: var(--ts-text-muted);
+}
+
+.product-info .product-title {
+  color: var(--ts-primary);
+  font-size: 0.9rem;
+}
+
+.product-info .product-detail {
+  font-size: 0.85rem;
+  color: var(--ts-text-muted);
+}
+
+.product-meta {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.product-meta .product-cost {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.estimate-total {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--ts-border);
+}
+
+.suggestions-note {
+  font-size: 0.8rem;
+  color: var(--ts-text-muted-light);
+  margin-top: 0.5rem;
+}
+
+/* ── Diagram ── */
+.diagram-details {
+  margin-bottom: 1rem;
+}
+
+.diagram-details summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.diagram-content {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+/* ── CTA block ── */
+.planner-cta {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--ts-primary-bg);
+  text-align: center;
+}
+
+.planner-cta .cta-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.planner-cta .cta-body {
+  color: var(--ts-text-muted);
+  margin: 0 0 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .dim-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tile-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-meta {
+    text-align: left;
+  }
+}

@@ -1,0 +1,470 @@
+---
+layout: default
+title: 'Products | Tillerstead'
+description: 'Explore our recommended products for tile, waterproofing, and bathroom remodeling projects in South Jersey.'
+permalink: /products/
+body_class: page-products
+---
+
+<!-- Hero Section -->
+<section class="products-hero">
+  <div class="container">
+    <div class="products-hero__content">
+      <span class="products-hero__eyebrow">Recommended Products</span>
+      <h1 class="products-hero__title">Tools & Materials We Trust</h1>
+      <p class="products-hero__summary">{{ products.metadata.editorial_policy }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Disclosure Section -->
+<section class="products-disclosure">
+  <div class="container">
+    <div class="products-disclosure__card">
+      <div class="products-disclosure__icon">📋</div>
+      <div class="products-disclosure__content">
+        <p class="products-disclosure__title"><strong>Affiliate Disclosure</strong></p>
+        <p class="products-disclosure__text">{{ products.metadata.disclosure }}</p>
+        <p class="products-disclosure__note">{{ products.metadata.transparency_note }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Categories -->
+{% for category in products.categories %}
+<section class="products-category" aria-labelledby="category-{{ category.id }}">
+  <div class="container">
+    <header class="products-category__header">
+      <h2 id="category-{{ category.id }}" class="products-category__title">{{ category.name }}</h2>
+      <p class="products-category__desc">{{ category.description }}</p>
+    </header>
+
+    <div class="products-grid">
+      {% for product in category.products %}
+      <article class="product-card">
+        <header class="product-card__header">
+          <h3 class="product-card__title">{{ product.name }}</h3>
+          {% if product.brand %}
+          <span class="product-card__brand">{{ product.brand }}</span>
+          {% endif %}
+        </header>
+
+        <div class="product-card__body">
+          {% if product.type %}
+          <div class="product-card__meta">
+            <span class="product-card__label">Type:</span>
+            <span class="product-card__value">{{ product.type }}</span>
+          </div>
+          {% endif %} {% if product.specs %}
+          <div class="product-card__meta">
+            <span class="product-card__label">Specs:</span>
+            <span class="product-card__value">{{ product.specs }}</span>
+          </div>
+          {% endif %} {% if product.why_we_like_it %}
+          <div class="product-card__reason">
+            <strong class="product-card__reason-title">Why we recommend it:</strong>
+            <p>{{ product.why_we_like_it }}</p>
+          </div>
+          {% endif %} {% if product.pro_tip %}
+          <div class="product-card__tip">
+            <strong class="product-card__tip-title">💡 Pro Tip:</strong>
+            <p>{{ product.pro_tip }}</p>
+          </div>
+          {% endif %} {% if product.notes %}
+          <p class="product-card__notes">{{ product.notes }}</p>
+          {% endif %}
+        </div>
+
+        <footer class="product-card__footer">
+          {% if product.used_by_tillerstead %}
+          <span class="product-card__badge">✓ Used by Tillerstead</span>
+          {% endif %}
+          <a
+            href="{{ product.amazon_url }}"
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+          >
+            View on Amazon
+          </a>
+        </footer>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+<!-- CTA Section -->
+<section class="products-cta">
+  <div class="container">
+    <div class="products-cta__content">
+      <h2 class="products-cta__title">Need Help Choosing?</h2>
+      <p class="products-cta__text">
+        Not sure which products are right for your project? Contact us for personalized recommendations based on your
+        specific needs.
+      </p>
+      <div class="products-cta__actions">
+        <a href="/contact/" class="btn btn--primary btn--lg">Request Free Consultation</a>
+        <a href="tel:+16098628808" class="btn btn--outline-light btn--lg">Call (609) 862-8808</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Products Page - Premium Dark Theme */
+
+  /* Hero */
+  .products-hero {
+    background: linear-gradient(
+      135deg,
+      var(--tiller-bg-dark, #121414) 0%,
+      var(--tiller-color-green-dark, #0f2a1f) 100%
+    );
+    padding: clamp(3rem, 8vw, 5rem) 0;
+    color: #fff;
+  }
+
+  .products-hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .products-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tiller-color-gold, #c9a227);
+    margin-bottom: 1rem;
+  }
+
+  .products-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+  }
+
+  .products-hero__summary {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  /* Disclosure */
+  .products-disclosure {
+    background: var(--tiller-bg-dark, #121414);
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  }
+
+  .products-disclosure__card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: var(--tiller-bg-stone, #1a1c1a);
+    border-left: 4px solid var(--tiller-color-gold, #c9a227);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .products-disclosure__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .products-disclosure__content {
+    flex: 1;
+  }
+
+  .products-disclosure__title {
+    color: var(--tiller-color-gold, #c9a227);
+    margin-bottom: 0.5rem;
+  }
+
+  .products-disclosure__text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.75rem;
+  }
+
+  .products-disclosure__note {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Category Sections */
+  .products-category {
+    background: var(--tiller-bg-darker, #0d0f0d);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .products-category:nth-child(odd) {
+    background: var(--tiller-bg-dark, #121414);
+  }
+
+  .products-category__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .products-category__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--tiller-color-emerald, #10b981);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .products-category__desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 400px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Product Card - Dark Theme */
+  .product-card {
+    background: var(--tiller-bg-stone, #1a1c1a);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    border-color: var(--tiller-color-emerald, #10b981);
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(16, 185, 129, 0.1);
+  }
+
+  .product-card__header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  }
+
+  .product-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+  }
+
+  .product-card__brand {
+    font-size: 0.875rem;
+    color: var(--tiller-color-gold, #c9a227);
+    font-weight: 500;
+  }
+
+  .product-card__body {
+    flex: 1;
+  }
+
+  .product-card__meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .product-card__label {
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+  }
+
+  .product-card__value {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .product-card__reason {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid var(--tiller-color-emerald, #10b981);
+  }
+
+  .product-card__reason-title {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--tiller-color-emerald, #10b981);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-card__reason p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .product-card__tip {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: rgba(201, 162, 39, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid var(--tiller-color-gold, #c9a227);
+  }
+
+  .product-card__tip-title {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--tiller-color-gold, #c9a227);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-card__tip p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .product-card__notes {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    margin: 1rem 0 0;
+  }
+
+  .product-card__footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 162, 39, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card__badge {
+    font-size: 0.8125rem;
+    color: var(--tiller-color-emerald, #10b981);
+    font-weight: 600;
+  }
+
+  .product-card .btn--primary {
+    background: var(--tiller-color-emerald, #10b981);
+    color: #fff;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+  }
+
+  .product-card .btn--primary:hover {
+    background: var(--tiller-color-emerald-dark, #059669);
+    transform: translateY(-1px);
+  }
+
+  /* CTA Section */
+  .products-cta {
+    background: var(--tiller-gradient-emerald-accessible, linear-gradient(135deg, #006c47, #047857));
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
+  .products-cta__content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .products-cta__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .products-cta__text {
+    font-size: 1.125rem;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+
+  .products-cta__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .products-cta .btn--primary {
+    background: #fff;
+    color: var(--tiller-color-green, #1a3d2e);
+    box-shadow: none;
+  }
+
+  .products-cta .btn--primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .products-cta .btn--outline-light {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .products-cta .btn--outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .products-cta__actions {
+      flex-direction: column;
+    }
+
+    .products-cta__actions .btn {
+      width: 100%;
+    }
+
+    .products-disclosure__card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .product-card__footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .product-card__badge {
+      text-align: center;
+    }
+  }
+</style>

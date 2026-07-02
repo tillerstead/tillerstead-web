@@ -1,0 +1,48 @@
+services:
+  - id: tile
+    name: Tile Built to Last
+    icon: tile
+    description: >
+      Ceramic, porcelain, and natural stone tile installed to published standards—
+      not assumptions. Substrate conditions are verified, materials are matched
+      to the application, and workmanship follows TCNA 2024 Handbook methods
+      and applicable ANSI A108/A118 standards for long-term performance.
+    points:
+      - "Tile assemblies installed per TCNA methods and ANSI A108 workmanship standards"
+      - "Substrate flatness verified to TCNA/ANSI tolerances for the tile size installed"
+      - "Bonded waterproofing incorporated where required using ANSI A118.10 systems"
+      - "Large-format tile set with appropriate trowel selection and techniques to meet TCNA/ANSI coverage requirements"
+      - "Layout planned for visual balance, clean transitions, and minimal sliver cuts"
+    url: "/services/#tile"
+
+  - id: stone
+    name: Natural Stone & Large-Format Slabs
+    icon: stone
+    description: >
+      Marble, granite, and gauged porcelain slab installations demand tighter
+      tolerances and careful material selection. Work is performed by a
+      New Jersey HIC-licensed contractor, following TCNA stone guidance and
+      written manufacturer specifications—no shortcuts.
+    points:
+      - "Book-matched stone layouts planned for consistent veining where feasible"
+      - "Gauged porcelain panels installed per manufacturer and TCNA requirements"
+      - "Mortars and grouts selected based on stone type, substrate, and exposure"
+      - "Breathable impregnating sealers used where appropriate per product data sheets"
+      - "Fireplace surrounds and heated areas detailed to accommodate thermal movement"
+    url: "/services/#stone"
+
+  - id: waterproofing
+    name: Waterproofing (The System Beneath the Tile)
+    icon: waterproofing
+    description: >
+      Waterproofing is the foundation of durable tile work. Bonded waterproofing
+      membranes are installed per manufacturer specifications and applicable
+      TCNA methods, detailed at all seams and penetrations, and verified before
+      tile installation. Proven systems—not promises.
+    points:
+      - "ANSI A118.10 compliant bonded waterproofing membranes (sheet or liquid-applied)"
+      - "Corners, seams, drains, niches, and penetrations detailed per system requirements"
+      - "Flood testing performed where required by TCNA method or manufacturer specification"
+      - "Slope and drainage verified prior to tile installation"
+      - "Photo documentation provided as part of project closeout"
+    url: "/services/#waterproofing"

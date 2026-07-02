@@ -1,0 +1,373 @@
+---
+layout: default
+title: Real Estate Flip ROI Calculator | Tillerstead Ventures
+description: Calculate expected returns on bathroom renovation flip projects
+robots: noindex, nofollow
+permalink: /ventures/tools/flip-roi/
+---
+
+<div class="tool-page bg-gray-900 text-white min-h-screen py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto">
+      <!-- Breadcrumbs -->
+      <div class="mb-8 text-sm text-gray-400">
+        <a href="/ventures" class="hover:text-white">Ventures</a>
+        <span class="mx-2">›</span>
+        <a href="/ventures/investors" class="hover:text-white">Investor Portal</a>
+        <span class="mx-2">›</span>
+        <span class="text-white">Flip ROI Calculator</span>
+      </div>
+
+      <!-- Header -->
+      <div class="mb-12 text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-900 rounded-xl mb-4">
+          <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+            ></path>
+          </svg>
+        </div>
+        <h1 class="text-4xl font-bold mb-4">Real Estate Flip ROI Calculator</h1>
+        <p class="text-xl text-gray-400">Project your returns on bathroom renovation investments</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Calculator Input -->
+        <div class="lg:col-span-2 bg-gray-800 rounded-lg p-8 border border-gray-700">
+          <h2 class="text-2xl font-bold mb-6">Project Inputs</h2>
+
+          <form id="flipROIForm" class="space-y-6">
+            <!-- Property Details -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="text-lg font-semibold mb-4 text-blue-400">Property Details</h3>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Number of Units</label>
+                  <input
+                    type="number"
+                    id="units"
+                    value="3"
+                    min="1"
+                    max="50"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Bathrooms per Unit</label>
+                  <input
+                    type="number"
+                    id="bathroomsPerUnit"
+                    value="2"
+                    min="1"
+                    max="5"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Purchase Price ($)</label>
+                  <input
+                    type="number"
+                    id="purchasePrice"
+                    value="450000"
+                    min="0"
+                    step="1000"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Closing Costs (%)</label>
+                  <input
+                    type="number"
+                    id="closingCosts"
+                    value="3"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Renovation Costs -->
+            <div class="border-b border-gray-700 pb-6">
+              <h3 class="text-lg font-semibold mb-4 text-green-400">Renovation Costs</h3>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Materials per Bathroom ($)</label>
+                  <input
+                    type="number"
+                    id="materialsPerBath"
+                    value="8000"
+                    min="0"
+                    step="100"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-green-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Labor per Bathroom ($)</label>
+                  <input
+                    type="number"
+                    id="laborPerBath"
+                    value="6000"
+                    min="0"
+                    step="100"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-green-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Contingency (%)</label>
+                  <input
+                    type="number"
+                    id="contingency"
+                    value="15"
+                    min="0"
+                    max="30"
+                    step="1"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-green-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Timeline (months)</label>
+                  <input
+                    type="number"
+                    id="timeline"
+                    value="3"
+                    min="1"
+                    max="24"
+                    step="0.5"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-green-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Sale Projections -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4 text-yellow-400">Sale Projections</h3>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Expected Sale Price ($)</label>
+                  <input
+                    type="number"
+                    id="salePrice"
+                    value="750000"
+                    min="0"
+                    step="1000"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-yellow-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Realtor Commission (%)</label>
+                  <input
+                    type="number"
+                    id="commission"
+                    value="6"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-yellow-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">Monthly Holding Costs ($)</label>
+                  <input
+                    type="number"
+                    id="holdingCosts"
+                    value="2000"
+                    min="0"
+                    step="100"
+                    class="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 focus:border-yellow-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="calculateFlipROI()"
+              class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition"
+            >
+              Calculate ROI
+            </button>
+          </form>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Total Investment -->
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <div class="text-sm text-gray-400 mb-1">Total Investment</div>
+            <div id="totalInvestment" class="text-3xl font-bold text-white">$0</div>
+          </div>
+
+          <!-- Expected Profit -->
+          <div class="bg-green-900 bg-opacity-30 border border-green-700 rounded-lg p-6">
+            <div class="text-sm text-green-400 mb-1">Expected Profit</div>
+            <div id="expectedProfit" class="text-3xl font-bold text-green-300">$0</div>
+          </div>
+
+          <!-- ROI Percentage -->
+          <div class="bg-blue-900 bg-opacity-30 border border-blue-700 rounded-lg p-6">
+            <div class="text-sm text-blue-400 mb-1">ROI</div>
+            <div id="roiPercentage" class="text-3xl font-bold text-blue-300">0%</div>
+          </div>
+
+          <!-- Cost Breakdown -->
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="font-semibold mb-4">Cost Breakdown</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Purchase + Closing</span>
+                <span id="purchaseCosts" class="font-semibold">$0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Renovation Total</span>
+                <span id="renovationCosts" class="font-semibold">$0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Holding Costs</span>
+                <span id="totalHolding" class="font-semibold">$0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Sale Commission</span>
+                <span id="commissionCosts" class="font-semibold">$0</span>
+              </div>
+              <div class="border-t border-gray-700 pt-3 flex justify-between font-bold">
+                <span>Total Costs</span>
+                <span id="totalCosts">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Timeline -->
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="font-semibold mb-2">Project Timeline</h3>
+            <div id="timelineMonths" class="text-2xl font-bold text-yellow-400">0 months</div>
+            <div class="text-xs text-gray-400 mt-1">From purchase to sale</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="mt-8 bg-yellow-900 bg-opacity-20 border border-yellow-700 rounded-lg p-6">
+        <p class="text-sm text-yellow-200">
+          <strong>Disclaimer:</strong> This calculator provides estimates only. Actual results may vary based on market
+          conditions, contractor performance, material costs, and unforeseen expenses. Always conduct thorough due
+          diligence and consult with financial advisors before making investment decisions.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateFlipROI() {
+    // Get input values
+    const units = parseFloat(document.getElementById('units').value);
+    const bathroomsPerUnit = parseFloat(document.getElementById('bathroomsPerUnit').value);
+    const purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
+    const closingCostsPercent = parseFloat(document.getElementById('closingCosts').value);
+    const materialsPerBath = parseFloat(document.getElementById('materialsPerBath').value);
+    const laborPerBath = parseFloat(document.getElementById('laborPerBath').value);
+    const contingencyPercent = parseFloat(document.getElementById('contingency').value);
+    const timeline = parseFloat(document.getElementById('timeline').value);
+    const salePrice = parseFloat(document.getElementById('salePrice').value);
+    const commissionPercent = parseFloat(document.getElementById('commission').value);
+    const monthlyHolding = parseFloat(document.getElementById('holdingCosts').value);
+
+    // Calculate costs
+    const totalBathrooms = units * bathroomsPerUnit;
+    const closingCosts = purchasePrice * (closingCostsPercent / 100);
+    const purchaseTotal = purchasePrice + closingCosts;
+
+    const materialsTotal = totalBathrooms * materialsPerBath;
+    const laborTotal = totalBathrooms * laborPerBath;
+    const renovationBase = materialsTotal + laborTotal;
+    const contingencyCost = renovationBase * (contingencyPercent / 100);
+    const renovationTotal = renovationBase + contingencyCost;
+
+    const holdingTotal = monthlyHolding * timeline;
+    const commissionCost = salePrice * (commissionPercent / 100);
+
+    const totalCosts = purchaseTotal + renovationTotal + holdingTotal + commissionCost;
+    const totalInvestment = purchaseTotal + renovationTotal;
+    const profit = salePrice - totalCosts;
+    const roi = (profit / totalInvestment) * 100;
+
+    // Update display
+    document.getElementById('totalInvestment').textContent =
+      '$' + totalInvestment.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('expectedProfit').textContent =
+      '$' + profit.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('roiPercentage').textContent = roi.toFixed(1) + '%';
+
+    document.getElementById('purchaseCosts').textContent =
+      '$' + purchaseTotal.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('renovationCosts').textContent =
+      '$' + renovationTotal.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('totalHolding').textContent =
+      '$' + holdingTotal.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('commissionCosts').textContent =
+      '$' + commissionCost.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('totalCosts').textContent =
+      '$' + totalCosts.toLocaleString('en-US', { maximumFractionDigits: 0 });
+
+    document.getElementById('timelineMonths').textContent = timeline + ' months';
+
+    // Color code profit
+    const profitElement = document.getElementById('expectedProfit');
+    if (profit > 0) {
+      profitElement.className = 'text-3xl font-bold text-green-300';
+    } else {
+      profitElement.className = 'text-3xl font-bold text-red-300';
+    }
+
+    // Color code ROI
+    const roiElement = document.getElementById('roiPercentage');
+    if (roi >= 20) {
+      roiElement.className = 'text-3xl font-bold text-green-300';
+    } else if (roi >= 10) {
+      roiElement.className = 'text-3xl font-bold text-yellow-300';
+    } else {
+      roiElement.className = 'text-3xl font-bold text-red-300';
+    }
+  }
+
+  // Calculate on page load with defaults
+  document.addEventListener('DOMContentLoaded', function () {
+    calculateFlipROI();
+
+    // Recalculate on any input change
+    const form = document.getElementById('flipROIForm');
+    const inputs = form.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', calculateFlipROI);
+    });
+  });
+</script>
+
+<style>
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

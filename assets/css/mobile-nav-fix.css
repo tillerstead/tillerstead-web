@@ -1,0 +1,378 @@
+/* ============================================
+   MOBILE NAVIGATION & ACCESSIBILITY FIX
+   January 29, 2026
+   ============================================
+   
+   Fixes:
+   1. Hamburger menu visibility on mobile
+   2. A11y button integration into header actions
+   3. Optimized mobile layout and priority order
+*/
+
+/* ============================================
+   FIX 1: Hamburger Menu Visibility
+   ============================================ */
+
+/* Ensure hamburger is always visible on mobile with proper contrast */
+.ts-nav-toggle {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  background: transparent !important;
+  border: 2px solid rgb(255 255 255 / 30%) !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+  padding: 0 !important;
+  position: relative;
+  z-index: 1001 !important;
+  flex-shrink: 0 !important;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease !important;
+}
+
+.ts-nav-toggle:hover,
+.ts-nav-toggle:focus {
+  background: rgb(255 255 255 / 10%) !important;
+  border-color: rgb(255 255 255 / 50%) !important;
+}
+
+@media (min-width: 769px) {
+  .ts-nav-toggle {
+    display: none !important;
+  }
+}
+
+/* Hamburger lines - ensure high contrast */
+.ts-hamburger {
+  width: 24px !important;
+  height: 18px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.ts-hamburger__line {
+  width: 100% !important;
+  height: 3px !important; /* Thicker for better visibility */
+  background: #ffffff !important;
+  border-radius: 2px !important;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform-origin: center;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 30%) !important; /* Shadow for contrast */
+}
+
+/* Active state */
+.ts-nav-toggle[aria-expanded='true'] {
+  background: rgb(0 163 92 / 20%) !important;
+  border-color: var(--tiller-color-emerald, #00e184) !important;
+}
+
+/* ============================================
+   FIX 2: Mobile Header Layout & Priority
+   (Consolidated into components/header-nav.css)
+   ============================================ */
+
+/* ============================================
+   FIX 3: A11y Button Integration
+   ============================================ */
+
+/* Remove floating a11y button, integrate into header actions */
+.a11y-toolbar {
+  position: static !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.a11y-toolbar__toggle {
+  /* Desktop: text button */
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 44px !important;
+  min-width: 44px !important;
+  padding: 0.5rem 1rem !important;
+  background: transparent !important;
+  border: 2px solid var(--tiller-color-gold, #c9a227) !important;
+  border-radius: 8px !important;
+  color: var(--tiller-color-gold, #c9a227) !important;
+  cursor: pointer !important;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: auto !important;
+  flex-shrink: 0 !important;
+}
+
+.a11y-toolbar__toggle:hover {
+  background: var(--tiller-color-gold, #c9a227) !important;
+  color: #000000 !important;
+  transform: translateY(-2px) !important;
+}
+
+.a11y-toolbar__toggle:focus-visible {
+  outline: 3px solid var(--tiller-color-emerald, #00e184) !important;
+  outline-offset: 3px !important;
+}
+
+.a11y-toolbar__toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Mobile: icon-only button */
+@media (max-width: 768px) {
+  .ts-header__actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Hide text on mobile for a11y button */
+  .a11y-toolbar__toggle {
+    padding: 0.5rem !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    font-size: 0 !important; /* Hide text */
+    gap: 0 !important;
+  }
+
+  .a11y-toolbar__toggle svg {
+    margin: 0 !important;
+  }
+
+  /* Hide "Call Now" text on very small screens */
+  @media (max-width: 380px) {
+    .btn--ghost .btn-text {
+      display: none !important;
+    }
+
+    .btn--ghost {
+      padding: 0.5rem !important;
+      min-width: 44px !important;
+    }
+  }
+}
+
+/* A11y panel positioning - appears above bottom nav */
+.a11y-toolbar__panel {
+  position: fixed !important;
+  bottom: 84px !important;
+  right: 0 !important;
+  left: 0 !important;
+  top: auto !important;
+  max-height: 60vh !important;
+  overflow-y: auto !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+  box-shadow: 0 -4px 20px rgb(0 0 0 / 30%) !important;
+  pointer-events: auto !important;
+}
+
+/* ============================================
+   FIX 4: Mobile Button Priority Order
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Priority order (right to left):
+     1. Menu toggle (most important)
+     2. Get Estimate (CTA)
+     3. A11y button
+     4. Call Now (least priority, can be hidden on tiny screens)
+  */
+
+  .ts-header__actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    order: 3 !important;
+  }
+
+  /* A11y button first (leftmost in actions) */
+  .ts-header__actions .a11y-toolbar {
+    order: 1 !important;
+  }
+
+  /* Call Now second */
+  .ts-header__actions .btn--ghost {
+    order: 2 !important;
+  }
+
+  /* Get Estimate third (rightmost, before hamburger) */
+  .ts-header__actions .btn--primary {
+    order: 3 !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8125rem !important;
+  }
+
+  /* Hamburger menu last (rightmost of all) */
+  .ts-nav-toggle {
+    order: 4 !important;
+    margin-left: 0.25rem !important;
+  }
+}
+
+/* ============================================
+   FIX 5: Small Screen Optimizations
+   ============================================ */
+
+@media (max-width: 360px) {
+  .ts-header__container {
+    padding: 0.5rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .ts-header__actions {
+    gap: 0.25rem !important;
+  }
+
+  /* Hide company region text on very small screens */
+  .ts-header__region {
+    display: none !important;
+  }
+
+  /* Make all buttons icon-only on tiny screens */
+  .ts-header__actions .btn {
+    padding: 0.5rem !important;
+    min-width: 40px !important;
+    width: 40px !important;
+    font-size: 0 !important;
+  }
+
+  .ts-header__actions .btn svg,
+  .ts-header__actions .btn::before {
+    margin: 0 !important;
+  }
+}
+
+/* ============================================
+   FIX 6: Touch-Friendly Sizes
+   ============================================ */
+
+/* Ensure all interactive elements meet 44x44px minimum */
+@media (max-width: 768px) {
+  .ts-nav-toggle,
+  .a11y-toolbar__toggle,
+  .ts-header__actions .btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Increase tap target spacing */
+  .ts-header__actions > * {
+    margin: 0 !important;
+  }
+}
+
+/* ============================================
+   FIX 7: High Contrast for Visibility
+   ============================================ */
+
+/* Ensure hamburger is visible on all backgrounds */
+.ts-nav-toggle,
+.ts-hamburger,
+.ts-hamburger__line {
+  /* Force visibility with drop shadow */
+  filter: drop-shadow(0 1px 3px rgb(0 0 0 / 50%)) !important;
+}
+
+/* Dark mode / light backgrounds */
+@media (prefers-color-scheme: light) {
+  .ts-hamburger__line {
+    background: #000000 !important;
+  }
+}
+
+/* Ensure contrast on header — now in header-nav.css */
+
+/* ============================================
+   FIX 8: Active/Focus States
+   ============================================ */
+
+/* Clear focus indicators for accessibility */
+.ts-nav-toggle:focus-visible,
+.a11y-toolbar__toggle:focus-visible,
+.ts-header__actions .btn:focus-visible {
+  outline: 3px solid var(--tiller-color-emerald, #00e184) !important;
+  outline-offset: 2px !important;
+  border-radius: 8px !important;
+}
+
+/* Active state feedback */
+.ts-nav-toggle:active {
+  transform: scale(0.95) !important;
+}
+
+.a11y-toolbar__toggle:active,
+.ts-header__actions .btn:active {
+  transform: translateY(0) !important;
+}
+
+/* ============================================
+   FIX 9: Prevent Layout Shift
+   (Header sticky/z-index now in header-nav.css)
+   ============================================ */
+
+/* Prevent content jump when menu opens */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden !important;
+  }
+
+  body.menu-open {
+    overflow: hidden !important;
+  }
+}
+
+/* ============================================================
+   MERGED FROM: hamburger-visibility.css
+   Hamburger toggle & line visibility overrides
+   ============================================================ */
+
+.ts-nav-toggle {
+  background: rgb(0 0 0 / 30%) !important;
+  border: 2px solid rgb(255 255 255 / 60%) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 2001 !important;
+}
+
+/* Hamburger lines - always white with shadow for any background */
+.ts-hamburger__line {
+  background-color: #ffffff !important;
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 50%),
+    0 0 1px rgb(0 0 0 / 30%) !important;
+  height: 3px !important;
+  border-radius: 2px !important;
+}
+
+/* Focus state for accessibility */
+.ts-nav-toggle:focus-visible {
+  outline: 2px solid #ffffff !important;
+  outline-offset: 3px !important;
+  box-shadow:
+    0 0 0 2px rgb(0 0 0 / 20%),
+    0 0 0 6px rgb(255 255 255 / 40%) !important;
+}

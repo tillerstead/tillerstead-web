@@ -1,0 +1,72 @@
+{#
+  ─────────────────────────────────────────────────────────────
+  COMPONENT: Hero Section
+  ─────────────────────────────────────────────────────────────
+  PROPS:
+    - hero.eyebrow: Optional subheading text
+    - hero.title: Main headline (required)
+    - hero.subtitle: Optional description
+    - hero.cta_text: Primary CTA text (default: "Get Started")
+    - hero.cta_href: Primary CTA URL (default: "/early-access")
+    - hero.secondary_cta: Optional { text, href } object
+  
+  EXAMPLE:
+    {% set hero = { title: "Professional Services", cta_href: "/services/" } %}
+    {% include "components/hero.njk" %}
+  
+  TOKENS USED: --color-brand-primary, --color-text-inverse
+  RESPONSIVE: 70vh min-height, centered layout
+─────────────────────────────────────────────────────────────
+#}
+
+<section class="hero-gradient relative min-h-[70vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, var(--color-surface-dark) 0%, var(--color-surface-dark-mid) 50%, var(--color-surface-dark-accent) 100%);">
+  
+  {# Background decoration #}
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--color-brand-primary-tint),transparent_50%)]" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,var(--color-brand-secondary-tint),transparent_50%)]" aria-hidden="true"></div>
+  
+  <div class="relative mx-auto max-w-4xl px-6 py-24 text-center">
+    
+    {# Eyebrow #}
+    {% if hero.eyebrow %}
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6" style="background-color: var(--color-brand-primary-tint); border: 1px solid var(--color-brand-primary-border); color: var(--color-brand-primary);">
+      <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-brand-primary);"></span>
+      {{ hero.eyebrow }}
+    </div>
+    {% endif %}
+
+    {# Title #}
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-wrap" style="color: var(--color-text-inverse);">
+      {{ hero.title }}
+    </h1>
+
+    {# Subtitle #}
+    {% if hero.subtitle %}
+    <div class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10" style="color: var(--color-text-inverse-secondary);">
+      {{ hero.subtitle }}
+    </div>
+    {% endif %}
+
+    {# CTAs #}
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      
+      {# Primary CTA #}
+      <a href="{{ hero.cta_href or '/early-access' }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold shadow-lg transition-all hover:opacity-90" style="background-color: var(--color-brand-primary); color: var(--color-text-inverse); box-shadow: 0 20px 25px var(--color-brand-primary-glow);">
+        {{ hero.cta_text or "Get Started" }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+
+      {# Secondary CTA #}
+      {% if hero.secondary_cta %}
+      <a href="{{ hero.secondary_cta.href }}" class="hero-secondary-cta inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all" style="border: 1px solid var(--color-border-inverse); color: var(--color-text-inverse-secondary);">
+        {{ hero.secondary_cta.text }}
+      </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>

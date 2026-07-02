@@ -1,0 +1,574 @@
+/**
+ * ENHANCED ACCESSIBILITY & UNIFORMITY STYLES
+ * Ensures consistent, accessible experience across all pages
+ * Complex in design, simple in nature
+ */
+
+/* ====================================
+   1. CONSISTENT FOCUS MANAGEMENT
+   ==================================== */
+
+/**
+ * Global focus ring - uniform across site
+ * Gold ring matches brand, high visibility
+ */
+:focus-visible {
+  outline: 3px solid var(--tiller-color-gold, #c9a227);
+  outline-offset: 3px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Enhanced focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-color: var(--tiller-color-gold, #c9a227);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  :focus-visible {
+    transition: none;
+  }
+}
+
+/* ====================================
+   2. UNIFORM TOUCH TARGETS
+   ==================================== */
+
+/**
+ * WCAG 2.5.5: Target Size (AAA)
+ * Minimum 44x44px touch targets
+ */
+button,
+[role='button'],
+a.btn,
+.mobile-nav__link,
+.desktop-nav__link,
+input[type='submit'],
+input[type='button'],
+input[type='reset'],
+.a11y-toolbar__btn,
+.cta-button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.75rem 1.25rem;
+}
+
+/* Ensure form inputs have adequate height */
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+input[type='url'],
+select,
+textarea {
+  min-height: 44px;
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* ====================================
+   3. CONSISTENT HEADING HIERARCHY
+   ==================================== */
+
+/**
+ * Visual uniformity across page types
+ * Semantic structure maintained
+ */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--tiller-text-primary, #ffffff);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  color: var(--tiller-text-primary, #ffffff);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--tiller-color-primary, #1a2a3a);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-top: 1.25rem;
+  margin-bottom: 0.625rem;
+  font-weight: 600;
+}
+
+/* First heading on page - consistent spacing */
+.ts-main-content > h1:first-child,
+.ts-main-content > article > h1:first-child,
+.ts-main-content > section > h1:first-child {
+  margin-top: 0;
+}
+
+/* ====================================
+   4. SKIP LINKS - ENHANCED
+   ==================================== */
+
+/**
+ * Skip to main content - accessible, visible on focus
+ * Works uniformly across all pages
+ */
+.skip-links {
+  position: fixed;
+  top: -200px;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  transition: top 0.2s ease-out;
+}
+
+.skip-links:focus-within {
+  top: 0;
+}
+
+.skip-link {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  background: var(--tiller-color-gold, #c9a227);
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
+}
+
+.skip-link:focus {
+  outline: 3px solid #000000;
+  outline-offset: 3px;
+}
+
+/* ====================================
+   5. FORM CONSISTENCY
+   ==================================== */
+
+/**
+ * Uniform form styling across all pages
+ * Labels always visible, clear error states
+ */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--tiller-color-primary, #1a2a3a);
+  font-size: 0.9375rem;
+}
+
+/* Required field indicator */
+label .required,
+label[required]::after {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+/* Form input consistency */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px; /* Prevents mobile zoom */
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--tiller-color-gold, #c9a227);
+  box-shadow: 0 0 0 3px rgb(201 162 39 / 10%);
+  outline: none;
+}
+
+/* Error states - consistent across forms */
+input[aria-invalid='true'],
+select[aria-invalid='true'],
+textarea[aria-invalid='true'],
+.form-field--error input,
+.form-field--error select,
+.form-field--error textarea {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.form-error,
+[role='alert'].error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.form-error::before {
+  content: '⚠';
+  flex-shrink: 0;
+}
+
+/* Success states */
+input[aria-invalid='false'],
+.form-field--success input {
+  border-color: #10b981;
+}
+
+/* ====================================
+   6. BUTTON UNIFORMITY
+   ==================================== */
+
+/**
+ * Consistent button styles across all contexts
+ * Clear visual hierarchy, accessible states
+ */
+.btn,
+button.primary,
+[role='button'].primary,
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  min-height: 44px;
+  font-family: inherit;
+}
+
+/* Primary button - consistent gold */
+.btn--primary,
+.btn.primary,
+button[type='submit'] {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-gold, #c9a227),
+    var(--tiller-color-gold-dark, #9a7a1a)
+  );
+  color: #000000;
+  border-color: var(--tiller-color-gold, #c9a227);
+}
+
+.btn--primary:hover,
+button[type='submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(201 162 39 / 40%);
+}
+
+.btn--primary:active,
+button[type='submit']:active {
+  transform: translateY(0);
+}
+
+/* Secondary button */
+.btn--secondary,
+.btn.secondary {
+  background: #ffffff;
+  color: var(--tiller-color-primary, #1a2a3a);
+  border-color: var(--tiller-color-primary, #1a2a3a);
+}
+
+.btn--secondary:hover {
+  background: var(--tiller-color-primary, #1a2a3a);
+  color: #ffffff;
+}
+
+/* Ghost button */
+.btn--ghost,
+.btn.ghost {
+  background: transparent;
+  color: var(--tiller-color-primary, #1a2a3a);
+  border-color: currentColor;
+}
+
+.btn--ghost:hover {
+  background: rgb(26 42 58 / 5%);
+}
+
+/* Disabled state - consistent */
+button:disabled,
+.btn:disabled,
+.btn--disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ====================================
+   7. LINK CONSISTENCY
+   ==================================== */
+
+/**
+ * Clear, accessible link styles
+ * Underlines for clarity, consistent hover states
+ */
+a {
+  color: var(--tiller-color-primary, #1a2a3a);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--tiller-color-gold, #c9a227);
+  text-decoration-thickness: 2px;
+}
+
+/* Links in navigation - no underline */
+nav a,
+.mobile-nav a,
+.desktop-nav a,
+.breadcrumbs a {
+  text-decoration: none;
+}
+
+nav a:hover,
+.mobile-nav a:hover,
+.desktop-nav a:hover,
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* ====================================
+   8. UNIFORM SPACING & RHYTHM
+   ==================================== */
+
+/**
+ * Consistent vertical rhythm across pages
+ * Predictable spacing aids comprehension
+ */
+section {
+  padding: clamp(3rem, 5vw, 5rem) 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: clamp(2rem, 4vw, 3rem) 0;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Consistent paragraph spacing */
+p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* List spacing */
+ul,
+ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* ====================================
+   9. HIGH CONTRAST MODE SUPPORT
+   ==================================== */
+
+/**
+ * Enhanced contrast for accessibility
+ * Triggered by user preference or a11y toolbar
+ */
+[data-high-contrast='true'] {
+  --contrast-bg: #000000;
+  --contrast-fg: #ffffff;
+  --contrast-accent: #ffff00;
+}
+
+[data-high-contrast='true'] body {
+  background: var(--contrast-bg);
+  color: var(--contrast-fg);
+}
+
+[data-high-contrast='true'] a {
+  color: var(--contrast-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+[data-high-contrast='true'] button,
+[data-high-contrast='true'] .btn {
+  border-width: 3px;
+  border-color: var(--contrast-fg);
+}
+
+[data-high-contrast='true'] input,
+[data-high-contrast='true'] select,
+[data-high-contrast='true'] textarea {
+  background: var(--contrast-bg);
+  color: var(--contrast-fg);
+  border: 3px solid var(--contrast-fg);
+}
+
+/* ====================================
+   10. REDUCED MOTION SUPPORT
+   ==================================== */
+
+/**
+ * Respect user motion preferences
+ * Disable animations for those who need it
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ====================================
+   11. SCREEN READER ONLY CONTENT
+   ==================================== */
+
+/**
+ * Hidden visually but accessible to screen readers
+ * Consistent implementation across site
+ */
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus,
+.visually-hidden-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+}
+
+/* ====================================
+   12. PRINT STYLES - UNIFORM
+   ==================================== */
+
+/**
+ * Clean, accessible print output
+ */
+@media print {
+  .skip-links,
+  .a11y-toolbar,
+  .mobile-nav,
+  .sticky-cta,
+  button,
+  .btn,
+  nav {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000000;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666666;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}

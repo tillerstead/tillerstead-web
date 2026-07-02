@@ -1,0 +1,26 @@
+{#
+  Icon Component
+  Renders an SVG icon from the inline sprite (ts-icon-sprite.html)
+
+  Usage:
+    {% include "components/ts-icon.njk" %}
+
+  Parameters:
+    - name (required): Icon symbol ID from the sprite (e.g., icon-check, icon-phone)
+    - size (optional): Width/height in px (default: 24)
+    - class (optional): Additional CSS class
+#}
+
+{%- set icon_name = name | default("icon-check") -%}
+{%- set icon_size = size | default(24) -%}
+{%- set icon_class = class | default("") -%}
+
+<svg
+  class="ts-icon {{ icon_class }}"
+  width="{{ icon_size }}"
+  height="{{ icon_size }}"
+  aria-hidden="true"
+  focusable="false"
+>
+  <use href="#{{ icon_name }}"></use>
+</svg>

@@ -1,0 +1,21 @@
+{# Homepage Portfolio Section Parameters: - data: The portfolio data object from _data/home.yml #}
+{%- set portfolio = data -%}
+
+<div class="container container--wide">
+  <header class="section-header">
+    {% if portfolio.eyebrow %}<p class="section-eyebrow">{{ portfolio.eyebrow }}</p>{% endif %}
+    <h2 id="portfolio-heading" class="section-title">{{ portfolio.title | default("Our Recent Work") }}</h2>
+    {% if portfolio.subtitle %}<p class="section-subtitle">{{ portfolio.subtitle }}</p>{% endif %}
+  </header>
+  {% if portfolio.items %}
+  <div class="portfolio-grid">
+    {% for item in portfolio.items %}
+    <div class="portfolio-card ts-tile-framed">
+      {% if item.image %}<img src="{{ item.image }}" alt="{{ item.alt | default(item.title) }}" loading="lazy" />{% endif %}
+      <h3>{{ item.title }}</h3>
+      {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

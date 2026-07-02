@@ -1,0 +1,27 @@
+{# Brand Pillars Component Displays Tillerstead's four core brand pillars Uses centralized brand data from
+_data/brand.yml Usage: {% include "components/c-brand-pillars.njk" %} {% include "components/c-brand-pillars.njk" %} {% include "components/c-brand-pillars.njk" %} Parameters: layout: "grid" (default),
+"horizontal", "cards" show_icons: true (default), false heading: "Why Tillerstead?" (default) #} {%- set brand = brand -%} {%- set layout = layout | default("grid") -%} {%- set show_icons = show_icons | default(true) -%} {%- set heading = heading | default("Why Tillerstead?") -%}
+
+<section class="ts-brand-pillars ts-brand-pillars--{{ layout }}" aria-labelledby="brand-pillars-heading">
+  <div class="container">
+    {% if heading != false %}
+    <h2 id="brand-pillars-heading" class="ts-brand-pillars__heading">{{ heading }}</h2>
+    {% endif %}
+
+    <ul class="ts-brand-pillars__list" role="list">
+      {% for pillar in brand.pillars %}
+      <li class="ts-brand-pillars__item">
+        {% if show_icons %}
+        <span class="ts-brand-pillars__icon ts-icon ts-icon--{{ pillar.icon }}" aria-hidden="true"></span>
+        {% endif %}
+        <h3 class="ts-brand-pillars__name">{{ pillar.name }}</h3>
+        <p class="ts-brand-pillars__description">{{ pillar.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="ts-brand-pillars__cta">
+      <a href="/about/" class="ts-btn ts-btn--secondary"> Learn More About Our Approach </a>
+    </div>
+  </div>
+</section>

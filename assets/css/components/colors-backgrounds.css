@@ -1,0 +1,466 @@
+/**
+ * ====================================
+ * COLOR & BACKGROUND SYSTEM - TILLERSTEAD
+ * ====================================
+ * Consistent color usage and background patterns
+ */
+
+/* ====================================
+   BACKGROUND COLORS
+   ==================================== */
+
+.bg-dark {
+  background-color: var(--tiller-bg-dark, #1a1c1a);
+}
+
+.bg-darker {
+  background-color: var(--tiller-bg-darker, #000000);
+}
+
+.bg-darkest {
+  background-color: var(--tiller-bg-darkest, #000000);
+}
+
+.bg-stone {
+  background-color: var(--tiller-bg-stone, #222524);
+}
+
+.bg-slate {
+  background-color: var(--tiller-bg-slate, #2a2c2b);
+}
+
+.bg-elevated {
+  background-color: var(--tiller-bg-elevated, #0f0f0f);
+}
+
+.bg-card {
+  background-color: var(--tiller-bg-card, #161616);
+}
+
+.bg-emerald {
+  background-color: var(--tiller-color-emerald, #00e184);
+  color: #000000;
+}
+
+.bg-gold {
+  background-color: var(--tiller-color-gold, #d4af37);
+  color: #000000;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-white {
+  background-color: #ffffff;
+  color: #1a1c1a;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+  color: #1a1c1a;
+}
+
+.bg-soft-white {
+  background-color: #fafbfc;
+  color: #1a1c1a;
+}
+
+/* ====================================
+   CARD STYLING FOR WHITE SECTIONS
+   ==================================== */
+
+.card-section {
+  background-color: #ffffff;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  box-shadow:
+    0 2px 8px rgb(0 0 0 / 6%),
+    0 8px 24px rgb(0 0 0 / 8%);
+  overflow: hidden;
+}
+
+.card-section--light {
+  background-color: #f8f9fa;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  box-shadow:
+    0 2px 8px rgb(0 0 0 / 4%),
+    0 8px 24px rgb(0 0 0 / 6%);
+  overflow: hidden;
+}
+
+.card-section--soft {
+  background-color: #fafbfc;
+  border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+  box-shadow:
+    0 1px 4px rgb(0 0 0 / 3%),
+    0 4px 16px rgb(0 0 0 / 5%);
+  overflow: hidden;
+}
+
+/* Elevated card effect */
+.card-section--elevated {
+  background-color: #ffffff;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  box-shadow:
+    0 4px 12px rgb(0 0 0 / 8%),
+    0 12px 32px rgb(0 0 0 / 12%);
+  overflow: hidden;
+}
+
+/* ====================================
+   GRADIENT BACKGROUNDS
+   ==================================== */
+
+.bg-gradient-dark {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-bg-dark, #1a1c1a) 0%,
+    var(--tiller-bg-stone, #222524) 100%
+  );
+}
+
+.bg-gradient-green {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-green, #1a3d2e) 0%,
+    var(--tiller-color-green-dark, #0f2a1f) 100%
+  );
+}
+
+.bg-gradient-emerald {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-emerald, #00e184) 0%,
+    var(--tiller-color-emerald-dark, #00b46a) 100%
+  );
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-gold, #d4af37) 0%,
+    var(--tiller-color-gold-dark, #9c7a14) 100%
+  );
+}
+
+.bg-gradient-radial {
+  background:
+    radial-gradient(circle at 50% 50%, rgb(0 225 132 / 8%), transparent 50%),
+    radial-gradient(circle at 20% 70%, rgb(212 175 55 / 6%), transparent 50%);
+}
+
+/* ====================================
+   TEXT COLORS
+   ==================================== */
+
+.text-primary {
+  color: var(--tiller-text-primary, #ffffff);
+}
+
+.text-secondary {
+  color: var(--tiller-text-secondary, rgb(255 255 255 / 90%));
+}
+
+.text-tertiary {
+  color: var(--tiller-text-tertiary, rgb(255 255 255 / 75%));
+}
+
+.text-muted {
+  color: var(--tiller-text-muted, rgb(255 255 255 / 60%));
+}
+
+.text-emerald {
+  color: var(--tiller-color-emerald, #00e184);
+}
+
+.text-gold {
+  color: var(--tiller-color-gold, #d4af37);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-black {
+  color: #000000;
+}
+
+/* ====================================
+   BORDER COLORS
+   ==================================== */
+
+.border-gold {
+  border-color: var(--tiller-color-gold, #d4af37);
+}
+
+.border-emerald {
+  border-color: var(--tiller-color-emerald, #00e184);
+}
+
+.border-light {
+  border-color: rgb(212 175 55 / 15%);
+}
+
+.border-medium {
+  border-color: rgb(212 175 55 / 25%);
+}
+
+.border-strong {
+  border-color: rgb(212 175 55 / 40%);
+}
+
+/* ====================================
+   BACKGROUND PATTERNS
+   ==================================== */
+
+/* Crosshatch Pattern */
+.bg-pattern-crosshatch {
+  position: relative;
+}
+
+.bg-pattern-crosshatch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgb(212 175 55 / 8%) 1px, transparent 1px),
+    linear-gradient(0deg, rgb(212 175 55 / 8%) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 60%;
+  z-index: 0;
+}
+
+.bg-pattern-crosshatch > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid Pattern */
+.bg-pattern-grid {
+  position: relative;
+}
+
+.bg-pattern-grid::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgb(212 175 55 / 4%) 1px, transparent 1px),
+    linear-gradient(0deg, rgb(0 225 132 / 4%) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mix-blend-mode: screen;
+  opacity: 35%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle Noise Texture */
+.bg-pattern-noise {
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+}
+
+/* Radial Glow */
+.bg-glow-emerald {
+  position: relative;
+}
+
+.bg-glow-emerald::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 60% 20%, rgb(0 225 132 / 12%), transparent 45%),
+    radial-gradient(circle at 30% 70%, rgb(212 175 55 / 10%), transparent 50%);
+  filter: blur(18px);
+  opacity: 90%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-emerald > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ====================================
+   GRADIENT MESH (For Hero Sections)
+   ==================================== */
+
+.gradient-mesh {
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 30%, rgb(0 225 132 / 8%), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(212 175 55 / 6%), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgb(0 107 61 / 5%), transparent 50%),
+    linear-gradient(
+      135deg,
+      var(--tiller-bg-darker, #000000) 0%,
+      var(--tiller-bg-dark, #1a1c1a) 100%
+    );
+}
+
+/* ====================================
+   OVERLAY UTILITIES
+   ==================================== */
+
+.overlay-dark {
+  position: relative;
+}
+
+.overlay-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.overlay-dark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay-gradient {
+  position: relative;
+}
+
+.overlay-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 70%) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.overlay-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ====================================
+   BACKDROP EFFECTS
+   ==================================== */
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(5px);
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(12px);
+}
+
+/* ====================================
+   GLASS MORPHISM EFFECT
+   ==================================== */
+
+.glass {
+  background: rgb(22 22 22 / 70%);
+  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  box-shadow: 0 8px 32px 0 rgb(0 0 0 / 37%);
+}
+
+.glass-light {
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+/* ====================================
+   SECTION BACKGROUNDS
+   ==================================== */
+
+/* Alternating section backgrounds for visual rhythm */
+section:nth-child(odd) {
+  background-color: var(--tiller-bg-darkest, #000000);
+}
+
+section:nth-child(even) {
+  background-color: var(--tiller-bg-dark, #1a1c1a);
+}
+
+/* Override for specific sections */
+section.bg-override {
+  background-color: unset;
+}
+
+/* Light sections */
+section.bg-light {
+  background-color: var(--tiller-bg-stone, #222524);
+}
+
+/* Soft sections */
+section.bg-soft {
+  background-color: var(--tiller-bg-slate, #2a2c2b);
+}
+
+/* ====================================
+   ACCESSIBILITY
+   ==================================== */
+
+@media (prefers-contrast: more) {
+  .text-secondary,
+  .text-tertiary {
+    color: #ffffff;
+  }
+
+  .text-muted {
+    color: rgb(255 255 255 / 80%);
+  }
+
+  .border-light,
+  .border-medium {
+    border-color: rgb(255 255 255 / 50%);
+  }
+
+  .glass,
+  .glass-light {
+    border-color: rgb(255 255 255 / 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-lg {
+    backdrop-filter: none;
+    background: rgb(22 22 22 / 95%);
+  }
+}
+
+/* ====================================
+   PRINT STYLES
+   ==================================== */
+
+@media print {
+  .bg-dark,
+  .bg-darker,
+  .bg-darkest,
+  .bg-stone,
+  .bg-slate {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .bg-pattern-crosshatch::before,
+  .bg-pattern-grid::before,
+  .bg-glow-emerald::after,
+  .overlay-dark::before,
+  .overlay-gradient::before {
+    display: none !important;
+  }
+
+  .text-primary,
+  .text-secondary,
+  .text-tertiary {
+    color: #000000 !important;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/product-meta.schema.json",
+  "id": "tillerstead",
+  "name": "Tillerstead",
+  "tagline": "Home improvement and land stewardship platform — tools, calculators, and planning resources for property owners.",
+  "description": "Tillerstead is a resource hub for property owners managing home improvement projects and land stewardship. It includes ROI calculators, material estimators, and planning guides for fencing, grading, and structural improvements, all designed for self-reliant homeowners.",
+  "category": "home-improvement",
+  "status": "beta",
+  "techStack": ["Eleventy", "Liquid", "JavaScript"],
+  "accentColor": "emerald",
+  "url": "https://tillerstead.com",
+  "repo": "https://github.com/Evident-Technologies/platform",
+  "domain": "tillerstead.com",
+  "owner": "Tillerstead LLC",
+  "created": "2025-03-01",
+  "lastUpdated": "2026-03-07",
+  "repoLanguage": "JavaScript",
+  "founderHub": {
+    "showOnHome": false,
+    "showInNav": false,
+    "showInFooter": false,
+    "sortOrder": 3
+  },
+  "federation": {
+    "catalogIntegrity": {
+      "property": "14a1329f71672d510fd1a7b159877a3c7bc90b47bc853bfc0e430540b8908f86"
+    }
+  }
+}

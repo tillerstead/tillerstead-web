@@ -1,0 +1,50 @@
+intro:
+  eyebrow: "What You’ll Find Here"
+  title: "Design That’s Built—Not Just Drawn"
+  subtitle: "A great tile layout isn’t only about pattern. It’s about <strong>lines that land cleanly</strong>, <strong>materials that behave correctly</strong>, and wet areas that are built as complete assemblies before tile goes in."
+  features:
+    - title: "Pattern Planning"
+      text: "Layout is planned around sightlines, symmetry, and practical cut strategy—so the finish reads cleanly from the doorway, not just from a close-up photo."
+    - title: "System-First Execution"
+      text: "In showers and wet areas, the priority is water management: slope, drain integration, and waterproofing continuity. Tile follows a verified system—not the other way around."
+    - title: "Documentation"
+      text: "Key phases are documented so you have a record of what’s behind the finish—useful for maintenance, resale, and peace of mind."
+
+philosophy:
+  eyebrow: "How We Approach Design"
+  title: "Our Design Philosophy"
+  subtitle: "Your design should look intentional—and it should be serviceable for years. We prioritize alignment, clean transitions, and assemblies appropriate to the room’s exposure."
+  items:
+    - title: "Layout That Lands Cleanly"
+      text: "We plan cuts, centers, and pattern starts so focal walls and main sightlines look balanced. That means fewer slivers, cleaner corners, and better-looking transitions."
+    - title: "Material-Driven Choices"
+      text: "Different tile formats demand different prep and setting approaches. Large-format tile and stone require tighter surface tolerances, compatible mortars, and careful sequencing to avoid lippage and hollow spots."
+    - title: "Wet Areas Built as Assemblies"
+      text: "In showers, waterproofing is not a coating—it’s an integrated assembly tied into the drain and detailed at corners, penetrations, and transitions. Verification happens before finishes conceal the work."
+    - title: "Maintenance and Real Life"
+      text: "The best design still needs to live well. We consider cleaning practicality, grout joint strategy, shelf/niche placement, and transition detailing that holds up under daily use."
+
+details:
+  eyebrow: "What Happens Behind the Finish"
+  title: "Craftsmanship Details"
+  subtitle: "Beautiful tile is the result of preparation and verification. While finishes are what you see, durability comes from the layers below."
+  items:
+    - title: "Substrate Preparation"
+      text: "Surfaces are evaluated for flatness and readiness appropriate to the tile format. Where correction is required, prep is performed before tile setting begins—because thinset is not a patching strategy."
+    - title: "Waterproofing Integration"
+      text: "Wet areas use waterproofing components appropriate to the chosen system and application, with attention to corners, seams, penetrations, and drain transition. Verification is completed before tile."
+    - title: "Coverage Verification"
+      text: "Bond integrity depends on coverage. Coverage is checked during installation—especially in wet areas and with large-format tile— to reduce hollow spots and premature failures."
+    - title: "Movement Accommodation"
+      text: "Assemblies must move without cracking. Perimeter and plane-change detailing is planned so the tile finish stays stable as the structure expands and contracts."
+  standards_note: "<strong>Standards note:</strong> Our tile assemblies reference published industry methods (TCNA Handbook) and applicable ANSI A108/A118 product and installation standards. Where building code requirements apply to the project scope, we coordinate accordingly as part of compliant home improvement work (NJ HIC #13VH10808800)."
+  cta_intro: "Want a signature layout that’s also built for real-life durability? Send photos and your goals—then we’ll talk scope, materials, schedule, and what the assembly needs to perform."
+  cta_buttons:
+    - url: "/contact/"
+      label: "Start Your Consultation"
+      class: "btn btn-primary"
+      aria: "Start your consultation with Tillerstead"
+    - url: "/services/"
+      label: "See All Services"
+      class: "btn btn-ghost"
+      aria: "View all tile and remodeling services"

@@ -1,0 +1,179 @@
+<!-- Tile Quantity Calculator View (pre-rendered for Tools Hub router) -->
+<section class="tools-section tools-section--alt" id="tile-calculator" aria-labelledby="tile-calculator-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="tile-calculator-title" class="tools-section__title">Tile Quantity Calculator</h2>
+      <p class="tools-section__desc">Calculate how many tiles and boxes you need for your project.</p>
+    </header>
+
+    <div class="tools-card">
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="calc-area" class="form-label form-label--required">Total Area</label>
+          <div class="form-inline">
+            <input type="number" id="calc-area" class="form-input" placeholder="0" min="1" step="0.1" required />
+            <span class="form-inline__suffix">sq ft</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="calc-tile-size" class="form-label">Tile Size</label>
+          <select id="calc-tile-size" class="form-select">
+            <option value="">Select tile size...</option>
+          </select>
+        </div>
+        <div class="form-field" id="calc-custom-tile-fields" hidden>
+          <label class="form-label">Custom Size (inches)</label>
+          <div class="form-inline">
+            <input
+              type="number"
+              id="calc-custom-width"
+              class="form-input form-input--sm"
+              placeholder="W"
+              min="1"
+              step="0.25"
+            />
+            <span class="form-inline__sep">&times;</span>
+            <input
+              type="number"
+              id="calc-custom-height"
+              class="form-input form-input--sm"
+              placeholder="H"
+              min="1"
+              step="0.25"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Sq Ft Helper (Room) -->
+      <div class="sqft-helper" data-sqft-helper data-target-floor="#calc-area">
+        <div class="tools-card">
+          <h4 class="calc-results__title">Sq Ft Helper (Room)</h4>
+          <div class="form-grid form-grid--3col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-width">Width</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-width"
+                  class="form-input"
+                  data-sqft="width"
+                  placeholder="e.g., 8"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="sqft-length">Length</label>
+              <div class="form-inline">
+                <input
+                  type="number"
+                  id="sqft-length"
+                  class="form-input"
+                  data-sqft="length"
+                  placeholder="e.g., 10"
+                  min="0"
+                  step="0.1"
+                />
+                <span class="form-inline__suffix">ft</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid form-grid--2col">
+            <div class="form-field">
+              <label class="form-label" for="sqft-floor-output">Floor Area</label>
+              <div class="form-inline">
+                <input
+                  type="text"
+                  id="sqft-floor-output"
+                  class="form-input"
+                  data-sqft-output="floor"
+                  value="—"
+                  readonly
+                />
+                <span class="form-inline__suffix">sq ft</span>
+              </div>
+              <span class="form-hint">&asymp; width &times; length</span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="btn-group btn-group--horizontal">
+              <button type="button" class="btn btn--primary" data-sqft-action="use-floor">Use floor area</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="calc-layout" class="form-label">Layout / Pattern</label>
+          <select id="calc-layout" class="form-select">
+            <option value="">Select layout...</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="calc-waste" class="form-label">Waste Factor</label>
+          <div class="form-inline">
+            <input type="number" id="calc-waste" class="form-input" value="12" min="5" max="40" step="1" />
+            <span class="form-inline__suffix">%</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="calc-box-mode" class="form-label">Box Info</label>
+          <select id="calc-box-mode" class="form-select">
+            <option value="tiles-per-box">Tiles per box</option>
+            <option value="sqft-per-box">Sq ft per box</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid form-grid--2col">
+        <div class="form-field" id="calc-tiles-per-box-field">
+          <label for="calc-tiles-per-box" class="form-label">Tiles per Box</label>
+          <input type="number" id="calc-tiles-per-box" class="form-input" placeholder="e.g., 10" min="1" />
+        </div>
+        <div class="form-field" id="calc-sqft-per-box-field" hidden>
+          <label for="calc-sqft-per-box" class="form-label">Sq Ft per Box</label>
+          <input
+            type="number"
+            id="calc-sqft-per-box"
+            class="form-input"
+            placeholder="e.g., 12.5"
+            min="0.1"
+            step="0.1"
+          />
+        </div>
+        <div class="form-field">
+          <label class="form-checkbox">
+            <input type="checkbox" id="calc-attic-stock" />
+            <span class="form-checkbox__text">Add attic stock (+5% or 1 box)</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn--primary" id="calc-tile-btn">Calculate</button>
+
+      <!-- Results -->
+      <div class="calc-results" id="tile-calc-results" hidden>
+        <h4 class="calc-results__title">Results</h4>
+        <div class="calc-results__grid">
+          <div class="calc-result">
+            <span class="calc-result__label">Area with waste</span>
+            <span class="calc-result__value" id="result-area-waste">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Tiles needed</span>
+            <span class="calc-result__value" id="result-tiles">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">Boxes needed</span>
+            <span class="calc-result__value calc-result__value--highlight" id="result-boxes">—</span>
+          </div>
+        </div>
+        <p class="calc-results__note" id="tile-calc-note"></p>
+      </div>
+    </div>
+  </div>
+</section>

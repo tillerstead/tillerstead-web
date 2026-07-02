@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+set -eu
+
+echo ""
+echo "[pre-commit] Tillerstead checks..."
+
+# Fast gate: quick governance audit (completes in <5 seconds)
+if command -v pwsh >/dev/null 2>&1; then
+  pwsh -NoProfile -ExecutionPolicy Bypass -File "./.ai/scripts/quick-audit.ps1"
+elif command -v powershell >/dev/null 2>&1; then
+  powershell -NoProfile -ExecutionPolicy Bypass -File "./.ai/scripts/quick-audit.ps1"
+else
+  echo "⚠ PowerShell not found, skipping quick audit"
+fi
+
+# Optional: AI lint (if you want governance phrase checking)
+# Uncomment if desired:
+# if command -v pwsh >/dev/null 2>&1; then
+#   pwsh -NoProfile -ExecutionPolicy Bypass -File "./.ai/scripts/ai-lint.ps1"
+# fi
+
+echo "[pre-commit] OK"
+echo ""

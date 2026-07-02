@@ -1,0 +1,53 @@
+{# Homepage Hero Include Parameters: - data: The hero data object from _data/home.yml #}
+{%- set hero = data -%}
+
+<section class="home-hero ts-tiled-hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-eyebrow">
+          {{ hero.eyebrow }}{% if hero.eyebrow_line2 %}<br />{{ hero.eyebrow_line2 }}{% endif %}
+        </p>
+        <h1 id="hero-title" class="hero-title">{{ hero.title }}</h1>
+        <p class="hero-subtitle">{{ hero.subtitle }}</p>
+        <p class="hero-summary">{{ hero.summary }}</p>
+
+        <div class="hero-actions">
+          <a href="{{ hero.primary.url }}" class="btn btn--primary btn--large"> {{ hero.primary.label }} </a>
+          <a href="{{ hero.secondary.url }}" class="btn btn--secondary-outline btn--large">
+            {{ hero.secondary.label }}
+          </a>
+        </div>
+
+        <!-- Trust Facts -->
+        <div class="hero-facts">
+          {% for fact in hero.facts %}
+          <div class="fact-item">
+            <strong class="fact-label">{{ fact.label }}</strong>
+            <span class="fact-text">{{ fact.text }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="/assets/img/tillerstead-work/bathrooms/bathroom-wall-tile-detail-pre-grout.jpg"
+          alt="Pre-grout tile installation showing precise alignment and consistent spacing - TCNA-compliant work by Tillerstead LLC"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <!-- Key Highlights -->
+    <div class="hero-highlights">
+      {% for highlight in hero.highlights %}
+      <div class="highlight-item">
+        <span class="highlight-icon" aria-hidden="true">✓</span>
+        <span class="highlight-text">{{ highlight }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

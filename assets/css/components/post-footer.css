@@ -1,0 +1,32 @@
+/* Post Footer Navigation Styles */
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgb(201 162 39 / 20%);
+  text-align: center;
+}
+
+.post-footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--tiller-color-emerald, #10b981);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: rgb(16 185 129 / 10%);
+  transition:
+    background 0.2s cubic-bezier(0.4, 1.4, 0.6, 1),
+    color 0.2s cubic-bezier(0.4, 1.4, 0.6, 1);
+}
+
+.post-footer__link:hover {
+  background: rgb(16 185 129 / 20%);
+  color: var(--tiller-color-gold, #c9a227);
+}
+
+.post-footer__icon {
+  font-size: 1.25rem;
+}

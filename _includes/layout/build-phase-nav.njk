@@ -1,0 +1,36 @@
+{#- Build phase navigation (prev/next phase links) -#}
+{%- set phase_order = order or build_order -%}
+{%- set phases = build_phases.build_phases | sort_by("order") -%}
+{%- set prev_order = phase_order | minus(1) -%}
+{%- set next_order = phase_order | plus(1) -%}
+{%- set prev_phase = phases | where("order", prev_order) | first -%}
+{%- set next_phase = phases | where("order", next_order) | first -%}
+
+<section class="build-phase-nav ts-section">
+  <div class="container">
+    <nav class="phase-nav-links" aria-label="Build Phase Navigation">
+      {% if prev_phase %}
+      <a href="{{ prev_phase.url }}" class="phase-link phase-prev">
+        <span class="phase-label">← Previous</span>
+        <span class="phase-title">Phase {{ prev_phase.order }}: {{ prev_phase.title }}</span>
+      </a>
+      {% else %}
+      <a href="/build/" class="phase-link phase-prev">
+        <span class="phase-label">← Back</span>
+        <span class="phase-title">All Build Guides</span>
+      </a>
+      {% endif %}
+      {% if next_phase %}
+      <a href="{{ next_phase.url }}" class="phase-link phase-next">
+        <span class="phase-label">Next →</span>
+        <span class="phase-title">Phase {{ next_phase.order }}: {{ next_phase.title }}</span>
+      </a>
+      {% else %}
+      <a href="/contact/" class="phase-link phase-next phase-cta">
+        <span class="phase-label">Ready to Build?</span>
+        <span class="phase-title">Request an Estimate</span>
+      </a>
+      {% endif %}
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,733 @@
+---
+layout: default
+title: 'NJ Homeowner Resources | Tillerstead'
+meta_title: 'Free Tile Project Resources for NJ Homeowners | Tillerstead'
+meta_description: 'Interactive project planner, maintenance guides, budget calculator, and local resources for NJ homeowners planning tile projects. Expert advice for Atlantic, Ocean & Cape May Counties.'
+description: 'Everything you need to plan your tile project: interactive tools, maintenance guides, local resources, and expert advice for South Jersey homeowners.'
+permalink: /homeowner-resources/
+body_class: page-resources
+schema_type: WebPage
+canonical_url: 'https://tillerstead.com/homeowner-resources/'
+priority: 0.8
+sitemap:
+  changefreq: monthly
+  priority: 0.8
+robots: index, follow
+og_type: website
+og_image: /assets/img/social/og-image.webp
+keywords: 'NJ homeowner tile resources, bathroom remodel planning, tile maintenance guide, project budget calculator, South Jersey contractor resources'
+---
+
+<section class="hero hero--compact">
+  <div class="container">
+    <div class="hero__content">
+      <span class="hero__eyebrow">For Homeowners</span>
+      <h1 class="hero__title">Your Tile Project Resources</h1>
+      <p class="hero__summary">
+        Free tools, guides, and calculators to help you plan, budget, and maintain your tile project.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="resources-command-bar" aria-label="Resource navigation and search">
+  <div class="container">
+    <nav class="resources-command-bar__nav" aria-label="Resource sections">
+      <a href="#resources-tools" class="resources-command-bar__link">Tools</a>
+      <a href="#resources-knowledge" class="resources-command-bar__link">Knowledge Base</a>
+      <a href="#resources-downloads" class="resources-command-bar__link">Downloads</a>
+      <a href="#resources-local" class="resources-command-bar__link">Local Resources</a>
+    </nav>
+    <div class="resources-command-bar__search">
+      <label class="resources-command-bar__label" for="resources-search-input">
+        Search resources by title or content keywords
+      </label>
+      <div class="resources-command-bar__field-wrap">
+        <input
+          id="resources-search-input"
+          type="search"
+          class="resources-command-bar__input"
+          placeholder="Try: permit, checklist, waterproofing, South Jersey..."
+          aria-describedby="resources-search-count"
+          autocomplete="off"
+        />
+        <button id="resources-search-clear" class="resources-command-bar__clear" type="button" hidden>Clear</button>
+      </div>
+      <p class="resources-command-bar__count" id="resources-search-count" aria-live="polite"></p>
+      <p class="resources-command-bar__empty" id="resources-search-empty" hidden>
+        No matching resources found. Try broader keywords.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Access Tools -->
+<section class="tools-quick-access" id="resources-tools">
+  <div class="container">
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card__icon">📊</div>
+        <h3 class="tool-card__title">Project Planner</h3>
+        <p class="tool-card__desc">Step-by-step planning guide with timeline estimates</p>
+        <button class="tool-card__btn" onclick="showProjectPlanner()">Start Planning</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card__icon">💰</div>
+        <h3 class="tool-card__title">Budget Calculator</h3>
+        <p class="tool-card__desc">Get realistic cost estimates for your project</p>
+        <button class="tool-card__btn" onclick="showBudgetCalculator()">Calculate Budget</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card__icon">🧼</div>
+        <h3 class="tool-card__title">Maintenance Guide</h3>
+        <p class="tool-card__desc">Keep your tile looking great for years</p>
+        <button class="tool-card__btn" onclick="showMaintenanceGuide()">View Guide</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card__icon">📋</div>
+        <h3 class="tool-card__title">Contractor Checklist</h3>
+        <p class="tool-card__desc">Questions to ask before hiring</p>
+        <button class="tool-card__btn" onclick="showContractorChecklist()">Download Checklist</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card__icon">📍</div>
+        <h3 class="tool-card__title">Local Suppliers</h3>
+        <p class="tool-card__desc">Find tile showrooms near you in South Jersey</p>
+        <button class="tool-card__btn" onclick="showLocalSuppliers()">Browse Suppliers</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card__icon">🏛️</div>
+        <h3 class="tool-card__title">Permit Helper</h3>
+        <p class="tool-card__desc">Check if your project needs a permit</p>
+        <button class="tool-card__btn" onclick="showPermitHelper()">Check Requirements</button>
+      </div>
+
+      <div class="tool-card tool-card--featured">
+        <div class="tool-card__icon">🎨</div>
+        <h3 class="tool-card__title">Tile Pattern Visualizer</h3>
+        <p class="tool-card__desc">Design your tile pattern before you buy</p>
+        <a href="/tile-visualizer.html" class="tool-card__btn tool-card__btn--primary">Launch Visualizer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Tool Container (Hidden initially) -->
+<section id="active-tool" class="active-tool" style="display: none">
+  <div class="container">
+    <div class="active-tool__header">
+      <h2 id="tool-title" class="active-tool__title"></h2>
+      <button class="active-tool__close" onclick="closeTool()">✕</button>
+    </div>
+    <div id="tool-content" class="active-tool__content"></div>
+  </div>
+</section>
+
+<!-- Knowledge Base -->
+<section class="knowledge-base" id="resources-knowledge">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="section-title">Knowledge Base</h2>
+      <p class="section-subtitle">Expert advice for informed decisions</p>
+    </header>
+
+    <div class="kb-grid">
+      <article class="kb-article">
+        <div class="kb-article__icon">⏱️</div>
+        <h3 class="kb-article__title">How Long Does a Bathroom Remodel Take?</h3>
+        <p class="kb-article__excerpt">
+          Typical timeline: 2-3 weeks. Demo (1-2 days), plumbing/electrical (2-3 days), waterproofing (2-3 days), tile
+          installation (3-5 days), finishing (2-3 days).
+        </p>
+        <a href="#timeline-details" class="kb-article__link" onclick="showArticle('timeline')">Read more →</a>
+      </article>
+
+      <article class="kb-article">
+        <div class="kb-article__icon">💵</div>
+        <h3 class="kb-article__title">What Should a Bathroom Remodel Cost?</h3>
+        <p class="kb-article__excerpt">
+          South Jersey average: $8,000-$25,000. Depends on size, materials, and scope. Basic refresh vs. full gut
+          differs significantly.
+        </p>
+        <a href="#cost-details" class="kb-article__link" onclick="showArticle('cost')">Read more →</a>
+      </article>
+
+      <article class="kb-article">
+        <div class="kb-article__icon">❓</div>
+        <h3 class="kb-article__title">Do I Need a Permit in NJ?</h3>
+        <p class="kb-article__excerpt">
+          Usually YES for bathroom remodels involving plumbing or structural changes. Requirements vary by municipality
+          in Atlantic, Ocean, and Cape May Counties.
+        </p>
+        <a href="/build/nj-codes-permits/" class="kb-article__link">Read more →</a>
+      </article>
+
+      <article class="kb-article">
+        <div class="kb-article__icon">🚿</div>
+        <h3 class="kb-article__title">Curbless Shower vs. Traditional: Which is Right?</h3>
+        <p class="kb-article__excerpt">
+          Curbless showers offer accessibility, modern look, easier cleaning. Require proper slope (1/4" per foot) and
+          waterproofing. Not ideal for small bathrooms.
+        </p>
+        <a href="#shower-comparison" class="kb-article__link" onclick="showArticle('shower-types')">Read more →</a>
+      </article>
+
+      <article class="kb-article">
+        <div class="kb-article__icon">🔧</div>
+        <h3 class="kb-article__title">What is TCNA Compliance?</h3>
+        <p class="kb-article__excerpt">
+          TCNA = Tile Council of North America. Sets industry standards for proper tile installation methods, substrate
+          prep, and waterproofing.
+        </p>
+        <a href="/nj-code-compliance/" class="kb-article__link">Read more →</a>
+      </article>
+
+      <article class="kb-article">
+        <div class="kb-article__icon">🛡️</div>
+        <h3 class="kb-article__title">Understanding Tile Warranties</h3>
+        <p class="kb-article__excerpt">
+          Material warranty vs. installation warranty. What's covered, what's not. NJ Home Improvement Contractor
+          regulations require written warranties.
+        </p>
+        <a href="/terms/#warranty" class="kb-article__link">Read more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Downloadable Resources -->
+<section class="downloads-section" id="resources-downloads">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="section-title">Free Downloads</h2>
+      <p class="section-subtitle">Take these resources with you</p>
+    </header>
+
+    <div class="downloads-grid">
+      <div class="download-card">
+        <div class="download-card__icon">📄</div>
+        <h3 class="download-card__title">NJ Homeowner's Tile Guide</h3>
+        <p class="download-card__desc">
+          Complete 12-page guide to tile installation standards, contractor selection, and NJ regulations
+        </p>
+        <div class="download-card__meta">PDF • 2.4 MB • 12 pages</div>
+        <a href="/nj-code-compliance/" class="download-card__btn">View Guide</a>
+      </div>
+
+      <div class="download-card">
+        <div class="download-card__icon">✅</div>
+        <h3 class="download-card__title">Contractor Interview Checklist</h3>
+        <p class="download-card__desc">20 essential questions to ask before hiring a tile contractor</p>
+        <div class="download-card__meta">PDF • 480 KB • 2 pages</div>
+        <button class="download-card__btn" onclick="generateContractorChecklist()">Download PDF</button>
+      </div>
+
+      <div class="download-card">
+        <div class="download-card__icon">📋</div>
+        <h3 class="download-card__title">Project Specification Template</h3>
+        <p class="download-card__desc">
+          Template for documenting your project requirements and getting accurate quotes
+        </p>
+        <div class="download-card__meta">PDF • 520 KB • 3 pages</div>
+        <button class="download-card__btn" onclick="generateSpecTemplate()">Download PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Local Resources -->
+<section class="local-resources" id="resources-local">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="section-title">South Jersey Resources</h2>
+      <p class="section-subtitle">Local contacts and information</p>
+    </header>
+
+    <div class="resource-categories">
+      <div class="resource-category">
+        <h3 class="resource-category__title">🏛️ Building Departments</h3>
+        <ul class="resource-list">
+          <li class="resource-item"><strong>Atlantic County:</strong> <a href="tel:6094075200">(609) 407-5200</a></li>
+          <li class="resource-item"><strong>Ocean County:</strong> <a href="tel:7322446000">(732) 244-6000</a></li>
+          <li class="resource-item"><strong>Cape May County:</strong> <a href="tel:6094653001">(609) 465-3001</a></li>
+          <li class="resource-item">
+            <strong>NJ DCA:</strong>
+            <a href="https://www.nj.gov/dca/divisions/codes/" target="_blank" rel="noopener">nj.gov/dca/codes</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="resource-category">
+        <h3 class="resource-category__title">🛠️ Tile Showrooms & Suppliers</h3>
+        <ul class="resource-list">
+          <li class="resource-item"><strong>Crossville Tile</strong> - Egg Harbor Township</li>
+          <li class="resource-item"><strong>Floor & Decor</strong> - Cherry Hill</li>
+          <li class="resource-item"><strong>The Tile Shop</strong> - Marlton</li>
+          <li class="resource-item"><strong>MSI Surfaces</strong> - Lakewood</li>
+        </ul>
+      </div>
+
+      <div class="resource-category">
+        <h3 class="resource-category__title">📖 Industry Standards</h3>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <strong>TCNA Handbook:</strong>
+            <a href="https://www.tcnatile.com/" target="_blank" rel="noopener">tcnatile.com</a>
+          </li>
+          <li class="resource-item">
+            <strong>Schluter Systems:</strong>
+            <a href="https://www.schluter.com/" target="_blank" rel="noopener">schluter.com</a>
+          </li>
+          <li class="resource-item">
+            <strong>ANSI Standards:</strong>
+            <a href="https://webstore.ansi.org/" target="_blank" rel="noopener">ansi.org</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="resource-category">
+        <h3 class="resource-category__title">⚖️ Consumer Protection</h3>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <strong>NJ Consumer Affairs:</strong> <a href="tel:9737040206">(973) 504-6200</a>
+          </li>
+          <li class="resource-item">
+            <strong>License Verification:</strong>
+            <a href="https://newjersey.mylicense.com/verification/" target="_blank" rel="noopener">Verify Contractor</a>
+          </li>
+          <li class="resource-item">
+            <strong>File Complaint:</strong>
+            <a href="https://www.njconsumeraffairs.gov/complaints/" target="_blank" rel="noopener">Consumer Affairs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2 class="cta-box__title">Ready to Start Your Project?</h2>
+      <p class="cta-box__text">Get a free consultation and detailed estimate. Licensed, insured, and TCNA-compliant.</p>
+      <div class="cta-box__buttons">
+        <a href="/contact/" class="btn btn--primary">Get Free Estimate</a>
+        <a href="tel:6098628808" class="btn btn--secondary">Call (609) 862-8808</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tool Cards Grid */
+  .tools-quick-access {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .tool-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    text-align: center;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .tool-card__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .tool-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .tool-card__desc {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .tool-card__btn {
+    background: #047857;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+  }
+
+  .tool-card__btn:hover {
+    background: #059669;
+  }
+
+  /* Active Tool Display */
+  .active-tool {
+    padding: 3rem 0;
+    background: white;
+    border-top: 3px solid #10b981;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .active-tool__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .active-tool__title {
+    font-size: 2rem;
+    color: #1a1a1a;
+  }
+
+  .active-tool__close {
+    background: #ef4444;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .active-tool__close:hover {
+    background: #dc2626;
+  }
+
+  .active-tool__content {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  /* Knowledge Base */
+  .knowledge-base {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .kb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .kb-article {
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+  }
+
+  .kb-article:hover {
+    border-color: #10b981;
+  }
+
+  .kb-article__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .kb-article__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+
+  .kb-article__excerpt {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .kb-article__link {
+    color: #047857;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .kb-article__link:hover {
+    text-decoration: underline;
+  }
+
+  /* Downloads Section */
+  .downloads-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .download-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .download-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .download-card__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+
+  .download-card__desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .download-card__meta {
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .download-card__btn {
+    background: #047857;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .download-card__btn:hover {
+    background: #059669;
+  }
+
+  /* Local Resources */
+  .local-resources {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .resource-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .resource-category {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .resource-category__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+
+  .resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resource-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  .resource-item:last-child {
+    border-bottom: none;
+  }
+
+  .resource-item a {
+    color: #047857;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .resource-item a:hover {
+    text-decoration: underline;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #006c47 0%, #047857 100%);
+  }
+
+  .cta-box {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-box__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box__text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .cta-box__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn--primary {
+    background: white;
+    color: #10b981;
+  }
+
+  .btn--primary:hover {
+    background: #f3f4f6;
+  }
+
+  .btn--secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+  }
+
+  /* Hero Compact */
+  .hero--compact {
+    padding: 3rem 0 2rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+  }
+
+  .hero__eyebrow {
+    color: #34d399;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero__summary {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .tools-grid,
+    .kb-grid,
+    .downloads-grid,
+    .resource-categories {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__title {
+      font-size: 2rem;
+    }
+
+    .active-tool__title {
+      font-size: 1.5rem;
+    }
+
+    .cta-box__buttons {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script src="/assets/js/homeowner-resources.js"></script>

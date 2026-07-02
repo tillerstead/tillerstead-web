@@ -1,0 +1,441 @@
+/**
+ * ====================================
+ * ENHANCED BUTTON SYSTEM - TILLERSTEAD
+ * ====================================
+ * Comprehensive button styles with premium effects
+ * Extends base button system with visual enhancements
+ */
+
+/* ====================================
+   BUTTON BASE ENHANCEMENTS
+   ==================================== */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Focus state improvement */
+.btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgb(0 163 92 / 35%);
+}
+
+/* ====================================
+   PREMIUM BUTTON VARIANTS
+   ==================================== */
+
+.btn-premium {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 25%);
+  transition:
+    transform var(--tiller-transition-normal, 0.25s) var(--tiller-ease-smooth),
+    box-shadow var(--tiller-transition-normal, 0.25s) var(--tiller-ease-smooth);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 35%);
+}
+
+.btn-premium:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  transition-duration: 0.08s;
+}
+
+/* Gradient Primary Button */
+.btn-premium--gradient {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-emerald, #00e184) 0%,
+    var(--tiller-color-emerald-dark, #00b46a) 100%
+  );
+  color: #000000;
+  border: none;
+}
+
+.btn-premium--gradient:hover {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-emerald-light, #3bf0aa) 0%,
+    var(--tiller-color-emerald, #00e184) 100%
+  );
+}
+
+/* Gold Button */
+.btn-premium--gold {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-gold, #d4af37) 0%,
+    var(--tiller-color-gold-dark, #9c7a14) 100%
+  );
+  color: #000000;
+  border: none;
+}
+
+.btn-premium--gold:hover {
+  background: linear-gradient(
+    135deg,
+    var(--tiller-color-gold-bright, #ffe585) 0%,
+    var(--tiller-color-gold, #d4af37) 100%
+  );
+}
+
+/* Outline Button */
+.btn-premium--outline {
+  background: transparent;
+  color: var(--tiller-color-emerald, #00e184);
+  border: 2px solid var(--tiller-color-emerald, #00e184);
+  box-shadow: none;
+}
+
+.btn-premium--outline:hover {
+  background: var(--tiller-color-emerald, #00e184);
+  color: #000000;
+  box-shadow: 0 4px 14px rgb(0 225 132 / 40%);
+}
+
+/* Ghost Button (White on dark) */
+.btn--ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgb(255 255 255 / 45%);
+}
+
+.btn--ghost:hover {
+  background: rgb(255 255 255 / 12%);
+  border-color: rgb(255 255 255 / 85%);
+  color: #ffffff;
+}
+
+.btn--ghost:active {
+  background: rgb(255 255 255 / 18%);
+  transition-duration: 0.08s;
+}
+
+/* ====================================
+   BUTTON SIZES
+   ==================================== */
+
+.btn--xs {
+  padding: 0.375rem 1rem;
+  font-size: clamp(0.8125rem, 1.6vw, 0.875rem);
+  border-radius: var(--tiller-border-radius-sm, 4px);
+}
+
+.btn--sm {
+  padding: 0.5rem 1.25rem;
+  font-size: clamp(0.875rem, 1.8vw, 0.9375rem);
+  border-radius: var(--tiller-border-radius-md, 8px);
+}
+
+.btn--md {
+  padding: 0.75rem 1.75rem;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  border-radius: var(--tiller-border-radius-md, 8px);
+}
+
+.btn--lg {
+  padding: 1rem 2.5rem;
+  font-size: clamp(1.0625rem, 2.2vw, 1.125rem);
+  border-radius: var(--tiller-border-radius-lg, 12px);
+}
+
+.btn--xl {
+  padding: 1.25rem 3rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  border-radius: var(--tiller-border-radius-lg, 12px);
+}
+
+/* ====================================
+   BUTTON GROUPS
+   ==================================== */
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-group--center {
+  justify-content: center;
+}
+
+.btn-group--vertical {
+  flex-direction: column;
+}
+
+.btn-group--stretch .btn {
+  flex: 1;
+}
+
+/* ====================================
+   ICON BUTTONS
+   ==================================== */
+
+.btn--icon {
+  padding: 0.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--icon svg,
+.btn--icon i {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.btn--icon-sm {
+  padding: 0.5rem;
+}
+
+.btn--icon-sm svg,
+.btn--icon-sm i {
+  width: 1rem;
+  height: 1rem;
+}
+
+.btn--icon-lg {
+  padding: 1rem;
+}
+
+.btn--icon-lg svg,
+.btn--icon-lg i {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ====================================
+   SPECIAL EFFECTS
+   ==================================== */
+
+/* Magnetic effect (requires JavaScript) */
+.btn[data-magnetic] {
+  transition: transform 0.15s ease-out;
+}
+
+/* Ripple effect (requires JavaScript) */
+.btn[data-ripple] {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 50%);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0%;
+  }
+}
+
+/* Glow effect */
+.btn--glow {
+  box-shadow: 0 0 20px var(--tiller-color-emerald-glow, rgb(0 225 132 / 50%));
+}
+
+.btn--glow:hover {
+  box-shadow: 0 0 30px var(--tiller-color-emerald-glow, rgb(0 225 132 / 70%));
+}
+
+/* Pulse animation */
+.btn--pulse {
+  animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 14px rgb(0 0 0 / 25%);
+  }
+
+  50% {
+    box-shadow: 0 4px 20px rgb(0 225 132 / 50%);
+  }
+}
+
+/* ====================================
+   BUTTON STATES
+   ==================================== */
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 50%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn--loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: btn-spin 0.6s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success state */
+.btn--success {
+  background: var(--tiller-color-emerald, #00e184);
+  color: #000000;
+}
+
+.btn--success:hover {
+  background: var(--tiller-color-emerald-light, #3bf0aa);
+}
+
+/* Error state */
+.btn--error {
+  background: var(--tiller-color-error, #f87171);
+  color: #ffffff;
+}
+
+.btn--error:hover {
+  background: var(--tiller-color-coral-dark, #ef4444);
+}
+
+/* Warning state */
+.btn--warning {
+  background: var(--tiller-color-gold, #d4af37);
+  color: #000000;
+}
+
+.btn--warning:hover {
+  background: var(--tiller-color-gold-light, #f2d75c);
+}
+
+/* ====================================
+   RESPONSIVE BEHAVIOR
+   ==================================== */
+
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-group--horizontal-mobile {
+    flex-direction: row;
+  }
+
+  .btn-group--horizontal-mobile .btn {
+    width: auto;
+  }
+
+  .btn--full-mobile {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .btn--lg,
+  .btn--xl {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* ====================================
+   ACCESSIBILITY
+   ==================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn-premium,
+  .btn[data-magnetic],
+  .btn::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .btn:hover::after {
+    width: 0;
+    height: 0;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .btn {
+    border: 2px solid;
+  }
+
+  .btn::after {
+    display: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .btn {
+    border-width: 2px;
+  }
+
+  .btn--ghost,
+  .btn-premium--outline {
+    border-width: 3px;
+  }
+}
+
+/* ====================================
+   PRINT STYLES
+   ==================================== */
+
+@media print {
+  .btn {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .btn::before,
+  .btn::after {
+    display: none !important;
+  }
+}

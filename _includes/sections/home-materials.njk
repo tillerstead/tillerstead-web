@@ -1,0 +1,46 @@
+{# Home Materials & Standards Section Showcases premium materials and TCNA compliance Parameters: -
+eyebrow: Section eyebrow text - title: Section title - summary: Section description - callout: Highlighted callout text
+- items: Array of material items - note: Optional note text #}
+
+<section class="home-materials pattern-grid" aria-labelledby="materials-title">
+  <div class="container">
+    <header class="section-header">
+      {% if eyebrow %}
+      <p class="section-eyebrow">{{ eyebrow }}</p>
+      {% endif %}
+      <h2 id="materials-title" class="section-title">{{ title | default("Premium Materials & Standards") }}</h2>
+      {% if summary %}
+      <p class="section-summary">{{ summary }}</p>
+      {% endif %}
+    </header>
+
+    {% if callout %}
+    <div class="materials-callout">{{ callout }}</div>
+    {% endif %} {% if items %}
+    <div class="materials-grid">
+      {% for item in items %}
+      <div class="material-card card-glass">
+        <h3 class="material-title">{{ item.title }}</h3>
+        <p class="material-description">{{ item.description }}</p>
+        {% if item.points %}
+        <ul class="material-points">
+          {% for point in item.points %}
+          <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="materials-actions">
+      <a href="/products" class="btn btn--primary">View Our Materials</a>
+      <a href="/process" class="btn btn--secondary-outline">Our Process</a>
+    </div>
+
+    {% if note %}
+    <p class="materials-note">{{ note }}</p>
+    {% endif %}
+  </div>
+</section>

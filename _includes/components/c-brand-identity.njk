@@ -1,0 +1,86 @@
+{# Brand Identity Component Displays Tillerstead brand elements consistently across the site Usage: {% include "components/c-brand-identity.njk" %} {% include "components/c-brand-identity.njk" %} {% include "components/c-brand-identity.njk" %} {% include "components/c-brand-identity.njk" %}
+Parameters: variant: "full" (default), "compact", "footer", "signature" show_tagline: true (default), false
+show_credentials: true (default), false show_contact: false (default), true #} {%- set brand = brand -%} {%- set variant = variant | default("full") -%} {%- set show_tagline = show_tagline | default(true) -%} {%- set show_credentials = show_credentials | default(true) -%} {%- set show_contact = show_contact | default(false) -%} {% case variant %} {% when "full" %}
+<div class="ts-brand-identity ts-brand-identity--full">
+  <div class="ts-brand-identity__logo">{% include "components/logo-wolf-crest.njk" %}</div>
+
+  {% if show_tagline %}
+  <p class="ts-brand-identity__tagline">{{ brand.messaging.tagline }}</p>
+  {% endif %} {% if show_credentials %}
+  <ul class="ts-brand-identity__credentials" aria-label="Credentials">
+    {% for cred in brand.credentials %}
+    <li class="ts-brand-identity__credential">
+      <span class="ts-brand-identity__credential-label">{{ cred.label }}</span>
+      <span class="ts-brand-identity__credential-value">{{ cred.value }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% if show_contact %}
+  <div class="ts-brand-identity__contact">
+    <a href="tel:{{ brand.company.phone_link }}" class="ts-brand-identity__phone">
+      {{ brand.company.phone_display }}
+    </a>
+    <a href="mailto:{{ brand.company.email }}" class="ts-brand-identity__email"> {{ brand.company.email }} </a>
+  </div>
+  {% endif %}
+</div>
+
+{% when "compact" %}
+<div class="ts-brand-identity ts-brand-identity--compact">
+  <div class="ts-brand-identity__logo ts-brand-identity__logo--compact">
+    {% include "components/logo-wolf-crest.njk" %}
+  </div>
+  {% if show_tagline %}
+  <span class="ts-brand-identity__tagline ts-brand-identity__tagline--inline"> {{ brand.messaging.tagline }} </span>
+  {% endif %}
+</div>
+
+{% when "footer" %}
+<div class="ts-brand-identity ts-brand-identity--footer">
+  <p class="ts-brand-identity__tagline">{{ brand.messaging.service_tagline }}</p>
+  <p class="ts-brand-identity__license">NJ HIC #{{ brand.company.hic_license }}</p>
+  <div class="ts-brand-identity__social">
+    {% if brand.social.links.instagram %}
+    <a
+      href="{{ brand.social.links.instagram }}"
+      aria-label="Tillerstead on Instagram"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span class="ts-icon ts-icon--instagram"></span>
+    </a>
+    {% endif %} {% if brand.social.links.facebook %}
+    <a
+      href="{{ brand.social.links.facebook }}"
+      aria-label="Tillerstead on Facebook"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span class="ts-icon ts-icon--facebook"></span>
+    </a>
+    {% endif %} {% if brand.social.links.twitter %}
+    <a
+      href="{{ brand.social.links.twitter }}"
+      aria-label="Tillerstead on Twitter/X"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <span class="ts-icon ts-icon--twitter"></span>
+    </a>
+    {% endif %}
+  </div>
+</div>
+
+{% when "signature" %}
+<div class="ts-brand-identity ts-brand-identity--signature">
+  <p class="ts-brand-identity__name">{{ brand.company.owner }}</p>
+  <p class="ts-brand-identity__title">{{ brand.company.owner_title }}, {{ brand.company.legal_name }}</p>
+  <p class="ts-brand-identity__license">NJ HIC #{{ brand.company.hic_license }}</p>
+  <p class="ts-brand-identity__contact">
+    <a href="tel:{{ brand.company.phone_link }}">{{ brand.company.phone_display }}</a> |
+    <a href="mailto:{{ brand.company.email }}">{{ brand.company.email }}</a>
+  </p>
+  <p class="ts-brand-identity__tagline ts-brand-identity__tagline--quote">"{{ brand.messaging.tagline }}"</p>
+</div>
+
+{% endcase %}

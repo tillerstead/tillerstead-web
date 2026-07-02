@@ -1,0 +1,17 @@
+{
+  "extends": ["htmlvalidate:recommended"],
+  "rules": {
+    "no-inline-style": "warn",
+    "element-permitted-content": "off",
+    "prefer-native-element": "off",
+    "tel-non-breaking": "off",
+    "require-sri": "off",
+    "no-trailing-whitespace": "off",
+    "void-style": "off",
+    "attr-quotes": ["error", { "style": "double" }],
+    "no-implicit-button-type": "error",
+    "wcag/h37": "error",
+    "wcag/h67": "error"
+  },
+  "elements": ["html5"]
+}

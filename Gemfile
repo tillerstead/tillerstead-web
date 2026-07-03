@@ -27,7 +27,7 @@ gem "sassc", "~> 2.4"
 # Development tools
 group :development do
   gem "jekyll-watch", "~> 2.2"
-  gem "rubocop", "~> 1.85"
+  gem "rubocop", "~> 1.88"
 end
 
 # Platform-specific data

@@ -50,10 +50,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('_headers');
   eleventyConfig.addPassthroughCopy('favicon.ico');
   eleventyConfig.addPassthroughCopy('tile-visualizer.html');
-  eleventyConfig.addPassthroughCopy('about.html');
-  eleventyConfig.addPassthroughCopy('blog.html');
-  eleventyConfig.addPassthroughCopy('homeowner-resources.html');
-  eleventyConfig.addPassthroughCopy('portfolio.html');
   eleventyConfig.addPassthroughCopy('apple-touch-icon.png');
   eleventyConfig.addPassthroughCopy('favicon-16x16.png');
   eleventyConfig.addPassthroughCopy('favicon-32x32.png');

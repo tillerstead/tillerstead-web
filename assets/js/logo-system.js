@@ -90,13 +90,13 @@
     assets: Object.freeze({
       svg: '/assets/img/logo/tillerpro-logo.svg',
       png: Object.freeze({
-        small: '/assets/img/logo/logo-wolf-crest-compact.png',
+        small: '/assets/img/logo/logo-compact.png',
         medium: '/assets/img/logo/logo-wolf-crest.png',
         large: '/assets/img/logo/logo-wolf-crest@2x.png',
         header: '/assets/img/logo/logo-wolf-crest-header.png',
       }),
       webp: Object.freeze({
-        small: '/assets/img/logo/logo-wolf-crest-compact.webp',
+        small: '/assets/img/logo/logo-compact.webp',
         medium: '/assets/img/logo/logo-wolf-crest.webp',
         large: '/assets/img/logo/logo-wolf-crest@2x.webp',
         header: '/assets/img/logo/logo-wolf-crest-header.webp',

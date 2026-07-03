@@ -1,0 +1,27 @@
+---
+layout: default
+title: 'Our Work | Tillerstead Portfolio'
+meta_title: 'Tile & Bathroom Remodeling Portfolio | Tillerstead LLC'
+meta_description: 'See completed TCNA-compliant tile showers, waterproofing, and bathroom remodels by Tillerstead LLC in South Jersey.'
+description: 'Real projects, real results. TCNA-compliant tile installations and bathroom remodels in Atlantic, Ocean, and Cape May Counties.'
+permalink: /portfolio/
+body_class: page-portfolio
+---
+
+{# ==== OPTIMIZED PORTFOLIO PAGE - Tillerstead.com ==== Architecture: - Data-driven from _data/portfolio.yml - Modular
+sections from _includes/sections/ - External CSS in assets/css/pages/portfolio.css - External JS for filtering in
+assets/js/portfolio-filter.js Sections: 1. Hero - Page introduction 2. Gallery - Filterable project grid 3. CTA -
+Request estimate #}
+
+<!-- Hero Section with Gradient Mesh -->
+<div class="gradient-mesh">{% include "sections/section-portfolio-hero.njk" %}</div>
+
+<!-- Portfolio Gallery with Filtering -->
+<div data-animate="fade-up" data-delay="200">{% include "sections/section-portfolio-gallery.njk" %}</div>
+
+<!-- CTA Section -->
+<div data-animate="scale">{% include "sections/section-portfolio-cta.njk" %}</div>
+
+<!-- Page-specific styles and scripts -->
+<link rel="stylesheet" href="/assets/css/pages/portfolio.css" />
+<script src="/assets/js/portfolio-filter.js" defer></script>

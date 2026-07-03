@@ -1,0 +1,96 @@
+<!-- MODULE 5: LEVELING CALCULATOR -->
+<section class="tools-section" id="leveling-calculator" aria-labelledby="leveling-calculator-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="leveling-calculator-title" class="tools-section__title">Self-Leveler Calculator</h2>
+      <p class="tools-section__desc">Estimate self-leveling compound quantity based on area and depth.</p>
+    </header>
+
+    <div class="tools-card">
+      <div class="form-grid form-grid--3col">
+        <div class="form-field">
+          <label for="level-area" class="form-label form-label--required">Area</label>
+          <div class="form-inline">
+            <input type="number" id="level-area" class="form-input" placeholder="0" min="1" step="0.1" required />
+            <span class="form-inline__suffix">sq ft</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="level-depth-avg" class="form-label form-label--required">Average Depth</label>
+          <div class="form-inline">
+            <input
+              type="number"
+              id="level-depth-avg"
+              class="form-input"
+              placeholder="0.25"
+              min="0.0625"
+              max="2"
+              step="0.0625"
+            />
+            <span class="form-inline__suffix">in</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="level-depth-max" class="form-label"
+            >Max Depth <span class="form-label__optional">(optional)</span></label
+          >
+          <div class="form-inline">
+            <input
+              type="number"
+              id="level-depth-max"
+              class="form-input"
+              placeholder="—"
+              min="0.0625"
+              max="3"
+              step="0.0625"
+            />
+            <span class="form-inline__suffix">in</span>
+          </div>
+        </div>
+      </div>
+
+      {% include "components/c-sqft-helper.njk" %}
+
+      <div class="nudge nudge--info" id="leveling-nudge">
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+        <span
+          ><strong>Note:</strong> "Leveling" creates a flat plane; "flattening" removes high spots. Evaluate whether you
+          need self-leveler, patching compound, or grinding. Always use manufacturer-recommended primer.</span
+        >
+      </div>
+
+      <button type="button" class="btn btn--primary" id="calc-level-btn">Calculate</button>
+
+      <!-- Results -->
+      <div class="calc-results" id="level-calc-results" hidden>
+        <h4 class="calc-results__title">Estimated Self-Leveler Needed</h4>
+        <div class="calc-results__grid">
+          <div class="calc-result">
+            <span class="calc-result__label">Volume</span>
+            <span class="calc-result__value" id="result-level-volume">—</span>
+          </div>
+          <div class="calc-result">
+            <span class="calc-result__label">50 lb bags (est.)</span>
+            <span class="calc-result__value calc-result__value--highlight" id="result-level-bags">—</span>
+          </div>
+        </div>
+        <p class="calc-results__note">
+          Coverage varies by product. Most self-levelers cover approximately 0.45–0.5 cu ft per 50 lb bag at 1" depth.
+          Verify with product data sheet. <strong>Don't forget primer!</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

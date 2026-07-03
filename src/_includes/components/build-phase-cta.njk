@@ -1,0 +1,126 @@
+{#
+  Build Phase CTA Include
+  Promotes the Build Phase guides with a call-to-action.
+  Usage: {% include "components/build-phase-cta.njk" %}
+#}
+
+<section class="ts-section ts-build-phase-cta bg-soft" aria-labelledby="build-phase-cta-title">
+  <div class="container">
+    <div class="build-phase-cta-content">
+      <div class="build-phase-cta-text">
+        <h3 id="build-phase-cta-title" class="heading-3">Understand the Full Build Process</h3>
+        <p>
+          Our Build Phase guides walk you through each step of proper bathroom and shower construction—from permits and
+          codes to waterproofing and final verification. Learn what should be happening on your project, and why each
+          phase matters.
+        </p>
+        <a href="/build/" class="btn btn--primary">Explore Build Phase Guides</a>
+      </div>
+      <div class="build-phase-cta-preview">
+        <ol class="build-phase-list" role="list">
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">1</span>
+            <span class="item-title">Codes, Permits &amp; Inspections</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">2</span>
+            <span class="item-title">Shower Pans &amp; Slopes</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">3</span>
+            <span class="item-title">Waterproofing Systems</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">4</span>
+            <span class="item-title">Curbs &amp; Thresholds</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">5</span>
+            <span class="item-title">Framing &amp; Benches</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">6</span>
+            <span class="item-title">Tile Installation</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">7</span>
+            <span class="item-title">Flood Testing</span>
+          </li>
+          <li class="build-phase-item">
+            <span class="item-number" aria-hidden="true">8</span>
+            <span class="item-title">Common Failures</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .build-phase-cta-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .build-phase-cta-text h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .build-phase-cta-text p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+  }
+
+  .build-phase-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .build-phase-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: white;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .item-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+
+  .item-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .build-phase-cta-content {
+      grid-template-columns: 1fr;
+    }
+
+    .build-phase-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

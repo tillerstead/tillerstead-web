@@ -8,18 +8,15 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Evident-Technologies/platform.git",
-    "directory": "products/tillerstead"
+    "url": "https://github.com/tillerstead/tillerstead-web.git"
   },
   "scripts": {
     "build": "npx @11ty/eleventy --input=src",
     "build:prod": "npm run minify:all && npm run critical:css && npm run minify:html && npx @11ty/eleventy --input=src",
     "dev": "npx @11ty/eleventy --input=src --serve",
     "serve:test": "npx @11ty/eleventy --input=src --serve --port=4173",
-    "export:resources": "npx tsx scripts/export-resources.ts",
+    "export:resources": "echo \"export:resources requires resource-bridge vendoring; skipping in standalone mode\"",
     "clean": "pwsh -Command \"Remove-Item -Recurse -Force _site -ErrorAction SilentlyContinue\"",
-    "deploy": "npm run build:prod && npx wrangler pages deploy _site --project-name tillerstead --branch main",
-    "deploy:local": "npx @11ty/eleventy --input=src && npx wrangler pages deploy ./_site --project-name tillerstead --branch main",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint assets/js/",
     "lint:css": "stylelint \"assets/css/**/*.css\"",
@@ -28,9 +25,9 @@
     "format": "prettier --write \"**/*.{js,css,html,md,json}\"",
     "format:check": "prettier --check \"**/*.{js,css,html,md,json}\"",
     "test": "echo \"Tillerstead E2E tests require Playwright browsers — run test:nav locally\"",
-    "test:domain": "node ../../scripts/testing/domain-static-check.cjs --check=src/health.ts::export --check=src/health.ts::status",
-    "test:api": "node ../../scripts/testing/http-contract.cjs --base-url=http://127.0.0.1:4173 --path=/ --expect-type=text --require-text=Tillerstead",
-    "test:smoke": "node ../../scripts/testing/smoke-http.cjs --base-url=http://127.0.0.1:4173 --endpoints=/health,/ready",
+    "test:domain": "node scripts/standalone/domain-check.cjs",
+    "test:api": "node scripts/standalone/http-check.cjs",
+    "test:smoke": "node scripts/standalone/smoke-check.cjs",
     "health": "npx tsx src/health.ts",
     "test:e2e": "npm run test:nav",
     "test:nav": "playwright test tests/navigation.spec.js",
@@ -84,7 +81,7 @@
     "test:ux": "npm run verify:ux && npx @11ty/eleventy --input=src && npx @11ty/eleventy --input=src --serve",
     "dev:local": "node scripts/devserver.js --open",
     "dev:local:nobrowser": "node scripts/devserver.js",
-    "verify": "node ../../scripts/verify-build.js _site"
+    "verify": "node scripts/standalone/verify-build.cjs _site"
   },
   "engines": {
     "node": ">=22.0.0",
@@ -93,8 +90,6 @@
   "devDependencies": {
     "@11ty/eleventy": "3.1.5",
     "@11ty/eleventy-plugin-rss": "3.0.0",
-    "@evident-technologies/resource-bridge": "workspace:*",
-    "@evident-technologies/types": "workspace:*",
     "@playwright/test": "^1.59.1",
     "aos": "2.3.4",
     "autoprefixer": "10.4.27",
@@ -137,7 +132,8 @@
     "svgo": "4.0.1",
     "terser": "^5.36.0",
     "web-vitals": "5.1.0",
-    "workbox-cli": "7.4.0"
+    "workbox-cli": "7.4.0",
+    "@eslint/js": "^9.0.0"
   },
   "overrides": {
     "serialize-javascript": "7.0.5",

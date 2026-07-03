@@ -1,0 +1,5 @@
+<!-- FAQ Schema Template -->
+<!-- Usage: {% include "schema/faq-item.njk" %} -->
+
+{ "@type": "Question", "name": "{{ question }}", "acceptedAnswer": { "@type": "Answer", "text": "{{
+answer | strip_html | e }}" } }{%- if not (last) -%},{%- endif -%}

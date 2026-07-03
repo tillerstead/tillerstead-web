@@ -1,0 +1,18 @@
+<!-- Review/Rating Schema Template -->
+<!-- Usage: {% include "schema/reviews.njk" %} -->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://tillerstead.com/#business",
+    "name": "Tillerstead LLC",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ rating | default("5.0") }}",
+      "reviewCount": "{{ count | default("47") }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+</script>

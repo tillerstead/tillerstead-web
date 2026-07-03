@@ -1,0 +1,25 @@
+{#
+  Responsive Image Component with AVIF/WebP/fallback support
+  Usage: {% include "components/picture.njk" %}
+#}
+
+{%- set img_base = src | replace('.jpg', '') | replace('.jpeg', '') | replace('.png', '') -%}
+{%- set img_ext = src | split(".") | last -%}
+
+<picture{% if class %} class="{{ class }}"{% endif %}>
+  {# AVIF - Best compression (Chrome 85+, Firefox 93+, Edge 121+) #}
+  <source srcset="{{ img_base }}.avif" type="image/avif">
+  
+  {# WebP - Good compression (Chrome 23+, Safari 14+, Firefox 65+) #}
+  <source srcset="{{ img_base }}.webp" type="image/webp">
+  
+  {# Fallback - Universal support #}
+  <img src="{{ src }}" 
+       alt="{{ alt | default("") }}"
+       {% if width %}width="{{ width }}"{% endif %}
+       {% if height %}height="{{ height }}"{% endif %}
+       {% if loading %}loading="{{ loading }}"{% else %}loading="lazy"{% endif %}
+       {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"{% endif %}
+       {% if decoding %}decoding="{{ decoding }}"{% else %}decoding="async"{% endif %}
+       {% if class %}class="{{ class }}"{% endif %}>
+</picture>

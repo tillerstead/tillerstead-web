@@ -2710,7 +2710,7 @@
     html += `
       <div class="output-footer">
         <div class="output-footer__brand">
-          <img src="/assets/img/logo/logo-wolf-crest-compact.webp"
+          <img src="/assets/img/logo/logo-compact.webp"
                alt="Tillerstead"
                class="output-footer__logo"
                width="32" height="32">
@@ -4402,7 +4402,7 @@ ${options.includeDisclaimers ? generateDocxDisclaimersSection() : ''}
 <div class="page">
   <div class="header">
     <div class="header-brand">
-      <img src="https://tillerstead.com/assets/img/logo/logo-wolf-crest-compact.webp"
+      <img src="https://tillerstead.com/assets/img/logo/logo-compact.webp"
            alt="Tillerstead"
            class="header-logo"
            onerror="this.outerHTML='<div class=\\'header-logo-fallback\\'>T</div>'">

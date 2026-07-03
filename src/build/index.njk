@@ -1,0 +1,14 @@
+---
+title: Build Phase Guides
+layout: layouts/page.njk
+permalink: /build/
+build_guide: true
+---
+
+<p>Our Build Phase Guides explain how Tillerstead approaches tile, waterproofing, and bathroom remodeling work in New Jersey. Each guide covers the standards, materials, and inspection points we use in the field.</p>
+
+<ul class="build-guide-list">
+{%- for phase in build_phases.phases %}
+  <li><a href="{{ phase.url | relative_url }}">{{ phase.title }}</a> — {{ phase.summary or "Read more" }}</li>
+{%- endfor %}
+</ul>

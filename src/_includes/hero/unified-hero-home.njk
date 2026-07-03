@@ -1,0 +1,101 @@
+{# Homepage Hero Include - Tillerstead Displays the main hero section with title, summary, CTAs, and
+optional image Usage: {% include "hero/unified-hero-home.njk" %} #} {%- set src = include | default(page) -%} {%- set hero_title = src.hero_title | default(page.hero_title) | default("TCNA-Compliant Tile & Bathroom
+Remodeling") -%} {%- set hero_summary = src.hero_summary | default(page.hero_summary) | default("Standards-based tile
+installation, waterproofing assemblies, and bathroom remodeling for South Jersey, New Jersey homeowners. Licensed NJ HIC
+#13VH10808800.") -%} {%- set hero_eyebrow = src.hero_eyebrow | default(page.hero_eyebrow) | default("NJ HIC
+#13VH10808800") -%} {%- set bullets = src.hero_bullets | default(page.hero_bullets) -%} {%- set image = src.hero_image | default(page.hero_image) | default(site.hero_default_image) -%} {%- if image -%} {%- set img_src = image | relative_url -%} {%- set img_alt = src.hero_image_alt | default("Completed bathroom tile installation by Tillerstead in South Jersey") -%} {%- endif -%} {%- set actions = src.hero_actions | default(page.hero_actions) -%} {%- if not (actions) -%} {%- set actions = "default" -%} {%- endif -%}
+
+<section class="ts-hero ts-hero--home{%- if not (image) -%} ts-hero--no-image{%- endif -%}" aria-labelledby="hero-title">
+  <div class="ts-hero__inner container container--wide">
+    <div class="ts-hero__body">
+      <div class="ts-hero__badges">
+        <p class="ts-hero__eyebrow eyebrow">{{ hero_eyebrow }}</p>
+
+        <span class="hero-trust-badge">
+          <span class="hero-trust-badge__icon">✓</span>
+          <span>Licensed Since 2019</span>
+        </span>
+
+        <span class="hero-urgency">
+          <span class="hero-urgency__icon">🔥</span>
+          <span>Booking Spring 2026 Now</span>
+        </span>
+      </div>
+
+      <h1 id="hero-title" class="ts-hero__title">{{ hero_title }}</h1>
+
+      {% if hero_summary %}
+      <p class="ts-hero__lede lead">{{ hero_summary }}</p>
+      {% endif %} {% if bullets and bullets.length > 0 %}
+      <ul class="ts-hero__bullets" role="list">
+        {% for b in bullets | slice(0, 4) %}
+        <li class="ts-hero__bullet">
+          <strong class="ts-hero__bullet-title">{{ b.title | default(b.name) }}</strong>
+          {% if b.description %}<span class="ts-hero__bullet-desc">{{ b.description }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <div class="ts-hero__actions">
+        {% if actions == "default" %}
+        <a
+          class="btn btn--primary btn-premium btn-premium--gradient"
+          href="{{ '/contact/' | relative_url }}"
+          data-magnetic
+          data-ripple
+        >
+          Request Free Estimate
+        </a>
+        <a
+          class="btn btn--ghost btn-premium btn-premium--outline"
+          href="{{ '/portfolio/' | relative_url }}"
+          data-magnetic
+          >See Our Work</a
+        >
+        {% else %} {% for action in actions %}
+        <a
+          class="btn btn--{{ action.style | default("primary") }} btn-premium"
+          href="{{ action.url | relative_url }}"
+          data-magnetic
+          data-ripple
+        >
+          {{ action.label }}
+        </a>
+        {% endfor %} {% endif %}
+      </div>
+    </div>
+
+    {% if image %}
+    <aside class="ts-hero__aside" aria-label="Featured project">
+      <figure class="ts-hero__project">
+        <img
+          src="{{ img_src }}"
+          alt="{{ img_alt }}"
+          width="600"
+          height="800"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          class="ts-hero__image"
+        />
+      </figure>
+
+      <ul class="ts-hero__facts" role="list">
+        <li class="ts-hero__fact">
+          <p class="ts-hero__fact-label">TCNA & ANSI Compliant</p>
+          <p class="ts-hero__fact-body">Installations follow current TCNA Handbook and ANSI A108 standards.</p>
+        </li>
+        <li class="ts-hero__fact">
+          <p class="ts-hero__fact-label">Owner-Operated</p>
+          <p class="ts-hero__fact-body">Direct communication and hands-on execution from start to finish.</p>
+        </li>
+        <li class="ts-hero__fact">
+          <p class="ts-hero__fact-label">South Jersey Service</p>
+          <p class="ts-hero__fact-body">Atlantic, Ocean & Cape May Counties. Fully licensed and insured.</p>
+        </li>
+      </ul>
+    </aside>
+    {% endif %}
+  </div>
+</section>

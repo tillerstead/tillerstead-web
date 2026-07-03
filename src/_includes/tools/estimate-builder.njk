@@ -1,0 +1,329 @@
+<!-- MODULE 1: ESTIMATE SPEC BUILDER -->
+<section class="tools-section" id="estimate-builder" aria-labelledby="estimate-builder-title">
+  <div class="container">
+    <header class="tools-section__header">
+      <h2 id="estimate-builder-title" class="tools-section__title">Estimate Spec Builder</h2>
+      <p class="tools-section__desc">
+        Build a detailed project specification with measurements, materials, and a copy-ready scope summary.
+      </p>
+    </header>
+
+    <!-- Homeowner Mode Tip -->
+    <div class="homeowner-tip">
+      <strong>💡 Homeowner Mode:</strong> Enter your room measurements below to calculate how much tile, mortar, and
+      grout you'll need. For a professional quote, <a href="/contact.html">contact us</a>!
+    </div>
+
+    <form class="estimate-form" id="estimate-form" method="POST" action="#estimate-results" novalidate>
+      <!-- Project Info Card -->
+      <fieldset class="tools-card">
+        <legend class="tools-card__legend">Project Information</legend>
+
+        <div class="form-grid form-grid--2col">
+          <div class="form-field">
+            <label for="project-name" class="form-label form-label--required">Project Name</label>
+            <input
+              type="text"
+              id="project-name"
+              name="projectName"
+              class="form-input"
+              required
+              aria-required="true"
+              placeholder="e.g., Master Bath Remodel"
+            />
+          </div>
+          <div class="form-field pro-only">
+            <label for="client-name" class="form-label"
+              >Client Name <span class="form-label__optional">(optional)</span></label
+            >
+            <input type="text" id="client-name" name="clientName" class="form-input" placeholder="Homeowner name" />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2col pro-only">
+          <div class="form-field">
+            <label for="project-address" class="form-label"
+              >Address <span class="form-label__optional">(optional)</span></label
+            >
+            <input type="text" id="project-address" name="address" class="form-input" placeholder="Project location" />
+          </div>
+          <div class="form-field">
+            <label for="project-county" class="form-label"
+              >County / City <span class="form-label__optional">(optional)</span></label
+            >
+            <input
+              type="text"
+              id="project-county"
+              name="county"
+              class="form-input"
+              placeholder="e.g., Atlantic County, NJ"
+            />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2col pro-only">
+          <div class="form-field">
+            <label for="client-phone" class="form-label"
+              >Phone <span class="form-label__optional">(optional)</span></label
+            >
+            <input type="tel" id="client-phone" name="phone" class="form-input" placeholder="(555) 555-5555" />
+          </div>
+          <div class="form-field">
+            <label for="client-email" class="form-label"
+              >Email <span class="form-label__optional">(optional)</span></label
+            >
+            <input type="email" id="client-email" name="email" class="form-input" placeholder="client@example.com" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="project-notes" class="form-label"
+            >Project Notes <span class="form-label__optional">(optional)</span></label
+          >
+          <textarea
+            id="project-notes"
+            name="notes"
+            class="form-textarea"
+            rows="3"
+            placeholder="Special considerations, access notes, timeline requirements..."
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Rooms Container -->
+      <div class="rooms-container" id="rooms-container">
+        <div class="rooms-header">
+          <h3 class="rooms-header__title">Rooms & Surfaces</h3>
+          <button type="button" class="btn btn--secondary btn--sm" id="add-room-btn">
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Add Room
+          </button>
+        </div>
+
+        <!-- Room cards inserted here by JS -->
+        <div id="rooms-list"></div>
+      </div>
+
+      <!-- Global Tile & Layout Defaults -->
+      <fieldset class="tools-card">
+        <legend class="tools-card__legend">Tile & Layout Defaults</legend>
+        <p class="tools-card__help">These defaults apply to all surfaces unless overridden per-surface.</p>
+
+        <div class="form-grid form-grid--3col">
+          <div class="form-field">
+            <label for="default-tile-size" class="form-label">Tile Size</label>
+            <select id="default-tile-size" name="defaultTileSize" class="form-select">
+              <option value="">Select tile size...</option>
+            </select>
+          </div>
+          <div class="form-field" id="custom-tile-fields" hidden>
+            <label class="form-label">Custom Size (inches)</label>
+            <div class="form-inline">
+              <input
+                type="number"
+                id="custom-tile-width"
+                name="customTileWidth"
+                class="form-input form-input--sm"
+                placeholder="W"
+                min="1"
+                step="0.25"
+              />
+              <span class="form-inline__sep">×</span>
+              <input
+                type="number"
+                id="custom-tile-height"
+                name="customTileHeight"
+                class="form-input form-input--sm"
+                placeholder="H"
+                min="1"
+                step="0.25"
+              />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="default-tile-thickness" class="form-label">Tile Thickness</label>
+            <select id="default-tile-thickness" name="defaultTileThickness" class="form-select">
+              <option value="6">6mm (1/4")</option>
+              <option value="8" selected>8mm (5/16") — typical</option>
+              <option value="10">10mm (3/8")</option>
+              <option value="12">12mm (1/2")</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--3col">
+          <div class="form-field">
+            <label for="default-layout" class="form-label">Layout / Pattern</label>
+            <select id="default-layout" name="defaultLayout" class="form-select">
+              <option value="">Select layout...</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="default-waste" class="form-label">Waste Factor</label>
+            <div class="form-inline">
+              <input
+                type="number"
+                id="default-waste"
+                name="defaultWaste"
+                class="form-input"
+                value="12"
+                min="5"
+                max="40"
+                step="1"
+              />
+              <span class="form-inline__suffix">%</span>
+            </div>
+            <span class="form-hint" id="waste-hint">Auto-suggested based on layout</span>
+          </div>
+          <div class="form-field">
+            <label for="default-joint" class="form-label">Grout Joint Width</label>
+            <select id="default-joint" name="defaultJoint" class="form-select">
+              <option value="">Select joint size...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-checkbox">
+            <input type="checkbox" id="extra-attic-stock" name="extraAtticStock" />
+            <span class="form-checkbox__text">Add extra attic stock (+5% or 1 box minimum)</span>
+          </label>
+        </div>
+
+        <!-- Layout Nudge -->
+        <div class="nudge" id="layout-nudge" hidden role="alert" aria-live="polite">
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+          <span id="layout-nudge-text"></span>
+        </div>
+
+        <!-- Joint Recommendation -->
+        <div class="recommendation" id="joint-recommendation" hidden>
+          <strong>Recommendation:</strong> <span id="joint-recommendation-text"></span>
+        </div>
+      </fieldset>
+
+      <!-- System Selections (Pro Only) -->
+      <fieldset class="tools-card pro-only">
+        <legend class="tools-card__legend">System Selections</legend>
+
+        <div class="form-grid form-grid--2col">
+          <div class="form-field">
+            <label for="underlayment" class="form-label">Underlayment</label>
+            <select id="underlayment" name="underlayment" class="form-select">
+              <option value="none">None / Existing acceptable</option>
+              <option value="cement-board">Cement Board (CBU)</option>
+              <option value="uncoupling">Uncoupling Membrane</option>
+              <option value="mud-bed">Mud Bed</option>
+              <option value="self-leveler">Self-Leveling Compound</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="waterproofing" class="form-label">Waterproofing</label>
+            <select id="waterproofing" name="waterproofing" class="form-select">
+              <option value="none">None (dry area)</option>
+              <option value="liquid">Liquid-Applied Membrane</option>
+              <option value="sheet">Sheet Membrane</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2col">
+          <div class="form-field">
+            <label for="edge-trim" class="form-label">Edge Trim / Profile</label>
+            <select id="edge-trim" name="edgeTrim" class="form-select">
+              <option value="none">None</option>
+              <option value="metal">Metal Profile (Schluter-style)</option>
+              <option value="threshold">Stone Threshold</option>
+              <option value="bullnose">Bullnose Tile</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-checkbox">
+              <input type="checkbox" id="movement-joints" name="movementJoints" />
+              <span class="form-checkbox__text">Movement joints required (perimeter & field)</span>
+            </label>
+            <span class="form-hint">Required per industry standards for most installations</span>
+          </div>
+        </div>
+
+        <!-- Demo Scope -->
+        <div class="form-subsection">
+          <h4 class="form-subsection__title">Demo Scope</h4>
+          <div class="form-grid form-grid--2col">
+            <label class="form-checkbox">
+              <input type="checkbox" id="demo-tile" name="demoTile" />
+              <span class="form-checkbox__text">Remove existing tile</span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="demo-underlayment" name="demoUnderlayment" />
+              <span class="form-checkbox__text">Remove existing underlayment</span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="subfloor-repair" name="subfloorRepair" />
+              <span class="form-checkbox__text">Subfloor repair may be needed</span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="disposal" name="disposal" />
+              <span class="form-checkbox__text">Disposal / haul-away required</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Area Summary (live calculated) -->
+      <div class="area-summary tools-card" id="area-summary">
+        <h3 class="area-summary__title">Area Summary</h3>
+        <div class="area-summary__grid" id="area-summary-grid">
+          <p class="area-summary__empty">Add rooms and select surfaces to see area calculations.</p>
+        </div>
+        <div class="area-summary__total"><strong>Total Project Area:</strong> <span id="total-area">0</span> sq ft</div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn btn--primary" id="generate-scope-btn">
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+          Generate Scope Summary
+        </button>
+        <button type="button" class="btn btn--secondary" id="save-project-btn">Save Project</button>
+        <button type="button" class="btn btn--ghost" id="reset-project-btn">Reset All</button>
+      </div>
+    </form>
+  </div>
+</section>

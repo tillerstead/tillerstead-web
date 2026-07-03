@@ -1,0 +1,24 @@
+{%- set build_pages = collections.buildGuides | where_exp("p", "p.build_order") | sort_by("build_order") -%} {%- set idx = none -%} {%
+for p in build_pages %} {% if p.url == page.url %} {%- set idx = loop.index0 -%} {% endif %} {% endfor %} {% if idx
+!= none %} {%- set prev_i = idx | minus(1) -%} {%- set next_i = idx | plus(1) -%} {%- set prev_p = build_pages[prev_i] -%} {%- set next_p = build_pages[next_i] -%}
+
+<nav class="build-prev-next" aria-label="Build phase navigation">
+  <div class="build-prev-next__grid">
+    {% if prev_p %}
+    <a class="build-prev-next__card build-prev-next__card--prev" href="{{ prev_p.url | relative_url }}" rel="prev">
+      <span class="build-prev-next__eyebrow">Previous</span>
+      <span class="build-prev-next__title">Step {{ prev_p.build_order }}: {{ prev_p.title }}</span>
+    </a>
+    {% else %}
+    <div class="build-prev-next__card build-prev-next__card--empty" aria-hidden="true"></div>
+    {% endif %} {% if next_p %}
+    <a class="build-prev-next__card build-prev-next__card--next" href="{{ next_p.url | relative_url }}" rel="next">
+      <span class="build-prev-next__eyebrow">Next</span>
+      <span class="build-prev-next__title">Step {{ next_p.build_order }}: {{ next_p.title }}</span>
+    </a>
+    {% else %}
+    <div class="build-prev-next__card build-prev-next__card--empty" aria-hidden="true"></div>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

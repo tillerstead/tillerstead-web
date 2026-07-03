@@ -1,10 +1,30 @@
-import { createResourceProvider } from '@evident-technologies/resource-bridge/provider-sdk';
-import type {
-  ConfidenceLevel,
-  ResourceQuery,
-  ResourceResult,
-  ResourceSource,
-} from '@evident-technologies/types';
+/**
+ * Tillerstead — static public resource data
+ *
+ * Standalone replacement for the Evident resource-bridge/provider-sdk types.
+ * This file exports plain data used by the public site; no external dependencies.
+ */
+
+type ConfidenceLevel = 'high' | 'medium' | 'low';
+
+type ResourceSource = {
+  name: string;
+  url?: string;
+  authority?: string;
+};
+
+type ResourceResult = {
+  id: string;
+  title: string;
+  summary?: string;
+  data: unknown;
+};
+
+type ResourceQuery = {
+  resourceType?: string;
+  jurisdiction?: string;
+  id?: string;
+};
 
 export const PROPERTY_RECORD_GUIDES = [
   {
@@ -58,13 +78,6 @@ export const TAX_ASSESSMENT_FACTORS = [
   'stormwater, wetlands, or access limitations',
 ] as const;
 
-type HandlerResult = {
-  results: ResourceResult[];
-  sources: ResourceSource[];
-  confidence: ConfidenceLevel;
-  limitations?: string[];
-};
-
 export const TILLERSTEAD_PROVIDER_DESCRIPTOR = {
   providerId: 'tillerstead',
   providerName: 'Tillerstead',
@@ -77,148 +90,47 @@ export const TILLERSTEAD_PROVIDER_DESCRIPTOR = {
   ],
 } as const;
 
-export async function handleResourceQuery(query: ResourceQuery): Promise<HandlerResult> {
-  switch (query.queryType) {
-    case 'property.records_overview':
-      return handlePropertyRecords(query);
-    case 'property.land_use_checklist':
-      return handleLandUseChecklist(query);
-    case 'property.tax_assessment':
-      return handleTaxAssessment(query);
-    case 'property.environmental_compliance':
-      return handleEnvironmentalCompliance(query);
-    default:
-      throw new Error(`Unsupported query type: ${query.queryType}`);
+export async function handleResourceQuery(query: ResourceQuery): Promise<{
+  results: ResourceResult[];
+  sources: ResourceSource[];
+  confidence: ConfidenceLevel;
+  limitations?: string[];
+}> {
+  const results: ResourceResult[] = [];
+
+  if (!query.resourceType || query.resourceType.includes('records')) {
+    for (const guide of PROPERTY_RECORD_GUIDES) {
+      results.push({
+        id: `records-${guide.id}`,
+        title: guide.title,
+        summary: guide.summary,
+        data: guide,
+      });
+    }
   }
-}
 
-async function handlePropertyRecords(_query: ResourceQuery): Promise<HandlerResult> {
-  return {
-    results: PROPERTY_RECORD_GUIDES.map(guide => ({
-      resultId: `records-${guide.id}`,
-      title: guide.title,
-      relevance: 0.9,
-      data: guide,
-    })),
-    sources: [
-      {
-        name: 'Tillerstead property records guide',
-        retrievedAt: new Date().toISOString(),
-        license: 'Proprietary',
-        sourceConfidence: 'medium',
-      },
-    ],
-    confidence: 'medium',
-    limitations: [
-      'Guides are optimized for intake and dispute preparation, not direct county filing automation.',
-    ],
-  };
-}
+  if (!query.resourceType || query.resourceType.includes('land_use')) {
+    for (const checklist of LAND_USE_CHECKLISTS) {
+      results.push({
+        id: `land-use-${checklist.id}`,
+        title: `${checklist.activity} land-use checklist`,
+        data: checklist,
+      });
+    }
+  }
 
-async function handleLandUseChecklist(query: ResourceQuery): Promise<HandlerResult> {
-  const { activity } = query.parameters as { activity?: string };
-  const matches = LAND_USE_CHECKLISTS.filter(item => !activity || item.activity === activity);
+  if (!query.resourceType || query.resourceType.includes('tax_assessment')) {
+    results.push({
+      id: 'tax-assessment-factors',
+      title: 'Property tax assessment factors',
+      data: { factors: TAX_ASSESSMENT_FACTORS },
+    });
+  }
 
   return {
-    results: matches.map(item => ({
-      resultId: `land-use-${item.id}`,
-      title: `${item.activity} checklist`,
-      relevance: 1,
-      data: item,
-    })),
-    sources: [
-      {
-        name: 'Tillerstead land-use checklist library',
-        retrievedAt: new Date().toISOString(),
-        license: 'Proprietary',
-        sourceConfidence: 'medium',
-      },
-    ],
-    confidence: matches.length > 0 ? 'medium' : 'low',
-    limitations: [
-      'Users should confirm municipal zoning, NJDEP, and permit triggers with local authorities before work begins.',
-    ],
+    results,
+    sources: [{ name: 'Tillerstead public guides', authority: 'tillerstead.com' }],
+    confidence: 'high',
+    limitations: ['Static reference data only — not a legal or tax opinion.'],
   };
 }
-
-async function handleTaxAssessment(query: ResourceQuery): Promise<HandlerResult> {
-  const { municipality } = query.parameters as { municipality?: string };
-  return {
-    results: [
-      {
-        resultId: `tax-assessment-${municipality ?? 'general'}`,
-        title: municipality ? `${municipality} tax assessment factors` : 'Tax assessment factors',
-        relevance: 1,
-        data: {
-          municipality: municipality ?? null,
-          factors: TAX_ASSESSMENT_FACTORS,
-          evidencePackage: [
-            'assessment notice',
-            'prior year card',
-            'photos',
-            'repair estimates',
-            'comparable sales',
-          ],
-        },
-      },
-    ],
-    sources: [
-      {
-        name: 'Tillerstead assessment review guide',
-        retrievedAt: new Date().toISOString(),
-        license: 'Proprietary',
-        sourceConfidence: 'medium',
-      },
-    ],
-    confidence: 'medium',
-    limitations: [
-      'Assessment guidance is a preparation aid and does not replace appraisal or tax appeal counsel.',
-    ],
-  };
-}
-
-async function handleEnvironmentalCompliance(query: ResourceQuery): Promise<HandlerResult> {
-  const { activity } = query.parameters as { activity?: string };
-  return {
-    results: [
-      {
-        resultId: `environmental-${activity ?? 'general'}`,
-        title: 'Environmental and site-prep compliance',
-        relevance: 1,
-        data: {
-          activity: activity ?? null,
-          checklist: [
-            'Review runoff, erosion, and stormwater impacts.',
-            'Identify wetlands, floodplain, and buffer restrictions.',
-            'Preserve disposal manifests and material safety information.',
-            'Photograph preexisting grade, vegetation, and drainage conditions.',
-          ],
-        },
-      },
-    ],
-    sources: [
-      {
-        name: 'Tillerstead environmental compliance notes',
-        retrievedAt: new Date().toISOString(),
-        license: 'Proprietary',
-        sourceConfidence: 'medium',
-      },
-    ],
-    confidence: 'medium',
-    limitations: [
-      'NJDEP-specific permitting thresholds are summarized here and should be verified against current local conditions.',
-    ],
-  };
-}
-
-export const tillersteadProvider = createResourceProvider({
-  providerId: TILLERSTEAD_PROVIDER_DESCRIPTOR.providerId,
-  providerName: TILLERSTEAD_PROVIDER_DESCRIPTOR.providerName,
-  contractVersion: TILLERSTEAD_PROVIDER_DESCRIPTOR.contractVersion,
-  handlers: {
-    'property.records_overview': handlePropertyRecords,
-    'property.land_use_checklist': handleLandUseChecklist,
-    'property.tax_assessment': handleTaxAssessment,
-    'property.environmental_compliance': handleEnvironmentalCompliance,
-  },
-});

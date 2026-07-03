@@ -1,0 +1,36 @@
+{# Crosshatch Hero Include - Tillerstead A dark, premium hero with crosshatch pattern overlay Usage: <!-- TODO: port hero/crosshatch-hero.njk from Nunjucks to Liquid --> Variables: - eyebrow: Small text above title (optional) - title: Main
+heading (defaults to title) - summary: Description paragraph (defaults to description) - badges:
+Comma-separated list of badges (optional) - primary_url: Primary CTA URL (optional) - primary_label: Primary CTA text
+(optional) - secondary_url: Secondary CTA URL (optional) - secondary_label: Secondary CTA text (optional) -
+heading_level: h1 or h2 (defaults to h1) #} {%- set hero_eyebrow = eyebrow | default(page.hero_eyebrow) -%} {%- set hero_title = title | default(page.hero_title) | default(page.title) -%} {%- set hero_summary = summary | default(page.hero_summary) | default(page.description) -%} {%- set hero_badges_raw = badges | default(page.hero_badges) -%} {%- set hero_primary_url = primary_url | default(page.hero_primary_url) -%} {%- set hero_primary_label = primary_label | default(page.hero_primary_label) | default("Get Started") -%} {%- set hero_secondary_url = secondary_url | default(page.hero_secondary_url) -%} {%- set hero_secondary_label = secondary_label | default(page.hero_secondary_label) | default("Learn More") -%} {%- set hero_heading_level = heading_level | default(page.hero_heading_level) | default("h1") -%}
+
+<section class="crosshatch-hero" aria-label="Page hero">
+  <div class="crosshatch-hero__pattern" aria-hidden="true"></div>
+  <div class="container">
+    <div class="crosshatch-hero__content">
+      {%- if hero_eyebrow -%}
+      <span class="crosshatch-hero__eyebrow">{{ hero_eyebrow }}</span>
+      {%- endif -%} {%- if hero_heading_level == 'h2' -%}
+      <h2 class="crosshatch-hero__title">{{ hero_title }}</h2>
+      {%- else -%}
+      <h1 class="crosshatch-hero__title">{{ hero_title }}</h1>
+      {%- endif -%} {%- if hero_summary -%}
+      <p class="crosshatch-hero__summary">{{ hero_summary }}</p>
+      {%- endif -%} {%- if hero_badges_raw -%}
+      <div class="crosshatch-hero__badges">
+        {%- set badges_array = hero_badges_raw | split(",") -%} {%- for badge in badges_array -%}
+        <span class="crosshatch-hero__badge">{{ badge | trim }}</span>
+        {%- endfor -%}
+      </div>
+      {%- endif -%} {%- if hero_primary_url or hero_secondary_url -%}
+      <div class="crosshatch-hero__actions">
+        {%- if hero_primary_url -%} {%- set primary_href = hero_primary_url -%} {%- if not ('://' in primary_href or 'mailto:' in primary_href or 'tel:' in primary_href) -%} {%- set primary_href = primary_href | relative_url -%} {%- endif -%}
+        <a class="btn btn--primary" href="{{ primary_href }}">{{ hero_primary_label }}</a>
+        {%- endif -%} {%- if hero_secondary_url -%} {%- set secondary_href = hero_secondary_url -%} {%- if not ('://' in secondary_href or 'mailto:' in secondary_href or 'tel:' in secondary_href) -%} {%- set secondary_href = secondary_href | relative_url -%} {%- endif -%}
+        <a class="btn btn--outline-light" href="{{ secondary_href }}">{{ hero_secondary_label }}</a>
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

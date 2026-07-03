@@ -1,7 +1,7 @@
 /**
  * Tillerstead — Health Check Module
  *
- * Conforms to the PackageHealth interface from @evident-technologies/config/health.
+ * Standalone PackageHealth interface. No external Evident config dependency.
  * Build-time oriented checks for an Eleventy static site.
  */
 
@@ -81,26 +81,26 @@ function checkAssets(): HealthCheck {
   };
 }
 
-export function getHealth(): PackageHealth {
+function run(): PackageHealth {
   const pkg = readPkg();
   const checks = [checkBuildOutput(), checkEleventyConfig(), checkServiceWorker(), checkAssets()];
+  const vitalFailed = checks.some((c) => c.vital && !c.passed);
+  const anyFailed = checks.some((c) => !c.passed);
 
-  const vitalsFailed = checks.some(c => c.vital && !c.passed);
-  const anyFailed = checks.some(c => !c.passed);
-  const status = vitalsFailed ? 'critical' : anyFailed ? 'degraded' : 'healthy';
-
-  return {
+  const health: PackageHealth = {
     name: pkg.name,
     version: pkg.version,
-    status,
+    status: vitalFailed ? 'critical' : anyFailed ? 'degraded' : 'healthy',
     checks,
     reportedAt: new Date().toISOString(),
   };
+
+  console.log(JSON.stringify(health, null, 2));
+  return health;
 }
 
-// CLI entrypoint
-if (process.argv[1] && process.argv[1].includes('health')) {
-  const report = getHealth();
-  console.log(JSON.stringify(report));
-  process.exitCode = report.status === 'critical' ? 1 : 0;
+export default run;
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  run();
 }

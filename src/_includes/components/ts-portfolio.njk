@@ -1,0 +1,59 @@
+{# Tillerstead Portfolio Section - Displays portfolio items from portfolio - TCNA/New Jersey HIC
+compliant, accessible, conversion-optimized - Reference: /.ai/OUTPUT_RULES.md, /.ai/STYLE.md #} {%- set portfolio_items = portfolio.projects | default(portfolio_highlights.items) -%} {%- set section_id = section_id | default("ts-portfolio") -%} {%- set heading_id = section_id + "-title" -%}
+
+<section
+  class="ts-portfolio ts-section"
+  id="{{ section_id }}"
+  aria-labelledby="{{ heading_id }}"
+>
+  <div class="container">
+    <header class="ts-portfolio__header">
+      <p class="eyebrow text-accent">Documented Work</p>
+      <h2 id="{{ heading_id }}" class="heading-2 text-primary">
+        TCNA-Compliant Installations—Photo-Documented from Substrate to Grout
+      </h2>
+      <p class="lead">
+        Every project includes substrate assessment, flood-tested waterproofing, and final inspection documentation. No
+        hidden work, no assumptions—just transparent, code-compliant craftsmanship.
+      </p>
+    </header>
+
+    {% if portfolio_items and portfolio_items.length > 0 %}
+    <div class="ts-portfolio__grid">
+      {% for item in portfolio_items | slice(0, 9) %}
+      <article class="ts-portfolio__item card ts-card">
+        {% if item.image or item.images %} {%- set portfolio_image = item.image | default(item.images)[0].src -%} {%- set portfolio_webp = portfolio_image | replace(".jpg", ".webp") | replace(".png", ".webp") -%} {% set
+        portfolio_alt = item.alt | default(item.images)[0].alt | default(item.title) + " - TCNA-compliant tile
+        installation by Tillerstead, New Jersey HIC #13VH10808800" %}
+
+        <figure class="ts-portfolio__figure">
+          <picture>
+            <source type="image/webp" srcset="{{ portfolio_webp | relative_url }}" />
+            <img
+              src="{{ portfolio_image | relative_url }}"
+              alt="{{ portfolio_alt }}"
+              loading="lazy"
+              width="480"
+              height="320"
+            />
+          </picture>
+        </figure>
+        {% endif %}
+        <div class="ts-portfolio__body">
+          <h3 class="ts-portfolio__title">{{ item.title }}</h3>
+          <p class="ts-portfolio__desc">{{ item.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .ts-portfolio {
+    background-image: url('/assets/img/patterns/herringbone-subtle.svg');
+    background-size: 320px 160px;
+    background-position: center;
+  }
+</style>

@@ -1,0 +1,89 @@
+{%- set title = title | default("Sq Ft Helper (W×L×H)") -%} {%- set note = note -%} {%- set enableHeight = enableHeight | default(false) -%}
+
+<div
+  class="sqft-helper"
+  data-sqft-helper
+  {%
+  if
+  targetFloor
+  %}data-target-floor="{{ targetFloor | e }}"
+  {%
+  endif
+  %}
+  {%
+  if
+  targetWall
+  %}data-target-wall="{{ targetWall | e }}"
+  {%
+  endif
+  %}
+>
+  <div class="tools-card">
+    <h4 class="calc-results__title">{{ title }}</h4>
+
+    <div class="form-grid form-grid--3col">
+      <div class="form-field">
+        <label class="form-label" for="sqft-width">Width</label>
+        <div class="form-inline">
+          <input type="number" id="sqft-width" class="form-input" data-sqft="width" placeholder="e.g., 8" min="0" step="0.1" />
+          <span class="form-inline__suffix">ft</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="sqft-length">Length</label>
+        <div class="form-inline">
+          <input type="number" id="sqft-length" class="form-input" data-sqft="length" placeholder="e.g., 10" min="0" step="0.1" />
+          <span class="form-inline__suffix">ft</span>
+        </div>
+      </div>
+      {% if enableHeight %}
+      <div class="form-field">
+        <label class="form-label" for="sqft-height">Height</label>
+        <div class="form-inline">
+          <input type="number" id="sqft-height" class="form-input" data-sqft="height" placeholder="e.g., 8" min="0" step="0.1" />
+          <span class="form-inline__suffix">ft</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="form-grid form-grid--2col">
+      <div class="form-field">
+        <label class="form-label" for="sqft-floor-output">Floor Area</label>
+        <div class="form-inline">
+          <input type="text" id="sqft-floor-output" class="form-input" data-sqft-output="floor" value="—" readonly />
+          <span class="form-inline__suffix">sq ft</span>
+        </div>
+        <span class="form-hint">≈ width × length</span>
+      </div>
+      {% if enableHeight %}
+      <div class="form-field">
+        <label class="form-label" for="sqft-walls-output">Wall Area (4 walls)</label>
+        <div class="form-inline">
+          <input type="text" id="sqft-walls-output" class="form-input" data-sqft-output="walls" value="—" readonly />
+          <span class="form-inline__suffix">sq ft</span>
+        </div>
+        <span class="form-hint">≈ 2 × height × (width + length)</span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="form-actions">
+      <div class="btn-group btn-group--horizontal">
+        {% if targetFloor %}<button type="button" class="btn btn--primary" data-sqft-action="use-floor">
+          Use floor area</button
+        >{% endif %} {% if enableHeight and targetWall %}<button
+          type="button"
+          class="btn btn--primary"
+          data-sqft-action="use-walls"
+        >
+          Use wall area</button
+        >{% endif %}
+      </div>
+    </div>
+
+    {% if note %}
+    <p class="form-hint">{{ note }}</p>
+    {% endif %}
+  </div>
+</div>

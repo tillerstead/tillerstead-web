@@ -1,0 +1,16 @@
+{# Logo Header - Sprite-based header logo component Displays the Tillerstead logo using SVG sprite system
+Parameters: - variant: 'default' (colored) or 'mono' (currentColor) - symbol: 'logo-mark', 'logo-full', 'logo-stacked'
+(defaults to 'logo-mark') Smart behavior: Homepage → About, Other pages → Homepage #} {%- set variant = variant | default("default") -%} {%- set symbol = symbol | default("logo-mark") -%} {%- set link_class = link_class | default("ts-logo-link") -%} {%- set svg_class = svg_class | default("ts-logo") -%} {% if
+variant == 'mono' %} {%- set symbol_id = symbol + "-mono" -%} {% else %} {%- set symbol_id = symbol -%} {%
+endif %}
+
+<a
+  href="{{ '/' | relative_url }}"
+  class="{{ link_class }}"
+  data-logo-link
+  aria-label="{{ site.title | default("Tillerstead LLC") }} - Home"
+>
+  <svg class="{{ svg_class }}" role="img" aria-label="{{ site.title | default("Tillerstead") }}">
+    <use href="#{{ symbol_id }}"></use>
+  </svg>
+</a>

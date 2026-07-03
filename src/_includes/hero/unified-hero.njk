@@ -1,0 +1,87 @@
+{#
+Homepage Hero Include - Tillerstead Displays the main hero section with title, summary, CTAs, and optional image.
+Usage: {% include "hero/unified-hero-home.njk" %}
+#}
+
+{%- set hero_badge = badge | default(page.hero_badge) | default("Licensed NJ Home Improvement Contractor") -%}
+{%- set hero_eyebrow = eyebrow | default(page.hero_eyebrow) | default("Licensed & Documented") -%}
+{%- set hero_title = title | default(page.hero_title) | default(page.title) | default(site.title) -%}
+{%- set hero_summary = summary | default(page.hero_summary) | default(page.description) | default(site.tagline) %}
+{%- set hero_kpis = kpis | default(page.hero_kpis) -%}
+{%- set hero_primary_url = primary_url | default(page.hero_primary_url) | default("/contact/") -%}
+{%- set hero_primary_label = primary_label | default(page.hero_primary_label) | default("Request a
+consultation") %}
+{%- set hero_secondary_url = secondary_url | default(page.hero_secondary_url) | default("/portfolio/") -%}
+{%- set hero_secondary_label = secondary_label | default(page.hero_secondary_label) | default("View recent
+work") %}
+{%- set hero_heading_level = heading_level | default(page.hero_heading_level) | default("h1") -%}
+
+{%- set primary_href = hero_primary_url -%}
+{% unless '://' in primary_href or 'mailto:' in primary_href or 'tel:' in primary_href or primary_href
+| slice(0, 1) == '#' %}
+{%- set primary_href = primary_href | relative_url -%}
+{%- endif -%}
+
+{%- set secondary_href = hero_secondary_url -%}
+{% unless '://' in secondary_href or 'mailto:' in secondary_href or 'tel:' in secondary_href or
+secondary_href | slice(0, 1) == '#' %}
+{%- set secondary_href = secondary_href | relative_url -%}
+{%- endif -%}
+
+<header class="hero pattern-light-tile-grid" aria-label="Page hero">
+  <div class="hero__crosshatch-pattern" aria-hidden="true"></div>
+  <div class="container hero__content">
+    <div class="hero__logo flex-center mb-hero-logo">
+      {% include "components/logo-header.njk" %}
+    </div>
+    <div class="hero-home__body">
+
+      {%- if hero_badge -%}
+      <div class="hero__cred-bar">
+        <span class="hero__cred-badge">{{ hero_badge }}</span>
+      </div>
+      {%- endif -%}
+
+      {%- if hero_eyebrow -%}
+      <p class="ts-eyebrow mb-3">{{ hero_eyebrow }}</p>
+      {%- endif -%}
+
+      <{{ hero_heading_level }} class="hero__title">{{ hero_title }}</{{ hero_heading_level }}>
+
+      {%- if hero_summary -%}
+      <p class="hero__lead">{{ hero_summary }}</p>
+      {%- endif -%}
+
+      {%- set kpis_array = hero_kpis | default("") -%}
+      {%- if kpis_array and kpis_array.length > 0 -%}
+      <!-- KPIs are part of the hero intro for Tillerstead's positioning -->
+      <section class="hero__stats-panel" aria-label="Key points">
+        <ul class="hero__stats-list">
+          {%- for metric in kpis_array -%}
+          <li>
+            {%- if metric.label -%}
+            <strong class="text-accent">{{ metric.label }}:</strong>
+            {%- endif -%}
+            {%- if metric.text -%}
+            {{ metric.text }}
+            {%- endif -%}
+          </li>
+          {%- endfor -%}
+        </ul>
+      </section>
+      {%- endif -%}
+
+      <nav class="hero__actions" aria-label="Primary actions">
+        {%- if hero_primary_url -%}
+        <a class="btn btn--primary" href="{{ primary_href }}" aria-label="{{ hero_primary_label }}">{{
+          hero_primary_label }}</a>
+        {%- endif -%}
+
+        {%- if hero_secondary_url -%}
+        <a class="btn btn--ghost" href="{{ secondary_href }}" aria-label="{{ hero_secondary_label }}">{{
+          hero_secondary_label }}</a>
+        {%- endif -%}
+      </nav>
+    </div>
+  </div>
+</header>

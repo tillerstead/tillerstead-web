@@ -1,0 +1,21 @@
+{# Homepage Final CTA Section
+   Reads CTA data from _data/home.yml via the global `home` variable.
+   Also available through `data` (set in index.md). #}
+{%- set cta = data.cta | default(home.cta) -%}
+
+<section class="home-cta bg-primary ts-tiled-cta" aria-labelledby="cta-title">
+  <div class="container container--wide">
+    <div class="cta-content">
+      <p class="cta-eyebrow">{{ cta.eyebrow }}</p>
+      <h2 id="cta-title" class="cta-title">{{ cta.title }}</h2>
+      <p class="cta-summary">{{ cta.summary }}</p>
+
+      <div class="cta-actions">
+        <a href="{{ cta.primary.url }}" class="btn btn--white btn--large"> {{ cta.primary.label }} </a>
+        <a href="{{ cta.secondary.url }}" class="btn btn--outline-white btn--large"> {{ cta.secondary.label }} </a>
+      </div>
+
+      <p class="cta-note">{{ cta.note }}</p>
+    </div>
+  </div>
+</section>

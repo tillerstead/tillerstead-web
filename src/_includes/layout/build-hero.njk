@@ -1,0 +1,18 @@
+{#- Build guide hero block -#}
+{%- set phase_order = order or build_order -%}
+<section class="build-hero">
+  <div class="container">
+    <nav class="build-breadcrumb" aria-label="Breadcrumb">
+      <a href="/build/">Build Guides</a>
+      {% if phase_order %}
+      <span aria-hidden="true">›</span>
+      <span>Phase {{ phase_order }}</span>
+      {% endif %}
+    </nav>
+    {% if phase_order %}<span class="phase-badge">Phase {{ phase_order }} of 8</span>{% endif %}
+    <h1 class="build-hero-title">{{ build_title or title }}</h1>
+    {% if description %}
+    <p class="build-hero-desc">{{ description }}</p>
+    {% endif %}
+  </div>
+</section>

@@ -1,8 +1,14 @@
+#!/usr/bin/env node
+/**
+ * Tillerstead resource catalog export
+ *
+ * Standalone replacement for the Evident resource-bridge export pipeline.
+ * Writes static JSON resource files under public/resources/.
+ */
+
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { buildCatalog, writeCatalog } from '@evident-technologies/resource-bridge/export';
-import type { ResourceCatalogEntry } from '@evident-technologies/types/schemas';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
 import {
   LAND_USE_CHECKLISTS,
@@ -12,10 +18,17 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = resolve(__dirname, '..', 'public', 'resources');
-const META_JSON = resolve(__dirname, '..', 'product.meta.json');
+
+type CatalogEntry = {
+  id: string;
+  title: string;
+  tags: string[];
+  data: unknown;
+  metadata: { source: string; domain: string };
+};
 
 function run(): void {
-  const entries: ResourceCatalogEntry[] = [];
+  const entries: CatalogEntry[] = [];
 
   for (const guide of PROPERTY_RECORD_GUIDES) {
     entries.push({
@@ -45,21 +58,29 @@ function run(): void {
     metadata: { source: 'assessment-guide', domain: 'property' },
   });
 
-  const catalog = buildCatalog({
-    providerId: 'tillerstead',
-    domain: 'property',
-    resourceTypes: [
-      'property.records_overview',
-      'property.land_use_checklist',
-      'property.tax_assessment',
-      'property.environmental_compliance',
-    ],
-    generatorVersion: '0.0.0',
-    entries,
-  });
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  writeFileSync(
+    resolve(OUTPUT_DIR, 'catalog.json'),
+    JSON.stringify(
+      {
+        providerId: 'tillerstead',
+        domain: 'property',
+        resourceTypes: [
+          'property.records_overview',
+          'property.land_use_checklist',
+          'property.tax_assessment',
+          'property.environmental_compliance',
+        ],
+        generatorVersion: '1.0.0',
+        generatedAt: new Date().toISOString(),
+        entries,
+      },
+      null,
+      2
+    )
+  );
 
-  writeCatalog(catalog, OUTPUT_DIR, META_JSON);
-  process.stdout.write(`Tillerstead: exported ${entries.length} entries\n`);
+  process.stdout.write(`Tillerstead: exported ${entries.length} entries to ${OUTPUT_DIR}/catalog.json\n`);
 }
 
 run();

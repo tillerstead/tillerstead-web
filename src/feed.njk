@@ -1,0 +1,27 @@
+---
+permalink: feed.xml
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title or "Tillerstead" }}</title>
+  <link href="{{ site.url or 'https://tillerstead.com' }}/feed.xml" rel="self" />
+  <link href="{{ site.url or 'https://tillerstead.com' }}/" />
+  <updated>{{ collections.posts | reverse | first | date_to_xmlschema }}</updated>
+  <id>{{ site.url or 'https://tillerstead.com' }}/</id>
+  <author>
+    <name>{{ site.author or "Tillerstead LLC" }}</name>
+  </author>
+  {%- set recent = collections.posts | reverse -%}
+  {%- for post in recent -%}
+  {%- if loop.index <= 10 %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ post.url | absolute_url }}" />
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>{{ post.url | absolute_url }}</id>
+    <content type="html">{{ post.templateContent | escape }}</content>
+  </entry>
+  {%- endif -%}
+  {%- endfor %}
+</feed>

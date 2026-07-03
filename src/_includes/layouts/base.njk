@@ -1,61 +1,64 @@
+{#- Base layout — replaces Jekyll _includes/layout/page-shell.html
+    All other layouts extend this. -#}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ meta_description or description }}" />
-  <meta name="theme-color" content="#0a6840" />
-  <meta name="color-scheme" content="light dark" />
-  
-  <title>{{ title }} — Tillerstead LLC</title>
-  
-  {# Canonical URL #}
-  <link rel="canonical" href="{{ page.url | url }}" />
-  
-  {# Font preloading #}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" />
-  
-  {# Styles #}
-  <link rel="stylesheet" href="/assets/css/tokens.css?v={{ build.hash }}" />
-  <link rel="stylesheet" href="/assets/css/base.css?v={{ build.hash }}" />
-  <link rel="stylesheet" href="/assets/css/utilities.css?v={{ build.hash }}" />
-  {% if pageCSS %}<link rel="stylesheet" href="{{ pageCSS }}{% if '?' in pageCSS %}&{% else %}?{% endif %}v={{ build.hash }}" />{% endif %}
-  
-  {# Favicon #}
-  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/manifest.webmanifest?v={{ build.hash }}" />
-  
-  {# No-JS fallback #}
-  <script>
-    document.documentElement.classList.replace('no-js', 'js');
-  </script>
-</head>
+<html lang="en"{% if htmlAttrs %} {{ htmlAttrs }}{% endif %}>
+  <head>
+    <title>
+      {%- if meta_title %}{{ meta_title | e }}{%- elif title %}{{ title | e }} | {{ site.title | e }}{%- else %}{{ site.title | e }}{%- endif -%}
+    </title>
+    {% include "layout/head.njk" %}
+    {% if not minimal_shell %}{% include "schema/schema-combined.njk" %}{% endif %}
+    {% include "layout/meta-open-graph.njk" %}
+    {% include "layout/meta-geo.njk" %}
+    {% include "layout/meta-canonical.njk" %}
+    {% include "layout/meta-success-confetti.njk" %}
+    {% if page.url == "/contact/" %}{% include "forms/contact-page.njk" %}{% endif %}
+    {% if extra_head %}{{ extra_head | safe }}{% endif %}
+    <link rel="stylesheet" href="/assets/css/components/nav-system-v2.css?v={{ site.cache_version }}" />
+  </head>
+  <body class="ts-body{% if body_class %} {{ body_class }}{% endif %}{% if layout_body_class %} {{ layout_body_class }}{% endif %}{% if build_guide %} page-build-guide{% endif %}">
+    <nav class="skip-links" aria-label="Skip navigation">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+    </nav>
+    {% if not minimal_shell %}
+    <div class="scroll-progress" aria-hidden="true"></div>
+    {% include "navigation/utility-bar.njk" %}
+    {% include "header-v2.njk" %}
+    {% include "components/search-overlay.njk" %}
+    {% if showBreadcrumbs !== false %}{% include "navigation/ts-breadcrumbs.njk" %}{% endif %}
+    {% endif %}
+    <main class="ts-main-content" id="main-content" aria-label="Main content">
+      {% block main %}{{ content | safe }}{% endblock %}
+    </main>
+    {% if not minimal_shell %}
+    {% include "layout/footer.njk" %}
+    {#- Accessibility toolbar (all devices) -#}
+    {% include "components/a11y-toolbar.njk" %}
+    {#- Bottom action bar (replaces old sticky CTA) -#}
+    {% include "components/bottom-bar.njk" %}
+    {% endif %}
 
-<body style="background-color: var(--color-surface-primary); color: var(--color-text-primary);" class="antialiased">
-  
-  {# Skip to main #}
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:text-white focus:px-4 focus:py-2 focus:rounded" style="background-color: var(--color-brand-primary);">
-    Skip to main content
-  </a>
-
-  {# Header #}
-  {% include "components/header.njk" %}
-
-  {# Main content #}
-  <main id="main" class="flex-1">
-    {{ content | safe }}
-  </main>
-
-  {# Footer #}
-  {% include "components/footer.njk" %}
-
-  {# Scripts #}
-  <script src="/assets/js/main.js?v={{ build.hash }}" defer></script>
-  {% if pageJS %}<script src="{{ pageJS }}{% if '?' in pageJS %}&{% else %}?{% endif %}v={{ build.hash }}" defer></script>{% endif %}
-  
-</body>
+    {#- Lead Magnet - Desktop Homepage only -#}
+    {% if is_home == true and not minimal_shell %}
+    <div class="desktop-only-features">{% include "components/lead-magnet-popup.njk" %}</div>
+    {% endif %}
+    {% include "layout/scripts.njk" %}
+    {% if not minimal_shell %}
+    <script>
+      {#- Load search index for client-side search -#}
+      fetch('/assets/js/search-index.json')
+        .then(r => r.ok ? r.json() : [])
+        .then(data => { window.__TILLERSTEAD_SEARCH_INDEX = data; })
+        .catch(() => {});
+    </script>
+    <script src="/assets/js/navigation-system-v2.js?v={{ site.cache_version }}" defer></script>
+    {% endif %}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js?v={{ site.cache_version }}').catch((err) => console.warn('[SW] Registration failed:', err));
+        });
+      }
+    </script>
+  </body>
 </html>

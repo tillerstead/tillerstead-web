@@ -1,0 +1,20 @@
+{%- set og_title = meta_title | default(page.title) | default(site.title) -%} {%- set og_desc = meta_description | default(page.description) | default(site.description) -%} {%- set og_image = og_image | default(page.featured_image) | default(site.default_og_image) -%}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ og_type | default("website") }}" />
+<meta property="og:site_name" content="Tillerstead LLC" />
+<meta property="og:title" content="{{ og_title | e }}" />
+<meta property="og:description" content="{{ og_desc | strip_html | truncate(200) | e }}" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ og_image | absolute_url }}" />
+<meta property="og:locale" content="en_US" />
+{% if layout == 'post' and page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<meta property="article:author" content="{{ author | default("Tillerstead LLC") | e }}" />
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="{{ twitter_card | default("summary_large_image") }}" />
+<meta name="twitter:site" content="@tillerstead" />
+<meta name="twitter:title" content="{{ og_title | e }}" />
+<meta name="twitter:description" content="{{ og_desc | strip_html | truncate(200) | e }}" />
+<meta name="twitter:image" content="{{ og_image | absolute_url }}" />

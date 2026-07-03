@@ -1,0 +1,43 @@
+{# Homepage Services Section
+   Reads services data from _data/home.yml via the global `home` variable.
+   Also available through `data` (set in index.md). #}
+{%- set services = data.services | default(home.services) -%}
+
+<section class="home-services" aria-labelledby="services-title">
+  <div class="container container--wide">
+    <header class="section-header">
+      <p class="section-eyebrow">{{ services.eyebrow }}</p>
+      <h2 id="services-title" class="section-title">{{ services.title }}</h2>
+      <p class="section-summary">{{ services.summary }}</p>
+      <p class="section-note">{{ services.homeowner_note }}</p>
+    </header>
+
+    <div class="services-grid">
+      {% for card in services.cards %}
+      <article class="service-card ts-ceramic-card">
+        <h3 class="service-title">{{ card.title }}</h3>
+        <p class="service-description">{{ card.description }}</p>
+
+        {% if card.details %}
+        <ul class="service-details">
+          {% for detail in card.details %}
+          <li>{{ detail }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="{{ card.url }}" class="service-link" aria-label="Learn more about {{ card.title }}"> Learn more → </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="services-actions">
+      <a href="{{ services.actions.primary.url }}" class="btn btn--primary"> {{ services.actions.primary.label }} </a>
+      <a href="{{ services.actions.secondary.url }}" class="btn btn--secondary-outline">
+        {{ services.actions.secondary.label }}
+      </a>
+    </div>
+
+    <p class="services-note">{{ services.note }}</p>
+  </div>
+</section>

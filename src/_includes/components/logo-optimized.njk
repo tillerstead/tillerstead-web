@@ -1,0 +1,84 @@
+{# Optimized Logo Component - Unified System Usage: {% include "components/logo-optimized.njk" %} {% include "components/logo-optimized.njk" %} {% include "components/logo-optimized.njk" %} Parameters: - variant: 'header', 'footer', 'hero', 'sprite' (default:
+'header') - symbol: For sprite variant - 'logo-mark', 'logo-full', 'logo-stacked' - className: Additional CSS classes -
+loading: 'eager' or 'lazy' (default: auto-determined by variant) - fetchpriority: 'high', 'low', 'auto' - width: Custom
+width (default: auto by variant) - height: Custom height (default: auto by variant) #} {%- set variant = variant | default("header") -%} {%- set className = className | default("") -%} {% case variant %} {%
+when 'sprite' %} {# Use inline SVG sprite (most efficient, 0 HTTP requests) #} {%- set symbol = symbol | default("logo-mark") -%} {%- set width = width | default(60) -%} {%- set height = height | default(60) -%}
+
+<svg
+  class="logo-svg logo-svg--{{ symbol }} {{ className }}"
+  width="{{ width }}"
+  height="{{ height }}"
+  aria-label="Tillerstead Logo"
+  role="img"
+>
+  <use href="/assets/img/tillerstead-logo-sprite.svg#{{ symbol }}"></use>
+</svg>
+
+{% when 'hero' %} {# Hero section: Use sprite for performance #}
+<svg
+  class="logo-svg logo-svg--hero {{ className }}"
+  width="200"
+  height="200"
+  aria-label="Tillerstead - Professional Tile & Waterproofing"
+  role="img"
+>
+  <use href="/assets/img/tillerstead-logo-sprite.svg#logo-full"></use>
+</svg>
+
+{% when 'header' %} {# Header: AVIF/WebP/PNG fallback, retina-ready #} {%- set width = width | default(60) -%} {%- set height = height | default(60) -%} {% set loading = loading | default("eager") %} {%- set fetchpriority = fetchpriority | default("high") -%}
+
+<picture class="logo-picture logo-picture--header {{ className }}">
+  <source srcset="/assets/img/logo/logo-header@2x.avif 2x, /assets/img/logo/logo-header.avif 1x" type="image/avif" />
+  <source srcset="/assets/img/logo/logo-header@2x.webp 2x, /assets/img/logo/logo-header.webp 1x" type="image/webp" />
+  <source srcset="/assets/img/logo/logo-header@2x.png 2x, /assets/img/logo/logo-header.png 1x" type="image/png" />
+  <img
+    src="/assets/img/logo/logo-header.png"
+    alt="Tillerstead Logo"
+    width="{{ width }}"
+    height="{{ height }}"
+    loading="{{ loading }}"
+    fetchpriority="{{ fetchpriority }}"
+    class="logo-img logo-img--header"
+  />
+</picture>
+
+{% when 'footer' %} {# Footer: AVIF/WebP/PNG lazy-loaded, larger size #} {%- set width = width | default(200) -%} {%- set height = height | default(200) -%} {% set loading = loading
+| default("lazy") %}
+
+<picture class="logo-picture logo-picture--footer {{ className }}">
+  <source
+    srcset="/assets/img/logo/logo-optimized@2x.avif 2x, /assets/img/logo/logo-optimized.avif 1x"
+    type="image/avif"
+  />
+  <source
+    srcset="/assets/img/logo/logo-optimized@2x.webp 2x, /assets/img/logo/logo-optimized.webp 1x"
+    type="image/webp"
+  />
+  <source srcset="/assets/img/logo/logo-optimized@2x.png 2x, /assets/img/logo/logo-optimized.png 1x" type="image/png" />
+  <img
+    src="/assets/img/logo/logo-optimized.png"
+    alt="Tillerstead - Professional Tile & Waterproofing Contractor"
+    width="{{ width }}"
+    height="{{ height }}"
+    loading="{{ loading }}"
+    class="logo-img logo-img--footer"
+  />
+</picture>
+
+{% when 'compact' %} {# Compact variant for tight spaces - AVIF/WebP/PNG #} {%- set width = width | default(40) -%} {%- set height = height | default(40) -%} {% set loading = loading | default("eager") %}
+
+<picture class="logo-picture logo-picture--compact {{ className }}">
+  <source srcset="/assets/img/logo/logo-compact@2x.avif 2x, /assets/img/logo/logo-compact.avif 1x" type="image/avif" />
+  <source srcset="/assets/img/logo/logo-compact@2x.webp 2x, /assets/img/logo/logo-compact.webp 1x" type="image/webp" />
+  <source srcset="/assets/img/logo/logo-compact@2x.png 2x, /assets/img/logo/logo-compact.png 1x" type="image/png" />
+  <img
+    src="/assets/img/logo/logo-compact.png"
+    alt="Tillerstead Logo"
+    width="{{ width }}"
+    height="{{ height }}"
+    loading="{{ loading }}"
+    class="logo-img logo-img--compact"
+  />
+</picture>
+
+{% else %} {# Default to header variant #} {% include "components/logo-optimized.njk" %} {% endcase %}

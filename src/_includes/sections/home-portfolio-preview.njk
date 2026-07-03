@@ -1,0 +1,17 @@
+{# Homepage Portfolio Preview Include Displays a brief portfolio teaser with CTA Usage: {% include "sections/home-portfolio-preview.njk" %} #} {%- set eyebrow = eyebrow | default("Our Work") -%} {%- set title = title | default("Bathrooms Built for South Jersey") -%} {%- set summary = summary | default("See completed tile and bathroom projects in Atlantic, Ocean & Cape May Counties.") -%}
+
+<section class="ts-section ts-portfolio-preview bg-soft" aria-labelledby="portfolio-preview-title">
+  <div class="container">
+    <header class="section-header text-center">
+      <span class="eyebrow">{{ eyebrow }}</span>
+      <h2 id="portfolio-preview-title" class="heading-2">{{ title }}</h2>
+      {% if summary %}
+      <p class="lead">{{ summary }}</p>
+      {% endif %}
+    </header>
+
+    <div class="section-action text-center">
+      <a href="{{ '/portfolio/' | relative_url }}" class="btn btn--primary">See Completed Projects</a>
+    </div>
+  </div>
+</section>

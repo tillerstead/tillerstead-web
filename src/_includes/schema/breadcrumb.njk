@@ -1,0 +1,23 @@
+<!-- Breadcrumb Schema Template -->
+<!-- Usage: {% include "schema/breadcrumb.njk" %} -->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tillerstead.com"
+      }{% if items %}{% for item in items %},
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index | plus(1) }},
+        "name": "{{ item.name }}",
+        "item": "{{ item.url | absolute_url }}"
+      }{% endfor %}{% endif %}
+    ]
+  }
+</script>

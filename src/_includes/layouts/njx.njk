@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }} | Tillerstead NJX</title>
+  <meta name="description" content="{{ description or '' }}" />
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe1e8;
+      --accent: #0f766e;
+      --accent-2: #0ea5e9;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f9fafb, #f3f4f6);
+      line-height: 1.45;
+    }
+
+    .shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .topbar a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .topbar a:hover { border-color: #94a3b8; }
+
+    h1, h2, h3 { margin-top: 0; }
+    p { color: var(--muted); }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      color: #fff;
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .hidden { display: none !important; }
+
+    input, select {
+      width: 100%;
+      margin-top: 6px;
+      margin-bottom: 8px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #fff;
+      color: #0f172a;
+    }
+
+    label { display: block; font-size: 14px; color: #1e293b; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="NJX quick navigation">
+      <a href="/">Home</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/tools/">Tools</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+
+    {{ content | safe }}
+  </div>
+</body>
+</html>

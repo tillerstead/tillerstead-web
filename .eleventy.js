@@ -12,7 +12,6 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
-const { postBuild } = createRequire(import.meta.url)('../../packages/build-utils');
 
 export default function (eleventyConfig) {
   const markdownWrappedBlockTags = [
@@ -50,10 +49,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('CNAME');
   eleventyConfig.addPassthroughCopy('_headers');
   eleventyConfig.addPassthroughCopy('favicon.ico');
+  eleventyConfig.addPassthroughCopy('tile-visualizer.html');
+  eleventyConfig.addPassthroughCopy('about.html');
+  eleventyConfig.addPassthroughCopy('blog.html');
+  eleventyConfig.addPassthroughCopy('homeowner-resources.html');
+  eleventyConfig.addPassthroughCopy('portfolio.html');
+  eleventyConfig.addPassthroughCopy('apple-touch-icon.png');
+  eleventyConfig.addPassthroughCopy('favicon-16x16.png');
+  eleventyConfig.addPassthroughCopy('favicon-32x32.png');
   eleventyConfig.addPassthroughCopy('browserconfig.xml');
   eleventyConfig.addPassthroughCopy('sitemap.xml');
   eleventyConfig.addPassthroughCopy('.well-known');
-  eleventyConfig.addPassthroughCopy('admin'); // local admin panel assets
 
   // â”€â”€â”€ HTML Cleanup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Public routes now render directly from Nunjucks templates, so the
@@ -247,7 +253,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('default', 'layouts/default.njk');
   eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
   eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
-  eleventyConfig.addLayoutAlias('build-page', 'layouts/build-page.njk');
+  eleventyConfig.addLayoutAlias('build-page', 'layouts/page.njk');
 
   // â”€â”€ Dev-mode source annotations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Injects data-source attribute and HTML comment on <body> so you can
@@ -276,12 +282,19 @@ export default function (eleventyConfig) {
   eleventyConfig.on('eleventy.after', () => {
     const siteDir = path.join(process.cwd(), '_site');
 
-    postBuild(siteDir, buildHash, { buildInfo: { project: "tillerstead" } });
+    // Local replacement for removed ../../packages/build-utils postBuild
+    // Writes a minimal BUILD_INFO.json for parity with prior deploy verification.
+    const buildInfo = { project: "tillerstead", hash: buildHash, builtAt: new Date().toISOString() };
+    try {
+      fs.writeFileSync(path.join(siteDir, "BUILD_INFO.json"), JSON.stringify(buildInfo, null, 2));
+    } catch (err) {
+      console.warn("Warning: could not write BUILD_INFO.json:", err.message);
+    }
   });
 
     return {
     dir: {
-      input: '.',
+      input: 'src',
       includes: '_includes',
       data: '_data',
       output: '_site',

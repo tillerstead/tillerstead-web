@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+---
+{#- Post layout — blog articles -#}
+{% block main %}
+<div class="container container-wide shell">
+  <article class="ts-surface blog-post" itemscope itemtype="https://schema.org/BlogPosting" tabindex="-1">
+    {#- SEO & Schema.org metadata -#}
+    <meta itemprop="headline" content="{{ title }}" />
+    <meta itemprop="datePublished" content="{{ page.date | date('%Y-%m-%dT%H:%M:%SZ') }}" />
+    {% if date_modified %}
+    <meta itemprop="dateModified" content="{{ date_modified | date('%Y-%m-%dT%H:%M:%SZ') }}" />
+    {% endif %}
+    {% if author %}
+    <meta itemprop="author" content="{{ author }}" />
+    {% endif %}
+    {% if description %}
+    <meta itemprop="description" content="{{ description }}" />
+    {% endif %}
+    {% if featured_image %}
+    <meta itemprop="image" content="{{ featured_image | absolute_url }}" />
+    {% endif %}
+
+    {#- Post Header -#}
+    <header class="post-header stack-md">
+      <h1 class="post-title" itemprop="headline">{{ title }}</h1>
+      <div class="post-meta" role="doc-credits">
+        <time class="post-date" datetime="{{ page.date | date('%Y-%m-%d') }}" itemprop="datePublished">
+          {{ page.date | date('%B %-d, %Y') }}
+        </time>
+        {% if author %}
+        <span class="post-author" itemprop="author">By <strong>{{ author }}</strong></span>
+        {% endif %}
+      </div>
+    </header>
+
+    {#- Post Content -#}
+    <div class="post-content">{{ content | safe }}</div>
+    {% include "components/credential-badges.njk" %}
+
+    {#- Post Footer Navigation -#}
+    <footer class="post-footer scroll-fade-in">
+      {% include "components/cta-buttons.njk" %}
+      <div class="mt-3">
+        <a href="/blog/" class="post-footer__link">
+          <span class="post-footer__icon">←</span>
+          View Other Articles
+        </a>
+      </div>
+    </footer>
+  </article>
+</div>
+{% endblock %}

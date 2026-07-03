@@ -54,8 +54,8 @@ importers:
         specifier: 5.7.0
         version: 5.7.0
       globals:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 17.7.0
+        version: 17.7.0
       html-minifier-terser:
         specifier: 7.2.0
         version: 7.2.0
@@ -108,8 +108,8 @@ importers:
         specifier: 10.6.1
         version: 10.6.1(postcss@8.5.13)
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.9.4
+        version: 3.9.4
       puppeteer:
         specifier: 24.39.0
         version: 24.39.0
@@ -126,8 +126,8 @@ importers:
         specifier: 17.4.0
         version: 17.4.0
       stylelint-config-standard:
-        specifier: ^36.0.1
-        version: 36.0.1(stylelint@17.4.0)
+        specifier: ^40.0.0
+        version: 40.0.0(stylelint@17.4.0)
       stylelint-config-standard-scss:
         specifier: ^17.0.0
         version: 17.0.0(postcss@8.5.13)(stylelint@17.4.0)
@@ -141,8 +141,8 @@ importers:
         specifier: ^5.36.0
         version: 5.48.0
       web-vitals:
-        specifier: 5.1.0
-        version: 5.1.0
+        specifier: 5.3.0
+        version: 5.3.0
       workbox-cli:
         specifier: 7.4.0
         version: 7.4.0
@@ -3006,8 +3006,8 @@ packages:
     resolution: {integrity: sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==}
     engines: {node: '>=6'}
 
-  globals@14.0.0:
-    resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+  globals@17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -4728,8 +4728,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+  prettier@3.9.4:
+    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -5317,9 +5317,9 @@ packages:
     peerDependencies:
       stylelint: ^17.0.0
 
-  stylelint-config-standard-scss@17.0.0:
-    resolution: {integrity: sha512-uLJS6xgOCBw5EMsDW7Ukji8l28qRoMnkRch15s0qwZpskXvWt9oPzMmcYM307m9GN4MxuWLsQh4I6hU9yI53cQ==}
-    engines: {node: '>=20'}
+  stylelint-config-standard-scss@14.0.0:
+    resolution: {integrity: sha512-6Pa26D9mHyi4LauJ83ls3ELqCglU6VfCXchovbEqQUiEkezvKdv6VgsIoMy58i00c854wVmOw0k8W5FTpuaVqg==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
       postcss: ^8.3.3
       stylelint: ^17.0.0
@@ -5658,8 +5658,8 @@ packages:
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
-  web-vitals@5.1.0:
-    resolution: {integrity: sha512-ArI3kx5jI0atlTtmV0fWU3fjpLmq/nD3Zr1iFFlJLaqa5wLBkUSzINwBPySCX/8jRyjlmy1Volw1kz1g9XE4Jg==}
+  web-vitals@5.3.0:
+    resolution: {integrity: sha512-q6LWsLatGYZp5VGBIOvbTj6JBV2nOmC8KvWztXBmwJcfFAzhwKwbOxhUH306XY3CcaZDUlSmSuNPBsCn0bFu+g==}
 
   webdriver-bidi-protocol@0.4.1:
     resolution: {integrity: sha512-ARrjNjtWRRs2w4Tk7nqrf2gBI0QXWuOmMCx2hU+1jUt6d00MjMxURrhxhGbrsoiZKJrhTSTzbIrc554iKI10qw==}
@@ -9264,7 +9264,7 @@ snapshots:
       kind-of: 6.0.3
       which: 1.3.1
 
-  globals@14.0.0: {}
+  globals@17.7.0: {}
 
   globalthis@1.0.4:
     dependencies:
@@ -11033,7 +11033,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.8.3: {}
+  prettier@3.9.4: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -11747,7 +11747,7 @@ snapshots:
     dependencies:
       stylelint: 17.4.0
 
-  stylelint-config-standard-scss@17.0.0(postcss@8.5.13)(stylelint@17.4.0):
+  stylelint-config-standard-scss@14.0.0(postcss@8.5.13)(stylelint@17.4.0):
     dependencies:
       stylelint: 17.4.0
       stylelint-config-recommended-scss: 17.0.1(postcss@8.5.13)(stylelint@17.4.0)
@@ -12164,7 +12164,7 @@ snapshots:
     dependencies:
       defaults: 1.0.4
 
-  web-vitals@5.1.0: {}
+  web-vitals@5.3.0: {}
 
   webdriver-bidi-protocol@0.4.1: {}
 

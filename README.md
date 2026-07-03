@@ -179,3 +179,16 @@ See [LICENSE](../../LICENSE).
 Tillerstead LLC  
 HIC #13VH10808800  
 https://tillerstead.com
+
+## Tillerstead Standalone Status
+
+This repository is the standalone public website for Tillerstead LLC.
+
+Current migration status:
+
+* Standalone GitHub repo created.
+* Public/private split completed.
+* Local install/lint/build/verify pass.
+* Cloudflare preview deployment is pending valid Cloudflare authentication.
+* DNS cutover has not happened.
+* Private ops materials are excluded and reserved for a future private ops repository.

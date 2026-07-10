@@ -120,7 +120,7 @@
     "postcss-jit-props": "1.0.16",
     "postcss-nesting": "14.0.0",
     "postcss-preset-env": "10.6.1",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "puppeteer": "24.39.0",
     "purgecss": "^6.0.0",
     "sharp": "^0.33.5",

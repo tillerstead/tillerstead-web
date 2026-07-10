@@ -129,8 +129,8 @@ importers:
         specifier: ^40.0.0
         version: 40.0.0(stylelint@17.4.0)
       stylelint-config-standard-scss:
-        specifier: ^17.0.0
-        version: 17.0.0(postcss@8.5.13)(stylelint@17.4.0)
+        specifier: ^14.0.0
+        version: 14.0.0(postcss@8.5.13)(stylelint@17.4.0)
       stylelint-scss:
         specifier: ^6.0.0
         version: 6.14.0(stylelint@17.4.0)
@@ -138,8 +138,8 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
       terser:
-        specifier: ^5.36.0
-        version: 5.48.0
+        specifier: ^5.49.0
+        version: 5.49.0
       web-vitals:
         specifier: 5.3.0
         version: 5.3.0
@@ -5295,12 +5295,12 @@ packages:
     peerDependencies:
       postcss: ^8.5.13
 
-  stylelint-config-recommended-scss@17.0.1:
-    resolution: {integrity: sha512-x5DVehzJudcwF0od3sGpgkln2PLLranFE7twwbp7dqDINCyZvwzFkMc6TLhNOvazRiVBJYATQLouJY0xPGB8WA==}
-    engines: {node: '>=20'}
+  stylelint-config-recommended-scss@14.1.0:
+    resolution: {integrity: sha512-bhaMhh1u5dQqSsf6ri2GVWWQW5iUjBYgcHkh7SgDDn92ijoItC/cfO/W+fpXshgTQWhwFkP1rVcewcv4jaftRg==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
       postcss: ^8.3.3
-      stylelint: ^17.0.0
+      stylelint: ^16.6.1
     peerDependenciesMeta:
       postcss:
         optional: true
@@ -5322,7 +5322,7 @@ packages:
     engines: {node: '>=18.12.0'}
     peerDependencies:
       postcss: ^8.3.3
-      stylelint: ^17.0.0
+      stylelint: ^16.11.0
     peerDependenciesMeta:
       postcss:
         optional: true
@@ -5344,12 +5344,6 @@ packages:
     engines: {node: '>=18.12.0'}
     peerDependencies:
       stylelint: ^16.8.2
-
-  stylelint-scss@7.2.0:
-    resolution: {integrity: sha512-6E79Bachv0Iz0gqRUZgdqdXCsiq26DWBWIBNHYtjTmAp3wJu6cp/I37VfW7BPntmh2puF3bY09XWl4HZGrLhzw==}
-    engines: {node: '>=20.19.0'}
-    peerDependencies:
-      stylelint: ^16.8.2 || ^17.0.0
 
   stylelint@17.4.0:
     resolution: {integrity: sha512-3kQ2/cHv3Zt8OBg+h2B8XCx9evEABQIrv4hh3uXahGz/ZEHrTR80zxBiK2NfXNaSoyBzxO1pjsz1Vhdzwn5XSw==}
@@ -5421,8 +5415,8 @@ packages:
     resolution: {integrity: sha512-d79HhZya5Djd7am0q+W4RTsSU+D/aJzM+4Y4AGJGuGlgM2L6sx5ZvOYTmZjqPhrDrV6xJTtRSm1JCLj6V6LHLQ==}
     engines: {node: '>=14.16'}
 
-  terser@5.48.0:
-    resolution: {integrity: sha512-J/9An6vs9Us6wKRriSFXBWdRZapREHqFzdNUKk0pmu804EMR6dr6winwo7e5JDxN4xahxQsuysyYFwlwj4XN/Q==}
+  terser@5.49.0:
+    resolution: {integrity: sha512-SNiDnXyHSrxVcIOtVbULzcTmniUiwcV7Nwdyj1twVubeTmbjoa8p69KKDpfkdoOavuM4/GRm1+ykI8qqnavHoA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7597,7 +7591,7 @@ snapshots:
     dependencies:
       serialize-javascript: 6.0.2
       smob: 1.6.2
-      terser: 5.48.0
+      terser: 5.49.0
     optionalDependencies:
       rollup: 2.80.0
 
@@ -9404,7 +9398,7 @@ snapshots:
       entities: 4.5.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.48.0
+      terser: 5.49.0
 
   html-tags@5.1.0: {}
 
@@ -11730,12 +11724,12 @@ snapshots:
       postcss: 8.5.13
       postcss-selector-parser: 7.1.4
 
-  stylelint-config-recommended-scss@17.0.1(postcss@8.5.13)(stylelint@17.4.0):
+  stylelint-config-recommended-scss@14.1.0(postcss@8.5.13)(stylelint@17.4.0):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.13)
       stylelint: 17.4.0
-      stylelint-config-recommended: 18.0.0(stylelint@17.4.0)
-      stylelint-scss: 7.2.0(stylelint@17.4.0)
+      stylelint-config-recommended: 14.0.1(stylelint@17.4.0)
+      stylelint-scss: 6.14.0(stylelint@17.4.0)
     optionalDependencies:
       postcss: 8.5.13
 
@@ -11750,8 +11744,8 @@ snapshots:
   stylelint-config-standard-scss@14.0.0(postcss@8.5.13)(stylelint@17.4.0):
     dependencies:
       stylelint: 17.4.0
-      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.13)(stylelint@17.4.0)
-      stylelint-config-standard: 40.0.0(stylelint@17.4.0)
+      stylelint-config-recommended-scss: 14.1.0(postcss@8.5.13)(stylelint@17.4.0)
+      stylelint-config-standard: 36.0.1(stylelint@17.4.0)
     optionalDependencies:
       postcss: 8.5.13
 
@@ -11771,21 +11765,6 @@ snapshots:
       is-plain-object: 5.0.0
       known-css-properties: 0.37.0
       mdn-data: 2.28.1
-      postcss-media-query-parser: 0.2.3
-      postcss-resolve-nested-selector: 0.1.6
-      postcss-selector-parser: 7.1.4
-      postcss-value-parser: 4.2.0
-      stylelint: 17.4.0
-
-  stylelint-scss@7.2.0(stylelint@17.4.0):
-    dependencies:
-      '@csstools/css-calc': 3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
-      '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
-      '@csstools/css-syntax-patches-for-csstree': 1.1.6(css-tree@3.2.1)
-      '@csstools/css-tokenizer': 4.0.0
-      css-tree: 3.2.1
-      is-plain-object: 5.0.0
-      known-css-properties: 0.37.0
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.4
@@ -11930,7 +11909,7 @@ snapshots:
       type-fest: 2.19.0
       unique-string: 3.0.0
 
-  terser@5.48.0:
+  terser@5.49.0:
     dependencies:
       '@jridgewell/source-map': 0.3.11
       acorn: 8.17.0

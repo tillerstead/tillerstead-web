@@ -79,7 +79,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
-    mcp (0.24.0)
+    mcp (0.25.0)
       json_schemer (>= 2.4)
     mercenary (0.4.0)
     parallel (2.1.0)
@@ -189,7 +189,7 @@ CHECKSUMS
   liquid (4.0.4) sha256=4fcfebb1a045e47918388dbb7a0925e7c3893e58d2bd6c3b3c73ec17a2d8fdb3
   listen (3.10.0) sha256=c6e182db62143aeccc2e1960033bebe7445309c7272061979bb098d03760c9d2
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  mcp (0.24.0) sha256=ef13596f13aad7720940a3fd6ab6f4f5e618d0b0fdb587549a90c22579626500
+  mcp (0.25.0) sha256=8acf3a5f3b60b6fd6e5d9b8ac5eb85ac504766976cbadaca182d2ffe7d795d98
   mercenary (0.4.0) sha256=b25a1e4a59adca88665e08e24acf0af30da5b5d859f7d8f38fba52c28f405138
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
   parser (3.3.11.1) sha256=d17ace7aabe3e72c3cc94043714be27cc6f852f104d81aa284c2281aecc65d54
